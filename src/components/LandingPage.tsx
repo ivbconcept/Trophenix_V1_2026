@@ -122,7 +122,7 @@ function ProgramSection() {
                 className={`group relative rounded-xl overflow-hidden shadow-lg cursor-pointer transition-all duration-300 ${
                   selectedCard === index ? 'backdrop-blur-md border border-white/20' : 'bg-white'
                 } ${selectedCard === index ? 'flex-1 p-5' : 'h-[115px] p-4'} ${index < CARD_DATA.length - 1 ? 'mb-2' : ''} hover:shadow-xl`}
-                style={selectedCard === index ? { backgroundColor: '#c9d9ff' } : undefined}
+                style={selectedCard === index ? { backgroundColor: '#058fb5' } : undefined}
               >
                 <div className="flex items-center justify-between">
                   <h4 className="font-bold text-slate-900 text-base">
