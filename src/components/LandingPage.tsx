@@ -89,7 +89,7 @@ const SPORTS_MEDIA: MediaItem[] = [
 ];
 
 function ProgramSection() {
-  const [selectedCard, setSelectedCard] = useState<number | null>(null);
+  const [selectedCard, setSelectedCard] = useState<number | null>(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   return (
