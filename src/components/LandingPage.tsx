@@ -865,6 +865,136 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
           </div>
         </section>
 
+        <section className="py-20 bg-slate-900">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Ils nous soutiennent
+              </h2>
+            </div>
+
+            <div className="relative">
+              <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide">
+                <div className="flex-shrink-0 w-72 snap-center">
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+                    <img
+                      src="https://images.pexels.com/photos/5067706/pexels-photo-5067706.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="Mind & Body"
+                      className="w-full h-80 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent"></div>
+                    <div className="absolute top-4 left-4 right-4">
+                      <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/30">
+                        Mind & Body
+                      </span>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                      <h3 className="text-2xl font-bold mb-2">Bodybalance</h3>
+                      <button className="mt-4 px-6 py-2 bg-white/10 backdrop-blur-sm border border-white/30 rounded-full text-white font-semibold hover:bg-white/20 transition-all">
+                        Join now
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex-shrink-0 w-72 snap-center">
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+                    <img
+                      src="https://images.pexels.com/photos/3076509/pexels-photo-3076509.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="Dance"
+                      className="w-full h-80 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent"></div>
+                    <div className="absolute top-4 left-4 right-4">
+                      <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/30">
+                        Dance
+                      </span>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                      <h3 className="text-2xl font-bold mb-2">Zumba</h3>
+                      <button className="mt-4 px-6 py-2 bg-white/10 backdrop-blur-sm border border-white/30 rounded-full text-white font-semibold hover:bg-white/20 transition-all">
+                        Join now
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex-shrink-0 w-96 snap-center">
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-emerald-700 to-emerald-900 group">
+                    <img
+                      src="https://images.pexels.com/photos/3076509/pexels-photo-3076509.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="Bodypump"
+                      className="w-full h-80 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/95 to-transparent"></div>
+                    <div className="absolute top-4 left-4 right-4">
+                      <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/30">
+                        Strength & Conditioning
+                      </span>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                      <h3 className="text-3xl font-bold mb-2">Bodypump</h3>
+                      <button className="mt-4 px-8 py-3 bg-white/10 backdrop-blur-sm border-2 border-white/50 rounded-full text-white font-bold hover:bg-white/20 transition-all shadow-lg">
+                        Join now
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex-shrink-0 w-72 snap-center">
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+                    <img
+                      src="https://images.pexels.com/photos/1552249/pexels-photo-1552249.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="Cardio"
+                      className="w-full h-80 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent"></div>
+                    <div className="absolute top-4 left-4 right-4">
+                      <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/30">
+                        Cardio
+                      </span>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                      <h3 className="text-2xl font-bold mb-2">Bodystep</h3>
+                      <button className="mt-4 px-6 py-2 bg-white/10 backdrop-blur-sm border border-white/30 rounded-full text-white font-semibold hover:bg-white/20 transition-all">
+                        Join now
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex-shrink-0 w-72 snap-center">
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+                    <img
+                      src="https://images.pexels.com/photos/4162491/pexels-photo-4162491.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="HIIT"
+                      className="w-full h-80 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent"></div>
+                    <div className="absolute top-4 left-4 right-4">
+                      <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/30">
+                        HIIT
+                      </span>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                      <h3 className="text-2xl font-bold mb-2">HIIT x Power</h3>
+                      <button className="mt-4 px-6 py-2 bg-white/10 backdrop-blur-sm border border-white/30 rounded-full text-white font-semibold hover:bg-white/20 transition-all">
+                        Join now
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex justify-center gap-2 mt-8">
+                <div className="w-12 h-1 bg-white rounded-full"></div>
+                <div className="w-8 h-1 bg-white/30 rounded-full"></div>
+                <div className="w-8 h-1 bg-white/30 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
