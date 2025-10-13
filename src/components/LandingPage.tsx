@@ -728,7 +728,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="group relative rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105">
-                <div className="relative h-80">
+                <div className="relative h-96">
                   <img
                     src="https://images.pexels.com/photos/3760607/pexels-photo-3760607.jpeg?auto=compress&cs=tinysrgb&w=800"
                     alt="Sportifs"
@@ -746,7 +746,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
               </div>
 
               <div className="group relative rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105">
-                <div className="relative h-80">
+                <div className="relative h-96">
                   <img
                     src="https://images.pexels.com/photos/3865556/pexels-photo-3865556.jpeg?auto=compress&cs=tinysrgb&w=800"
                     alt="Fédérations & Clubs"
@@ -764,7 +764,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
               </div>
 
               <div className="group relative rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105">
-                <div className="relative h-80">
+                <div className="relative h-96">
                   <img
                     src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800"
                     alt="Marques & Sponsors"
@@ -782,7 +782,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
               </div>
 
               <div className="group relative rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105">
-                <div className="relative h-80">
+                <div className="relative h-96">
                   <img
                     src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800"
                     alt="Entreprises"
