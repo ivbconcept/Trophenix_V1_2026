@@ -802,6 +802,72 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
           </div>
         </section>
 
+        <section className="py-20 bg-gradient-to-br from-slate-50 to-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                  Take Your Game To The Next Level
+                </h2>
+                <p className="text-slate-600 text-lg mb-6 leading-relaxed">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+                </p>
+                <p className="text-slate-600 text-lg mb-8 leading-relaxed">
+                  Ullamco laboris nisi ut aliquip lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
+                </p>
+                <button className="inline-flex items-center px-6 py-3 bg-white border-2 border-slate-900 text-slate-900 rounded-full font-semibold hover:bg-slate-900 hover:text-white transition-all duration-300 shadow-md hover:shadow-lg">
+                  <CheckCircle className="w-5 h-5 mr-2" />
+                  About Us
+                </button>
+              </div>
+
+              <div className="relative">
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                  <img
+                    src="https://images.pexels.com/photos/1263349/pexels-photo-1263349.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    alt="Tennis player"
+                    className="w-full h-[600px] object-cover"
+                  />
+
+                  <div className="absolute top-1/2 right-0 transform translate-x-8 -translate-y-1/2">
+                    <div className="flex flex-col items-center space-y-8">
+                      <div className="bg-white rounded-full p-4 shadow-xl border-4 border-slate-900 hover:scale-110 transition-transform cursor-pointer">
+                        <CheckCircle className="w-8 h-8 text-slate-900" />
+                      </div>
+                      <div className="h-24 w-1 bg-slate-900"></div>
+                      <div className="bg-white rounded-full p-4 shadow-xl border-4 border-slate-900 hover:scale-110 transition-transform cursor-pointer">
+                        <CheckCircle className="w-8 h-8 text-slate-900" />
+                      </div>
+                      <div className="h-24 w-1 bg-slate-900"></div>
+                      <div className="bg-white rounded-full p-4 shadow-xl border-4 border-slate-900 hover:scale-110 transition-transform cursor-pointer">
+                        <CheckCircle className="w-8 h-8 text-slate-900" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="absolute top-8 left-1/2 transform -translate-x-1/2 -rotate-90">
+                    <div className="bg-white/95 backdrop-blur-sm px-6 py-3 rounded-full shadow-xl border border-slate-200">
+                      <span className="text-slate-900 font-bold text-lg whitespace-nowrap">Tennis 🎾</span>
+                    </div>
+                  </div>
+
+                  <div className="absolute bottom-32 left-8 -rotate-45">
+                    <div className="bg-white/95 backdrop-blur-sm px-6 py-3 rounded-full shadow-xl border border-slate-200">
+                      <span className="text-slate-900 font-bold text-lg whitespace-nowrap">Pickleball 🏓</span>
+                    </div>
+                  </div>
+
+                  <div className="absolute top-1/3 left-0 transform -translate-x-12 -rotate-12">
+                    <div className="bg-white/95 backdrop-blur-sm px-6 py-3 rounded-full shadow-xl border border-slate-200">
+                      <span className="text-slate-900 font-bold text-lg whitespace-nowrap">Cricket 🏏</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
