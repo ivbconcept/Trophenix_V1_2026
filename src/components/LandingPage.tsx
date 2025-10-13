@@ -116,29 +116,23 @@ function ProgramSection() {
               <div
                 key={index}
                 onClick={() => {
-                  setSelectedCard(selectedCard === index ? null : index);
+                  setSelectedCard(index);
                   setCurrentImageIndex(index);
                 }}
                 className={`group relative rounded-xl overflow-hidden shadow-lg cursor-pointer transition-all duration-300 ${
-                  index === 0 ? 'bg-gradient-to-br from-blue-500 to-blue-700' : 'bg-slate-100'
+                  selectedCard === index ? 'bg-[#eefcff]' : 'bg-white'
                 } ${selectedCard === index ? 'flex-1 p-5' : 'h-[115px] p-4'} ${index < CARD_DATA.length - 1 ? 'mb-2' : ''} hover:shadow-xl`}
               >
                 <div className="flex items-center justify-between">
-                  <h4 className={`font-bold ${
-                    index === 0 ? 'text-white text-lg' : 'text-slate-900 text-base'
-                  }`}>
+                  <h4 className="font-bold text-slate-900 text-base">
                     {card.title}
                   </h4>
-                  <div className={`w-6 h-6 rounded-full flex items-center justify-center transition-transform duration-300 ${
-                    index === 0 ? 'bg-white/20' : 'bg-slate-900/10'
-                  } ${selectedCard === index ? 'rotate-180' : ''}`}>
-                    <ChevronDown size={14} className={index === 0 ? 'text-white' : 'text-slate-900'} />
+                  <div className={`w-6 h-6 rounded-full flex items-center justify-center transition-transform duration-300 bg-slate-900/10 ${selectedCard === index ? 'rotate-180' : ''}`}>
+                    <ChevronDown size={14} className="text-slate-900" />
                   </div>
                 </div>
                 {selectedCard === index && (
-                  <p className={`mt-3 text-sm leading-relaxed ${
-                    index === 0 ? 'text-blue-100' : 'text-slate-600'
-                  }`}>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
                     {card.description}
                   </p>
                 )}
