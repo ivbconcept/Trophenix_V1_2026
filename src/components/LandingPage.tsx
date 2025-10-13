@@ -1,4 +1,4 @@
-import { Trophy, Users, Briefcase, CheckCircle, ArrowRight, Award, ChevronDown } from 'lucide-react';
+import { Trophy, Users, Briefcase, CheckCircle, ArrowRight, Award, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import { AgentElea } from './AI/AgentElea';
 import { FEATURES } from '../config/features';
 import { useState, useEffect } from 'react';
@@ -63,6 +63,173 @@ import jacekDylag from '../assets/images/jacek-dylag-fZglO1JkwoM-unsplash.jpg';
 import jadonJohnson from '../assets/images/jadon-johnson-1wS1AHSvqeg-unsplash.jpg';
 import matthieuPetiard from '../assets/images/matthieu-petiard-Pf6e3o0GL4M-unsplash.jpg';
 import passeDecisiveLogo from '../assets/images/Logo 2.png';
+
+const SupportersCarousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const supporters = [
+    {
+      id: 1,
+      category: 'Mind & Body',
+      title: 'Bodybalance',
+      image: 'https://images.pexels.com/photos/5067706/pexels-photo-5067706.jpeg?auto=compress&cs=tinysrgb&w=800',
+      gradient: 'from-slate-900/90'
+    },
+    {
+      id: 2,
+      category: 'Dance',
+      title: 'Zumba',
+      image: 'https://images.pexels.com/photos/3076509/pexels-photo-3076509.jpeg?auto=compress&cs=tinysrgb&w=800',
+      gradient: 'from-slate-900/90'
+    },
+    {
+      id: 3,
+      category: 'Strength & Conditioning',
+      title: 'Bodypump',
+      image: 'https://images.pexels.com/photos/3076509/pexels-photo-3076509.jpeg?auto=compress&cs=tinysrgb&w=800',
+      gradient: 'from-emerald-900/95',
+      featured: true
+    },
+    {
+      id: 4,
+      category: 'Cardio',
+      title: 'Bodystep',
+      image: 'https://images.pexels.com/photos/1552249/pexels-photo-1552249.jpeg?auto=compress&cs=tinysrgb&w=800',
+      gradient: 'from-slate-900/90'
+    },
+    {
+      id: 5,
+      category: 'HIIT',
+      title: 'HIIT x Power',
+      image: 'https://images.pexels.com/photos/4162491/pexels-photo-4162491.jpeg?auto=compress&cs=tinysrgb&w=800',
+      gradient: 'from-slate-900/90'
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % supporters.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [supporters.length]);
+
+  const handlePrevious = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? supporters.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % supporters.length);
+  };
+
+  const getCardScale = (index: number) => {
+    const position = (index - currentIndex + supporters.length) % supporters.length;
+    if (position === 0) return 'scale-110 z-20';
+    if (position === 1 || position === supporters.length - 1) return 'scale-90 z-10 opacity-60';
+    return 'scale-75 opacity-30';
+  };
+
+  const getCardTranslate = (index: number) => {
+    const position = (index - currentIndex + supporters.length) % supporters.length;
+    const offset = position - 2;
+    return `translateX(${offset * 280}px)`;
+  };
+
+  return (
+    <section className="py-20 bg-slate-900 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Ils nous soutiennent
+          </h2>
+        </div>
+
+        <div className="relative h-[500px] flex items-center justify-center">
+          <div className="relative w-full max-w-5xl">
+            {supporters.map((supporter, index) => {
+              const position = (index - currentIndex + supporters.length) % supporters.length;
+              const isCenter = position === 0;
+
+              return (
+                <div
+                  key={supporter.id}
+                  className={`absolute left-1/2 top-1/2 -translate-y-1/2 transition-all duration-700 ease-out ${getCardScale(index)}`}
+                  style={{
+                    transform: `translate(-50%, -50%) ${getCardTranslate(index)} ${
+                      isCenter ? 'scale(1.15)' : position === 1 || position === supporters.length - 1 ? 'scale(0.85)' : 'scale(0.7)'
+                    }`,
+                    zIndex: isCenter ? 30 : 10,
+                    opacity: Math.abs(position - 0) > 2 ? 0 : 1,
+                  }}
+                >
+                  <div className={`relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-700 ${
+                    isCenter ? 'w-80 h-96' : 'w-64 h-80'
+                  }`}>
+                    <img
+                      src={supporter.image}
+                      alt={supporter.title}
+                      className={`w-full h-full object-cover transition-transform duration-700 ${
+                        isCenter ? 'scale-105' : 'scale-100'
+                      }`}
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${supporter.gradient} to-transparent`}></div>
+                    <div className="absolute top-4 left-4 right-4">
+                      <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/30">
+                        {supporter.category}
+                      </span>
+                    </div>
+                    <div className={`absolute bottom-0 left-0 right-0 text-white transition-all duration-700 ${
+                      isCenter ? 'p-8' : 'p-6'
+                    }`}>
+                      <h3 className={`font-bold mb-2 transition-all duration-700 ${
+                        isCenter ? 'text-3xl' : 'text-xl'
+                      }`}>
+                        {supporter.title}
+                      </h3>
+                      {isCenter && (
+                        <button className="mt-4 px-8 py-3 bg-white/10 backdrop-blur-sm border-2 border-white/50 rounded-full text-white font-bold hover:bg-white/20 transition-all shadow-lg">
+                          Join now
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <button
+            onClick={handlePrevious}
+            className="absolute left-8 top-1/2 -translate-y-1/2 z-40 p-4 bg-white/10 backdrop-blur-sm rounded-full border border-white/30 text-white hover:bg-white/20 transition-all"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          <button
+            onClick={handleNext}
+            className="absolute right-8 top-1/2 -translate-y-1/2 z-40 p-4 bg-white/10 backdrop-blur-sm rounded-full border border-white/30 text-white hover:bg-white/20 transition-all"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        </div>
+
+        <div className="flex justify-center gap-2 mt-12">
+          {supporters.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              className={`h-2 rounded-full transition-all ${
+                index === currentIndex ? 'w-12 bg-white' : 'w-2 bg-white/30'
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 interface LandingPageProps {
   onSignUp: () => void;
@@ -865,135 +1032,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
           </div>
         </section>
 
-        <section className="py-20 bg-slate-900">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Ils nous soutiennent
-              </h2>
-            </div>
-
-            <div className="relative">
-              <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide">
-                <div className="flex-shrink-0 w-72 snap-center">
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
-                    <img
-                      src="https://images.pexels.com/photos/5067706/pexels-photo-5067706.jpeg?auto=compress&cs=tinysrgb&w=800"
-                      alt="Mind & Body"
-                      className="w-full h-80 object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent"></div>
-                    <div className="absolute top-4 left-4 right-4">
-                      <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/30">
-                        Mind & Body
-                      </span>
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      <h3 className="text-2xl font-bold mb-2">Bodybalance</h3>
-                      <button className="mt-4 px-6 py-2 bg-white/10 backdrop-blur-sm border border-white/30 rounded-full text-white font-semibold hover:bg-white/20 transition-all">
-                        Join now
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex-shrink-0 w-72 snap-center">
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
-                    <img
-                      src="https://images.pexels.com/photos/3076509/pexels-photo-3076509.jpeg?auto=compress&cs=tinysrgb&w=800"
-                      alt="Dance"
-                      className="w-full h-80 object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent"></div>
-                    <div className="absolute top-4 left-4 right-4">
-                      <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/30">
-                        Dance
-                      </span>
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      <h3 className="text-2xl font-bold mb-2">Zumba</h3>
-                      <button className="mt-4 px-6 py-2 bg-white/10 backdrop-blur-sm border border-white/30 rounded-full text-white font-semibold hover:bg-white/20 transition-all">
-                        Join now
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex-shrink-0 w-96 snap-center">
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-emerald-700 to-emerald-900 group">
-                    <img
-                      src="https://images.pexels.com/photos/3076509/pexels-photo-3076509.jpeg?auto=compress&cs=tinysrgb&w=800"
-                      alt="Bodypump"
-                      className="w-full h-80 object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/95 to-transparent"></div>
-                    <div className="absolute top-4 left-4 right-4">
-                      <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/30">
-                        Strength & Conditioning
-                      </span>
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                      <h3 className="text-3xl font-bold mb-2">Bodypump</h3>
-                      <button className="mt-4 px-8 py-3 bg-white/10 backdrop-blur-sm border-2 border-white/50 rounded-full text-white font-bold hover:bg-white/20 transition-all shadow-lg">
-                        Join now
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex-shrink-0 w-72 snap-center">
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
-                    <img
-                      src="https://images.pexels.com/photos/1552249/pexels-photo-1552249.jpeg?auto=compress&cs=tinysrgb&w=800"
-                      alt="Cardio"
-                      className="w-full h-80 object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent"></div>
-                    <div className="absolute top-4 left-4 right-4">
-                      <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/30">
-                        Cardio
-                      </span>
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      <h3 className="text-2xl font-bold mb-2">Bodystep</h3>
-                      <button className="mt-4 px-6 py-2 bg-white/10 backdrop-blur-sm border border-white/30 rounded-full text-white font-semibold hover:bg-white/20 transition-all">
-                        Join now
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex-shrink-0 w-72 snap-center">
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
-                    <img
-                      src="https://images.pexels.com/photos/4162491/pexels-photo-4162491.jpeg?auto=compress&cs=tinysrgb&w=800"
-                      alt="HIIT"
-                      className="w-full h-80 object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent"></div>
-                    <div className="absolute top-4 left-4 right-4">
-                      <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/30">
-                        HIIT
-                      </span>
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      <h3 className="text-2xl font-bold mb-2">HIIT x Power</h3>
-                      <button className="mt-4 px-6 py-2 bg-white/10 backdrop-blur-sm border border-white/30 rounded-full text-white font-semibold hover:bg-white/20 transition-all">
-                        Join now
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex justify-center gap-2 mt-8">
-                <div className="w-12 h-1 bg-white rounded-full"></div>
-                <div className="w-8 h-1 bg-white/30 rounded-full"></div>
-                <div className="w-8 h-1 bg-white/30 rounded-full"></div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <SupportersCarousel />
 
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
