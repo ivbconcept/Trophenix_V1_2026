@@ -829,32 +829,39 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
                     className="w-full h-[600px] object-cover"
                   />
 
-                  <div className="absolute top-1/2 right-0 transform translate-x-6 -translate-y-1/2 z-10">
-                    <div className="flex flex-col items-center">
-                      <div className="bg-green-600 rounded-full p-3 shadow-2xl">
-                        <CheckCircle className="w-6 h-6 text-white" fill="white" />
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="relative w-full h-full">
+                      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 600 600" preserveAspectRatio="none">
+                        <line x1="50%" y1="0" x2="50%" y2="100%" stroke="#1e293b" strokeWidth="2" />
+                      </svg>
+
+                      <div className="absolute top-[15%] left-1/2 transform -translate-x-1/2 flex items-center">
+                        <div className="bg-green-600 rounded-full p-3 shadow-2xl">
+                          <CheckCircle className="w-6 h-6 text-white" fill="white" />
+                        </div>
+                        <div className="ml-4 transform -rotate-90 origin-left">
+                          <span className="text-slate-900 font-bold text-xl tracking-wider whitespace-nowrap">Tennis</span>
+                        </div>
                       </div>
-                      <div className="w-0.5 h-20 bg-slate-900 my-2"></div>
-                      <div className="bg-green-600 rounded-full p-3 shadow-2xl">
-                        <CheckCircle className="w-6 h-6 text-white" fill="white" />
+
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center">
+                        <div className="bg-green-600 rounded-full p-3 shadow-2xl">
+                          <CheckCircle className="w-6 h-6 text-white" fill="white" />
+                        </div>
+                        <div className="ml-4 transform -rotate-90 origin-left">
+                          <span className="text-slate-900 font-bold text-xl tracking-wider whitespace-nowrap">Pickleball</span>
+                        </div>
                       </div>
-                      <div className="w-0.5 h-20 bg-slate-900 my-2"></div>
-                      <div className="bg-green-600 rounded-full p-3 shadow-2xl">
-                        <CheckCircle className="w-6 h-6 text-white" fill="white" />
+
+                      <div className="absolute bottom-[15%] left-1/2 transform -translate-x-1/2 flex items-center">
+                        <div className="bg-green-600 rounded-full p-3 shadow-2xl">
+                          <CheckCircle className="w-6 h-6 text-white" fill="white" />
+                        </div>
+                        <div className="ml-4 transform -rotate-90 origin-left">
+                          <span className="text-slate-900 font-bold text-xl tracking-wider whitespace-nowrap">Cricket</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-
-                  <div className="absolute top-12 left-1/2 transform -translate-x-1/2 -rotate-90 origin-center">
-                    <span className="text-slate-900 font-bold text-lg tracking-wider">Tennis</span>
-                  </div>
-
-                  <div className="absolute bottom-24 left-4 transform -rotate-45 origin-center">
-                    <span className="text-slate-900 font-bold text-lg tracking-wider">Pickleball</span>
-                  </div>
-
-                  <div className="absolute top-1/3 -left-4 transform -rotate-90 origin-center">
-                    <span className="text-slate-900 font-bold text-lg tracking-wider">Cricket</span>
                   </div>
                 </div>
               </div>
