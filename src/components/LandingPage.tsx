@@ -802,10 +802,10 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
           </div>
         </section>
 
-        <section className="py-20 bg-gradient-to-br from-slate-50 to-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
+        <section className="py-20 bg-gradient-to-br from-slate-50 to-white relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div className="grid md:grid-cols-2 gap-0 items-center relative">
+              <div className="relative z-10 pr-12">
                 <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                   Take Your Game To The Next Level
                 </h2>
@@ -822,47 +822,43 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
               </div>
 
               <div className="relative">
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                  <img
-                    src="https://images.pexels.com/photos/1263349/pexels-photo-1263349.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    alt="Tennis player"
-                    className="w-full h-[600px] object-cover"
-                  />
+                <img
+                  src="https://images.pexels.com/photos/1263349/pexels-photo-1263349.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Tennis player"
+                  className="w-full h-[600px] object-cover rounded-br-[100px]"
+                />
+              </div>
 
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="relative w-full h-full">
-                      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 600 600" preserveAspectRatio="none">
-                        <line x1="50%" y1="0" x2="50%" y2="100%" stroke="#1e293b" strokeWidth="2" />
-                      </svg>
+              <div className="absolute inset-0 pointer-events-none">
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 600" preserveAspectRatio="none">
+                  <line x1="45%" y1="0" x2="55%" y2="100%" stroke="#f97316" strokeWidth="6" />
+                </svg>
+              </div>
 
-                      <div className="absolute top-[15%] left-1/2 transform -translate-x-1/2 flex items-center">
-                        <div className="bg-green-600 rounded-full p-3 shadow-2xl">
-                          <CheckCircle className="w-6 h-6 text-white" fill="white" />
-                        </div>
-                        <div className="ml-4 transform -rotate-90 origin-left">
-                          <span className="text-slate-900 font-bold text-xl tracking-wider whitespace-nowrap">Tennis</span>
-                        </div>
-                      </div>
+              <div className="absolute top-[20%] left-[48%] transform -translate-x-1/2 flex items-center gap-3 pointer-events-none z-20">
+                <div className="bg-green-600 rounded-full p-2.5 shadow-2xl">
+                  <CheckCircle className="w-5 h-5 text-white" fill="white" />
+                </div>
+                <div className="transform -rotate-[60deg] origin-left">
+                  <span className="text-slate-900 font-bold text-xl tracking-wider whitespace-nowrap">Tennis</span>
+                </div>
+              </div>
 
-                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center">
-                        <div className="bg-green-600 rounded-full p-3 shadow-2xl">
-                          <CheckCircle className="w-6 h-6 text-white" fill="white" />
-                        </div>
-                        <div className="ml-4 transform -rotate-90 origin-left">
-                          <span className="text-slate-900 font-bold text-xl tracking-wider whitespace-nowrap">Pickleball</span>
-                        </div>
-                      </div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-3 pointer-events-none z-20">
+                <div className="bg-green-600 rounded-full p-2.5 shadow-2xl">
+                  <CheckCircle className="w-5 h-5 text-white" fill="white" />
+                </div>
+                <div className="transform -rotate-[60deg] origin-left">
+                  <span className="text-slate-900 font-bold text-xl tracking-wider whitespace-nowrap">Pickleball</span>
+                </div>
+              </div>
 
-                      <div className="absolute bottom-[15%] left-1/2 transform -translate-x-1/2 flex items-center">
-                        <div className="bg-green-600 rounded-full p-3 shadow-2xl">
-                          <CheckCircle className="w-6 h-6 text-white" fill="white" />
-                        </div>
-                        <div className="ml-4 transform -rotate-90 origin-left">
-                          <span className="text-slate-900 font-bold text-xl tracking-wider whitespace-nowrap">Cricket</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              <div className="absolute bottom-[20%] left-[52%] transform -translate-x-1/2 flex items-center gap-3 pointer-events-none z-20">
+                <div className="bg-green-600 rounded-full p-2.5 shadow-2xl">
+                  <CheckCircle className="w-5 h-5 text-white" fill="white" />
+                </div>
+                <div className="transform -rotate-[60deg] origin-left">
+                  <span className="text-slate-900 font-bold text-xl tracking-wider whitespace-nowrap">Cricket</span>
                 </div>
               </div>
             </div>
