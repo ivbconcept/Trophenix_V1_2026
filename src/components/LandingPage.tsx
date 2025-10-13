@@ -120,7 +120,7 @@ function ProgramSection() {
                   setCurrentImageIndex(index);
                 }}
                 className={`group relative rounded-xl overflow-hidden shadow-lg cursor-pointer transition-all duration-300 ${
-                  selectedCard === index ? 'bg-slate-100' : 'bg-white'
+                  selectedCard === index ? 'bg-white/30 backdrop-blur-md border border-white/20' : 'bg-white'
                 } ${selectedCard === index ? 'flex-1 p-5' : 'h-[115px] p-4'} ${index < CARD_DATA.length - 1 ? 'mb-2' : ''} hover:shadow-xl`}
               >
                 <div className="flex items-center justify-between">
