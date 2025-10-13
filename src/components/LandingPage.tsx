@@ -65,7 +65,7 @@ import matthieuPetiard from '../assets/images/matthieu-petiard-Pf6e3o0GL4M-unspl
 import passeDecisiveLogo from '../assets/images/Logo 2.png';
 
 const SupportersCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [offset, setOffset] = useState(0);
 
   const supporters = [
     {
@@ -106,73 +106,84 @@ const SupportersCarousel = () => {
     }
   ];
 
+  const duplicatedSupporters = [...supporters, ...supporters, ...supporters];
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % supporters.length);
-    }, 4000);
+      setOffset((prevOffset) => {
+        const cardWidth = 360;
+        const totalWidth = cardWidth * supporters.length;
+        const newOffset = prevOffset - 2;
+        return newOffset <= -totalWidth ? newOffset + totalWidth : newOffset;
+      });
+    }, 20);
 
     return () => clearInterval(interval);
   }, [supporters.length]);
 
-  const handlePrevious = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? supporters.length - 1 : prevIndex - 1
-    );
-  };
+  const getCardStyle = (basePosition: number) => {
+    const cardWidth = 360;
+    const xPosition = basePosition + offset;
 
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % supporters.length);
-  };
+    const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 1200;
+    const screenCenter = viewportWidth / 2;
+    const cardCenter = xPosition + (cardWidth / 2);
+    const distanceFromCenter = Math.abs(cardCenter - screenCenter);
 
-  const getCardScale = (index: number) => {
-    const position = (index - currentIndex + supporters.length) % supporters.length;
-    if (position === 0) return 'scale-110 z-20';
-    if (position === 1 || position === supporters.length - 1) return 'scale-90 z-10 opacity-60';
-    return 'scale-75 opacity-30';
-  };
+    let scale = 0.7;
+    let opacity = 0.5;
+    let zIndex = 5;
+    let isCenter = false;
 
-  const getCardTranslate = (index: number) => {
-    const position = (index - currentIndex + supporters.length) % supporters.length;
-    const offset = position - 2;
-    return `translateX(${offset * 280}px)`;
+    if (distanceFromCenter < 150) {
+      scale = 1.3;
+      opacity = 1;
+      zIndex = 30;
+      isCenter = true;
+    } else if (distanceFromCenter < 400) {
+      const ratio = (400 - distanceFromCenter) / 250;
+      scale = 0.7 + (ratio * 0.4);
+      opacity = 0.5 + (ratio * 0.5);
+      zIndex = 15;
+    }
+
+    return { scale, opacity, zIndex, isCenter };
   };
 
   return (
     <section className="py-20 bg-slate-900 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-full mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Ils nous soutiennent
           </h2>
         </div>
 
-        <div className="relative h-[500px] flex items-center justify-center">
-          <div className="relative w-full max-w-5xl">
-            {supporters.map((supporter, index) => {
-              const position = (index - currentIndex + supporters.length) % supporters.length;
-              const isCenter = position === 0;
+        <div className="relative h-[500px] overflow-hidden">
+          <div className="absolute inset-0 flex items-center pointer-events-none">
+            {duplicatedSupporters.map((supporter, index) => {
+              const cardWidth = 360;
+              const basePosition = index * cardWidth;
+              const style = getCardStyle(basePosition);
 
               return (
                 <div
-                  key={supporter.id}
-                  className={`absolute left-1/2 top-1/2 -translate-y-1/2 transition-all duration-700 ease-out ${getCardScale(index)}`}
+                  key={`${supporter.id}-${index}`}
+                  className="absolute transition-all duration-100 ease-linear"
                   style={{
-                    transform: `translate(-50%, -50%) ${getCardTranslate(index)} ${
-                      isCenter ? 'scale(1.15)' : position === 1 || position === supporters.length - 1 ? 'scale(0.85)' : 'scale(0.7)'
-                    }`,
-                    zIndex: isCenter ? 30 : 10,
-                    opacity: Math.abs(position - 0) > 2 ? 0 : 1,
+                    left: `${basePosition + offset}px`,
+                    transform: `scale(${style.scale})`,
+                    opacity: style.opacity,
+                    zIndex: style.zIndex,
                   }}
                 >
-                  <div className={`relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-700 ${
-                    isCenter ? 'w-80 h-96' : 'w-64 h-80'
+                  <div className={`relative rounded-2xl overflow-hidden shadow-2xl pointer-events-auto ${
+                    style.isCenter ? 'w-80 h-[420px]' : 'w-72 h-80'
                   }`}>
                     <img
                       src={supporter.image}
                       alt={supporter.title}
-                      className={`w-full h-full object-cover transition-transform duration-700 ${
-                        isCenter ? 'scale-105' : 'scale-100'
-                      }`}
+                      className="w-full h-full object-cover"
                     />
                     <div className={`absolute inset-0 bg-gradient-to-t ${supporter.gradient} to-transparent`}></div>
                     <div className="absolute top-4 left-4 right-4">
@@ -180,15 +191,15 @@ const SupportersCarousel = () => {
                         {supporter.category}
                       </span>
                     </div>
-                    <div className={`absolute bottom-0 left-0 right-0 text-white transition-all duration-700 ${
-                      isCenter ? 'p-8' : 'p-6'
+                    <div className={`absolute bottom-0 left-0 right-0 text-white ${
+                      style.isCenter ? 'p-8' : 'p-6'
                     }`}>
-                      <h3 className={`font-bold mb-2 transition-all duration-700 ${
-                        isCenter ? 'text-3xl' : 'text-xl'
+                      <h3 className={`font-bold mb-2 ${
+                        style.isCenter ? 'text-3xl' : 'text-xl'
                       }`}>
                         {supporter.title}
                       </h3>
-                      {isCenter && (
+                      {style.isCenter && (
                         <button className="mt-4 px-8 py-3 bg-white/10 backdrop-blur-sm border-2 border-white/50 rounded-full text-white font-bold hover:bg-white/20 transition-all shadow-lg">
                           Join now
                         </button>
@@ -199,32 +210,6 @@ const SupportersCarousel = () => {
               );
             })}
           </div>
-
-          <button
-            onClick={handlePrevious}
-            className="absolute left-8 top-1/2 -translate-y-1/2 z-40 p-4 bg-white/10 backdrop-blur-sm rounded-full border border-white/30 text-white hover:bg-white/20 transition-all"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-
-          <button
-            onClick={handleNext}
-            className="absolute right-8 top-1/2 -translate-y-1/2 z-40 p-4 bg-white/10 backdrop-blur-sm rounded-full border border-white/30 text-white hover:bg-white/20 transition-all"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-        </div>
-
-        <div className="flex justify-center gap-2 mt-12">
-          {supporters.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`h-2 rounded-full transition-all ${
-                index === currentIndex ? 'w-12 bg-white' : 'w-2 bg-white/30'
-              }`}
-            />
-          ))}
         </div>
       </div>
     </section>
