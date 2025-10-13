@@ -111,9 +111,9 @@ const SupportersCarousel = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setOffset((prevOffset) => {
-        const cardWidth = 360;
+        const cardWidth = 280;
         const totalWidth = cardWidth * supporters.length;
-        const newOffset = prevOffset - 2;
+        const newOffset = prevOffset - 0.8;
         return newOffset <= -totalWidth ? newOffset + totalWidth : newOffset;
       });
     }, 20);
@@ -122,7 +122,7 @@ const SupportersCarousel = () => {
   }, [supporters.length]);
 
   const getCardStyle = (basePosition: number) => {
-    const cardWidth = 360;
+    const cardWidth = 280;
     const xPosition = basePosition + offset;
 
     const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 1200;
@@ -130,20 +130,20 @@ const SupportersCarousel = () => {
     const cardCenter = xPosition + (cardWidth / 2);
     const distanceFromCenter = Math.abs(cardCenter - screenCenter);
 
-    let scale = 0.7;
-    let opacity = 0.5;
+    let scale = 0.8;
+    let opacity = 0.6;
     let zIndex = 5;
     let isCenter = false;
 
     if (distanceFromCenter < 150) {
-      scale = 1.3;
+      scale = 1.15;
       opacity = 1;
       zIndex = 30;
       isCenter = true;
     } else if (distanceFromCenter < 400) {
       const ratio = (400 - distanceFromCenter) / 250;
-      scale = 0.7 + (ratio * 0.4);
-      opacity = 0.5 + (ratio * 0.5);
+      scale = 0.8 + (ratio * 0.35);
+      opacity = 0.6 + (ratio * 0.4);
       zIndex = 15;
     }
 
@@ -151,7 +151,7 @@ const SupportersCarousel = () => {
   };
 
   return (
-    <section className="py-20 bg-slate-900 overflow-hidden">
+    <section className="py-20 bg-slate-700 overflow-hidden">
       <div className="max-w-full mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -162,14 +162,14 @@ const SupportersCarousel = () => {
         <div className="relative h-[500px] overflow-hidden">
           <div className="absolute inset-0 flex items-center pointer-events-none">
             {duplicatedSupporters.map((supporter, index) => {
-              const cardWidth = 360;
+              const cardWidth = 280;
               const basePosition = index * cardWidth;
               const style = getCardStyle(basePosition);
 
               return (
                 <div
                   key={`${supporter.id}-${index}`}
-                  className="absolute transition-all duration-100 ease-linear"
+                  className="absolute transition-all duration-500 ease-out"
                   style={{
                     left: `${basePosition + offset}px`,
                     transform: `scale(${style.scale})`,
@@ -177,8 +177,8 @@ const SupportersCarousel = () => {
                     zIndex: style.zIndex,
                   }}
                 >
-                  <div className={`relative rounded-2xl overflow-hidden shadow-2xl pointer-events-auto ${
-                    style.isCenter ? 'w-80 h-[420px]' : 'w-72 h-80'
+                  <div className={`relative rounded-3xl overflow-hidden shadow-2xl pointer-events-auto ${
+                    style.isCenter ? 'w-72 h-96' : 'w-64 h-80'
                   }`}>
                     <img
                       src={supporter.image}
