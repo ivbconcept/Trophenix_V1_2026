@@ -125,15 +125,19 @@ function ProgramSection() {
                 style={selectedCard === index ? { backgroundColor: '#058fb5' } : undefined}
               >
                 <div className="flex items-center justify-between">
-                  <h4 className="font-bold text-slate-900 text-base">
+                  <h4 className={`font-bold text-base ${
+                    selectedCard === index ? 'text-white' : 'text-slate-900'
+                  }`}>
                     {card.title}
                   </h4>
-                  <div className={`w-6 h-6 rounded-full flex items-center justify-center transition-transform duration-300 bg-slate-900/10 ${selectedCard === index ? 'rotate-180' : ''}`}>
-                    <ChevronDown size={14} className="text-slate-900" />
+                  <div className={`w-6 h-6 rounded-full flex items-center justify-center transition-transform duration-300 ${
+                    selectedCard === index ? 'bg-white/20 rotate-180' : 'bg-slate-900/10'
+                  }`}>
+                    <ChevronDown size={14} className={selectedCard === index ? 'text-white' : 'text-slate-900'} />
                   </div>
                 </div>
                 {selectedCard === index && (
-                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                  <p className="mt-3 text-sm leading-relaxed text-white">
                     {card.description}
                   </p>
                 )}
