@@ -113,7 +113,7 @@ const SupportersCarousel = () => {
       setOffset((prevOffset) => {
         const cardWidth = 280;
         const totalWidth = cardWidth * supporters.length;
-        const newOffset = prevOffset - 0.8;
+        const newOffset = prevOffset - 1.5;
         return newOffset <= -totalWidth ? newOffset + totalWidth : newOffset;
       });
     }, 20);
@@ -130,21 +130,21 @@ const SupportersCarousel = () => {
     const cardCenter = xPosition + (cardWidth / 2);
     const distanceFromCenter = Math.abs(cardCenter - screenCenter);
 
-    let scale = 0.75;
-    let opacity = 0.5;
+    let scale = 0.7;
+    let opacity = 0.4;
     let zIndex = 5;
     let isCenter = false;
 
-    if (distanceFromCenter < 50) {
-      scale = 1.08;
+    if (distanceFromCenter < 40) {
+      scale = 1.15;
       opacity = 1;
       zIndex = 30;
       isCenter = true;
-    } else if (distanceFromCenter < 200) {
-      const ratio = (200 - distanceFromCenter) / 150;
-      scale = 0.75 + (ratio * 0.33);
-      opacity = 0.5 + (ratio * 0.5);
-      zIndex = 15;
+    } else if (distanceFromCenter < 300) {
+      const ratio = (300 - distanceFromCenter) / 260;
+      scale = 0.7 + (ratio * 0.45);
+      opacity = 0.4 + (ratio * 0.6);
+      zIndex = Math.floor(5 + (ratio * 25));
     }
 
     return { scale, opacity, zIndex, isCenter };
@@ -169,12 +169,13 @@ const SupportersCarousel = () => {
               return (
                 <div
                   key={`${supporter.id}-${index}`}
-                  className="absolute transition-all duration-700 ease-in-out"
+                  className="absolute"
                   style={{
                     left: `${basePosition + offset}px`,
                     transform: `scale(${style.scale})`,
                     opacity: style.opacity,
                     zIndex: style.zIndex,
+                    transition: 'transform 0.3s ease-out, opacity 0.3s ease-out',
                   }}
                 >
                   <div className="relative rounded-3xl overflow-hidden shadow-2xl pointer-events-auto w-64 h-80">
@@ -193,17 +194,18 @@ const SupportersCarousel = () => {
                       <h3 className="font-bold mb-2 text-xl">
                         {supporter.title}
                       </h3>
-                      <div
-                        className="transition-all duration-700 ease-in-out overflow-hidden"
-                        style={{
-                          maxHeight: style.isCenter ? '100px' : '0px',
-                          opacity: style.isCenter ? 1 : 0,
-                        }}
-                      >
-                        <button className="mt-4 px-8 py-3 bg-white/10 backdrop-blur-sm border-2 border-white/50 rounded-full text-white font-bold hover:bg-white/20 transition-all shadow-lg">
-                          Join now
-                        </button>
-                      </div>
+                      {style.isCenter && (
+                        <div
+                          className="overflow-hidden"
+                          style={{
+                            transition: 'all 0.3s ease-out',
+                          }}
+                        >
+                          <button className="mt-4 px-8 py-3 bg-white/10 backdrop-blur-sm border-2 border-white/50 rounded-full text-white font-bold hover:bg-white/20 transition-all shadow-lg">
+                            Join now
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
