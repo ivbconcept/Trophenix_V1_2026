@@ -1235,69 +1235,6 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
             </div>
         </section>
 
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <div className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-semibold mb-4">
-                Financement
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                Comment ça marche ?
-              </h2>
-            </div>
-            <div className="max-w-4xl mx-auto space-y-6">
-              <div className="flex items-start space-x-6 bg-white p-8 rounded-2xl shadow-lg border border-slate-100 hover:border-blue-200 hover:shadow-xl transition-all">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-600 text-white rounded-xl font-bold text-lg shadow-md">
-                    1
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">
-                    Créez votre profil
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed">
-                    Inscrivez-vous en quelques minutes et créez un profil détaillé
-                    mettant en valeur votre parcours sportif et vos ambitions professionnelles.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-6 bg-white p-8 rounded-2xl shadow-lg border border-slate-100 hover:border-blue-200 hover:shadow-xl transition-all">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-600 text-white rounded-xl font-bold text-lg shadow-md">
-                    2
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">
-                    Validation administrateur
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed">
-                    Votre profil est vérifié par notre équipe pour garantir la qualité
-                    et la sécurité de la communauté.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-6 bg-white p-8 rounded-2xl shadow-lg border border-slate-100 hover:border-blue-200 hover:shadow-xl transition-all">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-600 text-white rounded-xl font-bold text-lg shadow-md">
-                    3
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">
-                    Connectez-vous et échangez
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed">
-                    Parcourez les profils, entrez en contact avec des recruteurs ou
-                    d'autres sportifs, et démarrez votre nouvelle carrière.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
       </main>
 
       <section className="py-20 bg-white">
