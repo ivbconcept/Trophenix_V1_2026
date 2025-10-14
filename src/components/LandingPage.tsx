@@ -144,10 +144,10 @@ const SupportersCarousel = () => {
   };
 
   return (
-    <section className="py-20 bg-slate-700 overflow-hidden">
+    <section className="py-20 bg-slate-50 overflow-hidden">
       <div className="max-w-full mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
             Ils nous soutiennent
           </h2>
         </div>
