@@ -62,7 +62,6 @@ import davideAracri from '../assets/images/davide-aracri-Q2mL8cqqI7E-unsplash.jp
 import jacekDylag from '../assets/images/jacek-dylag-fZglO1JkwoM-unsplash.jpg';
 import jadonJohnson from '../assets/images/jadon-johnson-1wS1AHSvqeg-unsplash.jpg';
 import matthieuPetiard from '../assets/images/matthieu-petiard-Pf6e3o0GL4M-unsplash.jpg';
-import passeDecisiveLogo from '../assets/images/Logo 2.png';
 import franceTravailLogo from '../assets/images/logo france travaiil.webp';
 import wexecutiveLogo from '../assets/images/logo w executivve.png';
 import diversidaysLogo from '../assets/images/Diversidays_Logo.png';
@@ -523,13 +522,6 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
                 <div className="flex space-x-6 items-center">
                   <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
                     <img
-                      src={passeDecisiveLogo}
-                      alt="Passe décisive"
-                      className="max-h-16 max-w-full object-contain"
-                    />
-                  </div>
-                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
-                    <img
                       src={franceTravailLogo}
                       alt="France Travail"
                       className="max-h-16 max-w-full object-contain"
@@ -565,13 +557,6 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
                   </div>
                 </div>
                 <div className="flex space-x-6 items-center ml-6">
-                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
-                    <img
-                      src={passeDecisiveLogo}
-                      alt="Passe décisive"
-                      className="max-h-16 max-w-full object-contain"
-                    />
-                  </div>
                   <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
                     <img
                       src={franceTravailLogo}
@@ -1021,54 +1006,42 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
             <div className="flex relative z-10">
               <div className="animate-scroll-left flex items-center shrink-0">
                 <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Faites une passe D
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
+                  Faites une passe décisive
                 </span>
                 <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
                   Recrutez un sportif
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
                 </span>
                 <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
                   Offrez un sponsoring
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
                 </span>
                 <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Faites une passe D
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
+                  Faites une passe décisive
                 </span>
                 <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
                   Recrutez un sportif
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
                 </span>
                 <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
                   Offrez un sponsoring
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
                 </span>
               </div>
               <div className="animate-scroll-left flex items-center shrink-0" aria-hidden="true">
                 <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Faites une passe D
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
+                  Faites une passe décisive
                 </span>
                 <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
                   Recrutez un sportif
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
                 </span>
                 <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
                   Offrez un sponsoring
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
                 </span>
                 <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Faites une passe D
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
+                  Faites une passe décisive
                 </span>
                 <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
                   Recrutez un sportif
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
                 </span>
                 <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
                   Offrez un sponsoring
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
                 </span>
               </div>
             </div>
