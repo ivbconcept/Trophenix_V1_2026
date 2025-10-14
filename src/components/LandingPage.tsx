@@ -936,68 +936,6 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
           </div>
         </section>
 
-        <section className="py-20 bg-gradient-to-br from-slate-50 to-white relative overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div className="grid md:grid-cols-2 gap-0 items-center relative">
-              <div className="relative z-10 pr-12">
-                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                  Take Your Game To The Next Level
-                </h2>
-                <p className="text-slate-600 text-lg mb-6 leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
-                </p>
-                <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-                  Ullamco laboris nisi ut aliquip lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
-                </p>
-                <button className="inline-flex items-center px-6 py-3 bg-white border-2 border-green-600 text-green-600 rounded-full font-semibold hover:bg-green-600 hover:text-white transition-all duration-300 shadow-md hover:shadow-lg">
-                  <CheckCircle className="w-5 h-5 mr-2" />
-                  About Us
-                </button>
-              </div>
-
-              <div className="relative">
-                <img
-                  src="https://images.pexels.com/photos/1263349/pexels-photo-1263349.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Tennis player"
-                  className="w-full h-[600px] object-cover rounded-br-[100px]"
-                />
-              </div>
-
-              <div className="absolute inset-0 pointer-events-none">
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 600" preserveAspectRatio="none">
-                  <line x1="45%" y1="0" x2="55%" y2="100%" stroke="#f97316" strokeWidth="6" />
-                </svg>
-              </div>
-
-              <div className="absolute top-[20%] left-[48%] transform -translate-x-1/2 flex items-center gap-3 pointer-events-none z-20">
-                <div className="bg-green-600 rounded-full p-2.5 shadow-2xl">
-                  <CheckCircle className="w-5 h-5 text-white" fill="white" />
-                </div>
-                <div className="transform -rotate-[60deg] origin-left">
-                  <span className="text-slate-900 font-bold text-xl tracking-wider whitespace-nowrap">Tennis</span>
-                </div>
-              </div>
-
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center gap-3 pointer-events-none z-20">
-                <div className="bg-green-600 rounded-full p-2.5 shadow-2xl">
-                  <CheckCircle className="w-5 h-5 text-white" fill="white" />
-                </div>
-                <div className="transform -rotate-[60deg] origin-left">
-                  <span className="text-slate-900 font-bold text-xl tracking-wider whitespace-nowrap">Pickleball</span>
-                </div>
-              </div>
-
-              <div className="absolute bottom-[20%] left-[52%] transform -translate-x-1/2 flex items-center gap-3 pointer-events-none z-20">
-                <div className="bg-green-600 rounded-full p-2.5 shadow-2xl">
-                  <CheckCircle className="w-5 h-5 text-white" fill="white" />
-                </div>
-                <div className="transform -rotate-[60deg] origin-left">
-                  <span className="text-slate-900 font-bold text-xl tracking-wider whitespace-nowrap">Cricket</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         <SupportersCarousel />
 
