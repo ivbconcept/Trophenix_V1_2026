@@ -179,7 +179,7 @@ const SupportersCarousel = () => {
     <section className="py-12 bg-slate-50 overflow-hidden">
       <div className="max-w-full mx-auto">
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-4">
             Ils nous font confiance
           </h2>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto">
@@ -519,7 +519,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
         <section className="py-12 bg-gradient-to-b from-slate-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-black mb-2">Ils nous font confiance</h3>
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-2">Ils nous font confiance</h3>
               <p className="text-slate-600">Nos partenaires nous accompagnent dans notre mission</p>
             </div>
             <div className="relative overflow-hidden">
