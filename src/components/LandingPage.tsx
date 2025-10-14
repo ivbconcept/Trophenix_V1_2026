@@ -168,8 +168,6 @@ const SupportersCarousel = () => {
                     transform: `scale(${style.scale})`,
                     opacity: style.opacity,
                     zIndex: style.zIndex,
-                    transition: 'transform 0.25s ease-out, opacity 0.25s ease-out',
-                    willChange: 'transform, opacity',
                   }}
                 >
                   <div className="relative rounded-3xl overflow-hidden shadow-2xl pointer-events-auto w-64 h-80">
