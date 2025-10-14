@@ -1045,28 +1045,28 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
             <div className="relative overflow-hidden">
               <div className="flex animate-scroll">
                 <div className="flex space-x-8 items-center">
-                  <div className="flex items-center justify-center h-32 w-56 bg-white rounded-xl shadow-md p-6 grayscale hover:grayscale-0 transition-all hover:shadow-lg">
+                  <div className="flex items-center justify-center h-32 w-56 bg-white rounded-xl shadow-md p-6 transition-all hover:shadow-lg">
                     <img
                       src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
                       alt="Google"
                       className="h-12 w-auto object-contain"
                     />
                   </div>
-                  <div className="flex items-center justify-center h-32 w-56 bg-white rounded-xl shadow-md p-6 grayscale hover:grayscale-0 transition-all hover:shadow-lg">
+                  <div className="flex items-center justify-center h-32 w-56 bg-white rounded-xl shadow-md p-6 transition-all hover:shadow-lg">
                     <img
                       src="https://www.francetravail.fr/files/live/sites/PE/files/images/institutionnel/logo-france-travail.svg"
                       alt="France Travail"
                       className="h-16 w-auto object-contain"
                     />
                   </div>
-                  <div className="flex items-center justify-center h-32 w-56 bg-white rounded-xl shadow-md p-6 grayscale hover:grayscale-0 transition-all hover:shadow-lg">
+                  <div className="flex items-center justify-center h-32 w-56 bg-white rounded-xl shadow-md p-6 transition-all hover:shadow-lg">
                     <img
                       src="https://www.wexecutive.eu/wp-content/uploads/2023/06/logo-wexecutive.svg"
                       alt="Wexecutive"
                       className="h-10 w-auto object-contain"
                     />
                   </div>
-                  <div className="flex items-center justify-center h-32 w-56 bg-white rounded-xl shadow-md p-6 grayscale hover:grayscale-0 transition-all hover:shadow-lg">
+                  <div className="flex items-center justify-center h-32 w-56 bg-white rounded-xl shadow-md p-6 transition-all hover:shadow-lg">
                     <img
                       src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Orange_logo.svg"
                       alt="Orange"
@@ -1075,28 +1075,28 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
                   </div>
                 </div>
                 <div className="flex space-x-8 items-center ml-8">
-                  <div className="flex items-center justify-center h-32 w-56 bg-white rounded-xl shadow-md p-6 grayscale hover:grayscale-0 transition-all hover:shadow-lg">
+                  <div className="flex items-center justify-center h-32 w-56 bg-white rounded-xl shadow-md p-6 transition-all hover:shadow-lg">
                     <img
                       src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
                       alt="Google"
                       className="h-12 w-auto object-contain"
                     />
                   </div>
-                  <div className="flex items-center justify-center h-32 w-56 bg-white rounded-xl shadow-md p-6 grayscale hover:grayscale-0 transition-all hover:shadow-lg">
+                  <div className="flex items-center justify-center h-32 w-56 bg-white rounded-xl shadow-md p-6 transition-all hover:shadow-lg">
                     <img
                       src="https://www.francetravail.fr/files/live/sites/PE/files/images/institutionnel/logo-france-travail.svg"
                       alt="France Travail"
                       className="h-16 w-auto object-contain"
                     />
                   </div>
-                  <div className="flex items-center justify-center h-32 w-56 bg-white rounded-xl shadow-md p-6 grayscale hover:grayscale-0 transition-all hover:shadow-lg">
+                  <div className="flex items-center justify-center h-32 w-56 bg-white rounded-xl shadow-md p-6 transition-all hover:shadow-lg">
                     <img
                       src="https://www.wexecutive.eu/wp-content/uploads/2023/06/logo-wexecutive.svg"
                       alt="Wexecutive"
                       className="h-10 w-auto object-contain"
                     />
                   </div>
-                  <div className="flex items-center justify-center h-32 w-56 bg-white rounded-xl shadow-md p-6 grayscale hover:grayscale-0 transition-all hover:shadow-lg">
+                  <div className="flex items-center justify-center h-32 w-56 bg-white rounded-xl shadow-md p-6 transition-all hover:shadow-lg">
                     <img
                       src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Orange_logo.svg"
                       alt="Orange"
