@@ -65,6 +65,7 @@ import matthieuPetiard from '../assets/images/matthieu-petiard-Pf6e3o0GL4M-unspl
 import passeDecisiveLogo from '../assets/images/Logo 2.png';
 import franceTravailLogo from '../assets/images/logo france travaiil.webp';
 import wexecutiveLogo from '../assets/images/logo w executivve.png';
+import diversidaysLogo from '../assets/images/Diversidays_Logo.png';
 
 const SupportersCarousel = () => {
   const [offset, setOffset] = useState(0);
@@ -548,6 +549,13 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
                       className="h-12 w-auto object-contain"
                     />
                   </div>
+                  <div className="flex items-center justify-center h-32 w-40 bg-white p-4">
+                    <img
+                      src={diversidaysLogo}
+                      alt="Diversidays"
+                      className="h-12 w-auto object-contain"
+                    />
+                  </div>
                 </div>
                 <div className="flex space-x-4 items-center ml-4">
                   <div className="flex items-center justify-center h-32 w-40 bg-white p-4">
@@ -575,6 +583,13 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
                     <img
                       src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Orange_logo.svg"
                       alt="Orange"
+                      className="h-12 w-auto object-contain"
+                    />
+                  </div>
+                  <div className="flex items-center justify-center h-32 w-40 bg-white p-4">
+                    <img
+                      src={diversidaysLogo}
+                      alt="Diversidays"
                       className="h-12 w-auto object-contain"
                     />
                   </div>
