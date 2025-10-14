@@ -175,7 +175,7 @@ const SupportersCarousel = () => {
   };
 
   return (
-    <section className="py-12 bg-slate-50 overflow-hidden">
+    <section className="py-12 overflow-hidden" style={{ background: 'linear-gradient(135deg, #e76820 0%, #ff8a50 100%)' }}>
       <div className="max-w-full mx-auto">
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-4">
