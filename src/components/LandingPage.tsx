@@ -582,6 +582,63 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
           </div>
         </section>
 
+        <section className="py-4 overflow-hidden relative border-y border-blue-400/50" style={{backgroundColor: '#0490b2'}}>
+            <div className="flex relative z-10">
+              <div className="animate-scroll-left flex items-center shrink-0">
+                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
+                  Faites une passe D
+                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
+                </span>
+                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
+                  Recrutez un sportif
+                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
+                </span>
+                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
+                  Offrez un sponsoring
+                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
+                </span>
+                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
+                  Faites une passe D
+                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
+                </span>
+                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
+                  Recrutez un sportif
+                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
+                </span>
+                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
+                  Offrez un sponsoring
+                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
+                </span>
+              </div>
+              <div className="animate-scroll-left flex items-center shrink-0" aria-hidden="true">
+                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
+                  Faites une passe D
+                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
+                </span>
+                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
+                  Recrutez un sportif
+                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
+                </span>
+                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
+                  Offrez un sponsoring
+                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
+                </span>
+                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
+                  Faites une passe D
+                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
+                </span>
+                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
+                  Recrutez un sportif
+                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
+                </span>
+                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
+                  Offrez un sponsoring
+                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
+                </span>
+              </div>
+            </div>
+        </section>
+
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
@@ -640,63 +697,6 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
               </div>
             </div>
           </div>
-        </section>
-
-        <section className="py-4 overflow-hidden relative border-y border-blue-400/50" style={{backgroundColor: '#0490b2'}}>
-            <div className="flex relative z-10">
-              <div className="animate-scroll-left flex items-center shrink-0">
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Faites une passe D
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Recrutez un sportif
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Offrez un sponsoring
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Faites une passe D
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Recrutez un sportif
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Offrez un sponsoring
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-              </div>
-              <div className="animate-scroll-left flex items-center shrink-0" aria-hidden="true">
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Faites une passe D
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Recrutez un sportif
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Offrez un sponsoring
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Faites une passe D
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Recrutez un sportif
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Offrez un sponsoring
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-              </div>
-            </div>
         </section>
 
         <ProgramSection />
