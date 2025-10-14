@@ -1248,22 +1248,6 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
         </div>
       </section>
 
-      <section className="py-4 overflow-hidden relative border-y border-blue-400/50" style={{ backgroundColor: '#1f8cb2' }}>
-        <div className="flex animate-scroll whitespace-nowrap">
-          <div className="flex space-x-12 px-6">
-            <span className="text-xl font-bold text-white">Faites une passe décisive</span>
-            <span className="text-xl font-bold text-white">Recrutez un sportif</span>
-            <span className="text-xl font-bold text-white">Offrez un sponsoring</span>
-            <span className="text-xl font-bold text-white">Faites une passe décisive</span>
-            <span className="text-xl font-bold text-white">Recrutez un sportif</span>
-            <span className="text-xl font-bold text-white">Offrez un sponsoring</span>
-            <span className="text-xl font-bold text-white">Faites une passe décisive</span>
-            <span className="text-xl font-bold text-white">Recrutez un sportif</span>
-            <span className="text-xl font-bold text-white">Offrez un sponsoring</span>
-          </div>
-        </div>
-      </section>
-
       <footer className="bg-slate-900 text-white border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
