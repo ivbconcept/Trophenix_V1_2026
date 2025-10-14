@@ -106,7 +106,7 @@ const SupportersCarousel = () => {
     }
   ];
 
-  const duplicatedSupporters = [...supporters, ...supporters, ...supporters];
+  const duplicatedSupporters = [...supporters, ...supporters, ...supporters, ...supporters, ...supporters];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -114,7 +114,7 @@ const SupportersCarousel = () => {
         const cardWidth = 280;
         const totalWidth = cardWidth * supporters.length;
         const newOffset = prevOffset - 1.5;
-        if (newOffset <= -totalWidth) {
+        if (newOffset < -totalWidth) {
           return newOffset + totalWidth;
         }
         return newOffset;
@@ -198,18 +198,6 @@ const SupportersCarousel = () => {
                       <h3 className="font-bold mb-2 text-xl">
                         {supporter.title}
                       </h3>
-                      {style.isCenter && (
-                        <div
-                          className="overflow-hidden"
-                          style={{
-                            transition: 'all 0.3s ease-out',
-                          }}
-                        >
-                          <button className="mt-4 px-8 py-3 bg-white/10 backdrop-blur-sm border-2 border-white/50 rounded-full text-white font-bold hover:bg-white/20 transition-all shadow-lg">
-                            Join now
-                          </button>
-                        </div>
-                      )}
                     </div>
                   </div>
                 </div>
