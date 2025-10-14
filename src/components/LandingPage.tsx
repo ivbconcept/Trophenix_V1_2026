@@ -516,7 +516,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
           </div>
         </section>
 
-        <section className="py-12 bg-gradient-to-b from-slate-50 to-white">
+        <section className="py-6 bg-gradient-to-b from-slate-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="relative overflow-hidden">
               <div className="flex animate-scroll">
