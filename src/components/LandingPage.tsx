@@ -142,9 +142,9 @@ const SupportersCarousel = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setOffset((prevOffset) => {
-        const cardWidth = 280;
+        const cardWidth = 380;
         const totalWidth = cardWidth * supporters.length;
-        const newOffset = prevOffset - 1.5;
+        const newOffset = prevOffset - 0.8;
         if (newOffset < -totalWidth) {
           return newOffset + totalWidth;
         }
@@ -156,7 +156,7 @@ const SupportersCarousel = () => {
   }, [supporters.length]);
 
   const getCardStyle = (basePosition: number) => {
-    const cardWidth = 280;
+    const cardWidth = 380;
     const xPosition = basePosition + offset;
 
     const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 1200;
@@ -186,10 +186,10 @@ const SupportersCarousel = () => {
           </p>
         </div>
 
-        <div className="relative h-[420px] overflow-hidden">
+        <div className="relative h-[520px] overflow-hidden">
           <div className="absolute inset-0 flex items-center pointer-events-none">
             {duplicatedSupporters.map((supporter, index) => {
-              const cardWidth = 280;
+              const cardWidth = 380;
               const basePosition = index * cardWidth;
               const style = getCardStyle(basePosition);
 
@@ -204,7 +204,7 @@ const SupportersCarousel = () => {
                     zIndex: style.zIndex,
                   }}
                 >
-                  <div className="relative rounded-3xl overflow-hidden shadow-2xl pointer-events-auto w-64 h-80">
+                  <div className="relative rounded-3xl overflow-hidden shadow-2xl pointer-events-auto w-80 h-[450px]">
                     <img
                       src={supporter.image}
                       alt={supporter.title}
