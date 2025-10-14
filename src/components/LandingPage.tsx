@@ -1189,17 +1189,6 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
           </div>
         </section>
 
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-slate-900 mb-4">Notre Vision</h2>
-              <p className="text-xl text-slate-600">L'infrastructure complète pour la gestion de carrière</p>
-            </div>
-
-            <VisionTabs />
-          </div>
-        </section>
-
         <SupportersCarousel />
 
         <section className="py-4 overflow-hidden relative border-y border-blue-400/50" style={{backgroundColor: '#0490b2'}}>
@@ -1311,6 +1300,17 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
         </section>
 
       </main>
+
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Notre Vision</h2>
+            <p className="text-xl text-slate-600">L'infrastructure complète pour la gestion de carrière</p>
+          </div>
+
+          <VisionTabs />
+        </div>
+      </section>
 
       <footer className="bg-slate-900 text-white border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
