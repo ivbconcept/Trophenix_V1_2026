@@ -64,6 +64,7 @@ import jadonJohnson from '../assets/images/jadon-johnson-1wS1AHSvqeg-unsplash.jp
 import matthieuPetiard from '../assets/images/matthieu-petiard-Pf6e3o0GL4M-unsplash.jpg';
 import passeDecisiveLogo from '../assets/images/Logo 2.png';
 import franceTravailLogo from '../assets/images/logo france travaiil.webp';
+import wexecutiveLogo from '../assets/images/logo w executivve.png';
 
 const SupportersCarousel = () => {
   const [offset, setOffset] = useState(0);
@@ -535,7 +536,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
                   </div>
                   <div className="flex items-center justify-center h-32 w-40 bg-white p-4">
                     <img
-                      src="https://www.wexecutive.eu/wp-content/uploads/2023/06/logo-wexecutive.svg"
+                      src={wexecutiveLogo}
                       alt="Wexecutive"
                       className="h-10 w-auto object-contain"
                     />
@@ -565,7 +566,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
                   </div>
                   <div className="flex items-center justify-center h-32 w-40 bg-white p-4">
                     <img
-                      src="https://www.wexecutive.eu/wp-content/uploads/2023/06/logo-wexecutive.svg"
+                      src={wexecutiveLogo}
                       alt="Wexecutive"
                       className="h-10 w-auto object-contain"
                     />
