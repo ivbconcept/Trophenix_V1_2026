@@ -167,7 +167,7 @@ const SupportersCarousel = () => {
     const maxDistance = 300;
     const ratio = Math.max(0, Math.min(1, 1 - (distanceFromCenter / maxDistance)));
 
-    const scale = 0.7 + (ratio * 0.45);
+    const scale = 0.7 + (ratio * 0.3);
     const opacity = 0.4 + (ratio * 0.6);
     const zIndex = Math.floor(5 + (ratio * 25));
 
@@ -210,7 +210,6 @@ const SupportersCarousel = () => {
                       alt={supporter.title}
                       className="w-full h-full object-cover"
                     />
-                    <div className={`absolute inset-0 bg-gradient-to-t ${supporter.gradient} to-transparent`}></div>
                     <div className="absolute top-4 left-4 right-4">
                       <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/30">
                         {supporter.sport}
