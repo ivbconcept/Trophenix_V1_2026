@@ -388,7 +388,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
-      <nav className="bg-white border-b border-slate-200 shadow-sm">
+      <nav className="bg-white border-b border-slate-200 shadow-sm fixed top-0 left-0 right-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
@@ -431,7 +431,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
         </div>
       </nav>
 
-      <main>
+      <main className="pt-16">
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
