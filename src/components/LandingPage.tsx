@@ -133,24 +133,14 @@ const SupportersCarousel = () => {
     const cardCenter = xPosition + (cardWidth / 2);
     const distanceFromCenter = Math.abs(cardCenter - screenCenter);
 
-    let scale = 0.7;
-    let opacity = 0.4;
-    let zIndex = 5;
-    let isCenter = false;
+    const maxDistance = 300;
+    const ratio = Math.max(0, Math.min(1, 1 - (distanceFromCenter / maxDistance)));
 
-    if (distanceFromCenter < 40) {
-      scale = 1.15;
-      opacity = 1;
-      zIndex = 30;
-      isCenter = true;
-    } else if (distanceFromCenter < 300) {
-      const ratio = (300 - distanceFromCenter) / 260;
-      scale = 0.7 + (ratio * 0.45);
-      opacity = 0.4 + (ratio * 0.6);
-      zIndex = Math.floor(5 + (ratio * 25));
-    }
+    const scale = 0.7 + (ratio * 0.45);
+    const opacity = 0.4 + (ratio * 0.6);
+    const zIndex = Math.floor(5 + (ratio * 25));
 
-    return { scale, opacity, zIndex, isCenter };
+    return { scale, opacity, zIndex };
   };
 
   return (
