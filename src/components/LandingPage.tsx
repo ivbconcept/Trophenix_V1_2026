@@ -551,13 +551,6 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
                   </div>
                   <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
                     <img
-                      src={diversidaysLogo}
-                      alt="Diversidays"
-                      className="max-h-16 max-w-full object-contain"
-                    />
-                  </div>
-                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
-                    <img
                       src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
                       alt="Google"
                       className="max-h-16 max-w-full object-contain"
@@ -590,13 +583,6 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
                     <img
                       src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Orange_logo.svg"
                       alt="Orange"
-                      className="max-h-16 max-w-full object-contain"
-                    />
-                  </div>
-                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
-                    <img
-                      src={diversidaysLogo}
-                      alt="Diversidays"
                       className="max-h-16 max-w-full object-contain"
                     />
                   </div>
