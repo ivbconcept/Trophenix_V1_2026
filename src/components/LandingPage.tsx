@@ -430,7 +430,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
       </nav>
 
       <main>
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 bg-white">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-[#FF5D31] to-[#FF8C31] border border-orange-300 rounded-full mb-6">
