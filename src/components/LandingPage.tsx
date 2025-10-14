@@ -70,35 +70,67 @@ const SupportersCarousel = () => {
   const supporters = [
     {
       id: 1,
-      category: 'Profil Athlète',
-      title: 'Créez votre portfolio sportif',
-      description: 'Mettez en valeur vos performances, compétences et parcours avec un profil complet et professionnel.',
+      name: 'Marie Dubois',
+      sport: 'Athlétisme',
+      achievement: 'Championne de France 400m',
       image: 'https://images.pexels.com/photos/3764011/pexels-photo-3764011.jpeg?auto=compress&cs=tinysrgb&w=800',
       gradient: 'from-slate-900/90'
     },
     {
       id: 2,
-      category: 'Recherche d\'Opportunités',
-      title: 'Accédez aux offres d\'emploi',
-      description: 'Découvrez des opportunités professionnelles adaptées à votre profil sportif et vos ambitions.',
-      image: 'https://images.pexels.com/photos/3760069/pexels-photo-3760069.jpeg?auto=compress&cs=tinysrgb&w=800',
+      name: 'Thomas Martin',
+      sport: 'Football',
+      achievement: 'Ex-Professionnel Ligue 1',
+      image: 'https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&cs=tinysrgb&w=800',
       gradient: 'from-slate-900/90'
     },
     {
       id: 3,
-      category: 'Sponsoring & Partenariats',
-      title: 'Trouvez vos sponsors',
-      description: 'Connectez-vous avec des entreprises qui partagent vos valeurs et souhaitent soutenir votre carrière.',
-      image: 'https://images.pexels.com/photos/3184398/pexels-photo-3184398.jpeg?auto=compress&cs=tinysrgb&w=800',
-      gradient: 'from-emerald-900/95',
+      name: 'Sophie Bernard',
+      sport: 'Natation',
+      achievement: 'Médaillée Olympique',
+      image: 'https://images.pexels.com/photos/863988/pexels-photo-863988.jpeg?auto=compress&cs=tinysrgb&w=800',
+      gradient: 'from-blue-900/95',
       featured: true
     },
     {
       id: 4,
-      category: 'Intelligence Artificielle',
-      title: 'Assistance IA personnalisée',
-      description: 'Bénéficiez de l\'accompagnement d\'ELEA, votre assistante IA pour optimiser votre reconversion.',
-      image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
+      name: 'Lucas Petit',
+      sport: 'Rugby',
+      achievement: 'International XV de France',
+      image: 'https://images.pexels.com/photos/1618200/pexels-photo-1618200.jpeg?auto=compress&cs=tinysrgb&w=800',
+      gradient: 'from-slate-900/90'
+    },
+    {
+      id: 5,
+      name: 'Amélie Rousseau',
+      sport: 'Tennis',
+      achievement: 'Top 50 WTA',
+      image: 'https://images.pexels.com/photos/1661950/pexels-photo-1661950.jpeg?auto=compress&cs=tinysrgb&w=800',
+      gradient: 'from-slate-900/90'
+    },
+    {
+      id: 6,
+      name: 'Antoine Lefebvre',
+      sport: 'Cyclisme',
+      achievement: 'Vainqueur Tour de France U23',
+      image: 'https://images.pexels.com/photos/163407/cyclists-trail-bike-multi-track-163407.jpeg?auto=compress&cs=tinysrgb&w=800',
+      gradient: 'from-slate-900/90'
+    },
+    {
+      id: 7,
+      name: 'Camille Moreau',
+      sport: 'Basket-ball',
+      achievement: 'Championne d\'Europe',
+      image: 'https://images.pexels.com/photos/1080882/pexels-photo-1080882.jpeg?auto=compress&cs=tinysrgb&w=800',
+      gradient: 'from-slate-900/90'
+    },
+    {
+      id: 8,
+      name: 'Julien Girard',
+      sport: 'Handball',
+      achievement: 'Champion du Monde',
+      image: 'https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=800',
       gradient: 'from-slate-900/90'
     }
   ];
@@ -145,10 +177,10 @@ const SupportersCarousel = () => {
       <div className="max-w-full mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            Nos Services
+            Ils nous font confiance
           </h2>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-            Découvrez les fonctionnalités clés de la plateforme Trophenix pour accompagner votre reconversion professionnelle
+            Découvrez les athlètes qui ont choisi Trophenix pour réussir leur reconversion professionnelle
           </p>
         </div>
 
@@ -179,15 +211,15 @@ const SupportersCarousel = () => {
                     <div className={`absolute inset-0 bg-gradient-to-t ${supporter.gradient} to-transparent`}></div>
                     <div className="absolute top-4 left-4 right-4">
                       <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/30">
-                        {supporter.category}
+                        {supporter.sport}
                       </span>
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 text-white p-6">
-                      <h3 className="font-bold mb-2 text-xl">
-                        {supporter.title}
+                      <h3 className="font-bold mb-2 text-2xl">
+                        {supporter.name}
                       </h3>
-                      <p className="text-sm text-blue-100 leading-relaxed">
-                        {supporter.description}
+                      <p className="text-sm text-blue-100 font-medium">
+                        {supporter.achievement}
                       </p>
                     </div>
                   </div>
