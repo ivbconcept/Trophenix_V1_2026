@@ -173,9 +173,9 @@ const SupportersCarousel = () => {
   };
 
   return (
-    <section className="py-20 bg-slate-50 overflow-hidden">
+    <section className="py-12 bg-slate-50 overflow-hidden">
       <div className="max-w-full mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
             Ils nous font confiance
           </h2>
@@ -184,7 +184,7 @@ const SupportersCarousel = () => {
           </p>
         </div>
 
-        <div className="relative h-[500px] overflow-hidden">
+        <div className="relative h-[420px] overflow-hidden">
           <div className="absolute inset-0 flex items-center pointer-events-none">
             {duplicatedSupporters.map((supporter, index) => {
               const cardWidth = 280;
