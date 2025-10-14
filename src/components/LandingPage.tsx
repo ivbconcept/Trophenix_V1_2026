@@ -70,38 +70,35 @@ const SupportersCarousel = () => {
   const supporters = [
     {
       id: 1,
-      category: 'Mind & Body',
-      title: 'Bodybalance',
-      image: 'https://images.pexels.com/photos/5067706/pexels-photo-5067706.jpeg?auto=compress&cs=tinysrgb&w=800',
+      category: 'Profil Athlète',
+      title: 'Créez votre portfolio sportif',
+      description: 'Mettez en valeur vos performances, compétences et parcours avec un profil complet et professionnel.',
+      image: 'https://images.pexels.com/photos/3764011/pexels-photo-3764011.jpeg?auto=compress&cs=tinysrgb&w=800',
       gradient: 'from-slate-900/90'
     },
     {
       id: 2,
-      category: 'Dance',
-      title: 'Zumba',
-      image: 'https://images.pexels.com/photos/3076509/pexels-photo-3076509.jpeg?auto=compress&cs=tinysrgb&w=800',
+      category: 'Recherche d\'Opportunités',
+      title: 'Accédez aux offres d\'emploi',
+      description: 'Découvrez des opportunités professionnelles adaptées à votre profil sportif et vos ambitions.',
+      image: 'https://images.pexels.com/photos/3760069/pexels-photo-3760069.jpeg?auto=compress&cs=tinysrgb&w=800',
       gradient: 'from-slate-900/90'
     },
     {
       id: 3,
-      category: 'Strength & Conditioning',
-      title: 'Bodypump',
-      image: 'https://images.pexels.com/photos/3076509/pexels-photo-3076509.jpeg?auto=compress&cs=tinysrgb&w=800',
+      category: 'Sponsoring & Partenariats',
+      title: 'Trouvez vos sponsors',
+      description: 'Connectez-vous avec des entreprises qui partagent vos valeurs et souhaitent soutenir votre carrière.',
+      image: 'https://images.pexels.com/photos/3184398/pexels-photo-3184398.jpeg?auto=compress&cs=tinysrgb&w=800',
       gradient: 'from-emerald-900/95',
       featured: true
     },
     {
       id: 4,
-      category: 'Cardio',
-      title: 'Bodystep',
-      image: 'https://images.pexels.com/photos/1552249/pexels-photo-1552249.jpeg?auto=compress&cs=tinysrgb&w=800',
-      gradient: 'from-slate-900/90'
-    },
-    {
-      id: 5,
-      category: 'HIIT',
-      title: 'HIIT x Power',
-      image: 'https://images.pexels.com/photos/4162491/pexels-photo-4162491.jpeg?auto=compress&cs=tinysrgb&w=800',
+      category: 'Intelligence Artificielle',
+      title: 'Assistance IA personnalisée',
+      description: 'Bénéficiez de l\'accompagnement d\'ELEA, votre assistante IA pour optimiser votre reconversion.',
+      image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
       gradient: 'from-slate-900/90'
     }
   ];
@@ -148,8 +145,11 @@ const SupportersCarousel = () => {
       <div className="max-w-full mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            Ils nous soutiennent
+            Nos Services
           </h2>
+          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+            Découvrez les fonctionnalités clés de la plateforme Trophenix pour accompagner votre reconversion professionnelle
+          </p>
         </div>
 
         <div className="relative h-[500px] overflow-hidden">
@@ -186,6 +186,9 @@ const SupportersCarousel = () => {
                       <h3 className="font-bold mb-2 text-xl">
                         {supporter.title}
                       </h3>
+                      <p className="text-sm text-blue-100 leading-relaxed">
+                        {supporter.description}
+                      </p>
                     </div>
                   </div>
                 </div>
