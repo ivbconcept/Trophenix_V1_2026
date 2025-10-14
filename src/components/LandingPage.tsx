@@ -11,10 +11,10 @@ const CARD_IMAGES = [
 ];
 
 const CARD_DATA = [
-  { title: 'Race Series 2025 Now Open', description: 'Embark on the ultimate test of endurance and determination with marathons, where each stride is a journey of self-discovery and achievement.' },
-  { title: 'Charity Entries Are Now Open', description: 'Make a difference while pushing your limits. Join our charity program and run for a cause that matters to you.' },
-  { title: 'Thanks To All For Completing The Survey', description: 'Your feedback helps us improve and create better experiences for our community. Thank you for your participation.' },
-  { title: 'Join Our Community', description: 'Connect with like-minded athletes, share your journey, and be part of something bigger than yourself.' }
+  { title: 'Profil Athlète Complet', description: 'Créez un portfolio professionnel qui met en valeur vos performances, compétences et parcours sportif. Attirez l\'attention des recruteurs et sponsors.' },
+  { title: 'Offres d\'Emploi Ciblées', description: 'Accédez à des opportunités professionnelles adaptées à votre profil sportif. Des entreprises recherchent activement des talents comme vous.' },
+  { title: 'Accompagnement Personnalisé', description: 'Bénéficiez de l\'expertise d\'ELEA, votre assistante IA, pour optimiser votre reconversion et prendre les meilleures décisions.' },
+  { title: 'Réseau & Sponsoring', description: 'Connectez-vous avec des entreprises partenaires, trouvez des sponsors et rejoignez une communauté engagée dans votre réussite.' }
 ];
 
 const SECTORS = [
