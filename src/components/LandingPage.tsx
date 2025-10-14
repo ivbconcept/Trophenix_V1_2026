@@ -1238,7 +1238,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Notre Vision</h2>
-              <p className="text-xl text-slate-600">L'infrastructure complète du sport mondial</p>
+              <p className="text-xl text-slate-600">L'infrastructure complète pour la gestion de carrière</p>
             </div>
 
             <VisionTabs />
