@@ -515,9 +515,6 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
 
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-center text-slate-900 mb-12">
-              Ils nous font confiance
-            </h2>
             <div className="relative overflow-hidden">
               <div className="flex animate-scroll">
                 <div className="flex space-x-8 items-center">
