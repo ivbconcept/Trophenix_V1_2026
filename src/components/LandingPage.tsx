@@ -1103,6 +1103,8 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
           </div>
         </section>
 
+        <SupportersCarousel />
+
         <section className="py-20" style={{ background: 'linear-gradient(135deg, #fe8a32 0%, #e6671d 50%, #cc4d0a 100%)' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
@@ -1188,8 +1190,6 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
             </div>
           </div>
         </section>
-
-        <SupportersCarousel />
 
         <section className="py-4 overflow-hidden relative border-y border-blue-400/50" style={{backgroundColor: '#0490b2'}}>
             <div className="flex relative z-10">
