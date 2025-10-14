@@ -372,53 +372,6 @@ function VisionTabs() {
 
   return (
     <div>
-      <div className="flex flex-wrap justify-center gap-4 mb-8">
-        <button
-          onClick={() => setActiveTab('sportifs')}
-          className={`px-6 py-3 rounded-xl font-semibold transition-all ${
-            activeTab === 'sportifs'
-              ? 'bg-blue-600 text-white shadow-lg'
-              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-          }`}
-        >
-          <Trophy className="inline-block mr-2 h-5 w-5" />
-          Sportifs
-        </button>
-        <button
-          onClick={() => setActiveTab('federations')}
-          className={`px-6 py-3 rounded-xl font-semibold transition-all ${
-            activeTab === 'federations'
-              ? 'bg-blue-600 text-white shadow-lg'
-              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-          }`}
-        >
-          <Users className="inline-block mr-2 h-5 w-5" />
-          Fédérations & Clubs
-        </button>
-        <button
-          onClick={() => setActiveTab('marques')}
-          className={`px-6 py-3 rounded-xl font-semibold transition-all ${
-            activeTab === 'marques'
-              ? 'bg-blue-600 text-white shadow-lg'
-              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-          }`}
-        >
-          <Award className="inline-block mr-2 h-5 w-5" />
-          Marques & Sponsors
-        </button>
-        <button
-          onClick={() => setActiveTab('entreprises')}
-          className={`px-6 py-3 rounded-xl font-semibold transition-all ${
-            activeTab === 'entreprises'
-              ? 'bg-blue-600 text-white shadow-lg'
-              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-          }`}
-        >
-          <Briefcase className="inline-block mr-2 h-5 w-5" />
-          Entreprises
-        </button>
-      </div>
-
       <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-8 border-2 border-blue-200">
         <div className="text-center mb-8">
           <h3 className="text-2xl font-bold text-slate-900 mb-2">{currentContent.title}</h3>
@@ -1106,7 +1059,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
 
       </main>
 
-      <section className="py-20 bg-white">
+      <section className="py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-slate-900 mb-4">Qui sommes-nous ?</h2>
