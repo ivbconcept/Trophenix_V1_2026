@@ -516,81 +516,99 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
           </div>
         </section>
 
-        <section className="py-4 bg-white">
+        <section className="py-12 bg-gradient-to-b from-slate-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">Ils nous font confiance</h3>
+              <p className="text-slate-600">Nos partenaires nous accompagnent dans notre mission</p>
+            </div>
             <div className="relative overflow-hidden">
               <div className="flex animate-scroll">
-                <div className="flex space-x-4 items-center">
-                  <div className="flex items-center justify-center h-32 w-40 bg-white p-4">
+                <div className="flex space-x-6 items-center">
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
                     <img
-                      src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
-                      alt="Google"
-                      className="h-12 w-auto object-contain"
+                      src={passeDecisiveLogo}
+                      alt="Passe décisive"
+                      className="max-h-16 max-w-full object-contain"
                     />
                   </div>
-                  <div className="flex items-center justify-center h-32 w-40 bg-white p-4">
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
                     <img
                       src={franceTravailLogo}
                       alt="France Travail"
-                      className="h-16 w-auto object-contain"
+                      className="max-h-16 max-w-full object-contain"
                     />
                   </div>
-                  <div className="flex items-center justify-center h-32 w-40 bg-white p-4">
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
                     <img
                       src={wexecutiveLogo}
                       alt="Wexecutive"
-                      className="h-10 w-auto object-contain"
+                      className="max-h-16 max-w-full object-contain"
                     />
                   </div>
-                  <div className="flex items-center justify-center h-32 w-40 bg-white p-4">
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
                     <img
                       src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Orange_logo.svg"
                       alt="Orange"
-                      className="h-12 w-auto object-contain"
+                      className="max-h-16 max-w-full object-contain"
                     />
                   </div>
-                  <div className="flex items-center justify-center h-32 w-40 bg-white p-4">
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
                     <img
                       src={diversidaysLogo}
                       alt="Diversidays"
-                      className="h-12 w-auto object-contain"
+                      className="max-h-16 max-w-full object-contain"
+                    />
+                  </div>
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
+                    <img
+                      src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+                      alt="Google"
+                      className="max-h-16 max-w-full object-contain"
                     />
                   </div>
                 </div>
-                <div className="flex space-x-4 items-center ml-4">
-                  <div className="flex items-center justify-center h-32 w-40 bg-white p-4">
+                <div className="flex space-x-6 items-center ml-6">
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
                     <img
-                      src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
-                      alt="Google"
-                      className="h-12 w-auto object-contain"
+                      src={passeDecisiveLogo}
+                      alt="Passe décisive"
+                      className="max-h-16 max-w-full object-contain"
                     />
                   </div>
-                  <div className="flex items-center justify-center h-32 w-40 bg-white p-4">
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
                     <img
                       src={franceTravailLogo}
                       alt="France Travail"
-                      className="h-16 w-auto object-contain"
+                      className="max-h-16 max-w-full object-contain"
                     />
                   </div>
-                  <div className="flex items-center justify-center h-32 w-40 bg-white p-4">
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
                     <img
                       src={wexecutiveLogo}
                       alt="Wexecutive"
-                      className="h-10 w-auto object-contain"
+                      className="max-h-16 max-w-full object-contain"
                     />
                   </div>
-                  <div className="flex items-center justify-center h-32 w-40 bg-white p-4">
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
                     <img
                       src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Orange_logo.svg"
                       alt="Orange"
-                      className="h-12 w-auto object-contain"
+                      className="max-h-16 max-w-full object-contain"
                     />
                   </div>
-                  <div className="flex items-center justify-center h-32 w-40 bg-white p-4">
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
                     <img
                       src={diversidaysLogo}
                       alt="Diversidays"
-                      className="h-12 w-auto object-contain"
+                      className="max-h-16 max-w-full object-contain"
+                    />
+                  </div>
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
+                    <img
+                      src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+                      alt="Google"
+                      className="max-h-16 max-w-full object-contain"
                     />
                   </div>
                 </div>
