@@ -524,7 +524,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
                     <img
                       src={franceTravailLogo}
                       alt="France Travail"
-                      className="max-h-16 max-w-full object-contain"
+                      className="max-h-20 max-w-full object-contain"
                     />
                   </div>
                   <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
@@ -561,7 +561,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
                     <img
                       src={franceTravailLogo}
                       alt="France Travail"
-                      className="max-h-16 max-w-full object-contain"
+                      className="max-h-20 max-w-full object-contain"
                     />
                   </div>
                   <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
