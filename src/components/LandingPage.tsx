@@ -114,9 +114,12 @@ const SupportersCarousel = () => {
         const cardWidth = 280;
         const totalWidth = cardWidth * supporters.length;
         const newOffset = prevOffset - 1.5;
-        return newOffset <= -totalWidth ? newOffset + totalWidth : newOffset;
+        if (newOffset <= -totalWidth) {
+          return newOffset + totalWidth;
+        }
+        return newOffset;
       });
-    }, 20);
+    }, 16);
 
     return () => clearInterval(interval);
   }, [supporters.length]);
@@ -175,7 +178,8 @@ const SupportersCarousel = () => {
                     transform: `scale(${style.scale})`,
                     opacity: style.opacity,
                     zIndex: style.zIndex,
-                    transition: 'transform 0.3s ease-out, opacity 0.3s ease-out',
+                    transition: 'transform 0.25s ease-out, opacity 0.25s ease-out',
+                    willChange: 'transform, opacity',
                   }}
                 >
                   <div className="relative rounded-3xl overflow-hidden shadow-2xl pointer-events-auto w-64 h-80">
