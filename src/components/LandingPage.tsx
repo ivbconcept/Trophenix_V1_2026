@@ -259,6 +259,196 @@ const SPORTS_MEDIA: MediaItem[] = [
   { url: matthieuPetiard, type: 'image' }
 ];
 
+function VisionTabs() {
+  const [activeTab, setActiveTab] = useState<'sportifs' | 'federations' | 'marques' | 'entreprises'>('sportifs');
+
+  const tabContent = {
+    sportifs: {
+      title: 'Pour les Sportifs',
+      description: 'Optimisez votre carrière sportive et professionnelle',
+      features: [
+        {
+          title: 'Portfolio Professionnel',
+          description: 'Créez un profil complet mettant en valeur vos performances, compétences et parcours sportif.',
+          icon: Trophy
+        },
+        {
+          title: 'Opportunités d\'Emploi',
+          description: 'Accédez à des offres exclusives adaptées à votre profil sportif et vos ambitions.',
+          icon: Briefcase
+        },
+        {
+          title: 'Sponsoring',
+          description: 'Trouvez des sponsors et développez votre visibilité auprès des marques.',
+          icon: Award
+        },
+        {
+          title: 'Agent IA Personnel',
+          description: 'Bénéficiez de conseils personnalisés grâce à ELEA, votre assistante IA dédiée.',
+          icon: Users
+        }
+      ]
+    },
+    federations: {
+      title: 'Pour les Fédérations & Clubs',
+      description: 'Gérez et développez vos talents efficacement',
+      features: [
+        {
+          title: 'Gestion des Athlètes',
+          description: 'Suivez les performances et le développement de vos athlètes en temps réel.',
+          icon: Users
+        },
+        {
+          title: 'Analytics Avancés',
+          description: 'Analysez les données pour optimiser les programmes d\'entraînement et la stratégie.',
+          icon: Trophy
+        },
+        {
+          title: 'Recrutement',
+          description: 'Identifiez et recrutez les meilleurs talents grâce à notre plateforme.',
+          icon: CheckCircle
+        },
+        {
+          title: 'Communication',
+          description: 'Restez connecté avec vos athlètes, staff et partenaires en un seul endroit.',
+          icon: Users
+        }
+      ]
+    },
+    marques: {
+      title: 'Pour les Marques & Sponsors',
+      description: 'Trouvez vos ambassadeurs et maximisez votre visibilité',
+      features: [
+        {
+          title: 'Marketplace d\'Ambassadeurs',
+          description: 'Découvrez et contactez les athlètes qui correspondent à vos valeurs et objectifs.',
+          icon: Users
+        },
+        {
+          title: 'ROI Analytics',
+          description: 'Mesurez l\'impact de vos partenariats sportifs avec des données précises.',
+          icon: Trophy
+        },
+        {
+          title: 'Gestion de Contrats',
+          description: 'Automatisez la gestion de vos contrats de sponsoring et partenariats.',
+          icon: CheckCircle
+        },
+        {
+          title: 'Visibilité Garantie',
+          description: 'Bénéficiez d\'une exposition auprès d\'une communauté sportive engagée.',
+          icon: Award
+        }
+      ]
+    },
+    entreprises: {
+      title: 'Pour les Entreprises',
+      description: 'Recrutez des profils sportifs de haut niveau',
+      features: [
+        {
+          title: 'Talents Sportifs',
+          description: 'Accédez à un vivier de candidats ayant des valeurs fortes: persévérance, esprit d\'équipe.',
+          icon: Users
+        },
+        {
+          title: 'Matching Intelligent',
+          description: 'Notre IA identifie les profils qui correspondent le mieux à vos besoins.',
+          icon: CheckCircle
+        },
+        {
+          title: 'Processus Simplifié',
+          description: 'Publiez vos offres et gérez les candidatures en quelques clics.',
+          icon: Briefcase
+        },
+        {
+          title: 'Diversité & Inclusion',
+          description: 'Participez à la reconversion professionnelle des sportifs.',
+          icon: Award
+        }
+      ]
+    }
+  };
+
+  const currentContent = tabContent[activeTab];
+
+  return (
+    <div>
+      <div className="flex flex-wrap justify-center gap-4 mb-8">
+        <button
+          onClick={() => setActiveTab('sportifs')}
+          className={`px-6 py-3 rounded-xl font-semibold transition-all ${
+            activeTab === 'sportifs'
+              ? 'bg-blue-600 text-white shadow-lg'
+              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+          }`}
+        >
+          <Trophy className="inline-block mr-2 h-5 w-5" />
+          Sportifs
+        </button>
+        <button
+          onClick={() => setActiveTab('federations')}
+          className={`px-6 py-3 rounded-xl font-semibold transition-all ${
+            activeTab === 'federations'
+              ? 'bg-blue-600 text-white shadow-lg'
+              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+          }`}
+        >
+          <Users className="inline-block mr-2 h-5 w-5" />
+          Fédérations & Clubs
+        </button>
+        <button
+          onClick={() => setActiveTab('marques')}
+          className={`px-6 py-3 rounded-xl font-semibold transition-all ${
+            activeTab === 'marques'
+              ? 'bg-blue-600 text-white shadow-lg'
+              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+          }`}
+        >
+          <Award className="inline-block mr-2 h-5 w-5" />
+          Marques & Sponsors
+        </button>
+        <button
+          onClick={() => setActiveTab('entreprises')}
+          className={`px-6 py-3 rounded-xl font-semibold transition-all ${
+            activeTab === 'entreprises'
+              ? 'bg-blue-600 text-white shadow-lg'
+              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+          }`}
+        >
+          <Briefcase className="inline-block mr-2 h-5 w-5" />
+          Entreprises
+        </button>
+      </div>
+
+      <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-8 border-2 border-blue-200">
+        <div className="text-center mb-8">
+          <h3 className="text-2xl font-bold text-slate-900 mb-2">{currentContent.title}</h3>
+          <p className="text-lg text-slate-600">{currentContent.description}</p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {currentContent.features.map((feature, index) => {
+            const IconComponent = feature.icon;
+            return (
+              <div key={index} className="bg-white rounded-xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <IconComponent className="h-6 w-6 text-blue-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-bold text-slate-900 mb-2">{feature.title}</h4>
+                    <p className="text-sm text-slate-600 leading-relaxed">{feature.description}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ProgramSection() {
   const [selectedCard, setSelectedCard] = useState<number | null>(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -1041,6 +1231,17 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
                 </p>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-slate-900 mb-4">Notre Vision</h2>
+              <p className="text-xl text-slate-600">L'infrastructure complète du sport mondial</p>
+            </div>
+
+            <VisionTabs />
           </div>
         </section>
 
