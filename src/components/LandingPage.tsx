@@ -1248,18 +1248,18 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
         </div>
       </section>
 
-      <section className="py-4 overflow-hidden relative border-y border-blue-400/50">
+      <section className="py-4 overflow-hidden relative border-y border-blue-400/50" style={{ backgroundColor: '#1f8cb2' }}>
         <div className="flex animate-scroll whitespace-nowrap">
           <div className="flex space-x-12 px-6">
-            <span className="text-xl font-bold text-slate-800">Faites une passe décisive</span>
-            <span className="text-xl font-bold text-slate-800">Recrutez un sportif</span>
-            <span className="text-xl font-bold text-slate-800">Offrez un sponsoring</span>
-            <span className="text-xl font-bold text-slate-800">Faites une passe décisive</span>
-            <span className="text-xl font-bold text-slate-800">Recrutez un sportif</span>
-            <span className="text-xl font-bold text-slate-800">Offrez un sponsoring</span>
-            <span className="text-xl font-bold text-slate-800">Faites une passe décisive</span>
-            <span className="text-xl font-bold text-slate-800">Recrutez un sportif</span>
-            <span className="text-xl font-bold text-slate-800">Offrez un sponsoring</span>
+            <span className="text-xl font-bold text-white">Faites une passe décisive</span>
+            <span className="text-xl font-bold text-white">Recrutez un sportif</span>
+            <span className="text-xl font-bold text-white">Offrez un sponsoring</span>
+            <span className="text-xl font-bold text-white">Faites une passe décisive</span>
+            <span className="text-xl font-bold text-white">Recrutez un sportif</span>
+            <span className="text-xl font-bold text-white">Offrez un sponsoring</span>
+            <span className="text-xl font-bold text-white">Faites une passe décisive</span>
+            <span className="text-xl font-bold text-white">Recrutez un sportif</span>
+            <span className="text-xl font-bold text-white">Offrez un sponsoring</span>
           </div>
         </div>
       </section>
