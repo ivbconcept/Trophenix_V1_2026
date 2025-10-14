@@ -130,20 +130,20 @@ const SupportersCarousel = () => {
     const cardCenter = xPosition + (cardWidth / 2);
     const distanceFromCenter = Math.abs(cardCenter - screenCenter);
 
-    let scale = 0.8;
-    let opacity = 0.6;
+    let scale = 0.75;
+    let opacity = 0.5;
     let zIndex = 5;
     let isCenter = false;
 
-    if (distanceFromCenter < 150) {
-      scale = 1.15;
+    if (distanceFromCenter < 50) {
+      scale = 1.08;
       opacity = 1;
       zIndex = 30;
       isCenter = true;
-    } else if (distanceFromCenter < 400) {
-      const ratio = (400 - distanceFromCenter) / 250;
-      scale = 0.8 + (ratio * 0.35);
-      opacity = 0.6 + (ratio * 0.4);
+    } else if (distanceFromCenter < 200) {
+      const ratio = (200 - distanceFromCenter) / 150;
+      scale = 0.75 + (ratio * 0.33);
+      opacity = 0.5 + (ratio * 0.5);
       zIndex = 15;
     }
 
