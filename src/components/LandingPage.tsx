@@ -263,7 +263,7 @@ function VisionTabs() {
 
   const tabContent = {
     sportifs: {
-      title: 'Pour les Sportifs',
+      title: 'Sportifs',
       description: 'Optimisez votre carrière sportive et professionnelle',
       features: [
         {
@@ -289,7 +289,7 @@ function VisionTabs() {
       ]
     },
     federations: {
-      title: 'Pour les Fédérations & Clubs',
+      title: 'Fédérations & Clubs',
       description: 'Gérez et développez vos talents efficacement',
       features: [
         {
@@ -315,7 +315,7 @@ function VisionTabs() {
       ]
     },
     marques: {
-      title: 'Pour les Marques & Sponsors',
+      title: 'Marques & Sponsors',
       description: 'Trouvez vos ambassadeurs et maximisez votre visibilité',
       features: [
         {
@@ -341,7 +341,7 @@ function VisionTabs() {
       ]
     },
     entreprises: {
-      title: 'Pour les Entreprises',
+      title: 'Entreprises',
       description: 'Recrutez des profils sportifs de haut niveau',
       features: [
         {
@@ -1109,7 +1109,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Notre Vision</h2>
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Qui sommes-nous ?</h2>
             <p className="text-xl text-slate-600">L'infrastructure complète pour la gestion de carrière</p>
           </div>
 
