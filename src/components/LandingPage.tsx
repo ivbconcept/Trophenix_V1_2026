@@ -169,7 +169,7 @@ const SupportersCarousel = () => {
               return (
                 <div
                   key={`${supporter.id}-${index}`}
-                  className="absolute transition-all duration-500 ease-out"
+                  className="absolute transition-all duration-700 ease-in-out"
                   style={{
                     left: `${basePosition + offset}px`,
                     transform: `scale(${style.scale})`,
@@ -177,9 +177,7 @@ const SupportersCarousel = () => {
                     zIndex: style.zIndex,
                   }}
                 >
-                  <div className={`relative rounded-3xl overflow-hidden shadow-2xl pointer-events-auto ${
-                    style.isCenter ? 'w-72 h-96' : 'w-64 h-80'
-                  }`}>
+                  <div className="relative rounded-3xl overflow-hidden shadow-2xl pointer-events-auto w-64 h-80">
                     <img
                       src={supporter.image}
                       alt={supporter.title}
@@ -191,19 +189,21 @@ const SupportersCarousel = () => {
                         {supporter.category}
                       </span>
                     </div>
-                    <div className={`absolute bottom-0 left-0 right-0 text-white ${
-                      style.isCenter ? 'p-8' : 'p-6'
-                    }`}>
-                      <h3 className={`font-bold mb-2 ${
-                        style.isCenter ? 'text-3xl' : 'text-xl'
-                      }`}>
+                    <div className="absolute bottom-0 left-0 right-0 text-white p-6">
+                      <h3 className="font-bold mb-2 text-xl">
                         {supporter.title}
                       </h3>
-                      {style.isCenter && (
+                      <div
+                        className="transition-all duration-700 ease-in-out overflow-hidden"
+                        style={{
+                          maxHeight: style.isCenter ? '100px' : '0px',
+                          opacity: style.isCenter ? 1 : 0,
+                        }}
+                      >
                         <button className="mt-4 px-8 py-3 bg-white/10 backdrop-blur-sm border-2 border-white/50 rounded-full text-white font-bold hover:bg-white/20 transition-all shadow-lg">
                           Join now
                         </button>
-                      )}
+                      </div>
                     </div>
                   </div>
                 </div>
