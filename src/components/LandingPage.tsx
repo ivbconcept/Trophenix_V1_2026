@@ -527,21 +527,21 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
                 <div className="flex space-x-6 items-center">
                   <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
                     <img
-                      src={passeDecisiveLogo}
+                      src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=200&h=80&fit=crop&auto=format"
                       alt="Passe décisive"
                       className="max-h-16 max-w-full object-contain"
                     />
                   </div>
                   <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
                     <img
-                      src={franceTravailLogo}
+                      src="https://www.pole-emploi.fr/files/live/sites/PE/files/images/logo-pole-emploi.svg"
                       alt="France Travail"
                       className="max-h-16 max-w-full object-contain"
                     />
                   </div>
                   <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
                     <img
-                      src={wexecutiveLogo}
+                      src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&h=80&fit=crop&auto=format"
                       alt="Wexecutive"
                       className="max-h-16 max-w-full object-contain"
                     />
@@ -571,21 +571,21 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
                 <div className="flex space-x-6 items-center ml-6">
                   <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
                     <img
-                      src={passeDecisiveLogo}
+                      src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=200&h=80&fit=crop&auto=format"
                       alt="Passe décisive"
                       className="max-h-16 max-w-full object-contain"
                     />
                   </div>
                   <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
                     <img
-                      src={franceTravailLogo}
+                      src="https://www.pole-emploi.fr/files/live/sites/PE/files/images/logo-pole-emploi.svg"
                       alt="France Travail"
                       className="max-h-16 max-w-full object-contain"
                     />
                   </div>
                   <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
                     <img
-                      src={wexecutiveLogo}
+                      src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&h=80&fit=crop&auto=format"
                       alt="Wexecutive"
                       className="max-h-16 max-w-full object-contain"
                     />
