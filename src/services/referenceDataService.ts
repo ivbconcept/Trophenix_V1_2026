@@ -255,45 +255,131 @@ export async function searchSectors(query: string): Promise<string[]> {
 }
 
 // ==========================================
-// LOCATIONS (Zones géographiques)
+// LOCATIONS (Zones géographiques) - 18 Régions françaises
 // ==========================================
 
+/**
+ * Récupère toutes les régions uniques depuis french_communes
+ * 18 régions françaises (métropole + DOM-TOM)
+ */
+export async function getAllRegions(): Promise<string[]> {
+  const { data, error } = await supabase
+    .from('french_communes')
+    .select('region_nom')
+    .order('region_nom', { ascending: true });
+
+  if (error) {
+    console.error('Error fetching regions:', error);
+    return [];
+  }
+
+  // Dédoublonner les régions
+  const uniqueRegions = [...new Set(data?.map(r => r.region_nom) || [])];
+  return uniqueRegions;
+}
+
+/**
+ * Recherche dans les régions françaises
+ */
+export async function searchRegions(query: string): Promise<string[]> {
+  const allRegions = await getAllRegions();
+
+  if (!query || query.trim().length === 0) {
+    return allRegions;
+  }
+
+  const lowerQuery = query.toLowerCase().trim();
+  return allRegions.filter(region =>
+    region.toLowerCase().includes(lowerQuery)
+  );
+}
+
+/**
+ * Compatibilité avec l'ancien code
+ */
 export async function getAllLocations(): Promise<string[]> {
-  return fetchReferenceData('locations_reference');
+  return getAllRegions();
 }
 
+/**
+ * Compatibilité avec l'ancien code
+ */
 export async function searchLocations(query: string): Promise<string[]> {
-  const allLocations = await getAllLocations();
-
-  if (!query || query.trim().length === 0) {
-    return allLocations;
-  }
-
-  const lowerQuery = query.toLowerCase().trim();
-  return allLocations.filter(location =>
-    location.toLowerCase().includes(lowerQuery)
-  );
+  return searchRegions(query);
 }
 
 // ==========================================
-// CITIES (Villes)
+// CITIES (Villes) - 34 935 communes françaises
 // ==========================================
 
+export interface FrenchCommune {
+  id: string;
+  code_insee: string;
+  nom: string;
+  code_postal: string;
+  codes_postaux: string;
+  departement_code: string;
+  departement_nom: string;
+  region_code: string;
+  region_nom: string;
+  population: number;
+  superficie_km2: number;
+  densite: number;
+  latitude: number | null;
+  longitude: number | null;
+}
+
+/**
+ * Recherche intelligente dans les 34 935 communes françaises
+ * Utilise l'index full-text PostgreSQL pour des résultats ultra-rapides
+ */
+export async function searchFrenchCommunes(query: string): Promise<string[]> {
+  if (!query || query.trim().length === 0) {
+    // Retourner les 200 communes les plus peuplées par défaut
+    const { data, error } = await supabase
+      .from('french_communes')
+      .select('nom')
+      .order('population', { ascending: false })
+      .limit(200);
+
+    if (error) {
+      console.error('Error fetching top communes:', error);
+      return [];
+    }
+
+    return data?.map(c => c.nom) || [];
+  }
+
+  const lowerQuery = query.toLowerCase().trim();
+
+  // Recherche avec pg_trgm pour la similarité
+  const { data, error } = await supabase
+    .from('french_communes')
+    .select('nom, population')
+    .or(`nom.ilike.%${lowerQuery}%,code_postal.ilike.%${lowerQuery}%`)
+    .order('population', { ascending: false })
+    .limit(200);
+
+  if (error) {
+    console.error('Error searching communes:', error);
+    return [];
+  }
+
+  return data?.map(c => c.nom) || [];
+}
+
+/**
+ * Ancienne fonction pour compatibilité
+ */
 export async function getAllCities(): Promise<string[]> {
-  return fetchReferenceData('cities_reference');
+  return searchFrenchCommunes('');
 }
 
+/**
+ * Ancienne fonction pour compatibilité - maintenant utilise french_communes
+ */
 export async function searchCities(query: string): Promise<string[]> {
-  const allCities = await getAllCities();
-
-  if (!query || query.trim().length === 0) {
-    return allCities.slice(0, 30);
-  }
-
-  const lowerQuery = query.toLowerCase().trim();
-  return allCities.filter(city =>
-    city.toLowerCase().includes(lowerQuery)
-  );
+  return searchFrenchCommunes(query);
 }
 
 // ==========================================
