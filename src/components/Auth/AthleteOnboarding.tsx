@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ChevronRight, User, Trophy, Briefcase, CheckCircle, Mail } from 'lucide-react';
 import { AgentElea } from '../AI/AgentElea';
 import { searchSports } from '../../constants/olympicSports';
+import { searchClubs } from '../../constants/frenchSportsClubs';
 
 interface AthleteOnboardingProps {
   onComplete: (data: any) => void;
@@ -61,6 +62,8 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
 
   const [sportInput, setSportInput] = useState('');
   const [showSportSuggestions, setShowSportSuggestions] = useState(false);
+  const [clubInput, setClubInput] = useState('');
+  const [showClubSuggestions, setShowClubSuggestions] = useState(false);
   const [locationInput, setLocationInput] = useState('');
   const [showLocationSuggestions, setShowLocationSuggestions] = useState(false);
   const [sectorInput, setSectorInput] = useState('');
@@ -90,6 +93,14 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
     handleChange('sport', sport);
     setSportInput(sport);
     setShowSportSuggestions(false);
+  };
+
+  const filteredClubs = searchClubs(clubInput, formData.sport);
+
+  const handleClubSelect = (club: string) => {
+    handleChange('current_club', club);
+    setClubInput(club);
+    setShowClubSuggestions(false);
   };
 
   const handleLocationSelect = (location: string) => {
@@ -274,13 +285,40 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
             </div>
           </div>
 
-          <input
-            type="text"
-            value={formData.current_club}
-            onChange={(e) => handleChange('current_club', e.target.value)}
-            className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-            placeholder="Club actuel ou dernier *"
-          />
+          <div className="relative">
+            <input
+              type="text"
+              value={clubInput}
+              onChange={(e) => {
+                setClubInput(e.target.value);
+                handleChange('current_club', e.target.value);
+                setShowClubSuggestions(true);
+              }}
+              onFocus={() => setShowClubSuggestions(true)}
+              onBlur={() => setTimeout(() => setShowClubSuggestions(false), 200)}
+              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              placeholder="Club actuel ou dernier *"
+            />
+            {showClubSuggestions && filteredClubs.length > 0 && (
+              <div className="absolute z-10 w-full mt-1 bg-white border border-slate-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
+                {filteredClubs.map((club) => (
+                  <button
+                    key={club}
+                    type="button"
+                    onClick={() => handleClubSelect(club)}
+                    className="w-full px-4 py-2 text-left hover:bg-slate-50 transition-colors text-sm"
+                  >
+                    {club}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+          <p className="text-sm text-slate-500 mt-2">
+            {formData.sport
+              ? `Recherche intelligente parmi les clubs de ${formData.sport} en France`
+              : 'Plus de 500 clubs professionnels et amateurs en France'}
+          </p>
 
           <div>
             <p className="text-sm font-medium text-slate-700 mb-3">Niveau *</p>
