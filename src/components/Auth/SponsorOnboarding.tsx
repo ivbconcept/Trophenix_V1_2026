@@ -11,23 +11,23 @@ interface SponsorOnboardingProps {
 }
 
 const INDUSTRY_SECTORS = [
-  'Sports Equipment', 'Technology / IT', 'Finance / Banking', 'Retail / E-commerce',
-  'Energy / Environment', 'Media / Communication', 'Luxury / Fashion',
-  'Automotive', 'Food & Beverage', 'Pharma / Healthcare', 'Other'
+  'Équipement sportif', 'Technologie / IT', 'Finance / Banque', 'Retail / E-commerce',
+  'Énergie / Environnement', 'Médias / Communication', 'Luxe / Mode',
+  'Automobile', 'Agroalimentaire', 'Pharma / Santé', 'Autre'
 ];
 
 const SPONSORSHIP_TYPES = [
-  'Financial', 'Equipment', 'Training', 'Events', 'Media Coverage', 'Travel', 'Other'
+  'Financier', 'Équipement', 'Formation', 'Événements', 'Couverture médiatique', 'Déplacements', 'Autre'
 ];
 
 const SPORTS_LIST = [
   'Football', 'Basketball', 'Tennis', 'Rugby', 'Handball', 'Volleyball',
-  'Athletics', 'Swimming', 'Cycling', 'Martial Arts', 'Gymnastics',
-  'Winter Sports', 'Water Sports', 'Extreme Sports', 'All Sports'
+  'Athlétisme', 'Natation', 'Cyclisme', 'Arts martiaux', 'Gymnastique',
+  'Sports d\'hiver', 'Sports nautiques', 'Sports extrêmes', 'Tous sports'
 ];
 
 const ATHLETE_LEVELS = [
-  'Amateur', 'Regional', 'National', 'Professional', 'Elite', 'Olympic'
+  'Amateur', 'Régional', 'National', 'Professionnel', 'Élite', 'Olympique'
 ];
 
 const BUDGET_RANGES = [
