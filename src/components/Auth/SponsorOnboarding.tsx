@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { ChevronRight, Handshake, DollarSign, Target, Mail, CheckCircle } from 'lucide-react';
+import { ChevronRight, Handshake, DollarSign, Target, Mail, CheckCircle, X } from 'lucide-react';
 import { AgentElea } from '../AI/AgentElea';
+import { searchSports } from '../../constants/olympicSports';
 
 interface SponsorOnboardingProps {
   onComplete: (data: any) => void;
@@ -20,11 +21,6 @@ const SPONSORSHIP_TYPES = [
   'Financier', 'Équipement', 'Formation', 'Événements', 'Couverture médiatique', 'Déplacements', 'Autre'
 ];
 
-const SPORTS_LIST = [
-  'Football', 'Basketball', 'Tennis', 'Rugby', 'Handball', 'Volleyball',
-  'Athlétisme', 'Natation', 'Cyclisme', 'Arts martiaux', 'Gymnastique',
-  'Sports d\'hiver', 'Sports nautiques', 'Sports extrêmes', 'Tous sports'
-];
 
 const ATHLETE_LEVELS = [
   'Amateur', 'Régional', 'National', 'Professionnel', 'Élite', 'Olympique'
@@ -78,6 +74,22 @@ export function SponsorOnboarding({ onComplete, onBack, initialData, initialStep
       ? currentArray.filter(i => i !== item)
       : [...currentArray, item];
     handleChange(field, newArray);
+  };
+
+  const [sportSearchInput, setSportSearchInput] = useState('');
+  const [showSportSearch, setShowSportSearch] = useState(false);
+  const filteredSportsSearch = searchSports(sportSearchInput);
+
+  const handleSportSelect = (sport: string) => {
+    if (!formData.target_sports.includes(sport)) {
+      toggleArrayItem('target_sports', sport);
+    }
+    setSportSearchInput('');
+    setShowSportSearch(false);
+  };
+
+  const removeSport = (sport: string) => {
+    toggleArrayItem('target_sports', sport);
   };
 
   const handleNext = () => {
@@ -254,22 +266,63 @@ export function SponsorOnboarding({ onComplete, onBack, initialData, initialStep
 
           <div>
             <p className="text-sm font-medium text-slate-700 mb-3">Sports ciblés * (plusieurs choix possibles)</p>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-              {SPORTS_LIST.map((sport) => (
-                <button
-                  key={sport}
-                  type="button"
-                  onClick={() => toggleArrayItem('target_sports', sport)}
-                  className={`px-3 py-2 border-2 rounded-lg transition-all text-sm ${
-                    formData.target_sports.includes(sport)
-                      ? 'border-amber-500 bg-amber-500 text-white'
-                      : 'border-slate-200 hover:border-amber-300'
-                  }`}
-                >
-                  {sport}
-                </button>
-              ))}
+
+            {/* Sports sélectionnés */}
+            {formData.target_sports.length > 0 && (
+              <div className="mb-4 flex flex-wrap gap-2">
+                {formData.target_sports.map((sport) => (
+                  <span
+                    key={sport}
+                    className="inline-flex items-center gap-1 px-3 py-1.5 bg-amber-500 text-white rounded-lg text-sm"
+                  >
+                    {sport}
+                    <button
+                      type="button"
+                      onClick={() => removeSport(sport)}
+                      className="hover:bg-amber-600 rounded-full p-0.5"
+                    >
+                      <X className="h-3 w-3" />
+                    </button>
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {/* Champ de recherche */}
+            <div className="relative">
+              <input
+                type="text"
+                value={sportSearchInput}
+                onChange={(e) => {
+                  setSportSearchInput(e.target.value);
+                  setShowSportSearch(true);
+                }}
+                onFocus={() => setShowSportSearch(true)}
+                onBlur={() => setTimeout(() => setShowSportSearch(false), 200)}
+                className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                placeholder="Rechercher un sport... (ex: Football, Natation, Tennis)"
+              />
+              {showSportSearch && filteredSportsSearch.length > 0 && (
+                <div className="absolute z-10 w-full mt-1 bg-white border border-slate-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
+                  {filteredSportsSearch.map((sport) => (
+                    <button
+                      key={sport}
+                      type="button"
+                      onClick={() => handleSportSelect(sport)}
+                      className={`w-full px-4 py-2 text-left hover:bg-slate-50 transition-colors text-sm ${
+                        formData.target_sports.includes(sport) ? 'bg-amber-50 text-amber-700 font-medium' : ''
+                      }`}
+                    >
+                      {sport}
+                      {formData.target_sports.includes(sport) && <span className="ml-2">✓</span>}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
+            <p className="mt-2 text-sm text-slate-500">
+              Tapez pour rechercher parmi plus de 200 sports olympiques et populaires
+            </p>
           </div>
 
           <div>

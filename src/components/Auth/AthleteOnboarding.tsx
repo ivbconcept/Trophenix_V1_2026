@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronRight, User, Trophy, Briefcase, CheckCircle, Mail } from 'lucide-react';
 import { AgentElea } from '../AI/AgentElea';
+import { searchSports } from '../../constants/olympicSports';
 
 interface AthleteOnboardingProps {
   onComplete: (data: any) => void;
@@ -10,12 +11,6 @@ interface AthleteOnboardingProps {
   onBackHandlerReady?: (handler: () => void) => void;
 }
 
-const SPORTS = [
-  'Football', 'Basketball', 'Tennis', 'Rugby', 'Handball', 'Volleyball',
-  'Natation', 'Athlétisme', 'Cyclisme', 'Judo', 'Karaté', 'Boxe',
-  'Ski', 'Snowboard', 'Surf', 'Voile', 'Aviron', 'Escrime',
-  'Golf', 'Équitation', 'Gymnastique', 'Danse', 'Autre'
-];
 
 const SECTORS = [
   'Commercial / Vente', 'Marketing / Communication', 'Management / Direction',
@@ -73,9 +68,7 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
   const [cityInput, setCityInput] = useState('');
   const [showCitySuggestions, setShowCitySuggestions] = useState(false);
 
-  const filteredSports = SPORTS.filter(sport =>
-    sport.toLowerCase().includes(sportInput.toLowerCase())
-  );
+  const filteredSports = searchSports(sportInput);
 
   const filteredLocations = LOCATIONS.filter(loc =>
     loc.toLowerCase().includes(locationInput.toLowerCase())
