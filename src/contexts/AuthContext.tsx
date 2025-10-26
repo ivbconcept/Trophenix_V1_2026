@@ -207,16 +207,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
    */
   const signUp = async (email: string, password: string, metadata?: any) => {
     try {
-      const { error } = await supabase.auth.signUp({
+      console.log('🔐 AuthContext.signUp called');
+      console.log('📧 Email:', email);
+      console.log('📦 Metadata received:', metadata);
+
+      const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
           data: metadata || {},
         },
       });
+
+      console.log('✅ SignUp response:', { data, error });
+
       if (error) throw error;
       return { error: null };
     } catch (error) {
+      console.error('❌ SignUp error:', error);
       return { error: error as Error };
     }
   };

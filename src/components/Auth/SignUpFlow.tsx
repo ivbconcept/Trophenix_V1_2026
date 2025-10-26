@@ -28,9 +28,45 @@ export function SignUpFlow({ onBack, onSuccess }: SignUpFlowProps) {
     setStep('onboarding');
   };
 
-  const handleOnboardingComplete = (data: any) => {
+  const handleOnboardingComplete = async (data: any) => {
     setOnboardingData(data);
-    setStep('verification');
+    setError('');
+    setLoading(true);
+
+    try {
+      const { email, password, password_confirm, terms_accepted, _currentStep, ...profileData } = data;
+
+      // Préparer les métadonnées qui seront stockées et utilisées après confirmation
+      const metadata = {
+        user_type: selectedUserType,
+        profile_data: profileData,
+      };
+
+      console.log('🚀 SignUp - User type:', selectedUserType);
+      console.log('📦 SignUp - Metadata to send:', metadata);
+      console.log('👤 SignUp - Profile data:', profileData);
+
+      // Créer le compte avec les métadonnées
+      const { error: signUpError } = await signUp(email, password, metadata);
+
+      if (signUpError) {
+        if (signUpError.message && signUpError.message.includes('already registered')) {
+          setError('Cet email est déjà utilisé');
+        } else {
+          setError('Une erreur est survenue lors de la création du compte');
+        }
+        setLoading(false);
+        return;
+      }
+
+      // Afficher l'écran de confirmation (ou rediriger si auto-confirm)
+      setLoading(false);
+      setStep('confirmation-pending');
+    } catch (err: any) {
+      console.error('Error during sign up:', err);
+      setError(err.message || 'Une erreur est survenue');
+      setLoading(false);
+    }
   };
 
   const handleEmailVerified = async () => {
