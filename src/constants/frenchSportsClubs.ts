@@ -183,18 +183,71 @@ export const ICE_HOCKEY_CLUBS = [
 export const OTHER_CLUBS = [
   // Gymnastique
   'Stade Français Gymnastique', 'AS Monaco Gymnastique', 'Paris Gymnastique',
+  'INSEP Gymnastique', 'Avoine Beaumont Gymnastique', 'Gym Montois',
 
   // Squash
   'Squash Montmartre', 'Squash Club de Paris', 'Squash 34 Montpellier',
+  'Squash Club Lyon', 'Squash Marseille', 'Squash Toulouse',
 
   // Badminton
   'Paris UC Badminton', 'Boulogne 92 Badminton', 'Marseille UC Badminton',
+  'Chambéry Savoie Badminton', 'Rouen Badminton', 'Toulouse Badminton Club',
 
   // Taekwondo
   'Paris Taekwondo', 'Villejuif Taekwondo', 'Marseille Taekwondo Club',
+  'Lyon Taekwondo', 'Toulouse Taekwondo', 'Club Taekwondo Strasbourg',
 
   // Karaté
   'Paris Saint-Germain Karaté', 'Karaté Club Bois-Colombes', 'Karaté Toulouse',
+  'Karaté Club de Paris', 'Shotokan Karaté Marseille', 'Karaté Lyon',
+
+  // Trampoline
+  'Amicale Laïque Eaubonne Trampoline', 'ACROSPORT Toulouse', 'Trampoline Club Nantes',
+
+  // Skateboard / BMX
+  'Cosanostra Skateboard Lyon', 'Jungle Spot Bordeaux', 'BMX Club Paris',
+  'Marseille Skate Park', 'Nantes BMX Club',
+
+  // Escalade
+  'Club Alpin Français Paris', 'Grimporama Lyon', 'Entre-Prises Lille',
+  'Arkose Paris', 'Climb Up Marseille', 'Vertical Art Toulouse',
+
+  // Padel / Squash
+  'Padel Club Paris', 'Ten Padel Marseille', 'Padel Horizon Lyon',
+  'We Are Padel Toulouse', 'Padel Attitude Bordeaux',
+
+  // Futsal
+  'Paris Acasa Futsal', 'Kremlin-Bicêtre United', 'Futsal Club de Nantes',
+  'Toulon Elite Futsal', 'Roubaix Futsal', 'Lyon Futsal',
+
+  // Beach Sports
+  'Beach Volley Club Paris', 'Marseille Beach Soccer', 'Beach Rugby Hossegor',
+  'Beach Handball Lacanau',
+
+  // Arts Martiaux
+  'Paris Fighting System', 'Bushido Marseille', 'Sambo Club Paris',
+  'MMA Factory Paris', 'Dragon Bleu Paris', 'Fight Club Toulouse',
+  'Jiu-Jitsu Brésilien Paris', 'Muay Thai Paris',
+
+  // Golf
+  'Golf de Saint-Cloud', 'Golf National Guyancourt', 'Golf de Chantilly',
+  'Golf du Médoc', 'Golf de Fontainebleau', 'Golf de Lyon',
+  'Golf d\'Aix-en-Provence', 'Golf International de Barrière',
+
+  // Triathlon
+  'Paris Triathlon', 'Triathlon Club Versailles', 'Nice Triathlon',
+  'Lyon Triathlon', 'Poissy Triathlon', 'Triathlon Toulouse Métropole',
+
+  // Pentathlon Moderne
+  'Paris Pentathlon Moderne', 'Clamart Pentathlon', 'Lyon Pentathlon',
+
+  // Tir
+  'Tir Sportif Paris', 'Fédération Française de Tir Paris',
+  'Club de Tir Marseille', 'Tir à l\'Arc Paris',
+
+  // Pétanque / Boules
+  'Pétanque Club Paris', 'Boules Parisiennes', 'Marseille Pétanque',
+  'Lyon Pétanque Sport', 'Nice Bouliste',
 ];
 
 // CLUBS UNIVERSITAIRES
@@ -203,14 +256,59 @@ export const UNIVERSITY_CLUBS = [
   'Club Athlétique des Sports Généraux de Paris', 'Sport Universitaire de Bordeaux',
   'Bureau des Sports - Université Paris-Saclay', 'CRSU Toulouse',
   'SUAPS - Université de Nantes', 'Sport Universitaire Grenoble',
+  'Sport Universitaire Marseille', 'Sport Universitaire Nice',
+  'Sport Universitaire Montpellier', 'Sport Universitaire Rennes',
+  'Sport Universitaire Strasbourg', 'FFSU - Fédération Française Sport Universitaire',
 ];
 
-// CLUBS MULTISPORTS
+// CLUBS MULTISPORTS ET CENTRES INTERSPORTS
 export const MULTISPORT_CLUBS = [
+  // Grands clubs omnisports
   'Paris Saint-Germain', 'AS Monaco', 'Olympique de Marseille',
-  'Stade Français', 'Racing 92', 'ASPTT Paris', 'ASPTT Marseille',
-  'ASPTT Lyon', 'ASPTT Toulouse', 'Union Sportive Créteil',
-  'Red Star Club', 'US Métro', 'CSA Armées',
+  'Stade Français', 'Racing 92', 'Union Sportive Créteil',
+  'Red Star Club', 'US Métro',
+
+  // Réseau ASPTT (Association Sportive du Personnel des PTT)
+  'ASPTT Paris', 'ASPTT Marseille', 'ASPTT Lyon', 'ASPTT Toulouse',
+  'ASPTT Nice', 'ASPTT Strasbourg', 'ASPTT Bordeaux', 'ASPTT Lille',
+  'ASPTT Nantes', 'ASPTT Montpellier', 'ASPTT Nancy', 'ASPTT Rennes',
+  'ASPTT Grenoble', 'ASPTT Rouen', 'ASPTT Clermont-Ferrand',
+
+  // Clubs militaires et institutionnels
+  'CSA Armées', 'EMHM (École Militaire Haute Montagne)',
+  'Bataillon de Joinville', 'CREPS Île-de-France',
+  'CREPS PACA', 'CREPS Rhône-Alpes', 'CREPS Bretagne',
+  'INSEP (Institut National du Sport)',
+
+  // Clubs de la Police et Pompiers
+  'AS Police Paris', 'AS Sapeurs Pompiers Paris', 'Police Nationale Sport',
+
+  // Réseau UFOLEP (Union Française des Œuvres Laïques d\'Éducation Physique)
+  'UFOLEP Paris', 'UFOLEP Île-de-France', 'UFOLEP PACA',
+  'UFOLEP Rhône-Alpes', 'UFOLEP Bretagne',
+
+  // Réseau FSGT (Fédération Sportive et Gymnique du Travail)
+  'FSGT Paris', 'FSGT Marseille', 'FSGT Lyon',
+
+  // Clubs Loisirs et Associations Multisports
+  'US Métro Transport', 'CASG Paris', 'Racing Club de France',
+  'Sporting Club de Paris', 'Club Sportif Bretigny',
+  'US Ivry', 'CS Meaux', 'AS Bondy', 'ES Vitry',
+  'CA Montreuil', 'US Alfortville', 'SC Charenton',
+
+  // Centres sportifs régionaux
+  'Sport 2000 Paris', 'Centre Sportif La Plaine',
+  'Complexe Sportif Léo Lagrange', 'Centre Sportif Carpentier',
+  'Stade Jean Bouin', 'Centre Sportif Émile Anthoine',
+
+  // Clubs d\'entreprise et CSE
+  'Club Sportif Air France', 'Club Sportif EDF-GDF',
+  'Club Sportif RATP', 'Club Sportif SNCF',
+  'Amicale Sportive Renault', 'Club Sportif Orange',
+
+  // Centres de loisirs sportifs
+  'UCPA Paris', 'UCPA Sport Loisirs', 'Décathlon Club',
+  'Centre Sportif Villette', 'Centre Aquatique Pailleron',
 ];
 
 // Liste complète de tous les clubs
@@ -314,6 +412,24 @@ export function searchClubs(query: string, sportFilter?: string): string[] {
       priorityClubs = EQUESTRIAN_CLUBS;
     } else if (sportLower.includes('hockey')) {
       priorityClubs = ICE_HOCKEY_CLUBS;
+    } else if (sportLower.includes('gymnastique')) {
+      priorityClubs = [...OTHER_CLUBS.filter(c => c.toLowerCase().includes('gymnastique'))];
+    } else if (sportLower.includes('golf')) {
+      priorityClubs = [...OTHER_CLUBS.filter(c => c.toLowerCase().includes('golf'))];
+    } else if (sportLower.includes('triathlon')) {
+      priorityClubs = [...OTHER_CLUBS.filter(c => c.toLowerCase().includes('triathlon'))];
+    } else if (sportLower.includes('escalade')) {
+      priorityClubs = [...OTHER_CLUBS.filter(c => c.toLowerCase().includes('escalade') || c.toLowerCase().includes('climb'))];
+    } else if (sportLower.includes('badminton')) {
+      priorityClubs = [...OTHER_CLUBS.filter(c => c.toLowerCase().includes('badminton'))];
+    } else if (sportLower.includes('squash') || sportLower.includes('padel')) {
+      priorityClubs = [...OTHER_CLUBS.filter(c => c.toLowerCase().includes('squash') || c.toLowerCase().includes('padel'))];
+    } else if (sportLower.includes('arts martiaux') || sportLower.includes('mma') || sportLower.includes('combat')) {
+      priorityClubs = [...OTHER_CLUBS.filter(c => c.toLowerCase().includes('mma') || c.toLowerCase().includes('fight') || c.toLowerCase().includes('combat'))];
+    } else if (sportLower.includes('futsal')) {
+      priorityClubs = [...OTHER_CLUBS.filter(c => c.toLowerCase().includes('futsal'))];
+    } else if (sportLower.includes('skate') || sportLower.includes('bmx')) {
+      priorityClubs = [...OTHER_CLUBS.filter(c => c.toLowerCase().includes('skate') || c.toLowerCase().includes('bmx'))];
     }
   }
 
