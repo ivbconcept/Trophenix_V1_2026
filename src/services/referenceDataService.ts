@@ -457,6 +457,66 @@ export async function getAllAthleteTypes(): Promise<string[]> {
 }
 
 // ==========================================
+// NATIONALITIES (Nationalités) - 119 nationalités mondiales
+// ==========================================
+
+export interface Nationality {
+  id: string;
+  code_iso: string;
+  nom_fr: string;
+  nom_en: string;
+  pays: string;
+}
+
+/**
+ * Récupère toutes les nationalités depuis Supabase
+ * 119 nationalités triées alphabétiquement
+ */
+export async function getAllNationalities(): Promise<string[]> {
+  const { data, error } = await supabase
+    .from('nationalities')
+    .select('nom_fr')
+    .order('nom_fr', { ascending: true });
+
+  if (error) {
+    console.error('Error fetching nationalities:', error);
+    return [];
+  }
+
+  return data?.map(n => n.nom_fr) || [];
+}
+
+/**
+ * Recherche dans les nationalités
+ */
+export async function searchNationalities(query: string): Promise<string[]> {
+  if (!query || query.trim().length === 0) {
+    return getAllNationalities();
+  }
+
+  const lowerQuery = query.toLowerCase().trim();
+
+  // Normaliser la requête
+  const normalizedQuery = lowerQuery
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+
+  const { data, error } = await supabase
+    .from('nationalities')
+    .select('nom_fr, pays')
+    .or(`nom_fr.ilike.%${lowerQuery}%,pays.ilike.%${lowerQuery}%`)
+    .order('nom_fr', { ascending: true })
+    .limit(50);
+
+  if (error) {
+    console.error('Error searching nationalities:', error);
+    return [];
+  }
+
+  return data?.map(n => n.nom_fr) || [];
+}
+
+// ==========================================
 // COMPANY SIZES (Tailles d'entreprises)
 // ==========================================
 
