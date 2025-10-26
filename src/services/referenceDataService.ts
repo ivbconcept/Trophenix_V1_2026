@@ -47,7 +47,7 @@ export async function getAllSports(): Promise<Sport[]> {
 export async function searchSports(query: string): Promise<string[]> {
   const allSports = await getAllSports();
 
-  if (!query || query.length < 2) {
+  if (!query || query.trim().length === 0) {
     // Afficher les 20 premiers + "Autre" en dernier
     const firstTwenty = allSports
       .filter(s => s.name !== 'Autre')
@@ -138,7 +138,7 @@ export async function getAllClubs(): Promise<Club[]> {
 export async function searchClubs(query: string, sportFilter?: string): Promise<string[]> {
   const allClubs = await getAllClubs();
 
-  if (!query || query.length < 2) {
+  if (!query || query.trim().length === 0) {
     // Afficher les 30 premiers + "Autre club" en dernier
     const firstThirty = allClubs
       .filter(c => c.name !== 'Autre club')
@@ -244,7 +244,7 @@ export async function getAllSectors(): Promise<string[]> {
 export async function searchSectors(query: string): Promise<string[]> {
   const allSectors = await getAllSectors();
 
-  if (!query || query.length < 2) {
+  if (!query || query.trim().length === 0) {
     return allSectors;
   }
 
@@ -265,7 +265,7 @@ export async function getAllLocations(): Promise<string[]> {
 export async function searchLocations(query: string): Promise<string[]> {
   const allLocations = await getAllLocations();
 
-  if (!query || query.length < 2) {
+  if (!query || query.trim().length === 0) {
     return allLocations;
   }
 
@@ -286,7 +286,7 @@ export async function getAllCities(): Promise<string[]> {
 export async function searchCities(query: string): Promise<string[]> {
   const allCities = await getAllCities();
 
-  if (!query || query.length < 2) {
+  if (!query || query.trim().length === 0) {
     return allCities.slice(0, 30);
   }
 
