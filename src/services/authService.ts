@@ -233,7 +233,7 @@ export class AuthService {
         id: userId,
         email,
         user_type: userType,
-        validation_status: 'pending',
+        validation_status: 'approved',
       });
 
       if (error) {

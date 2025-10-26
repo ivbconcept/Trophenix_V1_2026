@@ -66,7 +66,7 @@ export function SignUpFlow({ onBack, onSuccess }: SignUpFlowProps) {
           id: user.id,
           email: user.email!,
           user_type: selectedUserType!,
-          validation_status: 'pending'
+          validation_status: 'approved'
         });
 
       if (profileError) {

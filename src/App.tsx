@@ -72,20 +72,16 @@ function AppContent() {
         } else {
           setView('admin');
         }
-      } else if (profile.validation_status === 'pending') {
-        setView('pending');
-      } else if (profile.validation_status === 'approved') {
-        if (isAdmin && view !== 'admin' && view !== 'super-admin-console') {
-          if (path === '/super-admin') {
-            setView('super-admin-console');
-          } else {
-            setView('admin');
-          }
-        } else if (profile.user_type === 'athlete' && view === 'landing') {
-          setView('athlete-dashboard');
-        } else if (profile.user_type === 'company' && view === 'landing') {
-          setView('company-dashboard');
+      } else if (isAdmin && view !== 'admin' && view !== 'super-admin-console') {
+        if (path === '/super-admin') {
+          setView('super-admin-console');
+        } else {
+          setView('admin');
         }
+      } else if (profile.user_type === 'athlete' && view === 'landing') {
+        setView('athlete-dashboard');
+      } else if (profile.user_type === 'company' && view === 'landing') {
+        setView('company-dashboard');
       }
     } else if (!loading && !user && view !== 'admin-login' && view !== 'investors') {
       if (window.location.pathname !== '/admin' && window.location.pathname !== '/super-admin' && window.location.pathname !== '/investors') {
@@ -94,9 +90,13 @@ function AppContent() {
     }
   }, [user, profile, loading, isAdmin]);
 
-  const handleSignUpSuccess = async () => {
+  const handleSignUpSuccess = async (userType: 'athlete' | 'company') => {
     await refreshProfile();
-    setView('pending');
+    if (userType === 'athlete') {
+      setView('athlete-dashboard');
+    } else {
+      setView('company-dashboard');
+    }
   };
 
   const handleViewAthleteProfile = (athleteId: string) => {
@@ -118,7 +118,7 @@ function AppContent() {
     setView(newView as View);
   };
 
-  const isAuthenticated = user && profile && profile.validation_status === 'approved';
+  const isAuthenticated = user && profile;
   const showNavbar = isAuthenticated && view !== 'admin';
 
   if (loading) {
