@@ -66,7 +66,7 @@ interface AuthContextType {
   /** Indique si l'utilisateur est un admin de l'équipe Trophenix */
   isAdmin: boolean;
   /** Fonction d'inscription */
-  signUp: (email: string, password: string) => Promise<{ error: Error | null }>;
+  signUp: (email: string, password: string, metadata?: any) => Promise<{ error: Error | null }>;
   /** Fonction de connexion */
   signIn: (email: string, password: string) => Promise<{ error: Error | null }>;
   /** Fonction de déconnexion */
@@ -205,11 +205,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
    *
    * 🔄 MIGRATION BACKEND : Remplacer par POST /api/auth/register
    */
-  const signUp = async (email: string, password: string) => {
+  const signUp = async (email: string, password: string, metadata?: any) => {
     try {
       const { error } = await supabase.auth.signUp({
         email,
         password,
+        options: {
+          data: metadata || {},
+        },
       });
       if (error) throw error;
       return { error: null };

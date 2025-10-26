@@ -60,13 +60,17 @@ export class AuthService {
    *
    * @param email - Email de l'utilisateur
    * @param password - Mot de passe
+   * @param metadata - Métadonnées additionnelles (profil, type d'utilisateur, etc.)
    * @returns Résultat de l'opération
    */
-  static async signUp(email: string, password: string): Promise<AuthResult> {
+  static async signUp(email: string, password: string, metadata?: any): Promise<AuthResult> {
     try {
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
+        options: {
+          data: metadata || {},
+        },
       });
 
       if (error) {

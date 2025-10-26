@@ -7,6 +7,7 @@ import { AthleteOnboarding } from './AthleteOnboarding';
 import { CompanyOnboarding } from './CompanyOnboarding';
 import { AuthCarousel } from './AuthCarousel';
 import { EmailVerification } from './EmailVerification';
+import { EmailConfirmationPending } from './EmailConfirmationPending';
 
 interface SignUpFlowProps {
   onBack: () => void;
@@ -14,7 +15,7 @@ interface SignUpFlowProps {
 }
 
 export function SignUpFlow({ onBack, onSuccess }: SignUpFlowProps) {
-  const [step, setStep] = useState<'profile-type' | 'onboarding' | 'verification'>('profile-type');
+  const [step, setStep] = useState<'profile-type' | 'onboarding' | 'verification' | 'confirmation-pending'>('profile-type');
   const [selectedUserType, setSelectedUserType] = useState<UserType | null>(null);
   const [onboardingData, setOnboardingData] = useState<any>(null);
   const [error, setError] = useState('');
@@ -36,9 +37,17 @@ export function SignUpFlow({ onBack, onSuccess }: SignUpFlowProps) {
     setLoading(true);
 
     try {
-      const { email, password, password_confirm, terms_accepted, ...profileData } = onboardingData;
+      const { email, password, password_confirm, terms_accepted, _currentStep, ...profileData } = onboardingData;
 
-      const { error: signUpError } = await signUp(email, password);
+      // Préparer les métadonnées qui seront stockées et utilisées après confirmation
+      const metadata = {
+        user_type: selectedUserType,
+        profile_data: profileData,
+      };
+
+      // L'inscription envoie automatiquement un email de confirmation
+      // Les métadonnées seront accessibles dans le webhook après confirmation
+      const { error: signUpError } = await signUp(email, password, metadata);
 
       if (signUpError) {
         if (signUpError.message.includes('already registered')) {
@@ -50,69 +59,9 @@ export function SignUpFlow({ onBack, onSuccess }: SignUpFlowProps) {
         return;
       }
 
-      await signIn(email, password);
-
-      const { data: { user } } = await supabase.auth.getUser();
-
-      if (!user) {
-        setError('Erreur d\'authentification');
-        setLoading(false);
-        return;
-      }
-
-      const { error: profileError } = await supabase
-        .from('profiles')
-        .insert({
-          id: user.id,
-          email: user.email!,
-          user_type: selectedUserType!,
-          validation_status: 'approved'
-        });
-
-      if (profileError) {
-        setError('Erreur lors de la création du profil');
-        setLoading(false);
-        return;
-      }
-
-      if (selectedUserType === 'athlete') {
-        const { error: athleteError } = await supabase
-          .from('athlete_profiles')
-          .insert({
-            user_id: user.id,
-            first_name: profileData.first_name,
-            last_name: profileData.last_name,
-            sport: profileData.sport,
-            sport_level: profileData.sport_level,
-            geographic_zone: profileData.geographic_zone,
-            desired_field: profileData.desired_field,
-            position_type: profileData.position_type,
-            availability: profileData.availability
-          });
-
-        if (athleteError) {
-          console.error('Athlete profile error:', athleteError);
-          setError('Erreur lors de la sauvegarde du profil sportif');
-          setLoading(false);
-          return;
-        }
-      } else if (selectedUserType === 'company') {
-        const { error: companyError } = await supabase
-          .from('company_profiles')
-          .insert({
-            user_id: user.id,
-            ...profileData
-          });
-
-        if (companyError) {
-          setError('Erreur lors de la sauvegarde du profil professionnel');
-          setLoading(false);
-          return;
-        }
-      }
-
+      // Afficher l'écran de confirmation
       setLoading(false);
-      onSuccess(selectedUserType as 'athlete' | 'company');
+      setStep('confirmation-pending');
     } catch (err: any) {
       setError(err.message || 'Une erreur est survenue');
       setLoading(false);
@@ -244,7 +193,14 @@ export function SignUpFlow({ onBack, onSuccess }: SignUpFlowProps) {
           />
         )}
 
-        {error && (
+        {step === 'confirmation-pending' && onboardingData && (
+          <EmailConfirmationPending
+            email={onboardingData.email}
+            onBack={onBack}
+          />
+        )}
+
+        {error && step !== 'confirmation-pending' && (
           <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start space-x-3">
             <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
             <p className="text-sm text-red-800">{error}</p>
