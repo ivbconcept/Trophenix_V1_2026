@@ -263,19 +263,16 @@ export async function searchSectors(query: string): Promise<string[]> {
  * 18 régions françaises (métropole + DOM-TOM)
  */
 export async function getAllRegions(): Promise<string[]> {
-  const { data, error } = await supabase
-    .from('french_communes')
-    .select('region_nom')
-    .order('region_nom', { ascending: true });
+  // Utiliser la fonction PostgreSQL optimisée pour DISTINCT (plus efficace)
+  const { data, error } = await supabase.rpc('get_distinct_regions');
 
   if (error) {
     console.error('Error fetching regions:', error);
     return [];
   }
 
-  // Dédoublonner les régions
-  const uniqueRegions = [...new Set(data?.map(r => r.region_nom) || [])];
-  return uniqueRegions;
+  // La fonction RPC retourne un tableau d'objets {region: string}
+  return data?.map((row: { region: string }) => row.region) || [];
 }
 
 /**
