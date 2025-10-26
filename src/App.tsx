@@ -19,6 +19,9 @@ import ViewApplications from './components/Jobs/ViewApplications';
 import MyApplications from './components/Jobs/MyApplications';
 import AthleteDirectory from './components/Directory/AthleteDirectory';
 import CompanyDirectory from './components/Directory/CompanyDirectory';
+import { Navbar } from './components/Layout/Navbar';
+import { MessagesList } from './components/Messages/MessagesList';
+import { UserProfile } from './components/Profile/UserProfile';
 import { supabase } from './lib/supabase';
 import InvestorsPage from './components/InvestorsPage';
 
@@ -264,14 +267,7 @@ function AppContent() {
         </div>
       )}
 
-      {view === 'profile' && (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-8">
-          <div className="max-w-7xl mx-auto">
-            <h1 className="text-3xl font-bold text-slate-900 mb-4">Mon Profil</h1>
-            <p className="text-slate-600">Cette fonctionnalité sera bientôt disponible</p>
-          </div>
-        </div>
-      )}
+      {view === 'profile' && <UserProfile />}
 
       {view === 'athletes-list' && (
         <AthletesList onViewProfile={handleViewAthleteProfile} />
