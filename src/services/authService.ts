@@ -70,6 +70,7 @@ export class AuthService {
         password,
         options: {
           data: metadata || {},
+          emailRedirectTo: undefined,
         },
       });
 
