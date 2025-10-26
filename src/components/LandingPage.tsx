@@ -1172,6 +1172,16 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
                     Investisseurs
                   </button>
                 </li>
+                <li>
+                  <a
+                    href="/swagger.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-blue-400 transition-colors inline-flex items-center gap-1"
+                  >
+                    📚 API Documentation
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
