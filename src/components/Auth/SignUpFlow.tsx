@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
-import { ArrowLeft, AlertCircle, Trophy, Briefcase } from 'lucide-react';
+import { ArrowLeft, AlertCircle, Trophy, Briefcase, Handshake } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { UserType } from '../../types';
 import { AthleteOnboarding } from './AthleteOnboarding';
 import { CompanyOnboarding } from './CompanyOnboarding';
+import { SponsorOnboarding } from './SponsorOnboarding';
 import { AuthCarousel } from './AuthCarousel';
 import { EmailVerification } from './EmailVerification';
 import { EmailConfirmationPending } from './EmailConfirmationPending';
 
 interface SignUpFlowProps {
   onBack: () => void;
-  onSuccess: (userType: 'athlete' | 'company') => void;
+  onSuccess: (userType: 'athlete' | 'company' | 'sponsor') => void;
 }
 
 export function SignUpFlow({ onBack, onSuccess }: SignUpFlowProps) {
@@ -138,15 +139,34 @@ export function SignUpFlow({ onBack, onSuccess }: SignUpFlowProps) {
                 className="w-full p-6 bg-slate-50 border border-slate-200 rounded-2xl hover:bg-slate-100 hover:border-slate-300 transition-all text-left"
               >
                 <div className="flex items-start space-x-4">
-                  <div className="p-3 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl">
+                  <div className="p-3 bg-gradient-to-br from-blue-400 to-blue-500 rounded-xl">
                     <Briefcase className="h-7 w-7 text-white" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-slate-900 mb-1">
-                      Professionnel
+                      Employeur
                     </h3>
                     <p className="text-slate-600 text-sm">
-                      Je représente une structure ou une entreprise
+                      Je recrute des athlètes pour mon entreprise
+                    </p>
+                  </div>
+                </div>
+              </button>
+
+              <button
+                onClick={() => handleProfileTypeSelect('sponsor')}
+                className="w-full p-6 bg-slate-50 border border-slate-200 rounded-2xl hover:bg-slate-100 hover:border-slate-300 transition-all text-left"
+              >
+                <div className="flex items-start space-x-4">
+                  <div className="p-3 bg-gradient-to-br from-amber-400 to-amber-500 rounded-xl">
+                    <Handshake className="h-7 w-7 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-1">
+                      Sponsor
+                    </h3>
+                    <p className="text-slate-600 text-sm">
+                      Je cherche à sponsoriser des athlètes
                     </p>
                   </div>
                 </div>
@@ -172,6 +192,21 @@ export function SignUpFlow({ onBack, onSuccess }: SignUpFlowProps) {
 
         {step === 'onboarding' && selectedUserType === 'company' && (
           <CompanyOnboarding
+            key={onboardingData ? 'restore' : 'new'}
+            onComplete={handleOnboardingComplete}
+            onBack={() => {
+              setStep('profile-type');
+              setSelectedUserType(null);
+              setOnboardingData(null);
+            }}
+            initialData={onboardingData}
+            initialStep={onboardingData?._currentStep}
+            onBackHandlerReady={(handler) => setOnboardingBackHandler(() => handler)}
+          />
+        )}
+
+        {step === 'onboarding' && selectedUserType === 'sponsor' && (
+          <SponsorOnboarding
             key={onboardingData ? 'restore' : 'new'}
             onComplete={handleOnboardingComplete}
             onBack={() => {
