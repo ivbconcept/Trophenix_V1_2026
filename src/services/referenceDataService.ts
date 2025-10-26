@@ -15,6 +15,12 @@ export interface Club {
   display_order: number;
 }
 
+export interface ReferenceItem {
+  id: string;
+  name: string;
+  display_order: number;
+}
+
 /**
  * Récupère tous les sports depuis Supabase
  * Triés par display_order (Autre sera en dernier avec order=9999)
@@ -207,4 +213,165 @@ export async function searchClubs(query: string, sportFilter?: string): Promise<
   }
 
   return filtered;
+}
+
+// ==========================================
+// GENERIC FETCH FUNCTIONS
+// ==========================================
+
+async function fetchReferenceData(tableName: string): Promise<string[]> {
+  const { data, error } = await supabase
+    .from(tableName)
+    .select('name, display_order')
+    .order('display_order', { ascending: true });
+
+  if (error) {
+    console.error(`Error fetching ${tableName}:`, error);
+    return [];
+  }
+
+  return data?.map(item => item.name) || [];
+}
+
+// ==========================================
+// SECTORS (Secteurs d'activité)
+// ==========================================
+
+export async function getAllSectors(): Promise<string[]> {
+  return fetchReferenceData('sectors_reference');
+}
+
+export async function searchSectors(query: string): Promise<string[]> {
+  const allSectors = await getAllSectors();
+
+  if (!query || query.length < 2) {
+    return allSectors;
+  }
+
+  const lowerQuery = query.toLowerCase().trim();
+  return allSectors.filter(sector =>
+    sector.toLowerCase().includes(lowerQuery)
+  );
+}
+
+// ==========================================
+// LOCATIONS (Zones géographiques)
+// ==========================================
+
+export async function getAllLocations(): Promise<string[]> {
+  return fetchReferenceData('locations_reference');
+}
+
+export async function searchLocations(query: string): Promise<string[]> {
+  const allLocations = await getAllLocations();
+
+  if (!query || query.length < 2) {
+    return allLocations;
+  }
+
+  const lowerQuery = query.toLowerCase().trim();
+  return allLocations.filter(location =>
+    location.toLowerCase().includes(lowerQuery)
+  );
+}
+
+// ==========================================
+// CITIES (Villes)
+// ==========================================
+
+export async function getAllCities(): Promise<string[]> {
+  return fetchReferenceData('cities_reference');
+}
+
+export async function searchCities(query: string): Promise<string[]> {
+  const allCities = await getAllCities();
+
+  if (!query || query.length < 2) {
+    return allCities.slice(0, 30);
+  }
+
+  const lowerQuery = query.toLowerCase().trim();
+  return allCities.filter(city =>
+    city.toLowerCase().includes(lowerQuery)
+  );
+}
+
+// ==========================================
+// SPORT LEVELS (Niveaux sportifs)
+// ==========================================
+
+export async function getAllSportLevels(): Promise<string[]> {
+  return fetchReferenceData('sport_levels_reference');
+}
+
+// ==========================================
+// CONTRACT TYPES (Types de contrats)
+// ==========================================
+
+export async function getAllContractTypes(): Promise<string[]> {
+  return fetchReferenceData('contract_types_reference');
+}
+
+// ==========================================
+// POSITION TYPES (Types de postes)
+// ==========================================
+
+export async function getAllPositionTypes(): Promise<string[]> {
+  return fetchReferenceData('position_types_reference');
+}
+
+// ==========================================
+// AVAILABILITY (Disponibilités)
+// ==========================================
+
+export async function getAllAvailability(): Promise<string[]> {
+  return fetchReferenceData('availability_reference');
+}
+
+// ==========================================
+// SITUATIONS (Situations des athlètes)
+// ==========================================
+
+export async function getAllSituations(): Promise<string[]> {
+  return fetchReferenceData('situations_reference');
+}
+
+// ==========================================
+// ATHLETE TYPES (Types de sportifs)
+// ==========================================
+
+export async function getAllAthleteTypes(): Promise<string[]> {
+  return fetchReferenceData('athlete_types_reference');
+}
+
+// ==========================================
+// COMPANY SIZES (Tailles d'entreprises)
+// ==========================================
+
+export async function getAllCompanySizes(): Promise<string[]> {
+  return fetchReferenceData('company_sizes_reference');
+}
+
+// ==========================================
+// SPONSORSHIP TYPES (Types de sponsoring)
+// ==========================================
+
+export async function getAllSponsorshipTypes(): Promise<string[]> {
+  return fetchReferenceData('sponsorship_types_reference');
+}
+
+// ==========================================
+// ATHLETE LEVELS for Sponsors
+// ==========================================
+
+export async function getAllAthleteLevels(): Promise<string[]> {
+  return fetchReferenceData('athlete_levels_reference');
+}
+
+// ==========================================
+// SPONSORSHIP BUDGETS
+// ==========================================
+
+export async function getAllSponsorshipBudgets(): Promise<string[]> {
+  return fetchReferenceData('sponsorship_budgets_reference');
 }

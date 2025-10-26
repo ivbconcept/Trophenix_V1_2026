@@ -1,7 +1,18 @@
 import { useState, useEffect } from 'react';
 import { ChevronRight, User, Trophy, Briefcase, CheckCircle, Mail } from 'lucide-react';
 import { AgentElea } from '../AI/AgentElea';
-import { searchSports, searchClubs } from '../../services/referenceDataService';
+import {
+  searchSports,
+  searchClubs,
+  searchSectors,
+  searchLocations,
+  searchCities,
+  getAllSportLevels,
+  getAllPositionTypes,
+  getAllAvailability,
+  getAllSituations,
+  getAllAthleteTypes
+} from '../../services/referenceDataService';
 
 interface AthleteOnboardingProps {
   onComplete: (data: any) => void;
@@ -12,27 +23,6 @@ interface AthleteOnboardingProps {
 }
 
 
-const SECTORS = [
-  'Commercial / Vente', 'Marketing / Communication', 'Management / Direction',
-  'Ressources Humaines', 'Finance / Comptabilité', 'Logistique / Supply Chain',
-  'Conseil / Stratégie', 'Événementiel', 'Sport Business',
-  'Éducation / Formation', 'Santé / Bien-être', 'Digital / Tech',
-  'Entrepreneuriat', 'Autre'
-];
-
-const LOCATIONS = [
-  'Paris', 'Lyon', 'Marseille', 'Toulouse', 'Bordeaux', 'Lille',
-  'Nantes', 'Strasbourg', 'Montpellier', 'Nice', 'Rennes',
-  'Télétravail complet', 'Flexible / Hybride', 'Toute la France', 'Étranger'
-];
-
-const CITIES = [
-  'Paris', 'Lyon', 'Marseille', 'Toulouse', 'Bordeaux', 'Lille',
-  'Nantes', 'Strasbourg', 'Montpellier', 'Nice', 'Rennes', 'Reims',
-  'Saint-Étienne', 'Toulon', 'Le Havre', 'Grenoble', 'Dijon', 'Angers',
-  'Nîmes', 'Villeurbanne', 'Clermont-Ferrand', 'Le Mans', 'Aix-en-Provence',
-  'Brest', 'Tours', 'Amiens', 'Limoges', 'Annecy', 'Perpignan', 'Metz'
-];
 
 export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep, onBackHandlerReady }: AthleteOnboardingProps) {
   console.log('AthleteOnboarding mounted - initialStep:', initialStep, 'initialData:', initialData);
@@ -65,6 +55,14 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
   const [showClubSuggestions, setShowClubSuggestions] = useState(false);
   const [filteredSports, setFilteredSports] = useState<string[]>([]);
   const [filteredClubs, setFilteredClubs] = useState<string[]>([]);
+  const [filteredSectors, setFilteredSectors] = useState<string[]>([]);
+  const [filteredLocations, setFilteredLocations] = useState<string[]>([]);
+  const [filteredCities, setFilteredCities] = useState<string[]>([]);
+  const [sportLevels, setSportLevels] = useState<string[]>([]);
+  const [positionTypes, setPositionTypes] = useState<string[]>([]);
+  const [availabilities, setAvailabilities] = useState<string[]>([]);
+  const [situations, setSituations] = useState<string[]>([]);
+  const [athleteTypes, setAthleteTypes] = useState<string[]>([]);
   const [locationInput, setLocationInput] = useState('');
   const [showLocationSuggestions, setShowLocationSuggestions] = useState(false);
   const [sectorInput, setSectorInput] = useState('');
@@ -81,17 +79,6 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
     loadSports();
   }, [sportInput]);
 
-  const filteredLocations = LOCATIONS.filter(loc =>
-    loc.toLowerCase().includes(locationInput.toLowerCase())
-  );
-
-  const filteredSectors = SECTORS.filter(sector =>
-    sector.toLowerCase().includes(sectorInput.toLowerCase())
-  );
-
-  const filteredCities = CITIES.filter(city =>
-    city.toLowerCase().includes(cityInput.toLowerCase())
-  );
 
   const handleChange = (field: string, value: string | boolean) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -111,6 +98,52 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
     };
     loadClubs();
   }, [clubInput, formData.sport]);
+
+  // Charger les secteurs
+  useEffect(() => {
+    const loadSectors = async () => {
+      const sectors = await searchSectors(sectorInput);
+      setFilteredSectors(sectors);
+    };
+    loadSectors();
+  }, [sectorInput]);
+
+  // Charger les locations
+  useEffect(() => {
+    const loadLocations = async () => {
+      const locations = await searchLocations(locationInput);
+      setFilteredLocations(locations);
+    };
+    loadLocations();
+  }, [locationInput]);
+
+  // Charger les villes
+  useEffect(() => {
+    const loadCities = async () => {
+      const cities = await searchCities(cityInput);
+      setFilteredCities(cities);
+    };
+    loadCities();
+  }, [cityInput]);
+
+  // Charger toutes les données statiques au montage
+  useEffect(() => {
+    const loadStaticData = async () => {
+      const [levels, positions, avail, sits, types] = await Promise.all([
+        getAllSportLevels(),
+        getAllPositionTypes(),
+        getAllAvailability(),
+        getAllSituations(),
+        getAllAthleteTypes()
+      ]);
+      setSportLevels(levels);
+      setPositionTypes(positions);
+      setAvailabilities(avail);
+      setSituations(sits);
+      setAthleteTypes(types);
+    };
+    loadStaticData();
+  }, []);
 
   const handleClubSelect = (club: string) => {
     handleChange('current_club', club);
@@ -233,14 +266,7 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
           <div>
             <p className="text-sm font-medium text-slate-700 mb-3">Situation *</p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              {[
-                'En activité',
-                'En blessure',
-                'En hésitation',
-                'En transition',
-                'En reconversion',
-                'Déjà reconverti'
-              ].map((situation) => (
+              {situations.map((situation) => (
                 <button
                   key={situation}
                   type="button"
@@ -260,7 +286,7 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
           <div>
             <p className="text-sm font-medium text-slate-700 mb-3">Type de sportif *</p>
             <div className="grid grid-cols-2 gap-3">
-              {['Handisportif', 'Sportif valide'].map((type) => (
+              {athleteTypes.map((type) => (
                 <button
                   key={type}
                   type="button"
@@ -338,7 +364,7 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
           <div>
             <p className="text-sm font-medium text-slate-700 mb-3">Niveau *</p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              {['International', 'National', 'Régional', 'Professionnel', 'Semi-professionnel', 'Amateur haut niveau'].map((level) => (
+              {sportLevels.map((level) => (
                 <button
                   key={level}
                   type="button"
@@ -461,7 +487,7 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
           <div>
             <p className="text-sm font-medium text-slate-700 mb-3">Type de poste recherché *</p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              {['CDI', 'CDD', 'Stage', 'Alternance', 'Freelance', 'Création entreprise'].map((type) => (
+              {positionTypes.map((type) => (
                 <button
                   key={type}
                   type="button"
@@ -481,7 +507,7 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
           <div>
             <p className="text-sm font-medium text-slate-700 mb-3">Disponibilité *</p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {['Immédiate', '1 mois', '3 mois', '6 mois'].map((avail) => (
+              {availabilities.map((avail) => (
                 <button
                   key={avail}
                   type="button"
