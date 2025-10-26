@@ -309,6 +309,9 @@ export const MULTISPORT_CLUBS = [
   // Centres de loisirs sportifs
   'UCPA Paris', 'UCPA Sport Loisirs', 'Décathlon Club',
   'Centre Sportif Villette', 'Centre Aquatique Pailleron',
+
+  // Option autre
+  'Autre club',
 ];
 
 // Liste complète de tous les clubs
@@ -483,9 +486,16 @@ export function searchClubs(query: string, sportFilter?: string): string[] {
   });
 
   // Filtrer les résultats avec score > 0 et trier par score décroissant
-  return results
+  const filtered = results
     .filter(r => r.score > 0)
     .sort((a, b) => b.score - a.score)
-    .slice(0, 40) // Limiter à 40 résultats
+    .slice(0, 40)
     .map(r => r.club);
+
+  // Toujours ajouter "Autre club" à la fin si pas déjà présent
+  if (!filtered.includes('Autre club')) {
+    filtered.push('Autre club');
+  }
+
+  return filtered;
 }

@@ -246,6 +246,9 @@ export const OTHER_POPULAR_SPORTS = [
   'E-sport',
   'Échecs',
   'Bridge',
+
+  // Autre
+  'Autre',
 ];
 
 // Liste complète pour l'autocomplete
@@ -278,6 +281,11 @@ export function searchSports(query: string): string[] {
     const lowerSport = sport.toLowerCase();
     let score = 0;
 
+    // "Autre" doit toujours apparaître en dernier
+    if (sport === 'Autre') {
+      score = -1000;
+    }
+
     // Match exact au début (score élevé)
     if (lowerSport.startsWith(lowerQuery)) {
       score += 100;
@@ -305,9 +313,16 @@ export function searchSports(query: string): string[] {
   });
 
   // Filtrer les résultats avec score > 0 et trier par score décroissant
-  return results
+  const filtered = results
     .filter(r => r.score > 0)
     .sort((a, b) => b.score - a.score)
-    .slice(0, 30) // Limiter à 30 résultats
+    .slice(0, 30)
     .map(r => r.sport);
+
+  // Toujours ajouter "Autre" à la fin si pas de résultats ou si moins de 30 résultats
+  if (!filtered.includes('Autre')) {
+    filtered.push('Autre');
+  }
+
+  return filtered;
 }
