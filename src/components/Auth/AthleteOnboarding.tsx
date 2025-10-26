@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronRight, User, Trophy, Briefcase, CheckCircle, Mail } from 'lucide-react';
 import { AgentElea } from '../AI/AgentElea';
-import { searchSports } from '../../constants/olympicSports';
-import { searchClubs } from '../../constants/frenchSportsClubs';
+import { searchSports, searchClubs } from '../../services/referenceDataService';
 
 interface AthleteOnboardingProps {
   onComplete: (data: any) => void;
@@ -64,6 +63,8 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
   const [showSportSuggestions, setShowSportSuggestions] = useState(false);
   const [clubInput, setClubInput] = useState('');
   const [showClubSuggestions, setShowClubSuggestions] = useState(false);
+  const [filteredSports, setFilteredSports] = useState<string[]>([]);
+  const [filteredClubs, setFilteredClubs] = useState<string[]>([]);
   const [locationInput, setLocationInput] = useState('');
   const [showLocationSuggestions, setShowLocationSuggestions] = useState(false);
   const [sectorInput, setSectorInput] = useState('');
@@ -71,7 +72,14 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
   const [cityInput, setCityInput] = useState('');
   const [showCitySuggestions, setShowCitySuggestions] = useState(false);
 
-  const filteredSports = searchSports(sportInput);
+  // Charger les sports de manière asynchrone
+  useEffect(() => {
+    const loadSports = async () => {
+      const sports = await searchSports(sportInput);
+      setFilteredSports(sports);
+    };
+    loadSports();
+  }, [sportInput]);
 
   const filteredLocations = LOCATIONS.filter(loc =>
     loc.toLowerCase().includes(locationInput.toLowerCase())
@@ -95,7 +103,14 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
     setShowSportSuggestions(false);
   };
 
-  const filteredClubs = searchClubs(clubInput, formData.sport);
+  // Charger les clubs de manière asynchrone
+  useEffect(() => {
+    const loadClubs = async () => {
+      const clubs = await searchClubs(clubInput, formData.sport);
+      setFilteredClubs(clubs);
+    };
+    loadClubs();
+  }, [clubInput, formData.sport]);
 
   const handleClubSelect = (club: string) => {
     handleChange('current_club', club);
