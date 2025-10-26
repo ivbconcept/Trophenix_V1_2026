@@ -330,8 +330,20 @@ export interface FrenchCommune {
 }
 
 /**
+ * Normalise une chaîne pour la recherche (supprime tirets, espaces, accents)
+ */
+function normalizeSearchString(str: string): string {
+  return str
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // Supprime les accents
+    .replace(/[-\s']/g, ''); // Supprime tirets, espaces, apostrophes
+}
+
+/**
  * Recherche intelligente dans les 34 935 communes françaises
  * Utilise l'index full-text PostgreSQL pour des résultats ultra-rapides
+ * Insensible aux tirets, espaces et accents
  */
 export async function searchFrenchCommunes(query: string): Promise<string[]> {
   if (!query || query.trim().length === 0) {
@@ -350,22 +362,39 @@ export async function searchFrenchCommunes(query: string): Promise<string[]> {
     return data?.map(c => c.nom) || [];
   }
 
-  const lowerQuery = query.toLowerCase().trim();
+  const normalizedQuery = normalizeSearchString(query);
 
-  // Recherche avec pg_trgm pour la similarité
+  // Si la requête contient un chiffre, chercher aussi dans les codes postaux
+  const hasNumber = /\d/.test(query);
+
+  // Récupérer plus de résultats pour faire le filtrage côté client
   const { data, error } = await supabase
     .from('french_communes')
-    .select('nom, population')
-    .or(`nom.ilike.%${lowerQuery}%,code_postal.ilike.%${lowerQuery}%`)
+    .select('nom, code_postal, population')
+    .or(hasNumber
+      ? `nom.ilike.%${query}%,code_postal.ilike.%${query}%`
+      : `nom.ilike.%${query}%`)
     .order('population', { ascending: false })
-    .limit(200);
+    .limit(500);
 
   if (error) {
     console.error('Error searching communes:', error);
     return [];
   }
 
-  return data?.map(c => c.nom) || [];
+  if (!data) return [];
+
+  // Filtrage flexible côté client (insensible aux tirets/espaces/accents)
+  const filtered = data.filter(commune => {
+    const normalizedNom = normalizeSearchString(commune.nom);
+    const normalizedCodePostal = commune.code_postal.replace(/\s/g, '');
+
+    return normalizedNom.includes(normalizedQuery) ||
+           normalizedCodePostal.includes(query.replace(/\s/g, ''));
+  });
+
+  // Limiter à 200 résultats
+  return filtered.slice(0, 200).map(c => c.nom);
 }
 
 /**
