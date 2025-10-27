@@ -60,8 +60,8 @@ Le projet est déjà connecté à une instance Supabase :
 
 ```bash
 # .env (déjà configuré)
-VITE_SUPABASE_URL=https://fcryxwdpqbnxhymelcbo.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key-here
 ```
 
 **Si vous devez créer une nouvelle instance :**
@@ -424,7 +424,7 @@ npm install -g supabase
 supabase login
 
 # Link au projet
-supabase link --project-ref ufitfifaimndezqmczgd
+supabase link --project-ref your-project-ref
 
 # Appliquer toutes les migrations
 supabase db push
@@ -708,8 +708,8 @@ SELECT * FROM profiles WHERE auth.uid() = id;
 
 ```bash
 # .env.development
-VITE_SUPABASE_URL=https://fcryxwdpqbnxhymelcbo.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGc...
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key-here
 ```
 
 ### Staging

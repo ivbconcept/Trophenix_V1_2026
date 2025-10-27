@@ -128,8 +128,8 @@ Dans Vercel Dashboard → Settings → Environment Variables :
 
 ```bash
 # Production
-VITE_SUPABASE_URL=https://fcryxwdpqbnxhymelcbo.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key-here
 
 # Si backend Django séparé
 VITE_API_URL=https://api.trophenix.com
@@ -649,7 +649,7 @@ VITE_SUPABASE_URL=https://staging-xxx.supabase.co
 VITE_API_URL=https://staging-api.trophenix.com
 
 # .env.production
-VITE_SUPABASE_URL=https://fcryxwdpqbnxhymelcbo.supabase.co
+VITE_SUPABASE_URL=https://your-project.supabase.co
 VITE_API_URL=https://api.trophenix.com
 ```
 
