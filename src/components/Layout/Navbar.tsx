@@ -20,8 +20,8 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
         return [
           { id: 'athlete-dashboard', label: 'Dashboard', icon: LayoutDashboard },
           { id: 'messages', label: 'Inbox', icon: Mail },
-          { id: 'job-offers', label: 'Lesson', icon: BookOpen },
-          { id: 'my-applications', label: 'Task', icon: Briefcase },
+          { id: 'job-offers', label: 'Explorer', icon: BookOpen },
+          { id: 'my-applications', label: 'Suivi', icon: Briefcase },
           { id: 'athletes-directory', label: 'Group', icon: UsersRound },
         ];
       case 'company':
