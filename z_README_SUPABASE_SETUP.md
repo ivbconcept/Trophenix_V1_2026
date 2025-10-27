@@ -60,7 +60,7 @@ Le projet est déjà connecté à une instance Supabase :
 
 ```bash
 # .env (déjà configuré)
-VITE_SUPABASE_URL=https://ufitfifaimndezqmczgd.supabase.co
+VITE_SUPABASE_URL=https://fcryxwdpqbnxhymelcbo.supabase.co
 VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
@@ -708,7 +708,7 @@ SELECT * FROM profiles WHERE auth.uid() = id;
 
 ```bash
 # .env.development
-VITE_SUPABASE_URL=https://ufitfifaimndezqmczgd.supabase.co
+VITE_SUPABASE_URL=https://fcryxwdpqbnxhymelcbo.supabase.co
 VITE_SUPABASE_ANON_KEY=eyJhbGc...
 ```
 

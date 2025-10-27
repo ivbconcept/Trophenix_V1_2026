@@ -25,7 +25,7 @@ Ce document analyse les vulnérabilités potentielles du frontend et fournit des
 **Problème** :
 ```bash
 # Dans dist/assets/index-BkUuEXfK.js (bundle production)
-VITE_SUPABASE_URL=https://ufitfifaimndezqmczgd.supabase.co
+VITE_SUPABASE_URL=https://fcryxwdpqbnxhymelcbo.supabase.co
 VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
@@ -948,7 +948,7 @@ Ce document analyse les vulnérabilités potentielles du frontend et fournit des
 **Problème** :
 ```bash
 # Dans dist/assets/index-BkUuEXfK.js (bundle production)
-VITE_SUPABASE_URL=https://ufitfifaimndezqmczgd.supabase.co
+VITE_SUPABASE_URL=https://fcryxwdpqbnxhymelcbo.supabase.co
 VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
