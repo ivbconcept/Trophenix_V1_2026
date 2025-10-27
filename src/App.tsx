@@ -139,12 +139,22 @@ function AppContent() {
   }
 
   const handleDemoLogin = async () => {
-    const { error } = await signIn('athlete@test.com', 'test123');
-    if (!error) {
+    try {
+      console.log('🎯 Demo login starting...');
+      const { error } = await signIn('athlete@test.com', 'test123');
+
+      if (error) {
+        console.error('❌ Demo login error:', error);
+        alert('Erreur lors de la connexion démo. Veuillez réessayer.');
+        return;
+      }
+
+      console.log('✅ Demo login successful');
       await refreshProfile();
       setView('athlete-dashboard');
-    } else {
-      console.error('Demo login failed:', error);
+    } catch (err) {
+      console.error('❌ Demo login exception:', err);
+      alert('Erreur lors de la connexion démo. Veuillez réessayer.');
     }
   };
 

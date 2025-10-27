@@ -256,23 +256,38 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         .eq('id', hardcodedUser.id)
         .maybeSingle();
 
-      if (error || !data) {
-        return { error: new Error('Profil non trouvé dans DB2') };
-      }
-
       const mockUser: any = {
         id: hardcodedUser.id,
         email: hardcodedUser.email,
         created_at: new Date().toISOString()
       };
 
+      let profileData;
+      if (error || !data) {
+        console.warn('⚠️ Profile not found in DB2, using hardcoded data');
+        profileData = {
+          id: hardcodedUser.id,
+          email: hardcodedUser.email,
+          user_type: hardcodedUser.user_type,
+          first_name: hardcodedUser.first_name,
+          last_name: hardcodedUser.last_name,
+          company_name: hardcodedUser.company_name,
+          is_admin: false,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        };
+      } else {
+        profileData = data;
+      }
+
       setUser(mockUser);
-      setProfile(data as any);
+      setProfile(profileData as any);
 
       const authTime = performance.now() - startTime;
       console.log(`[Performance] Auth signIn took: ${authTime.toFixed(0)}ms`);
       return { error: null };
     } catch (error) {
+      console.error('SignIn error:', error);
       return { error: error as Error };
     }
   };
