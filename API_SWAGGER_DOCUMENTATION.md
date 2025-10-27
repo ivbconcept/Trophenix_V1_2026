@@ -37,9 +37,9 @@ Connecte-toi en tant qu'Admin et clique sur le bouton **"API Docs"** dans la bar
 ### **Méthode 1 : Utiliser l'API Key (pour les requêtes publiques)**
 
 1. Clique sur le bouton **"Authorize"** 🔓 en haut à droite
-2. Dans **ApiKey** (apikey), colle :
+2. Dans **ApiKey** (apikey), colle ta clé anon Supabase :
    ```
-   eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ5ZHdrZ3V2bWF1b3l1Ynh4enRsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAzNDM3MTcsImV4cCI6MjA3NTkxOTcxN30.apV1Q-hJjUacilv4RJD5o1p8v6lTaDvGT8eoAiK-esA
+   your-anon-key-here
    ```
 3. Clique sur **Authorize**
 

@@ -676,7 +676,7 @@ Response: { success: true }
 
 **JWT Token** dans le header :
 ```
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Authorization: Bearer your-jwt-token-here
 ```
 
 **Payload JWT recommandé** :

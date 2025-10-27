@@ -35,9 +35,9 @@ VITE_SUPABASE_ANON_KEY=your-anon-key-here
 curl https://trophenix.com/assets/index-*.js | grep SUPABASE
 
 # Puis utiliser l'API directement
-curl -X POST https://ufitfifaimndezqmczgd.supabase.co/rest/v1/profiles \
-  -H "apikey: eyJhbGc..." \
-  -H "Authorization: Bearer eyJhbGc..." \
+curl -X POST https://your-project.supabase.co/rest/v1/profiles \
+  -H "apikey: your-key-here" \
+  -H "Authorization: Bearer your-key-here" \
   -d '{"evil": "payload"}'
 ```
 
@@ -371,7 +371,7 @@ logger.debug('SignUp result:', logger.sanitize(result));
 ```javascript
 // Brute force login
 for (let i = 0; i < 10000; i++) {
-  await fetch('https://ufitfifaimndezqmczgd.supabase.co/auth/v1/token', {
+  await fetch('https://your-project.supabase.co/auth/v1/token', {
     method: 'POST',
     body: JSON.stringify({
       email: 'victim@example.com',
@@ -958,9 +958,9 @@ VITE_SUPABASE_ANON_KEY=your-anon-key-here
 curl https://trophenix.com/assets/index-*.js | grep SUPABASE
 
 # Puis utiliser l'API directement
-curl -X POST https://ufitfifaimndezqmczgd.supabase.co/rest/v1/profiles \
-  -H "apikey: eyJhbGc..." \
-  -H "Authorization: Bearer eyJhbGc..." \
+curl -X POST https://your-project.supabase.co/rest/v1/profiles \
+  -H "apikey: your-key-here" \
+  -H "Authorization: Bearer your-key-here" \
   -d '{"evil": "payload"}'
 ```
 
@@ -1294,7 +1294,7 @@ logger.debug('SignUp result:', logger.sanitize(result));
 ```javascript
 // Brute force login
 for (let i = 0; i < 10000; i++) {
-  await fetch('https://ufitfifaimndezqmczgd.supabase.co/auth/v1/token', {
+  await fetch('https://your-project.supabase.co/auth/v1/token', {
     method: 'POST',
     body: JSON.stringify({
       email: 'victim@example.com',

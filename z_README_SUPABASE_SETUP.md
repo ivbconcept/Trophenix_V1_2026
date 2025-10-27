@@ -80,7 +80,7 @@ VITE_SUPABASE_ANON_KEY=your-anon-key-here
 ```bash
 # Supabase Configuration
 VITE_SUPABASE_URL=https://votre-projet.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+VITE_SUPABASE_ANON_KEY=your-anon-key-here
 ```
 
 **IMPORTANT** :
@@ -717,7 +717,7 @@ VITE_SUPABASE_ANON_KEY=your-anon-key-here
 ```bash
 # .env.staging (sur Vercel/Netlify)
 VITE_SUPABASE_URL=https://staging-project.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGc...
+VITE_SUPABASE_ANON_KEY=your-anon-key-here
 ```
 
 ### Production
@@ -725,7 +725,7 @@ VITE_SUPABASE_ANON_KEY=eyJhbGc...
 ```bash
 # .env.production (sur Vercel/Netlify)
 VITE_SUPABASE_URL=https://prod-project.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGc...
+VITE_SUPABASE_ANON_KEY=your-anon-key-here
 ```
 
 **Bonnes pratiques** :
