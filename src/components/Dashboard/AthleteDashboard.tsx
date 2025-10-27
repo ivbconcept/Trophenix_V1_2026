@@ -82,7 +82,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
             <div className="bg-white rounded-3xl p-6 shadow-sm">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-bold text-slate-900">Your Lesson</h2>
+                <h2 className="text-2xl font-bold text-slate-900">Vos Opportunités</h2>
                 <button className="text-indigo-600 font-medium text-sm hover:text-indigo-700">
                   See all
                 </button>
@@ -91,7 +91,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-slate-100">
-                      <th className="text-left py-3 px-2 text-xs font-medium text-slate-500 uppercase">Mentor</th>
+                      <th className="text-left py-3 px-2 text-xs font-medium text-slate-500 uppercase">Entreprise</th>
                       <th className="text-left py-3 px-2 text-xs font-medium text-slate-500 uppercase">Type</th>
                       <th className="text-left py-3 px-2 text-xs font-medium text-slate-500 uppercase">Description</th>
                       <th className="text-center py-3 px-2 text-xs font-medium text-slate-500 uppercase">Action</th>
@@ -99,25 +99,25 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   </thead>
                   <tbody>
                     <LessonRow
-                      mentorName="Padhang Satrio"
-                      mentorDate="2/16/2004"
-                      type="RECONVERSION"
+                      mentorName="Nike France"
+                      mentorDate="15/10/2025"
+                      type="SPONSORING"
                       typeColor="purple"
-                      description="Comprendre la Reconversion Professionnelle"
+                      description="Partenariat Équipement Sportif"
                     />
                     <LessonRow
-                      mentorName="John Tosan"
-                      mentorDate="12/8/2003"
-                      type="OPPORTUNITÉS"
+                      mentorName="Decathlon Pro"
+                      mentorDate="18/10/2025"
+                      type="EMPLOI"
                       typeColor="blue"
-                      description="Explorer les Opportunités d'Emploi"
+                      description="Manager Commercial - CDI Paris"
                     />
                     <LessonRow
-                      mentorName="Bagas Mahpie"
-                      mentorDate="5/20/2002"
-                      type="NETWORKING"
+                      mentorName="Adidas Team"
+                      mentorDate="20/10/2025"
+                      type="SPONSORING"
                       typeColor="pink"
-                      description="Construire votre Réseau Professionnel"
+                      description="Ambassadeur de Marque"
                     />
                   </tbody>
                 </table>
