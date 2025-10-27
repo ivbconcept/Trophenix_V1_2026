@@ -212,97 +212,65 @@ function AppContent() {
     return <SuperAdminConsole />;
   }
 
-  return (
-    <>
-      {showNavbar && (
-        <Navbar
-          currentView={view}
-          onNavigate={handleNavigate}
-          onLogout={handleLogout}
-        />
-      )}
+  if (showNavbar) {
+    return (
+      <Navbar
+        currentView={view}
+        onNavigate={handleNavigate}
+        onLogout={handleLogout}
+      >
+        {view === 'athlete-dashboard' && (
+          <AthleteDashboard onNavigate={handleNavigate} />
+        )}
 
-      {view === 'athlete-dashboard' && (
-        <AthleteDashboard onNavigate={handleNavigate} />
-      )}
+        {view === 'company-dashboard' && (
+          <CompanyDashboard onNavigate={handleNavigate} />
+        )}
 
-      {view === 'company-dashboard' && (
-        <CompanyDashboard onNavigate={handleNavigate} />
-      )}
+        {view === 'job-offers' && <JobsList />}
 
-      {view === 'job-offers' && (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-          <JobsList />
-        </div>
-      )}
+        {view === 'my-applications' && <MyApplications />}
 
-      {view === 'my-applications' && (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-          <MyApplications />
-        </div>
-      )}
+        {view === 'manage-offers' && <ManageJobOffers />}
 
-      {view === 'manage-offers' && (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-          <ManageJobOffers />
-        </div>
-      )}
+        {view === 'create-offer' && <ManageJobOffers />}
 
-      {view === 'create-offer' && (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-          <ManageJobOffers />
-        </div>
-      )}
+        {view === 'received-applications' && <ViewApplications />}
 
-      {view === 'received-applications' && (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-          <ViewApplications />
-        </div>
-      )}
+        {view === 'athletes-directory' && <AthleteDirectory />}
 
-      {view === 'athletes-directory' && (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-          <AthleteDirectory />
-        </div>
-      )}
+        {view === 'companies-directory' && <CompanyDirectory />}
 
-      {view === 'companies-directory' && (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-          <CompanyDirectory />
-        </div>
-      )}
+        {view === 'messages' && <MessagesList />}
 
-      {view === 'messages' && (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-          <MessagesList />
-        </div>
-      )}
-
-      {view === 'notifications' && (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-8">
-          <div className="max-w-7xl mx-auto">
-            <h1 className="text-3xl font-bold text-slate-900 mb-4">Notifications</h1>
-            <p className="text-slate-600">Cette fonctionnalité sera bientôt disponible</p>
+        {view === 'notifications' && (
+          <div className="p-8">
+            <div className="max-w-7xl mx-auto">
+              <h1 className="text-3xl font-bold text-slate-900 mb-4">Notifications</h1>
+              <p className="text-slate-600">Cette fonctionnalité sera bientôt disponible</p>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {view === 'profile' && <UserProfile />}
+        {view === 'profile' && <UserProfile />}
 
-      {view === 'athletes-list' && (
-        <AthletesList onViewProfile={handleViewAthleteProfile} />
-      )}
+        {view === 'athletes-list' && (
+          <AthletesList onViewProfile={handleViewAthleteProfile} />
+        )}
 
-      {view === 'athlete-detail' && selectedAthleteId && (
-        <AthleteDetail
-          athleteId={selectedAthleteId}
-          onBack={handleBackToAthletesList}
-        />
-      )}
+        {view === 'athlete-detail' && selectedAthleteId && (
+          <AthleteDetail
+            athleteId={selectedAthleteId}
+            onBack={handleBackToAthletesList}
+          />
+        )}
 
-      {isAuthenticated && <AgentElea />}
-    </>
-  );
+        {isAuthenticated && <AgentElea />}
+      </Navbar>
+    );
+  }
+
+  return null;
 }
 
 function App() {
