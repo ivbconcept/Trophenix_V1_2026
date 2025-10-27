@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { ChevronRight, User, Trophy, Briefcase, CheckCircle, Mail } from 'lucide-react';
 import { AgentElea } from '../AI/AgentElea';
+import { SportSelectorModal } from '../UI/SportSelectorModal';
+import { SituationSelectorModal } from '../UI/SituationSelectorModal';
 import {
   searchSports,
   searchClubs,
@@ -73,6 +75,8 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
   const [showCitySuggestions, setShowCitySuggestions] = useState(false);
   const [nationalityInput, setNationalityInput] = useState('');
   const [showNationalitySuggestions, setShowNationalitySuggestions] = useState(false);
+  const [showSportModal, setShowSportModal] = useState(false);
+  const [showSituationModal, setShowSituationModal] = useState(false);
 
   // Charger les sports de manière asynchrone
   useEffect(() => {
@@ -246,54 +250,30 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
             </div>
           </div>
 
-          <div className="relative">
-            <input
-              type="text"
-              value={sportInput}
-              onChange={(e) => {
-                setSportInput(e.target.value);
-                handleChange('sport', e.target.value);
-                setShowSportSuggestions(true);
-              }}
-              onFocus={() => setShowSportSuggestions(true)}
-              onBlur={() => setTimeout(() => setShowSportSuggestions(false), 200)}
-              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-              placeholder="Sport pratiqué *"
-            />
-            {showSportSuggestions && filteredSports.length > 0 && (
-              <div className="absolute z-10 w-full mt-1 bg-white border border-slate-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
-                {filteredSports.map((sport) => (
-                  <button
-                    key={sport}
-                    type="button"
-                    onClick={() => handleSportSelect(sport)}
-                    className="w-full px-4 py-2 text-left hover:bg-slate-50 transition-colors"
-                  >
-                    {sport}
-                  </button>
-                ))}
-              </div>
-            )}
+          <div>
+            <button
+              type="button"
+              onClick={() => setShowSportModal(true)}
+              className="w-full px-4 py-3 border-2 border-slate-300 rounded-lg hover:border-slate-400 transition-all text-left flex items-center justify-between"
+            >
+              <span className={formData.sport ? 'text-slate-900' : 'text-slate-400'}>
+                {formData.sport || 'Sélectionner votre sport *'}
+              </span>
+              <Trophy className="w-5 h-5 text-slate-400" />
+            </button>
           </div>
 
           <div>
-            <p className="text-sm font-medium text-slate-700 mb-3">Situation *</p>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              {situations.map((situation) => (
-                <button
-                  key={situation}
-                  type="button"
-                  onClick={() => handleChange('situation', situation)}
-                  className={`px-4 py-3 border-2 rounded-lg transition-all text-sm ${
-                    formData.situation === situation
-                      ? 'border-indigo-600 bg-indigo-600 text-white'
-                      : 'border-slate-200 hover:border-indigo-300'
-                  }`}
-                >
-                  {situation}
-                </button>
-              ))}
-            </div>
+            <button
+              type="button"
+              onClick={() => setShowSituationModal(true)}
+              className="w-full px-4 py-3 border-2 border-slate-300 rounded-lg hover:border-slate-400 transition-all text-left flex items-center justify-between"
+            >
+              <span className={formData.situation ? 'text-slate-900' : 'text-slate-400'}>
+                {formData.situation || 'Sélectionner votre situation *'}
+              </span>
+              <User className="w-5 h-5 text-slate-400" />
+            </button>
           </div>
 
           <div>
@@ -768,6 +748,23 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
           formData: formData,
         }}
         position="bottom-right"
+      />
+
+      <SportSelectorModal
+        isOpen={showSportModal}
+        onClose={() => setShowSportModal(false)}
+        onSelect={(sport) => {
+          handleChange('sport', sport);
+          setSportInput(sport);
+        }}
+        currentSelection={formData.sport}
+      />
+
+      <SituationSelectorModal
+        isOpen={showSituationModal}
+        onClose={() => setShowSituationModal(false)}
+        onSelect={(situation) => handleChange('situation', situation)}
+        currentSelection={formData.situation}
       />
     </div>
   );
