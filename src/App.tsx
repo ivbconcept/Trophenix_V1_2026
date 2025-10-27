@@ -113,7 +113,6 @@ function AppContent() {
   };
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
     setView('landing');
   };
 
