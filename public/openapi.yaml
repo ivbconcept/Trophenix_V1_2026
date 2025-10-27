@@ -1,0 +1,868 @@
+openapi: 3.0.3
+info:
+  title: Trophenix API
+  version: 1.0.0
+  description: |
+    API complète de la plateforme Trophenix - Connexion entre athlètes de haut niveau et entreprises.
+
+    ## Authentification
+
+    L'API utilise l'authentification JWT via Supabase Auth.
+
+    Pour vous authentifier :
+    1. Créez un compte via `/auth/v1/signup`
+    2. Connectez-vous via `/auth/v1/token?grant_type=password`
+    3. Utilisez le token JWT dans le header `Authorization: Bearer {token}`
+
+    ## Types d'utilisateurs
+
+    - **athlete** : Athlètes de haut niveau
+    - **company** : Entreprises recruteurs
+    - **sponsor** : Sponsors/partenaires
+    - **admin** : Administrateurs plateforme
+
+  contact:
+    name: Support Trophenix
+    email: support@trophenix.com
+  license:
+    name: Proprietary
+
+servers:
+  - url: https://your-project.supabase.co
+    description: Production Supabase API
+  - url: http://localhost:54321
+    description: Local Supabase (dev)
+
+tags:
+  - name: Auth
+    description: Authentification et gestion des utilisateurs
+  - name: Profiles
+    description: Profils utilisateurs
+  - name: Athletes
+    description: Profils athlètes
+  - name: Companies
+    description: Profils entreprises
+  - name: Sponsors
+    description: Profils sponsors
+  - name: Jobs
+    description: Offres d'emploi
+  - name: Applications
+    description: Candidatures
+  - name: Messages
+    description: Messagerie
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Token JWT obtenu via `/auth/v1/token`
+
+    ApiKey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: Clé API Supabase (anon key)
+
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Message d'erreur
+        message:
+          type: string
+          description: Détails de l'erreur
+        code:
+          type: string
+          description: Code d'erreur
+
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: ID unique de l'utilisateur
+        email:
+          type: string
+          format: email
+          description: Email de l'utilisateur
+        email_confirmed_at:
+          type: string
+          format: date-time
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+
+    Profile:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: ID du profil (= user_id)
+        user_type:
+          type: string
+          enum: [athlete, company, sponsor, admin]
+          description: Type d'utilisateur
+        first_name:
+          type: string
+          description: Prénom
+        last_name:
+          type: string
+          description: Nom
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+          nullable: true
+        avatar_url:
+          type: string
+          format: uri
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    AthleteProfile:
+      allOf:
+        - $ref: '#/components/schemas/Profile'
+        - type: object
+          properties:
+            birth_date:
+              type: string
+              format: date
+              description: Date de naissance
+            nationality:
+              type: string
+              description: Nationalité
+            current_club:
+              type: string
+              description: Club actuel
+            sport:
+              type: string
+              description: Sport pratiqué
+            sport_level:
+              type: string
+              description: Niveau sportif
+              enum: [international, national, regional, local]
+            ministerial_list:
+              type: string
+              description: Liste ministérielle
+              enum: [elite, senior, espoir, jeune, collectif_national, reconversion, haut_niveau]
+            desired_field:
+              type: string
+              description: Domaine professionnel souhaité
+            position_type:
+              type: string
+              description: Type de poste recherché
+            availability:
+              type: string
+              description: Disponibilité
+            geographic_zone:
+              type: string
+              description: Zone géographique
+            city_of_residence:
+              type: string
+              description: Ville de résidence
+
+    CompanyProfile:
+      allOf:
+        - $ref: '#/components/schemas/Profile'
+        - type: object
+          properties:
+            company_name:
+              type: string
+              description: Nom de l'entreprise
+            sector:
+              type: string
+              description: Secteur d'activité
+            size:
+              type: string
+              description: Taille de l'entreprise
+              enum: [1-10, 11-50, 51-200, 201-500, 500+]
+            location:
+              type: string
+              description: Localisation
+            description:
+              type: string
+              description: Description de l'entreprise
+            website:
+              type: string
+              format: uri
+              nullable: true
+
+    Job:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        company_id:
+          type: string
+          format: uuid
+          description: ID de l'entreprise
+        title:
+          type: string
+          description: Titre du poste
+        description:
+          type: string
+          description: Description du poste
+        contract_type:
+          type: string
+          description: Type de contrat
+          enum: [CDI, CDD, Alternance, Stage, Freelance]
+        location:
+          type: string
+          description: Lieu du poste
+        sector:
+          type: string
+          description: Secteur
+        required_skills:
+          type: array
+          items:
+            type: string
+        salary_range:
+          type: string
+          nullable: true
+        remote_work:
+          type: boolean
+          default: false
+        status:
+          type: string
+          enum: [draft, published, closed]
+          default: draft
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    Application:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        job_id:
+          type: string
+          format: uuid
+        athlete_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [pending, reviewed, interview, accepted, rejected]
+          default: pending
+        cover_letter:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+security:
+  - BearerAuth: []
+  - ApiKey: []
+
+paths:
+  /auth/v1/signup:
+    post:
+      tags:
+        - Auth
+      summary: Créer un compte
+      description: Inscription d'un nouvel utilisateur
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: athlete@example.com
+                password:
+                  type: string
+                  format: password
+                  minLength: 8
+                  example: SecurePass123!
+                data:
+                  type: object
+                  description: Métadonnées utilisateur
+                  properties:
+                    user_type:
+                      type: string
+                      enum: [athlete, company, sponsor]
+                    first_name:
+                      type: string
+                    last_name:
+                      type: string
+      responses:
+        '200':
+          description: Compte créé avec succès
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+                  session:
+                    type: object
+                    nullable: true
+        '400':
+          description: Erreur de validation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /auth/v1/token:
+    post:
+      tags:
+        - Auth
+      summary: Se connecter
+      description: Authentification et obtention d'un token JWT
+      security: []
+      parameters:
+        - in: query
+          name: grant_type
+          required: true
+          schema:
+            type: string
+            enum: [password]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: athlete@example.com
+                password:
+                  type: string
+                  format: password
+                  example: SecurePass123!
+      responses:
+        '200':
+          description: Authentification réussie
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    description: Token JWT
+                  token_type:
+                    type: string
+                    example: bearer
+                  expires_in:
+                    type: integer
+                    example: 3600
+                  refresh_token:
+                    type: string
+                  user:
+                    $ref: '#/components/schemas/User'
+        '400':
+          description: Identifiants invalides
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /auth/v1/user:
+    get:
+      tags:
+        - Auth
+      summary: Obtenir l'utilisateur courant
+      description: Récupère les informations de l'utilisateur authentifié
+      responses:
+        '200':
+          description: Informations utilisateur
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Non authentifié
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /auth/v1/logout:
+    post:
+      tags:
+        - Auth
+      summary: Se déconnecter
+      description: Révoque le token JWT actuel
+      responses:
+        '204':
+          description: Déconnexion réussie
+
+  /rest/v1/profiles:
+    get:
+      tags:
+        - Profiles
+      summary: Lister les profils
+      description: Récupère la liste des profils utilisateurs
+      parameters:
+        - in: query
+          name: user_type
+          schema:
+            type: string
+            enum: [athlete, company, sponsor, admin]
+          description: Filtrer par type d'utilisateur
+        - in: query
+          name: select
+          schema:
+            type: string
+            example: "*"
+          description: Colonnes à sélectionner
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 10
+            maximum: 1000
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: Liste des profils
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Profile'
+
+    post:
+      tags:
+        - Profiles
+      summary: Créer un profil
+      description: Crée un nouveau profil utilisateur
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profile'
+      responses:
+        '201':
+          description: Profil créé
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+        '400':
+          description: Erreur de validation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /rest/v1/profiles/{id}:
+    get:
+      tags:
+        - Profiles
+      summary: Obtenir un profil
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Détails du profil
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+        '404':
+          description: Profil non trouvé
+
+    patch:
+      tags:
+        - Profiles
+      summary: Modifier un profil
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profile'
+      responses:
+        '200':
+          description: Profil modifié
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+
+    delete:
+      tags:
+        - Profiles
+      summary: Supprimer un profil
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Profil supprimé
+
+  /rest/v1/athlete_profiles:
+    get:
+      tags:
+        - Athletes
+      summary: Lister les athlètes
+      description: Récupère la liste des profils athlètes
+      parameters:
+        - in: query
+          name: sport
+          schema:
+            type: string
+          description: Filtrer par sport
+        - in: query
+          name: sport_level
+          schema:
+            type: string
+          description: Filtrer par niveau
+        - in: query
+          name: select
+          schema:
+            type: string
+            example: "*"
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: Liste des athlètes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AthleteProfile'
+
+    post:
+      tags:
+        - Athletes
+      summary: Créer un profil athlète
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AthleteProfile'
+      responses:
+        '201':
+          description: Profil athlète créé
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AthleteProfile'
+
+  /rest/v1/company_profiles:
+    get:
+      tags:
+        - Companies
+      summary: Lister les entreprises
+      parameters:
+        - in: query
+          name: sector
+          schema:
+            type: string
+          description: Filtrer par secteur
+        - in: query
+          name: select
+          schema:
+            type: string
+            example: "*"
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: Liste des entreprises
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CompanyProfile'
+
+    post:
+      tags:
+        - Companies
+      summary: Créer un profil entreprise
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompanyProfile'
+      responses:
+        '201':
+          description: Profil entreprise créé
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompanyProfile'
+
+  /rest/v1/jobs:
+    get:
+      tags:
+        - Jobs
+      summary: Lister les offres d'emploi
+      parameters:
+        - in: query
+          name: status
+          schema:
+            type: string
+            enum: [draft, published, closed]
+          description: Filtrer par statut
+        - in: query
+          name: contract_type
+          schema:
+            type: string
+          description: Filtrer par type de contrat
+        - in: query
+          name: sector
+          schema:
+            type: string
+          description: Filtrer par secteur
+        - in: query
+          name: select
+          schema:
+            type: string
+            example: "*"
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: Liste des offres
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Job'
+
+    post:
+      tags:
+        - Jobs
+      summary: Créer une offre d'emploi
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Job'
+      responses:
+        '201':
+          description: Offre créée
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+
+  /rest/v1/jobs/{id}:
+    get:
+      tags:
+        - Jobs
+      summary: Obtenir une offre
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Détails de l'offre
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+
+    patch:
+      tags:
+        - Jobs
+      summary: Modifier une offre
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Job'
+      responses:
+        '200':
+          description: Offre modifiée
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+
+    delete:
+      tags:
+        - Jobs
+      summary: Supprimer une offre
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Offre supprimée
+
+  /rest/v1/applications:
+    get:
+      tags:
+        - Applications
+      summary: Lister les candidatures
+      parameters:
+        - in: query
+          name: athlete_id
+          schema:
+            type: string
+            format: uuid
+          description: Filtrer par athlète
+        - in: query
+          name: job_id
+          schema:
+            type: string
+            format: uuid
+          description: Filtrer par offre
+        - in: query
+          name: status
+          schema:
+            type: string
+          description: Filtrer par statut
+        - in: query
+          name: select
+          schema:
+            type: string
+            example: "*"
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: Liste des candidatures
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Application'
+
+    post:
+      tags:
+        - Applications
+      summary: Postuler à une offre
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Application'
+      responses:
+        '201':
+          description: Candidature envoyée
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+
+  /rest/v1/applications/{id}:
+    patch:
+      tags:
+        - Applications
+      summary: Modifier le statut d'une candidature
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum: [pending, reviewed, interview, accepted, rejected]
+      responses:
+        '200':
+          description: Statut modifié
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'

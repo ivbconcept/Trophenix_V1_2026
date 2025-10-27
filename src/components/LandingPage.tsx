@@ -1,4 +1,4 @@
-import { Trophy, Users, Briefcase, CheckCircle, ArrowRight, Award, ChevronDown } from 'lucide-react';
+import { Trophy, Users, Briefcase, CheckCircle, ArrowRight, Award, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import { AgentElea } from './AI/AgentElea';
 import { FEATURES } from '../config/features';
 import { useState, useEffect } from 'react';
@@ -11,10 +11,10 @@ const CARD_IMAGES = [
 ];
 
 const CARD_DATA = [
-  { title: 'Race Series 2025 Now Open', description: 'Embark on the ultimate test of endurance and determination with marathons, where each stride is a journey of self-discovery and achievement.' },
-  { title: 'Charity Entries Are Now Open', description: 'Make a difference while pushing your limits. Join our charity program and run for a cause that matters to you.' },
-  { title: 'Thanks To All For Completing The Survey', description: 'Your feedback helps us improve and create better experiences for our community. Thank you for your participation.' },
-  { title: 'Join Our Community', description: 'Connect with like-minded athletes, share your journey, and be part of something bigger than yourself.' }
+  { title: 'Profil Athlète Complet', description: 'Créez un portfolio professionnel qui met en valeur vos performances, compétences et parcours sportif. Attirez l\'attention des recruteurs et sponsors.' },
+  { title: 'Offres d\'Emploi Ciblées', description: 'Accédez à des opportunités professionnelles adaptées à votre profil sportif. Des entreprises recherchent activement des talents comme vous.' },
+  { title: 'Accompagnement Personnalisé', description: 'Bénéficiez de l\'expertise d\'ELEA, votre assistante IA, pour optimiser votre reconversion et prendre les meilleures décisions.' },
+  { title: 'Réseau & Sponsoring', description: 'Connectez-vous avec des entreprises partenaires, trouvez des sponsors et rejoignez une communauté engagée dans votre réussite.' }
 ];
 
 const SECTORS = [
@@ -62,7 +62,177 @@ import davideAracri from '../assets/images/davide-aracri-Q2mL8cqqI7E-unsplash.jp
 import jacekDylag from '../assets/images/jacek-dylag-fZglO1JkwoM-unsplash.jpg';
 import jadonJohnson from '../assets/images/jadon-johnson-1wS1AHSvqeg-unsplash.jpg';
 import matthieuPetiard from '../assets/images/matthieu-petiard-Pf6e3o0GL4M-unsplash.jpg';
-import passeDecisiveLogo from '../assets/images/Logo 2.png';
+import franceTravailLogo from '../assets/images/logo france travaiil.webp';
+import wexecutiveLogo from '../assets/images/logo w executivve.png';
+import diversidaysLogo from '../assets/images/Diversidays_Logo.png';
+
+const SupportersCarousel = () => {
+  const [offset, setOffset] = useState(0);
+
+  const supporters = [
+    {
+      id: 1,
+      name: 'Marie Dubois',
+      sport: 'Athlétisme',
+      achievement: 'Championne de France 400m',
+      image: 'https://images.pexels.com/photos/3764011/pexels-photo-3764011.jpeg?auto=compress&cs=tinysrgb&w=800',
+      gradient: 'from-slate-900/90'
+    },
+    {
+      id: 2,
+      name: 'Thomas Martin',
+      sport: 'Football',
+      achievement: 'Ex-Professionnel Ligue 1',
+      image: 'https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&cs=tinysrgb&w=800',
+      gradient: 'from-slate-900/90'
+    },
+    {
+      id: 3,
+      name: 'Sophie Bernard',
+      sport: 'Natation',
+      achievement: 'Médaillée Olympique',
+      image: 'https://images.pexels.com/photos/863988/pexels-photo-863988.jpeg?auto=compress&cs=tinysrgb&w=800',
+      gradient: 'from-blue-900/95',
+      featured: true
+    },
+    {
+      id: 4,
+      name: 'Lucas Petit',
+      sport: 'Rugby',
+      achievement: 'International XV de France',
+      image: 'https://images.pexels.com/photos/1618200/pexels-photo-1618200.jpeg?auto=compress&cs=tinysrgb&w=800',
+      gradient: 'from-slate-900/90'
+    },
+    {
+      id: 5,
+      name: 'Amélie Rousseau',
+      sport: 'Tennis',
+      achievement: 'Top 50 WTA',
+      image: 'https://images.pexels.com/photos/1661950/pexels-photo-1661950.jpeg?auto=compress&cs=tinysrgb&w=800',
+      gradient: 'from-slate-900/90'
+    },
+    {
+      id: 6,
+      name: 'Antoine Lefebvre',
+      sport: 'Cyclisme',
+      achievement: 'Vainqueur Tour de France U23',
+      image: 'https://images.pexels.com/photos/163407/cyclists-trail-bike-multi-track-163407.jpeg?auto=compress&cs=tinysrgb&w=800',
+      gradient: 'from-slate-900/90'
+    },
+    {
+      id: 7,
+      name: 'Camille Moreau',
+      sport: 'Basket-ball',
+      achievement: 'Championne d\'Europe',
+      image: 'https://images.pexels.com/photos/1080882/pexels-photo-1080882.jpeg?auto=compress&cs=tinysrgb&w=800',
+      gradient: 'from-slate-900/90'
+    },
+    {
+      id: 8,
+      name: 'Julien Girard',
+      sport: 'Handball',
+      achievement: 'Champion du Monde',
+      image: 'https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=800',
+      gradient: 'from-slate-900/90'
+    }
+  ];
+
+  const duplicatedSupporters = [...supporters, ...supporters, ...supporters, ...supporters, ...supporters];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setOffset((prevOffset) => {
+        const cardWidth = 320;
+        const totalWidth = cardWidth * supporters.length;
+        const newOffset = prevOffset - 1.2;
+        if (newOffset < -totalWidth) {
+          return newOffset + totalWidth;
+        }
+        return newOffset;
+      });
+    }, 16);
+
+    return () => clearInterval(interval);
+  }, [supporters.length]);
+
+  const getCardStyle = (basePosition: number) => {
+    const cardWidth = 320;
+    const xPosition = basePosition + offset;
+
+    const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 1200;
+    const screenCenter = viewportWidth / 2;
+    const cardCenter = xPosition + (cardWidth / 2);
+    const distanceFromCenter = Math.abs(cardCenter - screenCenter);
+
+    const maxDistance = 300;
+    const ratio = Math.max(0, Math.min(1, 1 - (distanceFromCenter / maxDistance)));
+
+    const scale = 0.7 + (ratio * 0.3);
+    const opacity = 0.4 + (ratio * 0.6);
+    const zIndex = Math.floor(5 + (ratio * 25));
+
+    return { scale, opacity, zIndex };
+  };
+
+  return (
+    <section className="py-12 bg-slate-50 overflow-hidden">
+      <div className="max-w-full mx-auto">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-4">
+            Ils nous font confiance
+          </h2>
+          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+            Découvrez les athlètes qui ont choisi Trophenix pour réussir leur reconversion professionnelle
+          </p>
+        </div>
+
+        <div className="relative h-[450px] overflow-hidden">
+          <div className="absolute inset-0 flex items-center pointer-events-none">
+            {duplicatedSupporters.map((supporter, index) => {
+              const cardWidth = 320;
+              const basePosition = index * cardWidth;
+              const style = getCardStyle(basePosition);
+
+              return (
+                <div
+                  key={`${supporter.id}-${index}`}
+                  className="absolute"
+                  style={{
+                    left: `${basePosition + offset}px`,
+                    transform: `scale(${style.scale})`,
+                    opacity: style.opacity,
+                    zIndex: style.zIndex,
+                  }}
+                >
+                  <div className="relative rounded-3xl overflow-hidden shadow-2xl pointer-events-auto w-72 h-96 transition-all duration-300 hover:scale-105">
+                    <img
+                      src={supporter.image}
+                      alt={supporter.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 left-4 right-4">
+                      <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/30">
+                        {supporter.sport}
+                      </span>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 text-white p-6">
+                      <h3 className="font-bold mb-2 text-2xl">
+                        {supporter.name}
+                      </h3>
+                      <p className="text-sm text-blue-100 font-medium">
+                        {supporter.achievement}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 interface LandingPageProps {
   onSignUp: () => void;
@@ -88,8 +258,198 @@ const SPORTS_MEDIA: MediaItem[] = [
   { url: matthieuPetiard, type: 'image' }
 ];
 
+function VisionTabs() {
+  const [activeTab, setActiveTab] = useState<'sportifs' | 'federations' | 'marques' | 'entreprises'>('sportifs');
+
+  const tabContent = {
+    sportifs: {
+      title: 'Sportifs',
+      description: 'Optimisez votre carrière sportive et professionnelle',
+      features: [
+        {
+          title: 'Portfolio Professionnel',
+          description: 'Créez un profil complet mettant en valeur vos performances, compétences et parcours sportif.',
+          icon: Trophy
+        },
+        {
+          title: 'Opportunités d\'Emploi',
+          description: 'Accédez à des offres exclusives adaptées à votre profil sportif et vos ambitions.',
+          icon: Briefcase
+        },
+        {
+          title: 'Sponsoring',
+          description: 'Trouvez des sponsors et développez votre visibilité auprès des marques.',
+          icon: Award
+        },
+        {
+          title: 'Agent IA Personnel',
+          description: 'Bénéficiez de conseils personnalisés grâce à ELEA, votre assistante IA dédiée.',
+          icon: Users
+        }
+      ]
+    },
+    federations: {
+      title: 'Fédérations & Clubs',
+      description: 'Gérez et développez vos talents efficacement',
+      features: [
+        {
+          title: 'Gestion des Athlètes',
+          description: 'Suivez les performances et le développement de vos athlètes en temps réel.',
+          icon: Users
+        },
+        {
+          title: 'Analytics Avancés',
+          description: 'Analysez les données pour optimiser les programmes d\'entraînement et la stratégie.',
+          icon: Trophy
+        },
+        {
+          title: 'Recrutement',
+          description: 'Identifiez et recrutez les meilleurs talents grâce à notre plateforme.',
+          icon: CheckCircle
+        },
+        {
+          title: 'Communication',
+          description: 'Restez connecté avec vos athlètes, staff et partenaires en un seul endroit.',
+          icon: Users
+        }
+      ]
+    },
+    marques: {
+      title: 'Marques & Sponsors',
+      description: 'Trouvez vos ambassadeurs et maximisez votre visibilité',
+      features: [
+        {
+          title: 'Marketplace d\'Ambassadeurs',
+          description: 'Découvrez et contactez les athlètes qui correspondent à vos valeurs et objectifs.',
+          icon: Users
+        },
+        {
+          title: 'ROI Analytics',
+          description: 'Mesurez l\'impact de vos partenariats sportifs avec des données précises.',
+          icon: Trophy
+        },
+        {
+          title: 'Gestion de Contrats',
+          description: 'Automatisez la gestion de vos contrats de sponsoring et partenariats.',
+          icon: CheckCircle
+        },
+        {
+          title: 'Visibilité Garantie',
+          description: 'Bénéficiez d\'une exposition auprès d\'une communauté sportive engagée.',
+          icon: Award
+        }
+      ]
+    },
+    entreprises: {
+      title: 'Entreprises',
+      description: 'Recrutez des profils sportifs de haut niveau',
+      features: [
+        {
+          title: 'Talents Sportifs',
+          description: 'Accédez à un vivier de candidats ayant des valeurs fortes: persévérance, esprit d\'équipe.',
+          icon: Users
+        },
+        {
+          title: 'Matching Intelligent',
+          description: 'Notre IA identifie les profils qui correspondent le mieux à vos besoins.',
+          icon: CheckCircle
+        },
+        {
+          title: 'Processus Simplifié',
+          description: 'Publiez vos offres et gérez les candidatures en quelques clics.',
+          icon: Briefcase
+        },
+        {
+          title: 'Diversité & Inclusion',
+          description: 'Participez à la reconversion professionnelle des sportifs.',
+          icon: Award
+        }
+      ]
+    }
+  };
+
+  const currentContent = tabContent[activeTab];
+
+  return (
+    <div>
+      <div className="flex flex-wrap justify-center gap-4 mb-8">
+        <button
+          onClick={() => setActiveTab('sportifs')}
+          className={`px-6 py-3 rounded-xl font-semibold transition-all ${
+            activeTab === 'sportifs'
+              ? 'bg-blue-600 text-white shadow-lg'
+              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+          }`}
+        >
+          <Trophy className="inline-block mr-2 h-5 w-5" />
+          Sportifs
+        </button>
+        <button
+          onClick={() => setActiveTab('federations')}
+          className={`px-6 py-3 rounded-xl font-semibold transition-all ${
+            activeTab === 'federations'
+              ? 'bg-blue-600 text-white shadow-lg'
+              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+          }`}
+        >
+          <Users className="inline-block mr-2 h-5 w-5" />
+          Fédérations & Clubs
+        </button>
+        <button
+          onClick={() => setActiveTab('marques')}
+          className={`px-6 py-3 rounded-xl font-semibold transition-all ${
+            activeTab === 'marques'
+              ? 'bg-blue-600 text-white shadow-lg'
+              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+          }`}
+        >
+          <Award className="inline-block mr-2 h-5 w-5" />
+          Marques & Sponsors
+        </button>
+        <button
+          onClick={() => setActiveTab('entreprises')}
+          className={`px-6 py-3 rounded-xl font-semibold transition-all ${
+            activeTab === 'entreprises'
+              ? 'bg-blue-600 text-white shadow-lg'
+              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+          }`}
+        >
+          <Briefcase className="inline-block mr-2 h-5 w-5" />
+          Entreprises
+        </button>
+      </div>
+
+      <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-8 border-2 border-blue-200">
+        <div className="text-center mb-8">
+          <h3 className="text-2xl font-bold text-slate-900 mb-2">{currentContent.title}</h3>
+          <p className="text-lg text-slate-600">{currentContent.description}</p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {currentContent.features.map((feature, index) => {
+            const IconComponent = feature.icon;
+            return (
+              <div key={index} className="bg-white rounded-xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <IconComponent className="h-6 w-6 text-blue-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-bold text-slate-900 mb-2">{feature.title}</h4>
+                    <p className="text-sm text-slate-600 leading-relaxed">{feature.description}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ProgramSection() {
-  const [selectedCard, setSelectedCard] = useState<number | null>(null);
+  const [selectedCard, setSelectedCard] = useState<number | null>(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   return (
@@ -116,29 +476,28 @@ function ProgramSection() {
               <div
                 key={index}
                 onClick={() => {
-                  setSelectedCard(selectedCard === index ? null : index);
+                  setSelectedCard(index);
                   setCurrentImageIndex(index);
                 }}
                 className={`group relative rounded-xl overflow-hidden shadow-lg cursor-pointer transition-all duration-300 ${
-                  index === 0 ? 'bg-gradient-to-br from-blue-500 to-blue-700' : 'bg-slate-100'
+                  selectedCard === index ? 'backdrop-blur-md border border-white/20' : 'bg-white'
                 } ${selectedCard === index ? 'flex-1 p-5' : 'h-[115px] p-4'} ${index < CARD_DATA.length - 1 ? 'mb-2' : ''} hover:shadow-xl`}
+                style={selectedCard === index ? { backgroundColor: '#058fb5' } : undefined}
               >
                 <div className="flex items-center justify-between">
-                  <h4 className={`font-bold ${
-                    index === 0 ? 'text-white text-lg' : 'text-slate-900 text-base'
+                  <h4 className={`font-bold text-base ${
+                    selectedCard === index ? 'text-white' : 'text-slate-900'
                   }`}>
                     {card.title}
                   </h4>
                   <div className={`w-6 h-6 rounded-full flex items-center justify-center transition-transform duration-300 ${
-                    index === 0 ? 'bg-white/20' : 'bg-slate-900/10'
-                  } ${selectedCard === index ? 'rotate-180' : ''}`}>
-                    <ChevronDown size={14} className={index === 0 ? 'text-white' : 'text-slate-900'} />
+                    selectedCard === index ? 'bg-white/20 rotate-180' : 'bg-slate-900/10'
+                  }`}>
+                    <ChevronDown size={14} className={selectedCard === index ? 'text-white' : 'text-slate-900'} />
                   </div>
                 </div>
                 {selectedCard === index && (
-                  <p className={`mt-3 text-sm leading-relaxed ${
-                    index === 0 ? 'text-blue-100' : 'text-slate-600'
-                  }`}>
+                  <p className="mt-3 text-sm leading-relaxed text-white">
                     {card.description}
                   </p>
                 )}
@@ -218,7 +577,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
-      <nav className="bg-white border-b border-slate-200 shadow-sm">
+      <nav className="bg-white border-b border-slate-200 shadow-sm fixed top-0 left-0 right-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
@@ -261,7 +620,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
         </div>
       </nav>
 
-      <main>
+      <main className="pt-16">
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -345,61 +704,87 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
           </div>
         </section>
 
-        <section className="py-4 overflow-hidden relative border-y border-blue-400/50" style={{backgroundColor: '#0490b2'}}>
-            <div className="flex relative z-10">
-              <div className="animate-scroll-left flex items-center shrink-0">
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Faites une passe D
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Recrutez un sportif
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Offrez un sponsoring
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Faites une passe D
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Recrutez un sportif
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Offrez un sponsoring
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-              </div>
-              <div className="animate-scroll-left flex items-center shrink-0" aria-hidden="true">
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Faites une passe D
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Recrutez un sportif
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Offrez un sponsoring
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Faites une passe D
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Recrutez un sportif
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
-                <span className="inline-flex items-center text-white text-xl md:text-2xl font-bold px-8 whitespace-nowrap">
-                  Offrez un sponsoring
-                  <img src={passeDecisiveLogo} alt="Logo 2" className="h-10 w-10 ml-3 inline-block" />
-                </span>
+        <section className="py-6 bg-gradient-to-b from-slate-50 to-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative overflow-hidden">
+              <div className="flex animate-scroll">
+                <div className="flex space-x-6 items-center">
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
+                    <img
+                      src={franceTravailLogo}
+                      alt="France Travail"
+                      className="max-h-20 max-w-full object-contain"
+                    />
+                  </div>
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
+                    <img
+                      src={wexecutiveLogo}
+                      alt="Wexecutive"
+                      className="max-h-16 max-w-full object-contain"
+                    />
+                  </div>
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Orange_logo.svg"
+                      alt="Orange"
+                      className="max-h-16 max-w-full object-contain"
+                    />
+                  </div>
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
+                    <img
+                      src={diversidaysLogo}
+                      alt="Diversidays"
+                      className="max-h-16 max-w-full object-contain"
+                    />
+                  </div>
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
+                    <img
+                      src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+                      alt="Google"
+                      className="max-h-16 max-w-full object-contain"
+                    />
+                  </div>
+                </div>
+                <div className="flex space-x-6 items-center ml-6">
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
+                    <img
+                      src={franceTravailLogo}
+                      alt="France Travail"
+                      className="max-h-20 max-w-full object-contain"
+                    />
+                  </div>
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
+                    <img
+                      src={wexecutiveLogo}
+                      alt="Wexecutive"
+                      className="max-h-16 max-w-full object-contain"
+                    />
+                  </div>
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Orange_logo.svg"
+                      alt="Orange"
+                      className="max-h-16 max-w-full object-contain"
+                    />
+                  </div>
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
+                    <img
+                      src={diversidaysLogo}
+                      alt="Diversidays"
+                      className="max-h-16 max-w-full object-contain"
+                    />
+                  </div>
+                  <div className="flex items-center justify-center h-28 w-48 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-slate-100">
+                    <img
+                      src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+                      alt="Google"
+                      className="max-h-16 max-w-full object-contain"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
         </section>
 
         <section className="py-20">
@@ -717,227 +1102,36 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
           </div>
         </section>
 
-        <section className="py-20" style={{ background: 'linear-gradient(135deg, #fe8a32 0%, #e6671d 50%, #cc4d0a 100%)' }}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Des Avantages et Cas d'Usage Majeurs
-              </h2>
-              <p className="text-xl text-white/90">
-                Des clients prestigieux, des revenus récurrents
-              </p>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="group relative rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105">
-                <div className="relative h-80">
-                  <img
-                    src="https://images.pexels.com/photos/3760607/pexels-photo-3760607.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    alt="Sportifs"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
-                  <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full border border-white/30">
-                    <span className="text-white text-sm font-medium">Sportifs</span>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="text-xl font-bold mb-2">Optimisez votre carrière</h3>
-                    <p className="text-sm text-blue-100">Emplois, sponsors et reconversion</p>
-                  </div>
-                </div>
-              </div>
+        <SupportersCarousel />
 
-              <div className="group relative rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105">
-                <div className="relative h-80">
-                  <img
-                    src="https://images.pexels.com/photos/3865556/pexels-photo-3865556.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    alt="Fédérations & Clubs"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
-                  <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full border border-white/30">
-                    <span className="text-white text-sm font-medium">Fédérations & Clubs</span>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="text-xl font-bold mb-2">Gérez vos talents</h3>
-                    <p className="text-sm text-blue-100">Suivi et développement des athlètes</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="group relative rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105">
-                <div className="relative h-80">
-                  <img
-                    src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    alt="Marques & Sponsors"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
-                  <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full border border-white/30">
-                    <span className="text-white text-sm font-medium">Marques & Sponsors</span>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="text-xl font-bold mb-2">Trouvez vos ambassadeurs</h3>
-                    <p className="text-sm text-blue-100">Visibilité et partenariats sportifs</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="group relative rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105">
-                <div className="relative h-80">
-                  <img
-                    src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    alt="Entreprises"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
-                  <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full border border-white/30">
-                    <span className="text-white text-sm font-medium">Entreprises</span>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="text-xl font-bold mb-2">Recrutez des talents</h3>
-                    <p className="text-sm text-blue-100">Profils sportifs de haut niveau</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <div className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-semibold mb-4">
-                Financement
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                Comment ça marche ?
-              </h2>
-            </div>
-            <div className="max-w-4xl mx-auto space-y-6">
-              <div className="flex items-start space-x-6 bg-white p-8 rounded-2xl shadow-lg border border-slate-100 hover:border-blue-200 hover:shadow-xl transition-all">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-600 text-white rounded-xl font-bold text-lg shadow-md">
-                    1
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">
-                    Créez votre profil
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed">
-                    Inscrivez-vous en quelques minutes et créez un profil détaillé
-                    mettant en valeur votre parcours sportif et vos ambitions professionnelles.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-6 bg-white p-8 rounded-2xl shadow-lg border border-slate-100 hover:border-blue-200 hover:shadow-xl transition-all">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-600 text-white rounded-xl font-bold text-lg shadow-md">
-                    2
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">
-                    Validation administrateur
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed">
-                    Votre profil est vérifié par notre équipe pour garantir la qualité
-                    et la sécurité de la communauté.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-6 bg-white p-8 rounded-2xl shadow-lg border border-slate-100 hover:border-blue-200 hover:shadow-xl transition-all">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-600 text-white rounded-xl font-bold text-lg shadow-md">
-                    3
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">
-                    Connectez-vous et échangez
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed">
-                    Parcourez les profils, entrez en contact avec des recruteurs ou
-                    d'autres sportifs, et démarrez votre nouvelle carrière.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-20 bg-gradient-to-b from-white to-slate-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <img
-                  src="https://images.pexels.com/photos/5453828/pexels-photo-5453828.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Expert conseil"
-                  className="w-full h-[450px] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                  <h3 className="text-2xl font-bold mb-2">Nos conseillers à votre écoute</h3>
-                  <p className="text-blue-100 mb-4">Du lundi au vendredi, 9h-19h</p>
-                  <div className="flex items-center text-xl font-semibold">
-                    <span className="mr-2">📞</span> 01 23 45 67 89
-                  </div>
-                </div>
-              </div>
-              <div className="bg-white rounded-2xl shadow-xl p-8 border border-slate-100">
-                <h3 className="text-2xl font-bold text-slate-900 mb-6">
-                  Prêt à commencer votre nouvelle carrière ?
-                </h3>
-                <p className="text-slate-600 mb-6 leading-relaxed">
-                  Rejoignez notre communauté de sportifs et de professionnels engagés
-                  dans la réussite professionnelle des athlètes.
-                </p>
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">
-                      Nom complet*
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Votre nom"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">
-                      Téléphone*
-                    </label>
-                    <input
-                      type="tel"
-                      className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Votre téléphone"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">
-                      Code postal*
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="75001"
-                    />
-                  </div>
-                  <button
-                    onClick={onSignUp}
-                    className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-xl hover:from-blue-700 hover:to-cyan-700 font-semibold text-lg transition-all shadow-lg hover:shadow-xl"
-                  >
-                    Créer un compte gratuitement
-                  </button>
-                  <p className="text-sm text-slate-500 text-center flex items-center justify-center">
-                    <span className="mr-1">🔒</span> Vos données sont sécurisées
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
+
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Qui sommes-nous ?</h2>
+            <p className="text-xl text-slate-600">L'infrastructure complète pour la gestion de carrière</p>
+          </div>
+
+          <VisionTabs />
+        </div>
+      </section>
+
+      <section className="py-4 overflow-hidden relative border-y border-blue-400/50" style={{ backgroundColor: '#1f8cb2' }}>
+        <div className="flex animate-scroll whitespace-nowrap">
+          <div className="flex space-x-12 px-6">
+            <span className="text-xl font-bold text-white">Faites une passe décisive</span>
+            <span className="text-xl font-bold text-white">Recrutez un sportif</span>
+            <span className="text-xl font-bold text-white">Offrez un sponsoring</span>
+            <span className="text-xl font-bold text-white">Faites une passe décisive</span>
+            <span className="text-xl font-bold text-white">Recrutez un sportif</span>
+            <span className="text-xl font-bold text-white">Offrez un sponsoring</span>
+            <span className="text-xl font-bold text-white">Faites une passe décisive</span>
+            <span className="text-xl font-bold text-white">Recrutez un sportif</span>
+            <span className="text-xl font-bold text-white">Offrez un sponsoring</span>
+          </div>
+        </div>
+      </section>
 
       <footer className="bg-slate-900 text-white border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -977,6 +1171,16 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
                   >
                     Investisseurs
                   </button>
+                </li>
+                <li>
+                  <a
+                    href="/swagger.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-blue-400 transition-colors inline-flex items-center gap-1"
+                  >
+                    📚 API Documentation
+                  </a>
                 </li>
               </ul>
             </div>

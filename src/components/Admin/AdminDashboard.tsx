@@ -3,7 +3,7 @@ import { supabase } from '../../lib/supabase';
 import { Profile, AthleteProfile, CompanyProfile } from '../../types';
 import {
   CheckCircle, XCircle, Trophy, Briefcase, LogOut, Users,
-  FileText, MessageSquare, TrendingUp, UserCheck, Building2, Shield, Monitor
+  FileText, MessageSquare, TrendingUp, UserCheck, Building2, Shield, Monitor, BookOpen
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { AgentElea } from '../AI/AgentElea';
@@ -163,6 +163,15 @@ export function AdminDashboard() {
               <span className="text-2xl font-bold text-slate-900">Trophenix Admin</span>
             </div>
             <div className="flex items-center space-x-3">
+              <a
+                href="/swagger.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                <BookOpen className="h-5 w-5" />
+                <span>API Docs</span>
+              </a>
               <a
                 href="/super-admin"
                 onClick={(e) => {

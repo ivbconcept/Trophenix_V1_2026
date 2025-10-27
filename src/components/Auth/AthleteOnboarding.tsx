@@ -1,6 +1,19 @@
 import { useState, useEffect } from 'react';
 import { ChevronRight, User, Trophy, Briefcase, CheckCircle, Mail } from 'lucide-react';
 import { AgentElea } from '../AI/AgentElea';
+import {
+  searchSports,
+  searchClubs,
+  searchSectors,
+  searchLocations,
+  searchCities,
+  searchNationalities,
+  getAllSportLevels,
+  getAllPositionTypes,
+  getAllAvailability,
+  getAllSituations,
+  getAllAthleteTypes
+} from '../../services/referenceDataService';
 
 interface AthleteOnboardingProps {
   onComplete: (data: any) => void;
@@ -10,34 +23,7 @@ interface AthleteOnboardingProps {
   onBackHandlerReady?: (handler: () => void) => void;
 }
 
-const SPORTS = [
-  'Football', 'Basketball', 'Tennis', 'Rugby', 'Handball', 'Volleyball',
-  'Natation', 'Athlétisme', 'Cyclisme', 'Judo', 'Karaté', 'Boxe',
-  'Ski', 'Snowboard', 'Surf', 'Voile', 'Aviron', 'Escrime',
-  'Golf', 'Équitation', 'Gymnastique', 'Danse', 'Autre'
-];
 
-const SECTORS = [
-  'Commercial / Vente', 'Marketing / Communication', 'Management / Direction',
-  'Ressources Humaines', 'Finance / Comptabilité', 'Logistique / Supply Chain',
-  'Conseil / Stratégie', 'Événementiel', 'Sport Business',
-  'Éducation / Formation', 'Santé / Bien-être', 'Digital / Tech',
-  'Entrepreneuriat', 'Autre'
-];
-
-const LOCATIONS = [
-  'Paris', 'Lyon', 'Marseille', 'Toulouse', 'Bordeaux', 'Lille',
-  'Nantes', 'Strasbourg', 'Montpellier', 'Nice', 'Rennes',
-  'Télétravail complet', 'Flexible / Hybride', 'Toute la France', 'Étranger'
-];
-
-const CITIES = [
-  'Paris', 'Lyon', 'Marseille', 'Toulouse', 'Bordeaux', 'Lille',
-  'Nantes', 'Strasbourg', 'Montpellier', 'Nice', 'Rennes', 'Reims',
-  'Saint-Étienne', 'Toulon', 'Le Havre', 'Grenoble', 'Dijon', 'Angers',
-  'Nîmes', 'Villeurbanne', 'Clermont-Ferrand', 'Le Mans', 'Aix-en-Provence',
-  'Brest', 'Tours', 'Amiens', 'Limoges', 'Annecy', 'Perpignan', 'Metz'
-];
 
 export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep, onBackHandlerReady }: AthleteOnboardingProps) {
   console.log('AthleteOnboarding mounted - initialStep:', initialStep, 'initialData:', initialData);
@@ -66,28 +52,37 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
 
   const [sportInput, setSportInput] = useState('');
   const [showSportSuggestions, setShowSportSuggestions] = useState(false);
+  const [clubInput, setClubInput] = useState('');
+  const [showClubSuggestions, setShowClubSuggestions] = useState(false);
+  const [filteredSports, setFilteredSports] = useState<string[]>([]);
+  const [filteredClubs, setFilteredClubs] = useState<string[]>([]);
+  const [filteredSectors, setFilteredSectors] = useState<string[]>([]);
+  const [filteredLocations, setFilteredLocations] = useState<string[]>([]);
+  const [filteredCities, setFilteredCities] = useState<string[]>([]);
+  const [filteredNationalities, setFilteredNationalities] = useState<string[]>([]);
+  const [sportLevels, setSportLevels] = useState<string[]>([]);
+  const [positionTypes, setPositionTypes] = useState<string[]>([]);
+  const [availabilities, setAvailabilities] = useState<string[]>([]);
+  const [situations, setSituations] = useState<string[]>([]);
+  const [athleteTypes, setAthleteTypes] = useState<string[]>([]);
   const [locationInput, setLocationInput] = useState('');
   const [showLocationSuggestions, setShowLocationSuggestions] = useState(false);
   const [sectorInput, setSectorInput] = useState('');
   const [showSectorSuggestions, setShowSectorSuggestions] = useState(false);
   const [cityInput, setCityInput] = useState('');
   const [showCitySuggestions, setShowCitySuggestions] = useState(false);
+  const [nationalityInput, setNationalityInput] = useState('');
+  const [showNationalitySuggestions, setShowNationalitySuggestions] = useState(false);
 
-  const filteredSports = SPORTS.filter(sport =>
-    sport.toLowerCase().includes(sportInput.toLowerCase())
-  );
+  // Charger les sports de manière asynchrone
+  useEffect(() => {
+    const loadSports = async () => {
+      const sports = await searchSports(sportInput);
+      setFilteredSports(sports);
+    };
+    loadSports();
+  }, [sportInput]);
 
-  const filteredLocations = LOCATIONS.filter(loc =>
-    loc.toLowerCase().includes(locationInput.toLowerCase())
-  );
-
-  const filteredSectors = SECTORS.filter(sector =>
-    sector.toLowerCase().includes(sectorInput.toLowerCase())
-  );
-
-  const filteredCities = CITIES.filter(city =>
-    city.toLowerCase().includes(cityInput.toLowerCase())
-  );
 
   const handleChange = (field: string, value: string | boolean) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -97,6 +92,76 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
     handleChange('sport', sport);
     setSportInput(sport);
     setShowSportSuggestions(false);
+  };
+
+  // Charger les clubs de manière asynchrone
+  useEffect(() => {
+    const loadClubs = async () => {
+      const clubs = await searchClubs(clubInput, formData.sport);
+      setFilteredClubs(clubs);
+    };
+    loadClubs();
+  }, [clubInput, formData.sport]);
+
+  // Charger les secteurs
+  useEffect(() => {
+    const loadSectors = async () => {
+      const sectors = await searchSectors(sectorInput);
+      setFilteredSectors(sectors);
+    };
+    loadSectors();
+  }, [sectorInput]);
+
+  // Charger les locations
+  useEffect(() => {
+    const loadLocations = async () => {
+      const locations = await searchLocations(locationInput);
+      setFilteredLocations(locations);
+    };
+    loadLocations();
+  }, [locationInput]);
+
+  // Charger les villes
+  useEffect(() => {
+    const loadCities = async () => {
+      const cities = await searchCities(cityInput);
+      setFilteredCities(cities);
+    };
+    loadCities();
+  }, [cityInput]);
+
+  // Charger les nationalités
+  useEffect(() => {
+    const loadNationalities = async () => {
+      const nationalities = await searchNationalities(nationalityInput);
+      setFilteredNationalities(nationalities);
+    };
+    loadNationalities();
+  }, [nationalityInput]);
+
+  // Charger toutes les données statiques au montage
+  useEffect(() => {
+    const loadStaticData = async () => {
+      const [levels, positions, avail, sits, types] = await Promise.all([
+        getAllSportLevels(),
+        getAllPositionTypes(),
+        getAllAvailability(),
+        getAllSituations(),
+        getAllAthleteTypes()
+      ]);
+      setSportLevels(levels);
+      setPositionTypes(positions);
+      setAvailabilities(avail);
+      setSituations(sits);
+      setAthleteTypes(types);
+    };
+    loadStaticData();
+  }, []);
+
+  const handleClubSelect = (club: string) => {
+    handleChange('current_club', club);
+    setClubInput(club);
+    setShowClubSuggestions(false);
   };
 
   const handleLocationSelect = (location: string) => {
@@ -214,14 +279,7 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
           <div>
             <p className="text-sm font-medium text-slate-700 mb-3">Situation *</p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              {[
-                'En activité',
-                'En blessure',
-                'En hésitation',
-                'En transition',
-                'En reconversion',
-                'Déjà reconverti'
-              ].map((situation) => (
+              {situations.map((situation) => (
                 <button
                   key={situation}
                   type="button"
@@ -241,7 +299,7 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
           <div>
             <p className="text-sm font-medium text-slate-700 mb-3">Type de sportif *</p>
             <div className="grid grid-cols-2 gap-3">
-              {['Handisportif', 'Sportif valide'].map((type) => (
+              {athleteTypes.map((type) => (
                 <button
                   key={type}
                   type="button"
@@ -281,18 +339,45 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
             </div>
           </div>
 
-          <input
-            type="text"
-            value={formData.current_club}
-            onChange={(e) => handleChange('current_club', e.target.value)}
-            className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-            placeholder="Club actuel ou dernier *"
-          />
+          <div className="relative">
+            <input
+              type="text"
+              value={clubInput}
+              onChange={(e) => {
+                setClubInput(e.target.value);
+                handleChange('current_club', e.target.value);
+                setShowClubSuggestions(true);
+              }}
+              onFocus={() => setShowClubSuggestions(true)}
+              onBlur={() => setTimeout(() => setShowClubSuggestions(false), 200)}
+              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              placeholder="Club actuel ou dernier *"
+            />
+            {showClubSuggestions && filteredClubs.length > 0 && (
+              <div className="absolute z-10 w-full mt-1 bg-white border border-slate-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
+                {filteredClubs.map((club) => (
+                  <button
+                    key={club}
+                    type="button"
+                    onClick={() => handleClubSelect(club)}
+                    className="w-full px-4 py-2 text-left hover:bg-slate-50 transition-colors text-sm"
+                  >
+                    {club}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+          <p className="text-sm text-slate-500 mt-2">
+            {formData.sport
+              ? `Recherche intelligente parmi les clubs de ${formData.sport} en France`
+              : 'Plus de 500 clubs professionnels et amateurs en France'}
+          </p>
 
           <div>
             <p className="text-sm font-medium text-slate-700 mb-3">Niveau *</p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              {['International', 'National', 'Régional', 'Professionnel', 'Semi-professionnel', 'Amateur haut niveau'].map((level) => (
+              {sportLevels.map((level) => (
                 <button
                   key={level}
                   type="button"
@@ -415,7 +500,7 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
           <div>
             <p className="text-sm font-medium text-slate-700 mb-3">Type de poste recherché *</p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              {['CDI', 'CDD', 'Stage', 'Alternance', 'Freelance', 'Création entreprise'].map((type) => (
+              {positionTypes.map((type) => (
                 <button
                   key={type}
                   type="button"
@@ -435,7 +520,7 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
           <div>
             <p className="text-sm font-medium text-slate-700 mb-3">Disponibilité *</p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {['Immédiate', '1 mois', '3 mois', '6 mois'].map((avail) => (
+              {availabilities.map((avail) => (
                 <button
                   key={avail}
                   type="button"
@@ -510,14 +595,39 @@ export function AthleteOnboarding({ onComplete, onBack, initialData, initialStep
             <label htmlFor="nationality" className="block text-sm font-medium text-slate-700 mb-2">
               Nationalité *
             </label>
-            <input
-              id="nationality"
-              type="text"
-              value={formData.nationality}
-              onChange={(e) => handleChange('nationality', e.target.value)}
-              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-              placeholder="Ex: Française"
-            />
+            <div className="relative">
+              <input
+                id="nationality"
+                type="text"
+                value={nationalityInput || formData.nationality}
+                onChange={(e) => {
+                  setNationalityInput(e.target.value);
+                  setShowNationalitySuggestions(true);
+                }}
+                onFocus={() => setShowNationalitySuggestions(true)}
+                onBlur={() => setTimeout(() => setShowNationalitySuggestions(false), 200)}
+                className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                placeholder="Ex: Française"
+              />
+              {showNationalitySuggestions && filteredNationalities.length > 0 && (
+                <div className="absolute z-10 w-full mt-1 bg-white border border-slate-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
+                  {filteredNationalities.map((nationality) => (
+                    <button
+                      key={nationality}
+                      type="button"
+                      onClick={() => {
+                        handleChange('nationality', nationality);
+                        setNationalityInput(nationality);
+                        setShowNationalitySuggestions(false);
+                      }}
+                      className="w-full px-4 py-2 text-left hover:bg-slate-50 transition-colors"
+                    >
+                      {nationality}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
           <div>

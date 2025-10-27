@@ -16,7 +16,7 @@
  * Types d'utilisateurs disponibles
  * @see constants/userTypes.ts pour la configuration
  */
-export type UserType = 'athlete' | 'company' | 'admin';
+export type UserType = 'athlete' | 'company' | 'sponsor' | 'admin';
 
 /**
  * Statuts de validation des profils
@@ -207,6 +207,67 @@ export interface CompanyFormData {
   description?: string;
 
   // Étape 4 : Compte
+  email: string;
+  password: string;
+  password_confirm: string;
+  terms_accepted: boolean;
+
+  // Métadonnée interne pour la navigation
+  _currentStep?: number;
+}
+
+/**
+ * Profil sponsor détaillé
+ * Correspond à la table 'sponsor_profiles' dans Supabase
+ */
+export interface SponsorProfile {
+  id: string;
+  user_id: string;
+  company_name: string;
+  logo_url?: string;
+  website?: string;
+  industry_sector?: string;
+  company_size?: string;
+  description?: string;
+  sponsorship_budget?: string;
+  sponsorship_types?: string[];
+  target_sports?: string[];
+  target_athlete_level?: string[];
+  previous_sponsorships?: string;
+  contact_person?: string;
+  contact_email?: string;
+  contact_phone?: string;
+  linkedin_url?: string;
+  social_media?: Record<string, string>;
+  sponsorship_criteria?: string;
+  created_at: string;
+  updated_at: string;
+}
+
+/**
+ * Données du formulaire d'inscription sponsor
+ * Structure temporaire avant insertion en base de données
+ */
+export interface SponsorFormData {
+  // Étape 1 : Informations générales
+  company_name: string;
+  industry_sector: string;
+  website?: string;
+
+  // Étape 2 : Détails sponsoring
+  sponsorship_budget: string;
+  sponsorship_types: string[];
+  target_sports: string[];
+  target_athlete_level: string[];
+
+  // Étape 3 : Description et critères
+  description?: string;
+  sponsorship_criteria?: string;
+
+  // Étape 4 : Compte et contact
+  contact_person: string;
+  contact_email: string;
+  contact_phone?: string;
   email: string;
   password: string;
   password_confirm: string;
