@@ -1,4 +1,4 @@
-import { supabase } from '../lib/supabase';
+import { supabaseDB2 as supabase } from '../lib/supabaseDB2';
 import type {
   UserContext,
   CompanyOrganization,

@@ -1,4 +1,4 @@
-import { supabase } from '../lib/supabase';
+import { supabaseDB2 } from '../lib/supabaseDB2';
 
 export interface Sport {
   id: string;

@@ -49,6 +49,7 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { User } from '@supabase/supabase-js';
 import { supabase } from '../lib/supabase';
+import { supabaseDB2 } from '../lib/supabaseDB2';
 import { Profile } from '../types';
 
 /**
@@ -81,17 +82,31 @@ interface AuthContextType {
  */
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-/**
- * Provider du contexte d'authentification
- *
- * Ce composant doit WRAPPER toute l'application (voir main.tsx).
- * Il gère :
- * - L'état global user/profile/loading
- * - L'écoute des changements de session (onAuthStateChange)
- * - Le chargement initial du profil
- *
- * @param children - Composants enfants (toute l'app)
- */
+const HARDCODED_USERS = [
+  {
+    id: 'user-athlete-1',
+    email: 'athlete@test.com',
+    password: 'test123',
+    user_type: 'athlete',
+    first_name: 'Thomas',
+    last_name: 'Martin'
+  },
+  {
+    id: 'user-company-1',
+    email: 'company@test.com',
+    password: 'test123',
+    user_type: 'company',
+    company_name: 'Entreprise Test'
+  },
+  {
+    id: 'user-sponsor-1',
+    email: 'sponsor@test.com',
+    password: 'test123',
+    user_type: 'sponsor',
+    company_name: 'Sponsor Test'
+  }
+];
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   /** État local : utilisateur Supabase */
   const [user, setUser] = useState<User | null>(null);
@@ -122,8 +137,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const fetchProfile = async (userId: string) => {
     const startTime = performance.now();
 
-    // UNE SEULE requête grâce aux colonnes is_admin et admin_role
-    const { data, error } = await supabase
+    const { data, error } = await supabaseDB2
       .from('profiles')
       .select('*')
       .eq('id', userId)
@@ -173,31 +187,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
    * ```
    */
   useEffect(() => {
-    // Chargement initial : vérifier si une session existe
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-      if (session?.user) {
-        fetchProfile(session.user.id).finally(() => setLoading(false));
-      } else {
-        setLoading(false);
-      }
-    });
-
-    // Écoute des changements de session (login/logout en temps réel)
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      (async () => {
-        setUser(session?.user ?? null);
-        if (session?.user) {
-          await fetchProfile(session.user.id);
-        } else {
-          setProfile(null);
-        }
-        setLoading(false);
-      })();
-    });
-
-    // Cleanup : Désabonnement au démontage
-    return () => subscription.unsubscribe();
+    setLoading(false);
   }, []);
 
   /**
@@ -207,21 +197,37 @@ export function AuthProvider({ children }: { children: ReactNode }) {
    */
   const signUp = async (email: string, password: string, metadata?: any) => {
     try {
-      console.log('🔐 AuthContext.signUp called');
+      console.log('🔐 AuthContext.signUp called (hardcoded users)');
       console.log('📧 Email:', email);
       console.log('📦 Metadata received:', metadata);
 
-      const { data, error } = await supabase.auth.signUp({
+      const newUserId = `user-${metadata?.user_type}-${Date.now()}`;
+      const newUser = {
+        id: newUserId,
         email,
-        password,
-        options: {
-          data: metadata || {},
-        },
-      });
+        ...metadata?.profile_data,
+        user_type: metadata?.user_type,
+        created_at: new Date().toISOString()
+      };
 
-      console.log('✅ SignUp response:', { data, error });
+      const { error } = await supabaseDB2
+        .from('profiles')
+        .insert([newUser]);
 
-      if (error) throw error;
+      if (error) {
+        console.error('❌ DB2 insert error:', error);
+        return { error: error as Error };
+      }
+
+      const mockUser: any = {
+        id: newUserId,
+        email,
+        created_at: new Date().toISOString()
+      };
+      setUser(mockUser);
+      setProfile(newUser as any);
+
+      console.log('✅ SignUp success (hardcoded + DB2)');
       return { error: null };
     } catch (error) {
       console.error('❌ SignUp error:', error);
@@ -237,13 +243,34 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signIn = async (email: string, password: string) => {
     try {
       const startTime = performance.now();
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
+
+      const hardcodedUser = HARDCODED_USERS.find(u => u.email === email && u.password === password);
+
+      if (!hardcodedUser) {
+        return { error: new Error('Email ou mot de passe incorrect') };
+      }
+
+      const { data, error } = await supabaseDB2
+        .from('profiles')
+        .select('*')
+        .eq('id', hardcodedUser.id)
+        .maybeSingle();
+
+      if (error || !data) {
+        return { error: new Error('Profil non trouvé dans DB2') };
+      }
+
+      const mockUser: any = {
+        id: hardcodedUser.id,
+        email: hardcodedUser.email,
+        created_at: new Date().toISOString()
+      };
+
+      setUser(mockUser);
+      setProfile(data as any);
+
       const authTime = performance.now() - startTime;
       console.log(`[Performance] Auth signIn took: ${authTime.toFixed(0)}ms`);
-      if (error) throw error;
       return { error: null };
     } catch (error) {
       return { error: error as Error };
@@ -256,7 +283,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
    * 🔄 MIGRATION BACKEND : Remplacer par POST /api/auth/logout + clear localStorage
    */
   const signOut = async () => {
-    await supabase.auth.signOut();
+    setUser(null);
     setProfile(null);
     setIsAdmin(false);
   };
