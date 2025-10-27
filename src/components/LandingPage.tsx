@@ -72,67 +72,67 @@ const SupportersCarousel = () => {
   const supporters = [
     {
       id: 1,
-      name: 'Marie Dubois',
-      sport: 'Athlétisme',
-      achievement: 'Championne de France 400m',
-      image: 'https://images.pexels.com/photos/3764011/pexels-photo-3764011.jpeg?auto=compress&cs=tinysrgb&w=800',
+      name: 'Responsable Marketing',
+      sport: 'Emploi',
+      achievement: 'CDI - Paris - 45-55k€',
+      image: 'https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=800',
       gradient: 'from-slate-900/90'
     },
     {
       id: 2,
-      name: 'Thomas Martin',
-      sport: 'Football',
-      achievement: 'Ex-Professionnel Ligue 1',
-      image: 'https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&cs=tinysrgb&w=800',
+      name: 'Sponsoring Équipementier',
+      sport: 'Sponsoring',
+      achievement: 'Budget 20-50k€ - Athlétisme',
+      image: 'https://images.pexels.com/photos/2524739/pexels-photo-2524739.jpeg?auto=compress&cs=tinysrgb&w=800',
       gradient: 'from-slate-900/90'
     },
     {
       id: 3,
-      name: 'Sophie Bernard',
-      sport: 'Natation',
-      achievement: 'Médaillée Olympique',
-      image: 'https://images.pexels.com/photos/863988/pexels-photo-863988.jpeg?auto=compress&cs=tinysrgb&w=800',
+      name: 'Chef de Projet Digital',
+      sport: 'Emploi',
+      achievement: 'CDI - Lyon - 40-50k€',
+      image: 'https://images.pexels.com/photos/3760607/pexels-photo-3760607.jpeg?auto=compress&cs=tinysrgb&w=800',
       gradient: 'from-blue-900/95',
       featured: true
     },
     {
       id: 4,
-      name: 'Lucas Petit',
-      sport: 'Rugby',
-      achievement: 'International XV de France',
-      image: 'https://images.pexels.com/photos/1618200/pexels-photo-1618200.jpeg?auto=compress&cs=tinysrgb&w=800',
+      name: 'Partenariat Sport Santé',
+      sport: 'Sponsoring',
+      achievement: 'Budget 10-30k€ - Multi-sports',
+      image: 'https://images.pexels.com/photos/863988/pexels-photo-863988.jpeg?auto=compress&cs=tinysrgb&w=800',
       gradient: 'from-slate-900/90'
     },
     {
       id: 5,
-      name: 'Amélie Rousseau',
-      sport: 'Tennis',
-      achievement: 'Top 50 WTA',
-      image: 'https://images.pexels.com/photos/1661950/pexels-photo-1661950.jpeg?auto=compress&cs=tinysrgb&w=800',
+      name: 'Commercial Grands Comptes',
+      sport: 'Emploi',
+      achievement: 'CDI - Bordeaux - 50-60k€',
+      image: 'https://images.pexels.com/photos/1263349/pexels-photo-1263349.jpeg?auto=compress&cs=tinysrgb&w=800',
       gradient: 'from-slate-900/90'
     },
     {
       id: 6,
-      name: 'Antoine Lefebvre',
-      sport: 'Cyclisme',
-      achievement: 'Vainqueur Tour de France U23',
-      image: 'https://images.pexels.com/photos/163407/cyclists-trail-bike-multi-track-163407.jpeg?auto=compress&cs=tinysrgb&w=800',
+      name: 'Sponsoring Événementiel',
+      sport: 'Sponsoring',
+      achievement: 'Budget 5-15k€ - Football',
+      image: 'https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&cs=tinysrgb&w=800',
       gradient: 'from-slate-900/90'
     },
     {
       id: 7,
-      name: 'Camille Moreau',
-      sport: 'Basket-ball',
-      achievement: 'Championne d\'Europe',
-      image: 'https://images.pexels.com/photos/1080882/pexels-photo-1080882.jpeg?auto=compress&cs=tinysrgb&w=800',
+      name: 'Manager Commercial',
+      sport: 'Emploi',
+      achievement: 'CDI - Lille - 55-65k€',
+      image: 'https://images.pexels.com/photos/2582932/pexels-photo-2582932.jpeg?auto=compress&cs=tinysrgb&w=800',
       gradient: 'from-slate-900/90'
     },
     {
       id: 8,
-      name: 'Julien Girard',
-      sport: 'Handball',
-      achievement: 'Champion du Monde',
-      image: 'https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=800',
+      name: 'Sponsoring Marque Premium',
+      sport: 'Sponsoring',
+      achievement: 'Budget 50k€+ - Tennis',
+      image: 'https://images.pexels.com/photos/1661950/pexels-photo-1661950.jpeg?auto=compress&cs=tinysrgb&w=800',
       gradient: 'from-slate-900/90'
     }
   ];
@@ -179,10 +179,10 @@ const SupportersCarousel = () => {
       <div className="max-w-full mx-auto">
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-4">
-            Ils nous font confiance
+            Opportunités du moment
           </h2>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-            Découvrez les athlètes qui ont choisi Trophenix pour réussir leur reconversion professionnelle
+            Découvrez les offres d'emploi et opportunités de sponsoring disponibles sur Trophenix
           </p>
         </div>
 
