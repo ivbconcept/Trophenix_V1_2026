@@ -51,7 +51,7 @@ type View =
   | 'athlete-detail';
 
 function AppContent() {
-  const { user, profile, loading, isAdmin, refreshProfile } = useAuth();
+  const { user, profile, loading, isAdmin, refreshProfile, signIn } = useAuth();
   const [view, setView] = useState<View>('landing');
   const [selectedAthleteId, setSelectedAthleteId] = useState<string | null>(null);
 
@@ -138,12 +138,23 @@ function AppContent() {
     return <AdminLogin onSuccess={() => setView('admin')} />;
   }
 
+  const handleDemoLogin = async () => {
+    const { error } = await signIn('athlete@test.com', 'test123');
+    if (!error) {
+      await refreshProfile();
+      setView('athlete-dashboard');
+    } else {
+      console.error('Demo login failed:', error);
+    }
+  };
+
   if (view === 'landing') {
     return (
       <LandingPage
         onSignUp={() => setView('signup')}
         onSignIn={() => setView('login')}
         onNavigateToInvestors={() => setView('investors')}
+        onDemoLogin={handleDemoLogin}
       />
     );
   }

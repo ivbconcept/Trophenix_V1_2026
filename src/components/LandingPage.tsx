@@ -238,6 +238,7 @@ interface LandingPageProps {
   onSignUp: () => void;
   onSignIn: () => void;
   onNavigateToInvestors?: () => void;
+  onDemoLogin?: () => void;
 }
 
 interface MediaItem {
@@ -510,7 +511,7 @@ function ProgramSection() {
   );
 }
 
-export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: LandingPageProps) {
+export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoLogin }: LandingPageProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [opportunityType, setOpportunityType] = useState<'emploi' | 'sponsoring'>('emploi');
   const [jobSearchForm, setJobSearchForm] = useState({
@@ -1197,12 +1198,23 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors }: Landi
                 RGPD
               </a>
             </div>
-            <a
-              href="/admin"
-              className="px-6 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 font-medium transition-colors shadow-lg"
-            >
-              Entrer
-            </a>
+            <div className="flex items-center gap-4">
+              {onDemoLogin && (
+                <button
+                  onClick={onDemoLogin}
+                  className="px-6 py-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl hover:from-green-700 hover:to-emerald-700 font-medium transition-all shadow-lg flex items-center gap-2"
+                >
+                  <Trophy className="h-4 w-4" />
+                  Accès Démo Sportif
+                </button>
+              )}
+              <a
+                href="/admin"
+                className="px-6 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 font-medium transition-colors shadow-lg"
+              >
+                Entrer
+              </a>
+            </div>
           </div>
         </div>
       </footer>
