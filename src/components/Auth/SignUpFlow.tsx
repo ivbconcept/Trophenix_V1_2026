@@ -1,22 +1,20 @@
 import { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
-import { ArrowLeft, AlertCircle, Trophy, Briefcase, Handshake } from 'lucide-react';
+import { ArrowLeft, AlertCircle, Trophy, Briefcase } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { UserType } from '../../types';
 import { AthleteOnboarding } from './AthleteOnboarding';
 import { CompanyOnboarding } from './CompanyOnboarding';
-import { SponsorOnboarding } from './SponsorOnboarding';
 import { AuthCarousel } from './AuthCarousel';
 import { EmailVerification } from './EmailVerification';
-import { EmailConfirmationPending } from './EmailConfirmationPending';
 
 interface SignUpFlowProps {
   onBack: () => void;
-  onSuccess: (userType: 'athlete' | 'company' | 'sponsor') => void;
+  onSuccess: (userType: 'athlete' | 'company') => void;
 }
 
 export function SignUpFlow({ onBack, onSuccess }: SignUpFlowProps) {
-  const [step, setStep] = useState<'profile-type' | 'onboarding' | 'verification' | 'confirmation-pending'>('profile-type');
+  const [step, setStep] = useState<'profile-type' | 'onboarding' | 'verification'>('profile-type');
   const [selectedUserType, setSelectedUserType] = useState<UserType | null>(null);
   const [onboardingData, setOnboardingData] = useState<any>(null);
   const [error, setError] = useState('');
@@ -28,48 +26,9 @@ export function SignUpFlow({ onBack, onSuccess }: SignUpFlowProps) {
     setStep('onboarding');
   };
 
-  const handleOnboardingComplete = async (data: any) => {
+  const handleOnboardingComplete = (data: any) => {
     setOnboardingData(data);
-    setError('');
-    setLoading(true);
-
-    try {
-      const { email, password, password_confirm, terms_accepted, _currentStep, ...profileData } = data;
-
-      // Préparer les métadonnées qui seront stockées et utilisées après confirmation
-      const metadata = {
-        user_type: selectedUserType,
-        profile_data: profileData,
-      };
-
-      console.log('🚀 SignUp - User type:', selectedUserType);
-      console.log('📦 SignUp - Metadata to send:', metadata);
-      console.log('👤 SignUp - Profile data:', profileData);
-
-      // Créer le compte avec les métadonnées
-      const { error: signUpError } = await signUp(email, password, metadata);
-
-      if (signUpError) {
-        console.error('❌ SignUp error details:', signUpError);
-        if (signUpError.message && signUpError.message.includes('already registered')) {
-          setError('Cet email est déjà utilisé');
-        } else if (signUpError.message && signUpError.message.includes('Email rate limit exceeded')) {
-          setError('Trop de tentatives. Veuillez réessayer dans quelques minutes.');
-        } else {
-          setError(`Erreur : ${signUpError.message || 'Une erreur est survenue lors de la création du compte'}`);
-        }
-        setLoading(false);
-        return;
-      }
-
-      // Afficher l'écran de confirmation (ou rediriger si auto-confirm)
-      setLoading(false);
-      setStep('confirmation-pending');
-    } catch (err: any) {
-      console.error('Error during sign up:', err);
-      setError(err.message || 'Une erreur est survenue');
-      setLoading(false);
-    }
+    setStep('verification');
   };
 
   const handleEmailVerified = async () => {
@@ -77,17 +36,9 @@ export function SignUpFlow({ onBack, onSuccess }: SignUpFlowProps) {
     setLoading(true);
 
     try {
-      const { email, password, password_confirm, terms_accepted, _currentStep, ...profileData } = onboardingData;
+      const { email, password, password_confirm, terms_accepted, ...profileData } = onboardingData;
 
-      // Préparer les métadonnées qui seront stockées et utilisées après confirmation
-      const metadata = {
-        user_type: selectedUserType,
-        profile_data: profileData,
-      };
-
-      // L'inscription envoie automatiquement un email de confirmation
-      // Les métadonnées seront accessibles dans le webhook après confirmation
-      const { error: signUpError } = await signUp(email, password, metadata);
+      const { error: signUpError } = await signUp(email, password);
 
       if (signUpError) {
         if (signUpError.message.includes('already registered')) {
@@ -99,9 +50,61 @@ export function SignUpFlow({ onBack, onSuccess }: SignUpFlowProps) {
         return;
       }
 
-      // Afficher l'écran de confirmation
+      await signIn(email, password);
+
+      const { data: { user } } = await supabase.auth.getUser();
+
+      if (!user) {
+        setError('Erreur d\'authentification');
+        setLoading(false);
+        return;
+      }
+
+      const { error: profileError } = await supabase
+        .from('profiles')
+        .insert({
+          id: user.id,
+          email: user.email!,
+          user_type: selectedUserType!,
+          validation_status: 'pending'
+        });
+
+      if (profileError) {
+        setError('Erreur lors de la création du profil');
+        setLoading(false);
+        return;
+      }
+
+      if (selectedUserType === 'athlete') {
+        const { error: athleteError } = await supabase
+          .from('athlete_profiles')
+          .insert({
+            user_id: user.id,
+            ...profileData
+          });
+
+        if (athleteError) {
+          setError('Erreur lors de la sauvegarde du profil sportif');
+          setLoading(false);
+          return;
+        }
+      } else if (selectedUserType === 'company') {
+        const { error: companyError } = await supabase
+          .from('company_profiles')
+          .insert({
+            user_id: user.id,
+            ...profileData
+          });
+
+        if (companyError) {
+          setError('Erreur lors de la sauvegarde du profil professionnel');
+          setLoading(false);
+          return;
+        }
+      }
+
       setLoading(false);
-      setStep('confirmation-pending');
+      onSuccess(selectedUserType as 'athlete' | 'company');
     } catch (err: any) {
       setError(err.message || 'Une erreur est survenue');
       setLoading(false);
@@ -178,34 +181,15 @@ export function SignUpFlow({ onBack, onSuccess }: SignUpFlowProps) {
                 className="w-full p-6 bg-slate-50 border border-slate-200 rounded-2xl hover:bg-slate-100 hover:border-slate-300 transition-all text-left"
               >
                 <div className="flex items-start space-x-4">
-                  <div className="p-3 bg-gradient-to-br from-blue-400 to-blue-500 rounded-xl">
+                  <div className="p-3 bg-gradient-to-br from-pink-400 to-pink-500 rounded-xl">
                     <Briefcase className="h-7 w-7 text-white" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-slate-900 mb-1">
-                      Employeur
+                      Professionnel
                     </h3>
                     <p className="text-slate-600 text-sm">
-                      Je recrute des athlètes pour mon entreprise
-                    </p>
-                  </div>
-                </div>
-              </button>
-
-              <button
-                onClick={() => handleProfileTypeSelect('sponsor')}
-                className="w-full p-6 bg-slate-50 border border-slate-200 rounded-2xl hover:bg-slate-100 hover:border-slate-300 transition-all text-left"
-              >
-                <div className="flex items-start space-x-4">
-                  <div className="p-3 bg-gradient-to-br from-amber-400 to-amber-500 rounded-xl">
-                    <Handshake className="h-7 w-7 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-1">
-                      Sponsor
-                    </h3>
-                    <p className="text-slate-600 text-sm">
-                      Je cherche à sponsoriser des athlètes
+                      Je représente une structure ou une entreprise
                     </p>
                   </div>
                 </div>
@@ -244,21 +228,6 @@ export function SignUpFlow({ onBack, onSuccess }: SignUpFlowProps) {
           />
         )}
 
-        {step === 'onboarding' && selectedUserType === 'sponsor' && (
-          <SponsorOnboarding
-            key={onboardingData ? 'restore' : 'new'}
-            onComplete={handleOnboardingComplete}
-            onBack={() => {
-              setStep('profile-type');
-              setSelectedUserType(null);
-              setOnboardingData(null);
-            }}
-            initialData={onboardingData}
-            initialStep={onboardingData?._currentStep}
-            onBackHandlerReady={(handler) => setOnboardingBackHandler(() => handler)}
-          />
-        )}
-
         {step === 'verification' && onboardingData && (
           <EmailVerification
             email={onboardingData.email}
@@ -267,14 +236,7 @@ export function SignUpFlow({ onBack, onSuccess }: SignUpFlowProps) {
           />
         )}
 
-        {step === 'confirmation-pending' && onboardingData && (
-          <EmailConfirmationPending
-            email={onboardingData.email}
-            onBack={onBack}
-          />
-        )}
-
-        {error && step !== 'confirmation-pending' && (
+        {error && (
           <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start space-x-3">
             <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
             <p className="text-sm text-red-800">{error}</p>

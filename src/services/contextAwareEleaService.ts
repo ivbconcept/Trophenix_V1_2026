@@ -1,4 +1,4 @@
-import { supabaseDB2 as supabase } from '../lib/supabaseDB2';
+import { supabase } from '../lib/supabase';
 import type { ActiveContext } from '../types/contexts';
 
 export interface EleaContextSummary {

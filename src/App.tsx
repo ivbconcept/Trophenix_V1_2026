@@ -10,6 +10,7 @@ import { SuperAdminConsole } from './components/Admin/SuperAdminConsole';
 import AdminLogin from './components/Auth/AdminLogin';
 import { AthletesList } from './components/Athletes/AthletesList';
 import { AthleteDetail } from './components/Athletes/AthleteDetail';
+import { Navbar } from './components/Navigation/Navbar';
 import { AthleteDashboard } from './components/Dashboard/AthleteDashboard';
 import { CompanyDashboard } from './components/Dashboard/CompanyDashboard';
 import { AgentElea } from './components/AI/AgentElea';
@@ -17,11 +18,9 @@ import JobsList from './components/Jobs/JobsList';
 import ManageJobOffers from './components/Jobs/ManageJobOffers';
 import ViewApplications from './components/Jobs/ViewApplications';
 import MyApplications from './components/Jobs/MyApplications';
+import MessagesList from './components/Messages/MessagesList';
 import AthleteDirectory from './components/Directory/AthleteDirectory';
 import CompanyDirectory from './components/Directory/CompanyDirectory';
-import { Navbar } from './components/Layout/Navbar';
-import { MessagesList } from './components/Messages/MessagesList';
-import { UserProfile } from './components/Profile/UserProfile';
 import { supabase } from './lib/supabase';
 import InvestorsPage from './components/InvestorsPage';
 
@@ -75,16 +74,20 @@ function AppContent() {
         } else {
           setView('admin');
         }
-      } else if (isAdmin && view !== 'admin' && view !== 'super-admin-console') {
-        if (path === '/super-admin') {
-          setView('super-admin-console');
-        } else {
-          setView('admin');
+      } else if (profile.validation_status === 'pending') {
+        setView('pending');
+      } else if (profile.validation_status === 'approved') {
+        if (isAdmin && view !== 'admin' && view !== 'super-admin-console') {
+          if (path === '/super-admin') {
+            setView('super-admin-console');
+          } else {
+            setView('admin');
+          }
+        } else if (profile.user_type === 'athlete' && view === 'landing') {
+          setView('athlete-dashboard');
+        } else if (profile.user_type === 'company' && view === 'landing') {
+          setView('company-dashboard');
         }
-      } else if (profile.user_type === 'athlete' && view === 'landing') {
-        setView('athlete-dashboard');
-      } else if (profile.user_type === 'company' && view === 'landing') {
-        setView('company-dashboard');
       }
     } else if (!loading && !user && view !== 'admin-login' && view !== 'investors') {
       if (window.location.pathname !== '/admin' && window.location.pathname !== '/super-admin' && window.location.pathname !== '/investors') {
@@ -93,13 +96,9 @@ function AppContent() {
     }
   }, [user, profile, loading, isAdmin]);
 
-  const handleSignUpSuccess = async (userType: 'athlete' | 'company') => {
+  const handleSignUpSuccess = async () => {
     await refreshProfile();
-    if (userType === 'athlete') {
-      setView('athlete-dashboard');
-    } else {
-      setView('company-dashboard');
-    }
+    setView('pending');
   };
 
   const handleViewAthleteProfile = (athleteId: string) => {
@@ -113,6 +112,7 @@ function AppContent() {
   };
 
   const handleLogout = async () => {
+    await supabase.auth.signOut();
     setView('landing');
   };
 
@@ -120,7 +120,7 @@ function AppContent() {
     setView(newView as View);
   };
 
-  const isAuthenticated = user && profile;
+  const isAuthenticated = user && profile && profile.validation_status === 'approved';
   const showNavbar = isAuthenticated && view !== 'admin';
 
   if (loading) {
@@ -266,7 +266,14 @@ function AppContent() {
         </div>
       )}
 
-      {view === 'profile' && <UserProfile />}
+      {view === 'profile' && (
+        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-8">
+          <div className="max-w-7xl mx-auto">
+            <h1 className="text-3xl font-bold text-slate-900 mb-4">Mon Profil</h1>
+            <p className="text-slate-600">Cette fonctionnalité sera bientôt disponible</p>
+          </div>
+        </div>
+      )}
 
       {view === 'athletes-list' && (
         <AthletesList onViewProfile={handleViewAthleteProfile} />

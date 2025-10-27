@@ -60,8 +60,8 @@ Le projet est déjà connecté à une instance Supabase :
 
 ```bash
 # .env (déjà configuré)
-VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your-anon-key-here
+VITE_SUPABASE_URL=https://ufitfifaimndezqmczgd.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
 **Si vous devez créer une nouvelle instance :**
@@ -80,7 +80,7 @@ VITE_SUPABASE_ANON_KEY=your-anon-key-here
 ```bash
 # Supabase Configuration
 VITE_SUPABASE_URL=https://votre-projet.supabase.co
-VITE_SUPABASE_ANON_KEY=your-anon-key-here
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
 **IMPORTANT** :
@@ -424,7 +424,7 @@ npm install -g supabase
 supabase login
 
 # Link au projet
-supabase link --project-ref your-project-ref
+supabase link --project-ref ufitfifaimndezqmczgd
 
 # Appliquer toutes les migrations
 supabase db push
@@ -708,8 +708,8 @@ SELECT * FROM profiles WHERE auth.uid() = id;
 
 ```bash
 # .env.development
-VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your-anon-key-here
+VITE_SUPABASE_URL=https://ufitfifaimndezqmczgd.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJhbGc...
 ```
 
 ### Staging
@@ -717,7 +717,7 @@ VITE_SUPABASE_ANON_KEY=your-anon-key-here
 ```bash
 # .env.staging (sur Vercel/Netlify)
 VITE_SUPABASE_URL=https://staging-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your-anon-key-here
+VITE_SUPABASE_ANON_KEY=eyJhbGc...
 ```
 
 ### Production
@@ -725,7 +725,7 @@ VITE_SUPABASE_ANON_KEY=your-anon-key-here
 ```bash
 # .env.production (sur Vercel/Netlify)
 VITE_SUPABASE_URL=https://prod-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your-anon-key-here
+VITE_SUPABASE_ANON_KEY=eyJhbGc...
 ```
 
 **Bonnes pratiques** :

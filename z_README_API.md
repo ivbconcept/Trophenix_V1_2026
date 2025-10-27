@@ -66,10 +66,10 @@ Ce document décrit l'architecture API complète du projet Trophenix, incluant l
 
 ```bash
 # Supabase Auth
-https://your-project.supabase.co/auth/v1
+https://ufitfifaimndezqmczgd.supabase.co/auth/v1
 
 # Supabase REST
-https://your-project.supabase.co/rest/v1
+https://ufitfifaimndezqmczgd.supabase.co/rest/v1
 
 # Django (à venir)
 https://api.trophenix.com/api/v1
@@ -79,7 +79,7 @@ https://api.trophenix.com/api/v1
 
 ```bash
 # Supabase
-apikey: your-anon-key-here
+apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 Authorization: Bearer {JWT_TOKEN}
 Content-Type: application/json
 
@@ -99,7 +99,7 @@ Créer un nouveau compte utilisateur.
 **Request**
 
 ```bash
-POST https://your-project.supabase.co/auth/v1/signup
+POST https://ufitfifaimndezqmczgd.supabase.co/auth/v1/signup
 Content-Type: application/json
 apikey: {SUPABASE_ANON_KEY}
 
@@ -113,7 +113,7 @@ apikey: {SUPABASE_ANON_KEY}
 
 ```json
 {
-  "access_token": "your-jwt-token-here",
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
   "token_type": "bearer",
   "expires_in": 3600,
   "refresh_token": "v1.MRjcaLWzk...",
@@ -142,7 +142,7 @@ Se connecter avec email et mot de passe.
 **Request**
 
 ```bash
-POST https://your-project.supabase.co/auth/v1/token?grant_type=password
+POST https://ufitfifaimndezqmczgd.supabase.co/auth/v1/token?grant_type=password
 Content-Type: application/json
 apikey: {SUPABASE_ANON_KEY}
 
@@ -156,7 +156,7 @@ apikey: {SUPABASE_ANON_KEY}
 
 ```json
 {
-  "access_token": "your-jwt-token-here",
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
   "token_type": "bearer",
   "expires_in": 3600,
   "refresh_token": "v1.MRjcaLWzk...",
@@ -178,7 +178,7 @@ Récupérer l'utilisateur connecté.
 **Request**
 
 ```bash
-GET https://your-project.supabase.co/auth/v1/user
+GET https://ufitfifaimndezqmczgd.supabase.co/auth/v1/user
 Authorization: Bearer {JWT_TOKEN}
 apikey: {SUPABASE_ANON_KEY}
 ```
@@ -203,7 +203,7 @@ Déconnecter l'utilisateur.
 **Request**
 
 ```bash
-POST https://your-project.supabase.co/auth/v1/logout
+POST https://ufitfifaimndezqmczgd.supabase.co/auth/v1/logout
 Authorization: Bearer {JWT_TOKEN}
 apikey: {SUPABASE_ANON_KEY}
 ```
@@ -237,7 +237,7 @@ Récupérer les profils.
 **Request**
 
 ```bash
-GET https://your-project.supabase.co/rest/v1/profiles
+GET https://ufitfifaimndezqmczgd.supabase.co/rest/v1/profiles
 Authorization: Bearer {JWT_TOKEN}
 apikey: {SUPABASE_ANON_KEY}
 
@@ -281,7 +281,7 @@ Créer un profil.
 **Request**
 
 ```bash
-POST https://your-project.supabase.co/rest/v1/profiles
+POST https://ufitfifaimndezqmczgd.supabase.co/rest/v1/profiles
 Authorization: Bearer {JWT_TOKEN}
 apikey: {SUPABASE_ANON_KEY}
 Content-Type: application/json
@@ -317,7 +317,7 @@ Récupérer les profils athlètes.
 **Request**
 
 ```bash
-GET https://your-project.supabase.co/rest/v1/athlete_profiles
+GET https://ufitfifaimndezqmczgd.supabase.co/rest/v1/athlete_profiles
 Authorization: Bearer {JWT_TOKEN}
 apikey: {SUPABASE_ANON_KEY}
 
@@ -379,7 +379,7 @@ Créer un profil athlète.
 **Request**
 
 ```bash
-POST https://your-project.supabase.co/rest/v1/athlete_profiles
+POST https://ufitfifaimndezqmczgd.supabase.co/rest/v1/athlete_profiles
 Authorization: Bearer {JWT_TOKEN}
 apikey: {SUPABASE_ANON_KEY}
 Content-Type: application/json
@@ -411,7 +411,7 @@ Récupérer les profils entreprises.
 **Request**
 
 ```bash
-GET https://your-project.supabase.co/rest/v1/company_profiles
+GET https://ufitfifaimndezqmczgd.supabase.co/rest/v1/company_profiles
 Authorization: Bearer {JWT_TOKEN}
 apikey: {SUPABASE_ANON_KEY}
 
@@ -450,7 +450,7 @@ Récupérer les contacts (matching athlète-entreprise).
 **Request**
 
 ```bash
-GET https://your-project.supabase.co/rest/v1/contacts
+GET https://ufitfifaimndezqmczgd.supabase.co/rest/v1/contacts
 Authorization: Bearer {JWT_TOKEN}
 apikey: {SUPABASE_ANON_KEY}
 
@@ -841,19 +841,19 @@ SELECT * FROM profiles; -- Autorisé si user_type = 'admin'
 
 ```bash
 # Signup
-curl -X POST https://your-project.supabase.co/auth/v1/signup \
+curl -X POST https://ufitfifaimndezqmczgd.supabase.co/auth/v1/signup \
   -H "apikey: {ANON_KEY}" \
   -H "Content-Type: application/json" \
   -d '{"email":"test@example.com","password":"Test123!"}'
 
 # Login
-curl -X POST https://your-project.supabase.co/auth/v1/token?grant_type=password \
+curl -X POST https://ufitfifaimndezqmczgd.supabase.co/auth/v1/token?grant_type=password \
   -H "apikey: {ANON_KEY}" \
   -H "Content-Type: application/json" \
   -d '{"email":"test@example.com","password":"Test123!"}'
 
 # Get profiles
-curl -X GET https://your-project.supabase.co/rest/v1/profiles \
+curl -X GET https://ufitfifaimndezqmczgd.supabase.co/rest/v1/profiles \
   -H "apikey: {ANON_KEY}" \
   -H "Authorization: Bearer {JWT_TOKEN}"
 ```

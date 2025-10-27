@@ -1,4 +1,4 @@
-import { supabaseDB2 as supabase } from '../lib/supabaseDB2';
+import { supabase } from '../lib/supabase';
 import type { EleaConversation, EleaMessage, Profile } from '../types/database';
 import type { AgentContext } from '../types/agent';
 

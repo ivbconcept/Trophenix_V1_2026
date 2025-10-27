@@ -62,7 +62,6 @@
 export const USER_TYPES = {
   ATHLETE: 'athlete',
   COMPANY: 'company',
-  SPONSOR: 'sponsor',
 } as const;
 
 /**
@@ -86,22 +85,13 @@ export const USER_TYPE_CONFIG = {
     databaseTable: 'athlete_profiles',
   },
   [USER_TYPES.COMPANY]: {
-    label: 'Employeur',
-    description: 'Je recrute des athlètes pour mon entreprise',
+    label: 'Professionnel',
+    description: 'Je représente une structure ou une entreprise',
     iconType: 'briefcase',
-    gradientFrom: 'blue-400',
-    gradientTo: 'blue-500',
+    gradientFrom: 'pink-400',
+    gradientTo: 'pink-500',
     onboardingSteps: 4,
     databaseTable: 'company_profiles',
-  },
-  [USER_TYPES.SPONSOR]: {
-    label: 'Sponsor',
-    description: 'Je cherche à sponsoriser des athlètes',
-    iconType: 'handshake',
-    gradientFrom: 'amber-400',
-    gradientTo: 'amber-500',
-    onboardingSteps: 4,
-    databaseTable: 'sponsor_profiles',
   },
 } as const;
 

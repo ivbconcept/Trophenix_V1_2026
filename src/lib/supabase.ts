@@ -51,17 +51,6 @@ if (!supabaseUrl || !supabaseAnonKey) {
 }
 
 /**
- * Debug log pour vérifier les variables d'environnement chargées
- * Utile pour diagnostiquer les problèmes de configuration
- */
-if (import.meta.env.DEV) {
-  console.log('🔧 Supabase Client Configuration:');
-  console.log('  URL:', supabaseUrl);
-  console.log('  Key (first 20 chars):', supabaseAnonKey?.substring(0, 20) + '...');
-  console.log('  Environment:', import.meta.env.MODE);
-}
-
-/**
  * Instance singleton du client Supabase
  *
  * Utilisé dans tous les services pour :

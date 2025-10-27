@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ChevronRight, Building2, MapPin, FileText, Mail, CheckCircle } from 'lucide-react';
 import { AgentElea } from '../AI/AgentElea';
-import { searchSectors, searchLocations, getAllCompanySizes } from '../../services/referenceDataService';
 
 interface CompanyOnboardingProps {
   onComplete: (data: any) => void;
@@ -11,6 +10,19 @@ interface CompanyOnboardingProps {
   onBackHandlerReady?: (handler: () => void) => void;
 }
 
+const SECTORS = [
+  'Technologie / IT', 'Finance / Banque', 'Conseil / Audit', 'Retail / E-commerce',
+  'Industrie / Manufacturing', 'Santé / Pharma', 'Énergie / Environnement',
+  'Médias / Communication', 'Tourisme / Hôtellerie', 'Immobilier / Construction',
+  'Transport / Logistique', 'Éducation / Formation', 'Sport Business',
+  'Luxe / Mode', 'Agroalimentaire', 'Automobile', 'Autre'
+];
+
+const LOCATIONS = [
+  'Paris', 'Lyon', 'Marseille', 'Toulouse', 'Bordeaux', 'Lille',
+  'Nantes', 'Strasbourg', 'Montpellier', 'Nice', 'Rennes',
+  'Plusieurs sites en France', 'International', 'Télétravail possible'
+];
 
 export function CompanyOnboarding({ onComplete, onBack, initialData, initialStep, onBackHandlerReady }: CompanyOnboardingProps) {
   const [currentStep, setCurrentStep] = useState(initialStep || 1);
@@ -32,36 +44,14 @@ export function CompanyOnboarding({ onComplete, onBack, initialData, initialStep
   const [showSectorSuggestions, setShowSectorSuggestions] = useState(false);
   const [locationInput, setLocationInput] = useState('');
   const [showLocationSuggestions, setShowLocationSuggestions] = useState(false);
-  const [filteredSectors, setFilteredSectors] = useState<string[]>([]);
-  const [filteredLocations, setFilteredLocations] = useState<string[]>([]);
-  const [companySizes, setCompanySizes] = useState<string[]>([]);
 
-  // Charger les secteurs
-  useEffect(() => {
-    const loadSectors = async () => {
-      const sectors = await searchSectors(sectorInput);
-      setFilteredSectors(sectors);
-    };
-    loadSectors();
-  }, [sectorInput]);
+  const filteredSectors = SECTORS.filter(sector =>
+    sector.toLowerCase().includes(sectorInput.toLowerCase())
+  );
 
-  // Charger les locations
-  useEffect(() => {
-    const loadLocations = async () => {
-      const locations = await searchLocations(locationInput);
-      setFilteredLocations(locations);
-    };
-    loadLocations();
-  }, [locationInput]);
-
-  // Charger les tailles d'entreprise au montage
-  useEffect(() => {
-    const loadCompanySizes = async () => {
-      const sizes = await getAllCompanySizes();
-      setCompanySizes(sizes);
-    };
-    loadCompanySizes();
-  }, []);
+  const filteredLocations = LOCATIONS.filter(loc =>
+    loc.toLowerCase().includes(locationInput.toLowerCase())
+  );
 
   const handleChange = (field: string, value: string | boolean) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -206,7 +196,7 @@ export function CompanyOnboarding({ onComplete, onBack, initialData, initialStep
           <div>
             <p className="text-sm font-medium text-slate-700 mb-3">Taille de la structure *</p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              {companySizes.map((size) => (
+              {['1-10', '11-50', '51-200', '201-500', '501-1000', '1000+'].map((size) => (
                 <button
                   key={size}
                   type="button"
@@ -217,7 +207,7 @@ export function CompanyOnboarding({ onComplete, onBack, initialData, initialStep
                       : 'border-slate-200 hover:border-indigo-300'
                   }`}
                 >
-                  {size}
+                  {size} employés
                 </button>
               ))}
             </div>
