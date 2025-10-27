@@ -50,10 +50,13 @@ export function SignUpFlow({ onBack, onSuccess }: SignUpFlowProps) {
       const { error: signUpError } = await signUp(email, password, metadata);
 
       if (signUpError) {
+        console.error('❌ SignUp error details:', signUpError);
         if (signUpError.message && signUpError.message.includes('already registered')) {
           setError('Cet email est déjà utilisé');
+        } else if (signUpError.message && signUpError.message.includes('Email rate limit exceeded')) {
+          setError('Trop de tentatives. Veuillez réessayer dans quelques minutes.');
         } else {
-          setError('Une erreur est survenue lors de la création du compte');
+          setError(`Erreur : ${signUpError.message || 'Une erreur est survenue lors de la création du compte'}`);
         }
         setLoading(false);
         return;
