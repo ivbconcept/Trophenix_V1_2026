@@ -28,7 +28,7 @@ info:
     name: Proprietary
 
 servers:
-  - url: https://fcryxwdpqbnxhymelcbo.supabase.co
+  - url: https://your-project.supabase.co
     description: Production Supabase API
   - url: http://localhost:54321
     description: Local Supabase (dev)
