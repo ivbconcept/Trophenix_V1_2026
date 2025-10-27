@@ -465,9 +465,9 @@ function ProgramSection() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent"></div>
             <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-              <h3 className="text-3xl font-bold mb-4">Our Program & Survey</h3>
+              <h3 className="text-3xl font-bold mb-4">Notre Programme & Enquête</h3>
               <p className="text-lg text-slate-200">
-                {selectedCard !== null ? CARD_DATA[selectedCard].description : 'Click on a card to learn more about our programs and initiatives.'}
+                {selectedCard !== null ? CARD_DATA[selectedCard].description : 'Cliquez sur une carte pour en savoir plus sur nos programmes et initiatives.'}
               </p>
             </div>
           </div>
