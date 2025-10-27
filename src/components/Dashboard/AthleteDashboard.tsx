@@ -18,227 +18,328 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
   const maxValue = Math.max(...chartData.map(d => d.value));
 
-  const kanbanColumns = [
-    {
-      id: 'new',
-      title: 'Nouvelles pistes',
-      count: 3,
-      value: '300,00€',
-      color: 'orange',
-      cards: [
-        {
-          title: 'Paris 15e, France',
-          person: 'Briar House',
-          status: 'Rapport complet',
-          statusColor: 'green',
-          tags: ['Tâches 0/2'],
-          time: 'Nouveau',
-          updated: 'À l\'instant',
-        },
-        {
-          title: 'Londres Road, Sheffield, UK',
-          person: 'Aileen Foley',
-          status: 'Rapport complet',
-          statusColor: 'green',
-          tags: ['Brouillon de proposition'],
-          time: '5 jours',
-          updated: 'Mise à jour il y a 6 jours',
-        },
-      ]
-    },
-    {
-      id: 'scheduled',
-      title: 'Entretiens planifiés',
-      count: 2,
-      value: '200,00€',
-      color: 'yellow',
-      cards: [
-        {
-          title: 'Lyon Part-Dieu, France',
-          person: 'Finnley Todd',
-          status: 'Rapport complet',
-          statusColor: 'green',
-          tags: ['Brouillon de proposition'],
-          time: '6 jours',
-          updated: 'Mise à jour il y a 7 jours',
-        },
-        {
-          title: 'Tothill Street, London, UK',
-          person: 'Joy Horton',
-          status: null,
-          tags: ['Tâches 0/2'],
-          time: '7 jours',
-          updated: 'Mise à jour il y a 8 jours',
-        },
-      ]
-    },
-    {
-      id: 'sent',
-      title: 'Propositions envoyées',
-      count: 2,
-      value: '250,00€',
-      color: 'blue',
-      cards: [
-        {
-          title: 'Marseille 8e, France',
-          person: 'Eve Neal',
-          status: 'Rapport annulé',
-          statusColor: 'red',
-          tags: [],
-          time: '5 jours',
-          updated: 'Mise à jour il y a 6 jours',
-        },
-        {
-          title: 'Nice Promenade, France',
-          person: 'Paul Diaz',
-          status: 'Rapport complet',
-          statusColor: 'green',
-          tags: [],
-          time: '5 jours',
-          updated: 'Mise à jour il y a 6 jours',
-        },
-      ]
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-slate-50 p-6">
-      <div className="max-w-[1600px] mx-auto">
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-4">
-            <button className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50">
-              Vue Kanban
-            </button>
-            <button className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900">
-              Vue Liste
-            </button>
-            <button className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900">
-              Paramètres
-            </button>
-          </div>
-          <div className="flex items-center gap-3">
-            <button className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 flex items-center gap-2">
-              Tous les travaux
-              <ChevronRight className="w-4 h-4 rotate-90" />
-            </button>
-            <button className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 flex items-center gap-2">
-              <TrendingUp className="w-4 h-4" />
-              Filtres & tris
-            </button>
-            <button className="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 flex items-center gap-2">
-              <span className="text-lg">+</span>
-              Ajouter nouveau
-            </button>
-          </div>
-        </div>
+    <div className="min-h-screen bg-slate-50">
+      <div className="max-w-[1400px] mx-auto px-8 py-6">
+        <div className="grid grid-cols-12 gap-6">
+          <div className="col-span-8">
+            <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-3xl p-8 text-white mb-6 shadow-lg">
+              <div className="mb-6">
+                <p className="text-indigo-100 text-sm font-medium tracking-wider uppercase mb-2">PLATEFORME TROPHENIX</p>
+                <h1 className="text-4xl font-bold leading-tight mb-1">
+                  Développez Votre Carrière avec
+                </h1>
+                <h1 className="text-4xl font-bold leading-tight">
+                  des Opportunités Professionnelles
+                </h1>
+              </div>
+              <button className="bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-xl font-medium transition-all flex items-center gap-2 shadow-lg">
+                Commencer
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
 
-        <div className="grid grid-cols-3 gap-4">
-          {kanbanColumns.map((column) => (
-            <KanbanColumn
-              key={column.id}
-              title={column.title}
-              count={column.count}
-              value={column.value}
-              color={column.color}
-              cards={column.cards}
-            />
-          ))}
+            <div className="mb-6">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-2xl font-bold text-slate-900">Continue Watching</h2>
+                <div className="flex gap-2">
+                  <button className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors">
+                    <ChevronRight className="w-5 h-5 text-slate-600 rotate-180" />
+                  </button>
+                  <button className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center hover:bg-indigo-700 transition-colors">
+                    <ChevronRight className="w-5 h-5 text-white" />
+                  </button>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-3 gap-4">
+                <CourseCard
+                  tag="OPPORTUNITÉS"
+                  tagColor="blue"
+                  title="Guide pour Devenir Coach Professionnel"
+                  instructor="Leonardo Samsul"
+                  image="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  onClick={() => onNavigate('job-offers')}
+                />
+                <CourseCard
+                  tag="RECONVERSION"
+                  tagColor="purple"
+                  title="Optimiser votre Expérience avec la Meilleure Reconversion"
+                  instructor="Bayu Salto"
+                  image="https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  onClick={() => onNavigate('profile')}
+                />
+                <CourseCard
+                  tag="NETWORKING"
+                  tagColor="pink"
+                  title="Développer et Améliorer votre Réseau Professionnel"
+                  instructor="Padhang Satrio"
+                  image="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  onClick={() => onNavigate('athletes-directory')}
+                />
+              </div>
+            </div>
+
+            <div className="bg-white rounded-3xl p-6 shadow-sm">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-2xl font-bold text-slate-900">Your Lesson</h2>
+                <button className="text-indigo-600 font-medium text-sm hover:text-indigo-700">
+                  See all
+                </button>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-slate-100">
+                      <th className="text-left py-3 px-2 text-xs font-medium text-slate-500 uppercase">Mentor</th>
+                      <th className="text-left py-3 px-2 text-xs font-medium text-slate-500 uppercase">Type</th>
+                      <th className="text-left py-3 px-2 text-xs font-medium text-slate-500 uppercase">Description</th>
+                      <th className="text-center py-3 px-2 text-xs font-medium text-slate-500 uppercase">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <LessonRow
+                      mentorName="Padhang Satrio"
+                      mentorDate="2/16/2004"
+                      type="RECONVERSION"
+                      typeColor="purple"
+                      description="Comprendre la Reconversion Professionnelle"
+                    />
+                    <LessonRow
+                      mentorName="John Tosan"
+                      mentorDate="12/8/2003"
+                      type="OPPORTUNITÉS"
+                      typeColor="blue"
+                      description="Explorer les Opportunités d'Emploi"
+                    />
+                    <LessonRow
+                      mentorName="Bagas Mahpie"
+                      mentorDate="5/20/2002"
+                      type="NETWORKING"
+                      typeColor="pink"
+                      description="Construire votre Réseau Professionnel"
+                    />
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-span-4">
+            <div className="bg-white rounded-3xl p-6 mb-6 shadow-sm">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold text-slate-900">Statistic</h2>
+                <button className="text-slate-400 hover:text-slate-600">
+                  <MoreVertical className="w-5 h-5" />
+                </button>
+              </div>
+
+              <div className="flex items-center justify-center mb-6">
+                <div className="relative">
+                  <svg className="w-32 h-32 transform -rotate-90">
+                    <circle
+                      cx="64"
+                      cy="64"
+                      r="56"
+                      stroke="#e2e8f0"
+                      strokeWidth="12"
+                      fill="none"
+                    />
+                    <circle
+                      cx="64"
+                      cy="64"
+                      r="56"
+                      stroke="#6366f1"
+                      strokeWidth="12"
+                      fill="none"
+                      strokeDasharray={`${52 * 2 * Math.PI * 0.52} ${52 * 2 * Math.PI}`}
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center">
+                      <p className="text-3xl font-bold text-indigo-600">52%</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="text-center mb-6">
+                <h3 className="text-xl font-bold text-slate-900 mb-1">Good Morning Jason 🔥</h3>
+                <p className="text-sm text-slate-500">Continue your learning to achieve your target!</p>
+              </div>
+
+              <div className="space-y-2 mb-6">
+                {chartData.map((item, index) => (
+                  <div key={index} className="flex items-center gap-3">
+                    <span className="text-xs text-slate-500 w-20">{item.label}</span>
+                    <div className="flex-1 bg-slate-100 rounded-full h-8 overflow-hidden">
+                      <div
+                        className="bg-indigo-500 h-full rounded-full transition-all"
+                        style={{ width: `${(item.value / maxValue) * 100}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-white rounded-3xl p-6 shadow-sm">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-bold text-slate-900">Your mentor</h2>
+                <button className="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center hover:bg-indigo-100 transition-colors">
+                  <span className="text-indigo-600 text-lg">+</span>
+                </button>
+              </div>
+
+              <div className="space-y-4 mb-4">
+                <MentorCard
+                  name="Padhang Satrio"
+                  image="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=faces"
+                />
+                <MentorCard
+                  name="Zakir Horizontal"
+                  image="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=faces"
+                />
+                <MentorCard
+                  name="Leonardo Samsul"
+                  image="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=faces"
+                />
+              </div>
+
+              <button className="w-full text-center text-indigo-600 font-medium text-sm py-2 hover:text-indigo-700">
+                See All
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-interface KanbanColumnProps {
+interface CourseCardProps {
+  tag: string;
+  tagColor: 'blue' | 'purple' | 'pink';
   title: string;
-  count: number;
-  value: string;
-  color: 'orange' | 'yellow' | 'blue';
-  cards: Array<{
-    title: string;
-    person: string;
-    status: string | null;
-    statusColor?: 'green' | 'red';
-    tags: string[];
-    time: string;
-    updated: string;
-  }>;
+  instructor: string;
+  image: string;
+  onClick: () => void;
 }
 
-function KanbanColumn({ title, count, value, color, cards }: KanbanColumnProps) {
-  const colorClasses = {
-    orange: 'bg-orange-500',
-    yellow: 'bg-yellow-500',
-    blue: 'bg-blue-500'
+function CourseCard({ tag, tagColor, title, instructor, image, onClick }: CourseCardProps) {
+  const tagColors = {
+    blue: 'bg-blue-100 text-blue-600',
+    purple: 'bg-purple-100 text-purple-600',
+    pink: 'bg-pink-100 text-pink-600'
   };
 
   return (
-    <div className="bg-slate-100 rounded-lg p-4">
-      <div className="flex items-center justify-between mb-4">
+    <button
+      onClick={onClick}
+      className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all text-left"
+    >
+      <div className="relative h-40 overflow-hidden">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+        <button className="absolute top-3 right-3 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors">
+          <Heart className="w-4 h-4 text-slate-600" />
+        </button>
+      </div>
+      <div className="p-4">
+        <span className={`inline-block px-2 py-1 rounded text-xs font-medium ${tagColors[tagColor]} mb-2`}>
+          {tag}
+        </span>
+        <h3 className="font-semibold text-slate-900 mb-2 line-clamp-2 leading-snug">
+          {title}
+        </h3>
+        <div className="flex items-center gap-2 pt-2 border-t border-slate-100">
+          <div className="w-6 h-6 bg-slate-200 rounded-full flex items-center justify-center">
+            <span className="text-xs font-medium text-slate-600">M</span>
+          </div>
+          <span className="text-xs text-slate-600">{instructor}</span>
+          <span className="ml-auto text-xs text-slate-400">Mentor</span>
+        </div>
+      </div>
+    </button>
+  );
+}
+
+interface LessonRowProps {
+  mentorName: string;
+  mentorDate: string;
+  type: string;
+  typeColor: 'blue' | 'purple' | 'pink';
+  description: string;
+}
+
+function LessonRow({ mentorName, mentorDate, type, typeColor, description }: LessonRowProps) {
+  const typeColors = {
+    blue: 'bg-blue-50 text-blue-600',
+    purple: 'bg-purple-50 text-purple-600',
+    pink: 'bg-pink-50 text-pink-600'
+  };
+
+  return (
+    <tr className="border-b border-slate-50 hover:bg-slate-50 transition-colors">
+      <td className="py-4 px-2">
         <div className="flex items-center gap-2">
-          <div className={`w-2 h-2 rounded-full ${colorClasses[color]}`} />
-          <h3 className="font-semibold text-slate-900">{title}</h3>
-          <span className="text-sm text-slate-500">{count}</span>
+          <div className="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center">
+            <span className="text-xs font-medium text-slate-600">{mentorName.charAt(0)}</span>
+          </div>
+          <div>
+            <p className="font-medium text-slate-900 text-sm">{mentorName}</p>
+            <p className="text-xs text-slate-500">{mentorDate}</p>
+          </div>
         </div>
-        <span className="font-semibold text-slate-900">{value}</span>
-      </div>
-
-      <div className="space-y-3">
-        {cards.map((card, index) => (
-          <KanbanCard key={index} {...card} />
-        ))}
-      </div>
-    </div>
+      </td>
+      <td className="py-4 px-2">
+        <span className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium ${typeColors[typeColor]}`}>
+          <Play className="w-3 h-3" />
+          {type}
+        </span>
+      </td>
+      <td className="py-4 px-2">
+        <p className="text-sm text-slate-600">{description}</p>
+      </td>
+      <td className="py-4 px-2 text-center">
+        <button className="text-indigo-600 hover:text-indigo-700">
+          <Play className="w-4 h-4" />
+        </button>
+      </td>
+    </tr>
   );
 }
 
-interface KanbanCardProps {
-  title: string;
-  person: string;
-  status: string | null;
-  statusColor?: 'green' | 'red';
-  tags: string[];
-  time: string;
-  updated: string;
+interface MentorCardProps {
+  name: string;
+  image: string;
 }
 
-function KanbanCard({ title, person, status, statusColor, tags, time, updated }: KanbanCardProps) {
-  const statusColors = {
-    green: 'bg-green-50 text-green-700 border-green-200',
-    red: 'bg-red-50 text-red-700 border-red-200'
-  };
-
+function MentorCard({ name, image }: MentorCardProps) {
   return (
-    <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
-      <div className="mb-3">
-        {tags.map((tag, idx) => (
-          <span key={idx} className="inline-flex items-center gap-1 text-xs text-slate-600 mb-2">
-            <FileText className="w-3 h-3" />
-            {tag}
-          </span>
-        ))}
-      </div>
-
-      <h4 className="font-semibold text-slate-900 mb-3">{title}</h4>
-
-      <div className="flex items-center gap-2 mb-3">
-        <div className="w-6 h-6 bg-slate-200 rounded-full flex items-center justify-center">
-          <span className="text-xs font-medium text-slate-600">{person.charAt(0)}</span>
+    <div className="flex items-center justify-between">
+      <div className="flex items-center gap-3">
+        <div className="relative">
+          <img
+            src={image}
+            alt={name}
+            className="w-10 h-10 rounded-full object-cover"
+          />
+          <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 border-2 border-white rounded-full" />
         </div>
-        <span className="text-sm text-slate-700">{person}</span>
-      </div>
-
-      {status && (
-        <div className={`inline-flex items-center gap-1 px-2 py-1 rounded border text-xs font-medium mb-3 ${statusColor ? statusColors[statusColor] : 'bg-slate-50 text-slate-700'}`}>
-          <FileText className="w-3 h-3" />
-          {status}
+        <div>
+          <p className="font-medium text-slate-900 text-sm">{name}</p>
+          <p className="text-xs text-slate-500">Mentor</p>
         </div>
-      )}
-
-      <div className="flex items-center justify-between text-xs text-slate-500 pt-3 border-t border-slate-100">
-        <span>{time}</span>
-        <span>{updated}</span>
       </div>
+      <button className="px-4 py-1.5 border border-slate-200 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-50 transition-colors flex items-center gap-1">
+        <span className="text-indigo-600">+</span>
+        Follow
+      </button>
     </div>
   );
 }

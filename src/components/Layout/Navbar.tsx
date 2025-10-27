@@ -18,23 +18,23 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
     switch (profile.user_type) {
       case 'athlete':
         return [
-          { id: 'athlete-dashboard', label: 'Tableau de bord', icon: LayoutDashboard },
-          { id: 'messages', label: 'Messages', icon: Mail },
-          { id: 'job-offers', label: 'Opportunités', icon: BookOpen },
-          { id: 'my-applications', label: 'Candidatures', icon: Briefcase },
-          { id: 'athletes-directory', label: 'Réseau', icon: UsersRound },
+          { id: 'athlete-dashboard', label: 'Dashboard', icon: LayoutDashboard },
+          { id: 'messages', label: 'Inbox', icon: Mail },
+          { id: 'job-offers', label: 'Lesson', icon: BookOpen },
+          { id: 'my-applications', label: 'Task', icon: Briefcase },
+          { id: 'athletes-directory', label: 'Group', icon: UsersRound },
         ];
       case 'company':
         return [
-          { id: 'company-dashboard', label: 'Tableau de bord', icon: LayoutDashboard },
+          { id: 'company-dashboard', label: 'Dashboard', icon: LayoutDashboard },
           { id: 'manage-offers', label: 'Mes offres', icon: Briefcase },
-          { id: 'received-applications', label: 'Candidatures reçues', icon: Users },
-          { id: 'athletes-directory', label: 'Annuaire athlètes', icon: Trophy },
+          { id: 'received-applications', label: 'Candidatures', icon: Users },
+          { id: 'athletes-directory', label: 'Athlètes', icon: Trophy },
         ];
       case 'sponsor':
         return [
-          { id: 'company-dashboard', label: 'Tableau de bord', icon: LayoutDashboard },
-          { id: 'athletes-directory', label: 'Annuaire athlètes', icon: Trophy },
+          { id: 'company-dashboard', label: 'Dashboard', icon: LayoutDashboard },
+          { id: 'athletes-directory', label: 'Athlètes', icon: Trophy },
         ];
       default:
         return [];
@@ -84,23 +84,23 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
 
           <div className="mb-8">
             <p className="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">
-              CONTACTS
+              FRIENDS
             </p>
             <div className="space-y-3">
               <FriendItem
-                name="Marie Dubois"
-                status="Athlète"
-                avatar="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=faces"
+                name="Bagas Mahpie"
+                status="Friend"
+                avatar="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=faces"
               />
               <FriendItem
-                name="Thomas Martin"
-                status="Coach"
+                name="Sir Dandy"
+                status="Old Friend"
                 avatar="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=faces"
               />
               <FriendItem
-                name="Sophie Bernard"
-                status="Mentor"
-                avatar="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&fit=crop&crop=faces"
+                name="Jhon Tosan"
+                status="Friend"
+                avatar="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=faces"
               />
             </div>
           </div>
@@ -109,11 +109,11 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
         <div className="p-4 border-t border-slate-200">
           <div className="mb-4">
             <p className="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">
-              PARAMÈTRES
+              SETTINGS
             </p>
             <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all">
               <Settings className="h-5 w-5" />
-              <span>Paramètres</span>
+              <span>Setting</span>
             </button>
           </div>
           <button
@@ -121,7 +121,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
             className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-red-600 hover:bg-red-50 transition-all"
           >
             <LogOut className="h-5 w-5" />
-            <span>Déconnexion</span>
+            <span>Logout</span>
           </button>
         </div>
       </aside>
@@ -134,7 +134,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
                 <input
                   type="text"
-                  placeholder="Rechercher..."
+                  placeholder="Search your course..."
                   className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                 />
               </div>
