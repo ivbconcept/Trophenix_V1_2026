@@ -1,4 +1,4 @@
-import { Bell, LogOut, Trophy, Search, Mail, LayoutDashboard, Award, HandshakeIcon, UsersRound, Settings, BookOpen, Briefcase, FileText, GraduationCap, TrendingUp, Users, DollarSign, Image as ImageIcon } from 'lucide-react';
+import { Bell, LogOut, Trophy, Search, Mail, LayoutDashboard, Award, Handshake as HandshakeIcon, UsersRound, Settings, BookOpen, Briefcase, FileText, GraduationCap, TrendingUp, Users, DollarSign, Image as ImageIcon } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { ReactNode, useState, useEffect } from 'react';
 
