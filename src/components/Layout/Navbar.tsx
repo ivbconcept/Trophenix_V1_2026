@@ -44,20 +44,20 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
     switch (profile.user_type) {
       case 'athlete':
         return [
-          { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
+          { id: 'dashboard', label: 'Accueil', icon: LayoutDashboard },
           { id: 'employability', label: 'Job', icon: Award, hasSubmenu: true },
           { id: 'sponsoring', label: 'Sponsoring', icon: HandshakeIcon, hasSubmenu: true },
           { id: 'group', label: 'Annuaire', icon: UsersRound },
         ];
       case 'company':
         return [
-          { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
+          { id: 'dashboard', label: 'Accueil', icon: LayoutDashboard },
           { id: 'employability', label: 'Recrutement', icon: Award, hasSubmenu: true },
           { id: 'athletes', label: 'Athlètes', icon: Trophy },
         ];
       case 'sponsor':
         return [
-          { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
+          { id: 'dashboard', label: 'Accueil', icon: LayoutDashboard },
           { id: 'athletes', label: 'Athlètes', icon: Trophy },
         ];
       default:
@@ -171,30 +171,6 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
             </nav>
           </div>
 
-          {!showSecondarySidebar && (
-            <div className="mb-8">
-              <p className="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">
-                FRIENDS
-              </p>
-              <div className="space-y-3">
-                <FriendItem
-                  name="Bagas Mahpie"
-                  status="Friend"
-                  avatar="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=faces"
-                />
-                <FriendItem
-                  name="Sir Dandy"
-                  status="Old Friend"
-                  avatar="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=faces"
-                />
-                <FriendItem
-                  name="Jhon Tosan"
-                  status="Friend"
-                  avatar="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=faces"
-                />
-              </div>
-            </div>
-          )}
         </div>
 
         <div className={`p-4 border-t border-slate-700/50 ${showSecondarySidebar ? 'px-2' : 'px-4'}`}>
