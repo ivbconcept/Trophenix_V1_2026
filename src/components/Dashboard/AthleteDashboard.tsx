@@ -70,123 +70,38 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             </div>
 
             <div className="grid grid-cols-12 gap-6 mb-6">
-              <div className="col-span-8">
+              <div className="col-span-12">
                 <div className="bg-white rounded-3xl p-6 shadow-sm">
-                  <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-2xl font-bold text-slate-900">Vos Opportunités</h2>
-                    <button className="text-indigo-600 font-medium text-sm hover:text-indigo-700">
-                      Voir tout
+                  <div className="flex items-center justify-between mb-6">
+                    <h2 className="text-2xl font-bold text-slate-900">Actualités Sportives</h2>
+                    <button className="text-indigo-600 font-medium text-sm hover:text-indigo-700 flex items-center gap-1">
+                      Voir tout <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
 
-                  <div className="flex gap-2 mb-6">
-                    <button
-                      onClick={() => setActiveTab('all')}
-                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                        activeTab === 'all'
-                          ? 'bg-indigo-600 text-white'
-                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                      }`}
-                    >
-                      Toutes
-                    </button>
-                    <button
-                      onClick={() => setActiveTab('jobs')}
-                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                        activeTab === 'jobs'
-                          ? 'bg-indigo-600 text-white'
-                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                      }`}
-                    >
-                      Emplois
-                    </button>
-                    <button
-                      onClick={() => setActiveTab('sponsoring')}
-                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                        activeTab === 'sponsoring'
-                          ? 'bg-indigo-600 text-white'
-                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                      }`}
-                    >
-                      Sponsoring
-                    </button>
-                  </div>
-
-                  <div className="overflow-x-auto">
-                    <table className="w-full">
-                      <thead>
-                        <tr className="border-b border-slate-100">
-                          <th className="text-left py-3 px-2 text-xs font-medium text-slate-500 uppercase">Entreprise</th>
-                          <th className="text-left py-3 px-2 text-xs font-medium text-slate-500 uppercase">Type</th>
-                          <th className="text-left py-3 px-2 text-xs font-medium text-slate-500 uppercase">Description</th>
-                          <th className="text-center py-3 px-2 text-xs font-medium text-slate-500 uppercase">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {(activeTab === 'all' || activeTab === 'sponsoring') && (
-                          <LessonRow
-                            mentorName="Nike France"
-                            mentorDate="15/10/2025"
-                            type="SPONSORING"
-                            typeColor="purple"
-                            description="Partenariat Équipement Sportif"
-                          />
-                        )}
-                        {(activeTab === 'all' || activeTab === 'jobs') && (
-                          <LessonRow
-                            mentorName="Decathlon Pro"
-                            mentorDate="18/10/2025"
-                            type="EMPLOI"
-                            typeColor="blue"
-                            description="Manager Commercial - CDI Paris"
-                          />
-                        )}
-                        {(activeTab === 'all' || activeTab === 'sponsoring') && (
-                          <LessonRow
-                            mentorName="Adidas Team"
-                            mentorDate="20/10/2025"
-                            type="SPONSORING"
-                            typeColor="pink"
-                            description="Ambassadeur de Marque"
-                          />
-                        )}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-span-4">
-                <div className="bg-white rounded-3xl p-6 shadow-sm">
-                  <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-xl font-bold text-slate-900">Actualités Sportives</h2>
-                    <Newspaper className="w-5 h-5 text-slate-400" />
-                  </div>
-
-                  <div className="space-y-4">
-                    <NewsCard
-                      title="JO Paris 2024 : Bilan exceptionnel"
+                  <div className="grid grid-cols-3 gap-6">
+                    <NewsCardLarge
+                      title="JO Paris 2024 : Un bilan exceptionnel pour la France"
                       date="28 Oct 2025"
                       category="Olympisme"
-                      image="https://images.pexels.com/photos/1872887/pexels-photo-1872887.jpeg?auto=compress&cs=tinysrgb&w=400"
+                      image="https://images.pexels.com/photos/1872887/pexels-photo-1872887.jpeg?auto=compress&cs=tinysrgb&w=600"
+                      description="La France termine avec 64 médailles, son meilleur résultat olympique depuis 1900."
                     />
-                    <NewsCard
-                      title="Record du monde au 100m"
+                    <NewsCardLarge
+                      title="Record du monde battu sur 100m"
                       date="27 Oct 2025"
                       category="Athlétisme"
-                      image="https://images.pexels.com/photos/2526878/pexels-photo-2526878.jpeg?auto=compress&cs=tinysrgb&w=400"
+                      image="https://images.pexels.com/photos/2526878/pexels-photo-2526878.jpeg?auto=compress&cs=tinysrgb&w=600"
+                      description="Le sprinteur américain établit un nouveau record avec 9.58 secondes."
                     />
-                    <NewsCard
-                      title="Nouveau contrat Nike avec PSG"
+                    <NewsCardLarge
+                      title="Nike prolonge son partenariat avec le PSG"
                       date="26 Oct 2025"
                       category="Business"
-                      image="https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&cs=tinysrgb&w=400"
+                      image="https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&cs=tinysrgb&w=600"
+                      description="Un contrat historique de 150 millions d'euros par an jusqu'en 2032."
                     />
                   </div>
-
-                  <button className="w-full mt-4 py-2 text-indigo-600 hover:text-indigo-700 font-medium text-sm">
-                    Voir toutes les actualités
-                  </button>
                 </div>
               </div>
             </div>
@@ -294,29 +209,40 @@ function LessonRow({ mentorName, mentorDate, type, typeColor, description }: Les
   );
 }
 
-interface NewsCardProps {
+interface NewsCardLargeProps {
   title: string;
   date: string;
   category: string;
   image: string;
+  description: string;
 }
 
-function NewsCard({ title, date, category, image }: NewsCardProps) {
+function NewsCardLarge({ title, date, category, image, description }: NewsCardLargeProps) {
   return (
-    <div className="flex gap-3 group cursor-pointer">
-      <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+    <div className="group cursor-pointer bg-slate-50 rounded-2xl overflow-hidden hover:shadow-lg transition-all">
+      <div className="relative h-48 overflow-hidden">
         <img
           src={image}
           alt={title}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
+        <div className="absolute top-3 left-3">
+          <span className="px-3 py-1 bg-white/95 backdrop-blur-sm rounded-full text-xs font-medium text-indigo-600">
+            {category}
+          </span>
+        </div>
       </div>
-      <div className="flex-1 min-w-0">
-        <span className="text-xs font-medium text-indigo-600 mb-1 block">{category}</span>
-        <h3 className="font-semibold text-slate-900 text-sm line-clamp-2 mb-1 group-hover:text-indigo-600 transition-colors">
+      <div className="p-5">
+        <h3 className="font-bold text-slate-900 text-lg mb-2 line-clamp-2 group-hover:text-indigo-600 transition-colors">
           {title}
         </h3>
-        <p className="text-xs text-slate-500">{date}</p>
+        <p className="text-sm text-slate-600 mb-3 line-clamp-2">
+          {description}
+        </p>
+        <div className="flex items-center justify-between">
+          <span className="text-xs text-slate-500">{date}</span>
+          <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-indigo-600 group-hover:translate-x-1 transition-all" />
+        </div>
       </div>
     </div>
   );
