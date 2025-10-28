@@ -31,8 +31,6 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
       setActiveSection('dashboard');
     } else if (['job-offers', 'my-applications'].includes(currentView)) {
       setActiveSection('employability');
-    } else if (currentView === 'messages') {
-      setActiveSection('messages');
     } else if (currentView === 'athletes-directory') {
       setActiveSection('group');
     } else if (currentView === 'manage-offers' || currentView === 'received-applications') {
@@ -49,7 +47,6 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
           { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
           { id: 'employability', label: 'Employabilité', icon: Award, hasSubmenu: true },
           { id: 'sponsoring', label: 'Sponsoring', icon: HandshakeIcon, hasSubmenu: true },
-          { id: 'messages', label: 'Messages', icon: Mail },
           { id: 'group', label: 'Group', icon: UsersRound },
         ];
       case 'company':
@@ -105,8 +102,6 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
 
     if (sectionId === 'dashboard') {
       onNavigate(profile?.user_type === 'athlete' ? 'athlete-dashboard' : 'company-dashboard');
-    } else if (sectionId === 'messages') {
-      onNavigate('messages');
     } else if (sectionId === 'group') {
       onNavigate('athletes-directory');
     } else if (sectionId === 'athletes') {
