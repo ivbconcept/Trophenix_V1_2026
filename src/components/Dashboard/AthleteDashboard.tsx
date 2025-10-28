@@ -8,15 +8,6 @@ interface AthleteDashboardProps {
 export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
   const { profile } = useAuth();
 
-  const chartData = [
-    { label: 'Candidatures', value: 12 },
-    { label: 'Entretiens', value: 5 },
-    { label: 'Shortlisté', value: 8 },
-    { label: 'Vues profil', value: 45 },
-    { label: 'Messages', value: 15 }
-  ];
-
-  const maxValue = Math.max(...chartData.map(d => d.value));
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -126,64 +117,6 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
           </div>
 
           <div className="col-span-4">
-            <div className="bg-white rounded-3xl p-6 mb-6 shadow-sm">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold text-slate-900">Statistic</h2>
-                <button className="text-slate-400 hover:text-slate-600">
-                  <MoreVertical className="w-5 h-5" />
-                </button>
-              </div>
-
-              <div className="flex items-center justify-center mb-6">
-                <div className="relative">
-                  <svg className="w-32 h-32 transform -rotate-90">
-                    <circle
-                      cx="64"
-                      cy="64"
-                      r="56"
-                      stroke="#e2e8f0"
-                      strokeWidth="12"
-                      fill="none"
-                    />
-                    <circle
-                      cx="64"
-                      cy="64"
-                      r="56"
-                      stroke="#6366f1"
-                      strokeWidth="12"
-                      fill="none"
-                      strokeDasharray={`${52 * 2 * Math.PI * 0.52} ${52 * 2 * Math.PI}`}
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <p className="text-3xl font-bold text-indigo-600">52%</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-1">Profil Complété à 52%</h3>
-                <p className="text-sm text-slate-500">Complétez votre profil pour maximiser vos chances!</p>
-              </div>
-
-              <div className="space-y-2 mb-6">
-                {chartData.map((item, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <span className="text-xs text-slate-500 w-20">{item.label}</span>
-                    <div className="flex-1 bg-slate-100 rounded-full h-8 overflow-hidden">
-                      <div
-                        className="bg-indigo-500 h-full rounded-full transition-all"
-                        style={{ width: `${(item.value / maxValue) * 100}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
             <div className="bg-white rounded-3xl p-6 shadow-sm">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-bold text-slate-900">Recruteurs Actifs</h2>
