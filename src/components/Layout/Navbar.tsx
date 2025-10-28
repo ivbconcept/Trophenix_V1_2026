@@ -47,7 +47,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
           { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
           { id: 'employability', label: 'Employabilité', icon: Award, hasSubmenu: true },
           { id: 'sponsoring', label: 'Sponsoring', icon: HandshakeIcon, hasSubmenu: true },
-          { id: 'group', label: 'Group', icon: UsersRound },
+          { id: 'group', label: 'Annuaire', icon: UsersRound },
         ];
       case 'company':
         return [
