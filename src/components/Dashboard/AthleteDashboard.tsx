@@ -1,5 +1,6 @@
 import { useAuth } from '../../contexts/AuthContext';
 import { Briefcase, FileText, MessageSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play } from 'lucide-react';
+import { useState } from 'react';
 
 interface AthleteDashboardProps {
   onNavigate: (view: string) => void;
@@ -7,6 +8,7 @@ interface AthleteDashboardProps {
 
 export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
   const { profile } = useAuth();
+  const [activeTab, setActiveTab] = useState<'all' | 'jobs' | 'sponsoring'>('all');
 
 
   return (
@@ -78,6 +80,40 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   See all
                 </button>
               </div>
+
+              <div className="flex gap-2 mb-6">
+                <button
+                  onClick={() => setActiveTab('all')}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    activeTab === 'all'
+                      ? 'bg-indigo-600 text-white'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  Toutes
+                </button>
+                <button
+                  onClick={() => setActiveTab('jobs')}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    activeTab === 'jobs'
+                      ? 'bg-indigo-600 text-white'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  Emplois
+                </button>
+                <button
+                  onClick={() => setActiveTab('sponsoring')}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    activeTab === 'sponsoring'
+                      ? 'bg-indigo-600 text-white'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  Sponsoring
+                </button>
+              </div>
+
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
@@ -89,27 +125,33 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     </tr>
                   </thead>
                   <tbody>
-                    <LessonRow
-                      mentorName="Nike France"
-                      mentorDate="15/10/2025"
-                      type="SPONSORING"
-                      typeColor="purple"
-                      description="Partenariat Équipement Sportif"
-                    />
-                    <LessonRow
-                      mentorName="Decathlon Pro"
-                      mentorDate="18/10/2025"
-                      type="EMPLOI"
-                      typeColor="blue"
-                      description="Manager Commercial - CDI Paris"
-                    />
-                    <LessonRow
-                      mentorName="Adidas Team"
-                      mentorDate="20/10/2025"
-                      type="SPONSORING"
-                      typeColor="pink"
-                      description="Ambassadeur de Marque"
-                    />
+                    {(activeTab === 'all' || activeTab === 'sponsoring') && (
+                      <LessonRow
+                        mentorName="Nike France"
+                        mentorDate="15/10/2025"
+                        type="SPONSORING"
+                        typeColor="purple"
+                        description="Partenariat Équipement Sportif"
+                      />
+                    )}
+                    {(activeTab === 'all' || activeTab === 'jobs') && (
+                      <LessonRow
+                        mentorName="Decathlon Pro"
+                        mentorDate="18/10/2025"
+                        type="EMPLOI"
+                        typeColor="blue"
+                        description="Manager Commercial - CDI Paris"
+                      />
+                    )}
+                    {(activeTab === 'all' || activeTab === 'sponsoring') && (
+                      <LessonRow
+                        mentorName="Adidas Team"
+                        mentorDate="20/10/2025"
+                        type="SPONSORING"
+                        typeColor="pink"
+                        description="Ambassadeur de Marque"
+                      />
+                    )}
                   </tbody>
                 </table>
               </div>
