@@ -9,11 +9,11 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
   const { profile } = useAuth();
 
   const chartData = [
-    { label: '1-10 Aug', value: 35 },
-    { label: '11-20 Aug', value: 55 },
-    { label: '21-30 Aug', value: 45 },
-    { label: '31-40 Aug', value: 70 },
-    { label: '41-50 Aug', value: 50 }
+    { label: 'Candidatures', value: 12 },
+    { label: 'Entretiens', value: 5 },
+    { label: 'Shortlisté', value: 8 },
+    { label: 'Vues profil', value: 45 },
+    { label: 'Messages', value: 15 }
   ];
 
   const maxValue = Math.max(...chartData.map(d => d.value));
@@ -41,7 +41,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
             <div className="mb-6">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-bold text-slate-900">Continue Watching</h2>
+                <h2 className="text-2xl font-bold text-slate-900">Opportunités Recommandées</h2>
                 <div className="flex gap-2">
                   <button className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors">
                     <ChevronRight className="w-5 h-5 text-slate-600 rotate-180" />
@@ -54,28 +54,28 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
               <div className="grid grid-cols-3 gap-4">
                 <CourseCard
-                  tag="OPPORTUNITÉS"
+                  tag="CDI"
                   tagColor="blue"
-                  title="Guide pour Devenir Coach Professionnel"
-                  instructor="Leonardo Samsul"
-                  image="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  title="Responsable Marketing Sportif - Paris"
+                  instructor="Nike France"
+                  image="https://images.pexels.com/photos/3760607/pexels-photo-3760607.jpeg?auto=compress&cs=tinysrgb&w=600"
                   onClick={() => onNavigate('job-offers')}
                 />
                 <CourseCard
-                  tag="RECONVERSION"
+                  tag="SPONSORING"
                   tagColor="purple"
-                  title="Optimiser votre Expérience avec la Meilleure Reconversion"
-                  instructor="Bayu Salto"
-                  image="https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  onClick={() => onNavigate('profile')}
+                  title="Partenariat Ambassadeur 2025-2026"
+                  instructor="Adidas Sport"
+                  image="https://images.pexels.com/photos/2385477/pexels-photo-2385477.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  onClick={() => onNavigate('job-offers')}
                 />
                 <CourseCard
-                  tag="NETWORKING"
+                  tag="CDD"
                   tagColor="pink"
-                  title="Développer et Améliorer votre Réseau Professionnel"
-                  instructor="Padhang Satrio"
-                  image="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  onClick={() => onNavigate('athletes-directory')}
+                  title="Coach Sportif - Centre de Formation"
+                  instructor="Decathlon Pro"
+                  image="https://images.pexels.com/photos/3768005/pexels-photo-3768005.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  onClick={() => onNavigate('job-offers')}
                 />
               </div>
             </div>
@@ -165,8 +165,8 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               </div>
 
               <div className="text-center mb-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-1">Good Morning Jason 🔥</h3>
-                <p className="text-sm text-slate-500">Continue your learning to achieve your target!</p>
+                <h3 className="text-xl font-bold text-slate-900 mb-1">Profil Complété à 52%</h3>
+                <p className="text-sm text-slate-500">Complétez votre profil pour maximiser vos chances!</p>
               </div>
 
               <div className="space-y-2 mb-6">
@@ -186,7 +186,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
             <div className="bg-white rounded-3xl p-6 shadow-sm">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-bold text-slate-900">Your mentor</h2>
+                <h2 className="text-xl font-bold text-slate-900">Recruteurs Actifs</h2>
                 <button className="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center hover:bg-indigo-100 transition-colors">
                   <span className="text-indigo-600 text-lg">+</span>
                 </button>
@@ -194,16 +194,16 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
               <div className="space-y-4 mb-4">
                 <MentorCard
-                  name="Padhang Satrio"
-                  image="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=faces"
+                  name="Sophie Martin"
+                  image="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&crop=faces"
                 />
                 <MentorCard
-                  name="Zakir Horizontal"
-                  image="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=faces"
+                  name="Thomas Dubois"
+                  image="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=faces"
                 />
                 <MentorCard
-                  name="Leonardo Samsul"
-                  image="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=faces"
+                  name="Marie Lefebvre"
+                  image="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=faces"
                 />
               </div>
 
@@ -261,7 +261,7 @@ function CourseCard({ tag, tagColor, title, instructor, image, onClick }: Course
             <span className="text-xs font-medium text-slate-600">M</span>
           </div>
           <span className="text-xs text-slate-600">{instructor}</span>
-          <span className="ml-auto text-xs text-slate-400">Mentor</span>
+          <span className="ml-auto text-xs text-slate-400">Entreprise</span>
         </div>
       </div>
     </button>
@@ -333,7 +333,7 @@ function MentorCard({ name, image }: MentorCardProps) {
         </div>
         <div>
           <p className="font-medium text-slate-900 text-sm">{name}</p>
-          <p className="text-xs text-slate-500">Mentor</p>
+          <p className="text-xs text-slate-500">Recruteur</p>
         </div>
       </div>
       <button className="px-4 py-1.5 border border-slate-200 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-50 transition-colors flex items-center gap-1">
