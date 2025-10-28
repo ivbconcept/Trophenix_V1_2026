@@ -26,10 +26,6 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   des Opportunités Professionnelles
                 </h1>
               </div>
-              <button className="bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-xl font-medium transition-all flex items-center gap-2 shadow-lg">
-                Commencer
-                <ChevronRight className="w-4 h-4" />
-              </button>
             </div>
 
             <div className="mb-6">
