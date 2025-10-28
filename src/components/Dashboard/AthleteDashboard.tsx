@@ -13,7 +13,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
     <div className="min-h-screen bg-slate-50">
       <div className="max-w-[1400px] mx-auto px-8 py-6">
         <div className="grid grid-cols-12 gap-6">
-          <div className="col-span-8">
+          <div className="col-span-12">
             <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-3xl p-8 text-white mb-6 shadow-lg">
               <div className="mb-6">
                 <p className="text-indigo-100 text-sm font-medium tracking-wider uppercase mb-2">PLATEFORME TROPHENIX</p>
@@ -113,36 +113,6 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   </tbody>
                 </table>
               </div>
-            </div>
-          </div>
-
-          <div className="col-span-4">
-            <div className="bg-white rounded-3xl p-6 shadow-sm">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-bold text-slate-900">Recruteurs Actifs</h2>
-                <button className="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center hover:bg-indigo-100 transition-colors">
-                  <span className="text-indigo-600 text-lg">+</span>
-                </button>
-              </div>
-
-              <div className="space-y-4 mb-4">
-                <MentorCard
-                  name="Sophie Martin"
-                  image="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&crop=faces"
-                />
-                <MentorCard
-                  name="Thomas Dubois"
-                  image="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=faces"
-                />
-                <MentorCard
-                  name="Marie Lefebvre"
-                  image="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=faces"
-                />
-              </div>
-
-              <button className="w-full text-center text-indigo-600 font-medium text-sm py-2 hover:text-indigo-700">
-                See All
-              </button>
             </div>
           </div>
         </div>
@@ -247,32 +217,3 @@ function LessonRow({ mentorName, mentorDate, type, typeColor, description }: Les
   );
 }
 
-interface MentorCardProps {
-  name: string;
-  image: string;
-}
-
-function MentorCard({ name, image }: MentorCardProps) {
-  return (
-    <div className="flex items-center justify-between">
-      <div className="flex items-center gap-3">
-        <div className="relative">
-          <img
-            src={image}
-            alt={name}
-            className="w-10 h-10 rounded-full object-cover"
-          />
-          <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 border-2 border-white rounded-full" />
-        </div>
-        <div>
-          <p className="font-medium text-slate-900 text-sm">{name}</p>
-          <p className="text-xs text-slate-500">Recruteur</p>
-        </div>
-      </div>
-      <button className="px-4 py-1.5 border border-slate-200 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-50 transition-colors flex items-center gap-1">
-        <span className="text-indigo-600">+</span>
-        Follow
-      </button>
-    </div>
-  );
-}
