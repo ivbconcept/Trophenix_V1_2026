@@ -1,4 +1,4 @@
-import { Bell, MessageSquare, User, LogOut, Briefcase, Users, Trophy, Building, Search, Mail, LayoutDashboard, BookOpen, UsersRound, Settings } from 'lucide-react';
+import { Bell, MessageSquare, User, LogOut, Briefcase, Users, Trophy, Building, Search, Mail, LayoutDashboard, BookOpen, UsersRound, Settings, Award, HandshakeIcon } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { ReactNode } from 'react';
 
@@ -21,6 +21,8 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
           { id: 'athlete-dashboard', label: 'Dashboard', icon: LayoutDashboard },
           { id: 'messages', label: 'Inbox', icon: Mail },
           { id: 'job-offers', label: 'Explorer', icon: BookOpen },
+          { id: 'employability', label: 'Employabilité', icon: Award },
+          { id: 'sponsoring', label: 'Sponsoring', icon: HandshakeIcon },
           { id: 'my-applications', label: 'Suivi', icon: Briefcase },
           { id: 'athletes-directory', label: 'Group', icon: UsersRound },
         ];
