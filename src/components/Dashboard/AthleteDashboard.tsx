@@ -51,10 +51,6 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 <p className="text-white/90 text-base max-w-2xl mb-6">
                   Découvrez des opportunités uniques adaptées à votre profil d'athlète
                 </p>
-                <button className="px-6 py-3 bg-white text-indigo-600 rounded-xl font-semibold hover:bg-opacity-90 transition-all hover:scale-105 shadow-lg inline-flex items-center gap-2 w-fit">
-                  Explorer les opportunités
-                  <ChevronRight className="w-5 h-5" />
-                </button>
               </div>
             </div>
 
