@@ -16,17 +16,18 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
       <div className="max-w-[1400px] mx-auto px-8 py-6">
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12">
-            <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-3xl p-12 text-white mb-6 shadow-lg relative overflow-hidden" style={{ minHeight: '400px' }}>
-              <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLW9wYWNpdHk9IjAuMSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-30"></div>
+            <div className="rounded-3xl p-12 text-white mb-6 shadow-lg relative overflow-hidden" style={{ minHeight: '280px' }}>
+              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('https://images.pexels.com/photos/3760607/pexels-photo-3760607.jpeg?auto=compress&cs=tinysrgb&w=1200')" }}></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/90 via-purple-600/90 to-pink-500/90"></div>
               <div className="relative z-10 h-full flex flex-col justify-center">
-                <p className="text-indigo-100 text-sm font-semibold tracking-wider uppercase mb-6">PLATEFORME TROPHENIX</p>
+                <p className="text-white/90 text-sm font-semibold tracking-wider uppercase mb-6">PLATEFORME TROPHENIX</p>
                 <h1 className="text-5xl font-bold leading-tight mb-2">
                   Développez Votre Carrière avec
                 </h1>
                 <h1 className="text-5xl font-bold leading-tight mb-6">
                   des Opportunités Professionnelles
                 </h1>
-                <p className="text-indigo-100 text-lg max-w-2xl mb-8">
+                <p className="text-white/90 text-lg max-w-2xl mb-8">
                   Découvrez des opportunités uniques adaptées à votre profil d'athlète
                 </p>
                 <button className="px-8 py-4 bg-white text-indigo-600 rounded-xl font-semibold hover:bg-opacity-90 transition-all hover:scale-105 shadow-lg inline-flex items-center gap-2 w-fit">
