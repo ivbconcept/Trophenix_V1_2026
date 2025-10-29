@@ -20,7 +20,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
-    }, 30000);
+    }, 16000);
 
     return () => clearInterval(interval);
   }, []);
