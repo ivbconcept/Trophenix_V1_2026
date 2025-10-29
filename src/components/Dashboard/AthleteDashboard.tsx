@@ -32,14 +32,16 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12">
             <div className="rounded-3xl p-10 text-white mb-6 shadow-lg relative overflow-hidden" style={{ minHeight: '200px' }}>
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out"
-                style={{ backgroundImage: `url('${backgroundImages[currentImageIndex]}')` }}
-              ></div>
               {currentImageIndex === 0 ? (
-                <div className="absolute inset-0 bg-black/40"></div>
+                <>
+                  <div
+                    className="absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out"
+                    style={{ backgroundImage: `url('${backgroundImages[0]}')` }}
+                  ></div>
+                  <div className="absolute inset-0 bg-black/40"></div>
+                </>
               ) : (
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/90 via-purple-600/90 to-pink-500/90"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500"></div>
               )}
               <div className="relative z-10 h-full flex flex-col justify-center">
                 <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4">PLATEFORME TROPHENIX</p>
