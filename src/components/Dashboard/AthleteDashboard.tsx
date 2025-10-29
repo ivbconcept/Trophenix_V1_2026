@@ -1,14 +1,31 @@
 import { useAuth } from '../../contexts/AuthContext';
 import { Briefcase, FileText, MessageSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface AthleteDashboardProps {
   onNavigate: (view: string) => void;
 }
 
+const backgroundImages = [
+  'https://images.pexels.com/photos/3760607/pexels-photo-3760607.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'https://images.pexels.com/photos/2385477/pexels-photo-2385477.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'https://images.pexels.com/photos/3768005/pexels-photo-3768005.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'https://images.pexels.com/photos/1872887/pexels-photo-1872887.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'https://images.pexels.com/photos/2526878/pexels-photo-2526878.jpeg?auto=compress&cs=tinysrgb&w=1200'
+];
+
 export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
   const { profile } = useAuth();
   const [activeTab, setActiveTab] = useState<'all' | 'jobs' | 'sponsoring'>('all');
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
 
 
   return (
@@ -17,7 +34,10 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12">
             <div className="rounded-3xl p-10 text-white mb-6 shadow-lg relative overflow-hidden" style={{ minHeight: '200px' }}>
-              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('https://images.pexels.com/photos/3760607/pexels-photo-3760607.jpeg?auto=compress&cs=tinysrgb&w=1200')" }}></div>
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out"
+                style={{ backgroundImage: `url('${backgroundImages[currentImageIndex]}')` }}
+              ></div>
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/90 via-purple-600/90 to-pink-500/90"></div>
               <div className="relative z-10 h-full flex flex-col justify-center">
                 <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4">PLATEFORME TROPHENIX</p>
