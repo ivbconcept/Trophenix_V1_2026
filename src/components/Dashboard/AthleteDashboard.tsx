@@ -20,7 +20,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
-    }, 4000);
+    }, 30000);
 
     return () => clearInterval(interval);
   }, []);
@@ -35,13 +35,13 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               {currentImageIndex === 0 ? (
                 <>
                   <div
-                    className="absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out"
+                    className="absolute inset-0 bg-cover bg-center transition-all duration-[3000ms] ease-in-out"
                     style={{ backgroundImage: `url('${backgroundImages[0]}')` }}
                   ></div>
-                  <div className="absolute inset-0 bg-black/40"></div>
+                  <div className="absolute inset-0 bg-black/40 transition-opacity duration-[3000ms] ease-in-out"></div>
                 </>
               ) : (
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 transition-opacity duration-[3000ms] ease-in-out"></div>
               )}
               <div className="relative z-10 h-full flex flex-col justify-center">
                 <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4">PLATEFORME TROPHENIX</p>
