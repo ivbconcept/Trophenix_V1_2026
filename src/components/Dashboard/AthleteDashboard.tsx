@@ -1,7 +1,7 @@
 import { useAuth } from '../../contexts/AuthContext';
 import { Briefcase, FileText, MessageSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import arenaImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash.jpg';
+import arenaImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
 
 interface AthleteDashboardProps {
   onNavigate: (view: string) => void;
@@ -31,7 +31,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
       <div className="max-w-[1400px] mx-auto px-8 py-6">
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12">
-            <div className="rounded-3xl p-10 text-white mb-6 shadow-lg relative overflow-hidden" style={{ minHeight: '200px' }}>
+            <div className="rounded-3xl p-10 text-white mb-6 shadow-lg relative overflow-hidden" style={{ minHeight: '280px' }}>
               {currentImageIndex === 0 ? (
                 <>
                   <div
