@@ -53,8 +53,8 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   Découvrez des opportunités uniques adaptées à votre profil d'athlète
                 </p>
               </div>
-              <div className="relative z-10 bg-white rounded-xl px-3 py-3 shadow-lg">
-                <img src={nikeLogo} alt="Nike" className="w-24 h-auto" />
+              <div className="relative z-10 bg-white rounded-lg px-2 py-2 shadow-lg">
+                <img src={nikeLogo} alt="Nike" className="w-16 h-auto" />
               </div>
             </div>
 
