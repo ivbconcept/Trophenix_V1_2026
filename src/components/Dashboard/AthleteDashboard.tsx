@@ -31,7 +31,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
       <div className="max-w-[1400px] mx-auto px-8 py-6">
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12">
-            <div className="rounded-3xl p-10 text-white mb-6 shadow-lg relative overflow-hidden" style={{ minHeight: '291px' }}>
+            <div className="rounded-3xl p-10 text-white mb-6 shadow-lg relative overflow-hidden flex items-end" style={{ minHeight: '291px' }}>
               {currentImageIndex === 0 ? (
                 <>
                   <div
@@ -43,7 +43,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               ) : (
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 transition-opacity duration-[3000ms] ease-in-out"></div>
               )}
-              <div className="relative z-10 h-full flex flex-col justify-end pb-12">
+              <div className="relative z-10">
                 <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4">PLATEFORME TROPHENIX</p>
                 <h1 className="text-4xl font-bold leading-tight mb-4">
                   Développez Votre Carrière
