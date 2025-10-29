@@ -45,11 +45,8 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               )}
               <div className="relative z-10 h-full flex flex-col justify-center">
                 <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4">PLATEFORME TROPHENIX</p>
-                <h1 className="text-4xl font-bold leading-tight mb-1">
-                  Développez Votre Carrière avec
-                </h1>
                 <h1 className="text-4xl font-bold leading-tight mb-4">
-                  des Opportunités Professionnelles
+                  Développez Votre Carrière
                 </h1>
                 <p className="text-white/90 text-base max-w-2xl mb-6">
                   Découvrez des opportunités uniques adaptées à votre profil d'athlète
