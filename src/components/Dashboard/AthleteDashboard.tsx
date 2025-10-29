@@ -1,17 +1,18 @@
 import { useAuth } from '../../contexts/AuthContext';
 import { Briefcase, FileText, MessageSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import arenaImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash.jpg';
 
 interface AthleteDashboardProps {
   onNavigate: (view: string) => void;
 }
 
 const backgroundImages = [
+  arenaImage,
   'https://images.pexels.com/photos/3760607/pexels-photo-3760607.jpeg?auto=compress&cs=tinysrgb&w=1200',
   'https://images.pexels.com/photos/2385477/pexels-photo-2385477.jpeg?auto=compress&cs=tinysrgb&w=1200',
   'https://images.pexels.com/photos/3768005/pexels-photo-3768005.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/1872887/pexels-photo-1872887.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/2526878/pexels-photo-2526878.jpeg?auto=compress&cs=tinysrgb&w=1200'
+  'https://images.pexels.com/photos/1872887/pexels-photo-1872887.jpeg?auto=compress&cs=tinysrgb&w=1200'
 ];
 
 export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
