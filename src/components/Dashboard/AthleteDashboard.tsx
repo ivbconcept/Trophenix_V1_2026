@@ -43,12 +43,12 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               ) : (
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 transition-opacity duration-[3000ms] ease-in-out"></div>
               )}
-              <div className="relative z-10 h-full flex flex-col justify-end pb-4">
+              <div className="relative z-10 h-full flex flex-col justify-end pb-12">
                 <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4">PLATEFORME TROPHENIX</p>
                 <h1 className="text-4xl font-bold leading-tight mb-4">
                   Développez Votre Carrière
                 </h1>
-                <p className="text-white/90 text-base max-w-2xl mb-6">
+                <p className="text-white/90 text-base max-w-2xl">
                   Découvrez des opportunités uniques adaptées à votre profil d'athlète
                 </p>
               </div>
