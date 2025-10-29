@@ -59,79 +59,43 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             </div>
 
             <div className="mb-6">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-bold text-slate-900">Opportunités Recommandées</h2>
-                <div className="flex gap-2">
-                  <button className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors">
-                    <ChevronRight className="w-5 h-5 text-slate-600 rotate-180" />
-                  </button>
-                  <button className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center hover:bg-indigo-700 transition-colors">
-                    <ChevronRight className="w-5 h-5 text-white" />
-                  </button>
+              <h2 className="text-2xl font-bold text-slate-900 mb-6">Trending News</h2>
+
+              <div className="grid grid-cols-12 gap-6">
+                <div className="col-span-5">
+                  <TrendingNewsMain
+                    title="Flavors & Feasts: Latest Culinary Trends and Savory Delights"
+                    author="Leonor Davinci"
+                    category="Food & Drink"
+                    time="2h Ago"
+                    image="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    description="Explore the newest culinary trends and indulge in mouthwatering delights with our comprehensive coverage of flavors and feasts."
+                  />
                 </div>
-              </div>
 
-              <div className="grid grid-cols-3 gap-4">
-                <CourseCard
-                  tag="CDI"
-                  tagColor="blue"
-                  title="Responsable Marketing Sportif - Paris"
-                  instructor="Nike France"
-                  image="https://images.pexels.com/photos/3760607/pexels-photo-3760607.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  onClick={() => onNavigate('job-offers')}
-                />
-                <CourseCard
-                  tag="SPONSORING"
-                  tagColor="purple"
-                  title="Partenariat Ambassadeur 2025-2026"
-                  instructor="Adidas Sport"
-                  image="https://images.pexels.com/photos/2385477/pexels-photo-2385477.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  onClick={() => onNavigate('job-offers')}
-                />
-                <CourseCard
-                  tag="CDD"
-                  tagColor="pink"
-                  title="Coach Sportif - Centre de Formation"
-                  instructor="Decathlon Pro"
-                  image="https://images.pexels.com/photos/3768005/pexels-photo-3768005.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  onClick={() => onNavigate('job-offers')}
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-12 gap-6 mb-6">
-              <div className="col-span-12">
-                <div className="bg-white rounded-3xl p-6 shadow-sm">
-                  <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-2xl font-bold text-slate-900">Actualités Sportives</h2>
-                    <button className="text-indigo-600 font-medium text-sm hover:text-indigo-700 flex items-center gap-1">
-                      Voir tout <ChevronRight className="w-4 h-4" />
-                    </button>
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-6">
-                    <NewsCardLarge
-                      title="JO Paris 2024 : Un bilan exceptionnel pour la France"
-                      date="28 Oct 2025"
-                      category="Olympisme"
-                      image="https://images.pexels.com/photos/1872887/pexels-photo-1872887.jpeg?auto=compress&cs=tinysrgb&w=600"
-                      description="La France termine avec 64 médailles, son meilleur résultat olympique depuis 1900."
-                    />
-                    <NewsCardLarge
-                      title="Record du monde battu sur 100m"
-                      date="27 Oct 2025"
-                      category="Athlétisme"
-                      image="https://images.pexels.com/photos/2526878/pexels-photo-2526878.jpeg?auto=compress&cs=tinysrgb&w=600"
-                      description="Le sprinteur américain établit un nouveau record avec 9.58 secondes."
-                    />
-                    <NewsCardLarge
-                      title="Nike prolonge son partenariat avec le PSG"
-                      date="26 Oct 2025"
-                      category="Business"
-                      image="https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&cs=tinysrgb&w=600"
-                      description="Un contrat historique de 150 millions d'euros par an jusqu'en 2032."
-                    />
-                  </div>
+                <div className="col-span-7 space-y-4">
+                  <TrendingNewsItem
+                    title="Flavors & Feasts: Latest Culinary Trends and Savory Delights"
+                    author="Leonor Davinci"
+                    category="Business"
+                    time="2h Ago"
+                    image="https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    isLive
+                  />
+                  <TrendingNewsItem
+                    title="Flavors & Feasts: Latest Culinary Trends and Savory Delights"
+                    author="Leonor Davinci"
+                    category="Sport"
+                    time="2h Ago"
+                    image="https://images.pexels.com/photos/358042/pexels-photo-358042.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  />
+                  <TrendingNewsItem
+                    title="Flavors & Feasts: Latest Culinary Trends and Savory Delights"
+                    author="Leonor Davinci"
+                    category="Technology"
+                    time="2h Ago"
+                    image="https://images.pexels.com/photos/123335/pexels-photo-123335.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  />
                 </div>
               </div>
             </div>
@@ -143,135 +107,93 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
   );
 }
 
-interface CourseCardProps {
-  tag: string;
-  tagColor: 'blue' | 'purple' | 'pink';
+interface TrendingNewsMainProps {
   title: string;
-  instructor: string;
-  image: string;
-  onClick: () => void;
-}
-
-function CourseCard({ tag, tagColor, title, instructor, image, onClick }: CourseCardProps) {
-  const tagColors = {
-    blue: 'bg-blue-100 text-blue-600',
-    purple: 'bg-purple-100 text-purple-600',
-    pink: 'bg-pink-100 text-pink-600'
-  };
-
-  return (
-    <button
-      onClick={onClick}
-      className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all text-left"
-    >
-      <div className="relative h-40 overflow-hidden">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-        />
-        <button className="absolute top-3 right-3 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors">
-          <Heart className="w-4 h-4 text-slate-600" />
-        </button>
-      </div>
-      <div className="p-4">
-        <span className={`inline-block px-2 py-1 rounded text-xs font-medium ${tagColors[tagColor]} mb-2`}>
-          {tag}
-        </span>
-        <h3 className="font-semibold text-slate-900 mb-2 line-clamp-2 leading-snug">
-          {title}
-        </h3>
-        <div className="flex items-center gap-2 pt-2 border-t border-slate-100">
-          <div className="w-6 h-6 bg-slate-200 rounded-full flex items-center justify-center">
-            <span className="text-xs font-medium text-slate-600">M</span>
-          </div>
-          <span className="text-xs text-slate-600">{instructor}</span>
-          <span className="ml-auto text-xs text-slate-400">Entreprise</span>
-        </div>
-      </div>
-    </button>
-  );
-}
-
-interface LessonRowProps {
-  mentorName: string;
-  mentorDate: string;
-  type: string;
-  typeColor: 'blue' | 'purple' | 'pink';
-  description: string;
-}
-
-function LessonRow({ mentorName, mentorDate, type, typeColor, description }: LessonRowProps) {
-  const typeColors = {
-    blue: 'bg-blue-50 text-blue-600',
-    purple: 'bg-purple-50 text-purple-600',
-    pink: 'bg-pink-50 text-pink-600'
-  };
-
-  return (
-    <tr className="border-b border-slate-50 hover:bg-slate-50 transition-colors">
-      <td className="py-4 px-2">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center">
-            <span className="text-xs font-medium text-slate-600">{mentorName.charAt(0)}</span>
-          </div>
-          <div>
-            <p className="font-medium text-slate-900 text-sm">{mentorName}</p>
-            <p className="text-xs text-slate-500">{mentorDate}</p>
-          </div>
-        </div>
-      </td>
-      <td className="py-4 px-2">
-        <span className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium ${typeColors[typeColor]}`}>
-          <Play className="w-3 h-3" />
-          {type}
-        </span>
-      </td>
-      <td className="py-4 px-2">
-        <p className="text-sm text-slate-600">{description}</p>
-      </td>
-      <td className="py-4 px-2 text-center">
-        <button className="text-indigo-600 hover:text-indigo-700">
-          <Play className="w-4 h-4" />
-        </button>
-      </td>
-    </tr>
-  );
-}
-
-interface NewsCardLargeProps {
-  title: string;
-  date: string;
+  author: string;
   category: string;
+  time: string;
   image: string;
   description: string;
 }
 
-function NewsCardLarge({ title, date, category, image, description }: NewsCardLargeProps) {
+function TrendingNewsMain({ title, author, category, time, image, description }: TrendingNewsMainProps) {
   return (
-    <div className="group cursor-pointer bg-slate-50 rounded-2xl overflow-hidden hover:shadow-lg transition-all">
-      <div className="relative h-48 overflow-hidden">
+    <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all h-full">
+      <div className="relative h-64 overflow-hidden">
         <img
           src={image}
           alt={title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-cover"
         />
-        <div className="absolute top-3 left-3">
-          <span className="px-3 py-1 bg-white/95 backdrop-blur-sm rounded-full text-xs font-medium text-indigo-600">
-            {category}
-          </span>
-        </div>
       </div>
-      <div className="p-5">
-        <h3 className="font-bold text-slate-900 text-lg mb-2 line-clamp-2 group-hover:text-indigo-600 transition-colors">
+      <div className="p-6">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+            <span className="text-white text-sm font-semibold">{author.charAt(0)}</span>
+          </div>
+          <div className="flex-1">
+            <p className="text-sm font-semibold text-slate-900">{author}</p>
+            <div className="flex items-center gap-2 text-xs text-slate-500">
+              <span className="w-1.5 h-1.5 bg-slate-400 rounded-full"></span>
+              <span>{category}</span>
+            </div>
+          </div>
+          <span className="text-xs text-slate-400">{time}</span>
+        </div>
+        <h3 className="text-xl font-bold text-slate-900 mb-3 leading-tight">
           {title}
         </h3>
-        <p className="text-sm text-slate-600 mb-3 line-clamp-2">
+        <p className="text-sm text-slate-600 line-clamp-2">
           {description}
         </p>
-        <div className="flex items-center justify-between">
-          <span className="text-xs text-slate-500">{date}</span>
-          <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-indigo-600 group-hover:translate-x-1 transition-all" />
+      </div>
+    </div>
+  );
+}
+
+interface TrendingNewsItemProps {
+  title: string;
+  author: string;
+  category: string;
+  time: string;
+  image: string;
+  isLive?: boolean;
+}
+
+function TrendingNewsItem({ title, author, category, time, image, isLive }: TrendingNewsItemProps) {
+  return (
+    <div className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-all flex gap-4">
+      <div className="relative w-32 h-32 flex-shrink-0 rounded-xl overflow-hidden">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover"
+        />
+        {isLive && (
+          <div className="absolute top-2 right-2 flex items-center gap-1 bg-red-500 text-white px-2 py-1 rounded-full">
+            <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>
+            <span className="text-xs font-semibold">LIVE</span>
+          </div>
+        )}
+      </div>
+      <div className="flex-1 flex flex-col justify-between">
+        <div>
+          <h4 className="font-semibold text-slate-900 mb-2 line-clamp-2 leading-snug">
+            {title}
+          </h4>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+            <span className="text-white text-xs font-semibold">{author.charAt(0)}</span>
+          </div>
+          <div className="flex-1">
+            <p className="text-xs font-medium text-slate-900">{author}</p>
+            <div className="flex items-center gap-2 text-xs text-slate-500">
+              <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
+              <span>{category}</span>
+            </div>
+          </div>
+          <span className="text-xs text-slate-400">{time}</span>
         </div>
       </div>
     </div>
