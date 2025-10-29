@@ -43,7 +43,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               ) : (
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 transition-opacity duration-[3000ms] ease-in-out"></div>
               )}
-              <div className="relative z-10 h-full flex flex-col justify-center">
+              <div className="relative z-10 h-full flex flex-col justify-end pb-4">
                 <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4">PLATEFORME TROPHENIX</p>
                 <h1 className="text-4xl font-bold leading-tight mb-4">
                   Développez Votre Carrière
