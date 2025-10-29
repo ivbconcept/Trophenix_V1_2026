@@ -265,6 +265,9 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
 
             <div className="flex items-center gap-2 ml-6">
               <button className="p-3 bg-slate-50 hover:bg-slate-100 rounded-xl transition-all hover:scale-105 relative group">
+                <Settings className="h-5 w-5 text-slate-600 group-hover:text-blue-500 transition-colors" />
+              </button>
+              <button className="p-3 bg-slate-50 hover:bg-slate-100 rounded-xl transition-all hover:scale-105 relative group">
                 <Mail className="h-5 w-5 text-slate-600 group-hover:text-blue-500 transition-colors" />
                 <div className="absolute top-1.5 right-1.5 w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
               </button>
