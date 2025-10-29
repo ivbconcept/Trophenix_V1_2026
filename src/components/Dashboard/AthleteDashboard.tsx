@@ -100,6 +100,132 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               </div>
             </div>
 
+            <div className="mb-6">
+              <h2 className="text-2xl font-bold text-slate-900 mb-6">Business & Innovation</h2>
+
+              <div className="grid grid-cols-12 gap-6">
+                <div className="col-span-5">
+                  <TrendingNewsMain
+                    title="The Future of Sports Marketing: AI and Digital Transformation"
+                    author="Leonor Davinci"
+                    category="Business"
+                    time="3h Ago"
+                    image="https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    description="Discover how artificial intelligence and digital tools are revolutionizing the sports marketing landscape."
+                  />
+                </div>
+
+                <div className="col-span-7 space-y-4">
+                  <TrendingNewsItem
+                    title="Startup Spotlight: Revolutionary Training App for Athletes"
+                    author="Leonor Davinci"
+                    category="Business"
+                    time="3h Ago"
+                    image="https://images.pexels.com/photos/4173624/pexels-photo-4173624.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  />
+                  <TrendingNewsItem
+                    title="Nike's New Sustainability Initiative: A Game Changer"
+                    author="Leonor Davinci"
+                    category="Business"
+                    time="4h Ago"
+                    image="https://images.pexels.com/photos/2385477/pexels-photo-2385477.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  />
+                  <TrendingNewsItem
+                    title="Investment Trends in Sports Tech: What's Next?"
+                    author="Leonor Davinci"
+                    category="Business"
+                    time="5h Ago"
+                    image="https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    isLive
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="mb-6">
+              <h2 className="text-2xl font-bold text-slate-900 mb-6">Performance & Training</h2>
+
+              <div className="grid grid-cols-12 gap-6">
+                <div className="col-span-5">
+                  <TrendingNewsMain
+                    title="Breaking Records: The Science Behind Elite Athletic Performance"
+                    author="Leonor Davinci"
+                    category="Sport"
+                    time="1h Ago"
+                    image="https://images.pexels.com/photos/2526878/pexels-photo-2526878.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    description="Explore the cutting-edge science and training methods that are pushing the boundaries of human athletic achievement."
+                  />
+                </div>
+
+                <div className="col-span-7 space-y-4">
+                  <TrendingNewsItem
+                    title="Olympic Champions Share Their Training Secrets"
+                    author="Leonor Davinci"
+                    category="Sport"
+                    time="2h Ago"
+                    image="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  />
+                  <TrendingNewsItem
+                    title="Mental Preparation: The Key to Success in Competition"
+                    author="Leonor Davinci"
+                    category="Sport"
+                    time="3h Ago"
+                    image="https://images.pexels.com/photos/3764011/pexels-photo-3764011.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    isLive
+                  />
+                  <TrendingNewsItem
+                    title="Nutrition Guide for High-Performance Athletes"
+                    author="Leonor Davinci"
+                    category="Sport"
+                    time="4h Ago"
+                    image="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="mb-6">
+              <h2 className="text-2xl font-bold text-slate-900 mb-6">Technology & Innovation</h2>
+
+              <div className="grid grid-cols-12 gap-6">
+                <div className="col-span-5">
+                  <TrendingNewsMain
+                    title="Virtual Reality Training: The Next Frontier in Sports"
+                    author="Leonor Davinci"
+                    category="Technology"
+                    time="2h Ago"
+                    image="https://images.pexels.com/photos/8728380/pexels-photo-8728380.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    description="How VR and AR technologies are transforming the way athletes train and prepare for competition."
+                  />
+                </div>
+
+                <div className="col-span-7 space-y-4">
+                  <TrendingNewsItem
+                    title="Wearable Tech: Monitoring Performance in Real-Time"
+                    author="Leonor Davinci"
+                    category="Technology"
+                    time="2h Ago"
+                    image="https://images.pexels.com/photos/4498362/pexels-photo-4498362.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  />
+                  <TrendingNewsItem
+                    title="AI Coaches: The Future of Personalized Training"
+                    author="Leonor Davinci"
+                    category="Technology"
+                    time="3h Ago"
+                    image="https://images.pexels.com/photos/8294621/pexels-photo-8294621.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  />
+                  <TrendingNewsItem
+                    title="Blockchain in Sports: New Opportunities for Athletes"
+                    author="Leonor Davinci"
+                    category="Technology"
+                    time="4h Ago"
+                    image="https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    isLive
+                  />
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
