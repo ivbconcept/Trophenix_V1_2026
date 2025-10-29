@@ -31,7 +31,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
       <div className="max-w-[1400px] mx-auto px-8 py-6">
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12">
-            <div className="rounded-3xl p-10 text-white mb-6 shadow-lg relative overflow-hidden" style={{ minHeight: '280px' }}>
+            <div className="rounded-3xl p-10 text-white mb-6 shadow-lg relative overflow-hidden" style={{ minHeight: '291px' }}>
               {currentImageIndex === 0 ? (
                 <>
                   <div
