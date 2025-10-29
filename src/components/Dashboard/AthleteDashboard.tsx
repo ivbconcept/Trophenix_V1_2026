@@ -36,7 +36,11 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 className="absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out"
                 style={{ backgroundImage: `url('${backgroundImages[currentImageIndex]}')` }}
               ></div>
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/90 via-purple-600/90 to-pink-500/90"></div>
+              {currentImageIndex === 0 ? (
+                <div className="absolute inset-0 bg-black/40"></div>
+              ) : (
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/90 via-purple-600/90 to-pink-500/90"></div>
+              )}
               <div className="relative z-10 h-full flex flex-col justify-center">
                 <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4">PLATEFORME TROPHENIX</p>
                 <h1 className="text-4xl font-bold leading-tight mb-1">
