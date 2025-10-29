@@ -175,21 +175,66 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
 
         <div className={`p-4 border-t border-slate-700/50 ${showSecondarySidebar ? 'px-2' : 'px-4'}`}>
           {!showSecondarySidebar && (
-            <div className="mb-4">
+            <div className="mb-4 space-y-2">
               <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-700/50 hover:text-white transition-all">
                 <Settings className="h-5 w-5" />
                 <span>Settings</span>
               </button>
+              <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-700/50 hover:text-white transition-all relative">
+                <Mail className="h-5 w-5" />
+                <span>Messages</span>
+                <div className="absolute top-2 left-6 w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+              </button>
+              <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-700/50 hover:text-white transition-all relative">
+                <Bell className="h-5 w-5" />
+                <span>Notifications</span>
+                <div className="absolute top-2 left-6 w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+              </button>
             </div>
           )}
           {showSecondarySidebar && (
-            <button
-              title="Settings"
-              className="w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-700/50 hover:text-white transition-all mb-2"
-            >
-              <Settings className="h-5 w-5" />
-            </button>
+            <div className="mb-2 space-y-2">
+              <button
+                title="Settings"
+                className="w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-700/50 hover:text-white transition-all"
+              >
+                <Settings className="h-5 w-5" />
+              </button>
+              <button
+                title="Messages"
+                className="w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-700/50 hover:text-white transition-all relative"
+              >
+                <Mail className="h-5 w-5" />
+                <div className="absolute top-1.5 right-1.5 w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+              </button>
+              <button
+                title="Notifications"
+                className="w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-700/50 hover:text-white transition-all relative"
+              >
+                <Bell className="h-5 w-5" />
+                <div className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+              </button>
+            </div>
           )}
+          <button
+            onClick={() => onNavigate('profile')}
+            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-700/50 hover:text-white transition-all mb-2 ${
+              showSecondarySidebar ? 'justify-center' : ''
+            }`}
+            title={showSecondarySidebar ? profile?.first_name || profile?.company_name || 'Profile' : undefined}
+          >
+            <div className="relative">
+              <img
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=faces"
+                alt="Profile"
+                className="w-8 h-8 rounded-full object-cover ring-2 ring-slate-700"
+              />
+              <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-400 border-2 border-slate-900 rounded-full"></div>
+            </div>
+            {!showSecondarySidebar && (
+              <span className="flex-1 text-left truncate">{profile?.first_name || profile?.company_name || 'User'}</span>
+            )}
+          </button>
           <button
             onClick={onLogout}
             title={showSecondarySidebar ? "Logout" : undefined}
@@ -250,52 +295,6 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
       )}
 
       <div className="flex-1 flex flex-col overflow-hidden">
-        <header className="bg-white/80 backdrop-blur-xl border-b border-slate-200/50 px-8 py-4 shadow-sm">
-          <div className="flex items-center justify-between">
-            <div className="flex-1 max-w-xl">
-              <div className="relative group">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-blue-500 transition-colors" />
-                <input
-                  type="text"
-                  placeholder="Rechercher..."
-                  className="w-full pl-12 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white transition-all"
-                />
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2 ml-6">
-              <button className="p-3 bg-slate-50 hover:bg-slate-100 rounded-xl transition-all hover:scale-105 relative group">
-                <Settings className="h-5 w-5 text-slate-600 group-hover:text-blue-500 transition-colors" />
-              </button>
-              <button className="p-3 bg-slate-50 hover:bg-slate-100 rounded-xl transition-all hover:scale-105 relative group">
-                <Mail className="h-5 w-5 text-slate-600 group-hover:text-blue-500 transition-colors" />
-                <div className="absolute top-1.5 right-1.5 w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-              </button>
-              <button className="p-3 bg-slate-50 hover:bg-slate-100 rounded-xl transition-all hover:scale-105 relative group">
-                <Bell className="h-5 w-5 text-slate-600 group-hover:text-blue-500 transition-colors" />
-                <div className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-              </button>
-              <div className="h-8 w-px bg-slate-200 mx-2" />
-              <button
-                onClick={() => onNavigate('profile')}
-                className="flex items-center gap-3 hover:bg-slate-50 rounded-xl p-2 pr-4 transition-all hover:shadow-md group"
-              >
-                <div className="relative">
-                  <img
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=faces"
-                    alt="Profile"
-                    className="w-10 h-10 rounded-full object-cover ring-2 ring-slate-200 group-hover:ring-blue-500 transition-all"
-                  />
-                  <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-400 border-2 border-white rounded-full"></div>
-                </div>
-                <span className="font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
-                  {profile?.first_name || profile?.company_name || 'User'}
-                </span>
-              </button>
-            </div>
-          </div>
-        </header>
-
         <main className="flex-1 overflow-auto bg-slate-50">
           {children}
         </main>
