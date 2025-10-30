@@ -57,62 +57,155 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-16">
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-white text-2xl font-medium">Job Posts</h2>
-                <button className="text-neutral-500 hover:text-white transition-colors text-sm font-light">
-                  More
-                </button>
-              </div>
-
-              <div className="space-y-4">
-                <JobCard
-                  icon={<Target className="w-6 h-6" />}
-                  title="Driver"
-                  description="Description for the job"
-                  action="Apply"
-                  onAction={() => onNavigate('jobs')}
-                />
-                <JobCard
-                  icon={<Users className="w-6 h-6" />}
-                  title="Architector"
-                  description="Description for the job"
-                  salary="250"
-                  period="Per day"
-                />
-                <JobCard
-                  icon={<Compass className="w-6 h-6" />}
-                  title="Killer"
-                  description="Description for the job"
-                  salary="120"
-                  period="Per day"
-                />
-              </div>
+          <div>
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-black text-3xl font-semibold">Trending News</h2>
             </div>
 
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-white text-2xl font-medium">Latest news</h2>
-                <button className="text-neutral-500 hover:text-white transition-colors text-sm font-light">
-                  More
-                </button>
+            <div className="grid grid-cols-2 gap-8">
+              <div className="bg-gradient-to-br from-blue-400 via-pink-200 to-yellow-300 rounded-3xl p-8 flex flex-col justify-between min-h-[500px]">
+                <div className="space-y-6">
+                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 inline-block">
+                    <div className="w-24 h-24 bg-gradient-to-br from-green-300 to-green-400 rounded-full flex items-center justify-center">
+                      <div className="w-16 h-16 bg-gradient-to-br from-amber-600 to-amber-700 rounded-full"></div>
+                    </div>
+                  </div>
+                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6">
+                    <div className="flex gap-4 items-center">
+                      <div className="w-20 h-20 bg-gradient-to-br from-green-300 to-green-400 rounded-full"></div>
+                      <div className="h-20 w-px bg-gray-300"></div>
+                      <div className="space-y-2 flex-1">
+                        <div className="flex gap-2">
+                          <div className="w-12 h-12 bg-gradient-to-br from-red-400 to-red-500 rounded-lg"></div>
+                          <div className="w-12 h-12 bg-gradient-to-br from-green-300 to-green-400 rounded-full"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6">
+                    <div className="flex gap-4 items-center">
+                      <div className="flex-1 space-y-3">
+                        <div className="flex items-center gap-2">
+                          <div className="w-10 h-10 bg-gradient-to-br from-red-400 to-red-500 rounded-lg"></div>
+                          <div className="w-10 h-10 bg-gradient-to-br from-yellow-300 to-yellow-400 rounded-full"></div>
+                        </div>
+                      </div>
+                      <div className="w-20 h-20 bg-gradient-to-br from-green-300 to-green-400 rounded-full"></div>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <img
+                      src="https://i.pravatar.cc/150?img=1"
+                      alt="Leonor Davinci"
+                      className="w-10 h-10 rounded-full"
+                    />
+                    <div>
+                      <span className="text-gray-900 font-medium text-sm">Leonor Davinci</span>
+                      <span className="text-gray-600 text-sm mx-2">•</span>
+                      <span className="text-gray-600 text-sm">Food & Drink</span>
+                    </div>
+                    <span className="text-gray-500 text-sm ml-auto">2h Ago</span>
+                  </div>
+                  <h3 className="text-gray-900 text-2xl font-semibold leading-tight">
+                    Flavors & Feasts: Latest Culinary Trends and Savory Delights
+                  </h3>
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    Explore the newest culinary trends and indulge in mouthwatering delights with our comprehensive coverage of flavors and feasts.
+                  </p>
+                </div>
               </div>
 
               <div className="space-y-4">
-                <NewsItemCard
-                  title="New Innovations in Driver Assistance Technology"
-                  description="Description for the job"
-                  image="https://images.pexels.com/photos/3760607/pexels-photo-3760607.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  date="24 June"
-                  featured
-                />
-                <NewsItemCard
-                  title="New Innovations in Driver Assistance Technology"
-                  description="Description for the job"
-                  image="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  date="23 June"
-                />
+                <div className="bg-white rounded-2xl p-5 hover:shadow-lg transition-all cursor-pointer border border-gray-200">
+                  <div className="flex gap-4">
+                    <div className="w-32 h-32 bg-gradient-to-br from-pink-200 to-blue-200 rounded-xl flex-shrink-0 overflow-hidden">
+                      <div className="w-full h-full flex items-center justify-center">
+                        <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-500 rounded-lg"></div>
+                      </div>
+                    </div>
+                    <div className="flex-1 flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+                            LIVE
+                          </div>
+                        </div>
+                        <h3 className="text-gray-900 font-semibold text-base mb-2 line-clamp-2">
+                          Flavors & Feasts: Latest Culinary Trends and Savory Delights
+                        </h3>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <img
+                          src="https://i.pravatar.cc/150?img=2"
+                          alt="Leonor Davinci"
+                          className="w-6 h-6 rounded-full"
+                        />
+                        <span className="text-gray-600 text-xs">Leonor Davinci</span>
+                        <span className="text-gray-400 text-xs">•</span>
+                        <span className="text-gray-600 text-xs">Business</span>
+                        <span className="text-gray-400 text-xs ml-auto">2h Ago</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-2xl p-5 hover:shadow-lg transition-all cursor-pointer border border-gray-200">
+                  <div className="flex gap-4">
+                    <div className="w-32 h-32 bg-gradient-to-br from-blue-300 to-pink-200 rounded-xl flex-shrink-0 overflow-hidden">
+                      <div className="w-full h-full flex items-center justify-center">
+                        <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full"></div>
+                      </div>
+                    </div>
+                    <div className="flex-1 flex flex-col justify-between">
+                      <div>
+                        <h3 className="text-gray-900 font-semibold text-base mb-2 line-clamp-2">
+                          Flavors & Feasts: Latest Culinary Trends and Savory Delights
+                        </h3>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <img
+                          src="https://i.pravatar.cc/150?img=3"
+                          alt="Leonor Davinci"
+                          className="w-6 h-6 rounded-full"
+                        />
+                        <span className="text-gray-600 text-xs">Leonor Davinci</span>
+                        <span className="text-gray-400 text-xs">•</span>
+                        <span className="text-gray-600 text-xs">Sport</span>
+                        <span className="text-gray-400 text-xs ml-auto">2h Ago</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-2xl p-5 hover:shadow-lg transition-all cursor-pointer border border-gray-200">
+                  <div className="flex gap-4">
+                    <div className="w-32 h-32 bg-gradient-to-br from-blue-400 to-blue-300 rounded-xl flex-shrink-0 overflow-hidden">
+                      <div className="w-full h-full flex items-center justify-center">
+                        <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg"></div>
+                      </div>
+                    </div>
+                    <div className="flex-1 flex flex-col justify-between">
+                      <div>
+                        <h3 className="text-gray-900 font-semibold text-base mb-2 line-clamp-2">
+                          Flavors & Feasts: Latest Culinary Trends and Savory Delights
+                        </h3>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <img
+                          src="https://i.pravatar.cc/150?img=4"
+                          alt="Leonor Davinci"
+                          className="w-6 h-6 rounded-full"
+                        />
+                        <span className="text-gray-600 text-xs">Leonor Davinci</span>
+                        <span className="text-gray-400 text-xs">•</span>
+                        <span className="text-gray-600 text-xs">Technology</span>
+                        <span className="text-gray-400 text-xs ml-auto">2h Ago</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
