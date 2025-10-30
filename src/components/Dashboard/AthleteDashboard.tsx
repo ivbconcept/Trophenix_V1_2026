@@ -73,7 +73,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               </button>
             </div>
 
-            <div className="grid grid-cols-3 gap-5">
+            <div className="grid grid-cols-4 gap-5">
               <GameModeCard
                 title="Day mode"
                 description="Mode description"
@@ -102,6 +102,16 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 participants={[
                   'https://i.pravatar.cc/150?img=5',
                   'https://i.pravatar.cc/150?img=6'
+                ]}
+                participantCount={2}
+              />
+              <GameModeCard
+                title="Creative"
+                description="Build and create without limitations in this fre..."
+                image="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=800"
+                participants={[
+                  'https://i.pravatar.cc/150?img=7',
+                  'https://i.pravatar.cc/150?img=8'
                 ]}
                 participantCount={2}
               />
