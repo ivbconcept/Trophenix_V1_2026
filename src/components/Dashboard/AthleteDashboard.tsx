@@ -89,13 +89,6 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     time="2h Ago"
                     image="https://images.pexels.com/photos/358042/pexels-photo-358042.jpeg?auto=compress&cs=tinysrgb&w=600"
                   />
-                  <TrendingNewsItem
-                    title="Flavors & Feasts: Latest Culinary Trends and Savory Delights"
-                    author="Leonor Davinci"
-                    category="Technology"
-                    time="2h Ago"
-                    image="https://images.pexels.com/photos/123335/pexels-photo-123335.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  />
                 </div>
               </div>
             </div>
