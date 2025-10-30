@@ -59,47 +59,6 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             </div>
 
 
-            <div className="mb-6">
-              <h2 className="text-2xl font-bold text-slate-900 mb-6">Career Management & Development</h2>
-
-              <div className="grid grid-cols-12 gap-6">
-                <div className="col-span-5">
-                  <TrendingNewsMain
-                    title="Navigating Career Transitions: A Guide for Athletes"
-                    author="Leonor Davinci"
-                    category="Career"
-                    time="1h Ago"
-                    image="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    description="Essential strategies for athletes planning their next career move, from networking to skill development."
-                  />
-                </div>
-
-                <div className="col-span-7 space-y-4">
-                  <TrendingNewsItem
-                    title="Sponsorship Deals: Maximizing Your Market Value"
-                    author="Leonor Davinci"
-                    category="Career"
-                    time="2h Ago"
-                    image="https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  />
-                  <TrendingNewsItem
-                    title="Mental Health in Professional Sports: Breaking the Stigma"
-                    author="Leonor Davinci"
-                    category="Sport"
-                    time="3h Ago"
-                    image="https://images.pexels.com/photos/3921045/pexels-photo-3921045.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    isLive
-                  />
-                  <TrendingNewsItem
-                    title="Financial Planning for Athletes: Securing Your Future"
-                    author="Leonor Davinci"
-                    category="Career"
-                    time="5h Ago"
-                    image="https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  />
-                </div>
-              </div>
-            </div>
 
           </div>
         </div>
