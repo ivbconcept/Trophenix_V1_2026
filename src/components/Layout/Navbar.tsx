@@ -115,10 +115,10 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
 
   return (
     <div className="flex h-screen bg-slate-50">
-      <aside className={`bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 border-r border-slate-700/50 flex flex-col transition-all duration-300 ease-in-out ${
+      <aside className={`bg-gradient-to-b from-slate-100 via-slate-50 to-slate-100 border-r border-slate-200/50 flex flex-col transition-all duration-300 ease-in-out ${
         showSecondarySidebar ? 'w-20' : 'w-64'
       }`}>
-        <div className={`p-6 border-b border-slate-700/50 transition-all duration-300 ${
+        <div className={`p-6 border-b border-slate-200/50 transition-all duration-300 ${
           showSecondarySidebar ? 'px-4' : 'px-6'
         }`}>
           <div className="flex items-center gap-3 justify-center">
@@ -126,7 +126,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
               <Trophy className="h-6 w-6 text-white" />
             </div>
             {!showSecondarySidebar && (
-              <span className="text-xl font-bold text-white">Trophenix</span>
+              <span className="text-xl font-bold text-slate-900">Trophenix</span>
             )}
           </div>
         </div>
@@ -134,7 +134,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
         <div className="flex-1 py-8 px-4 overflow-y-auto">
           <div className="mb-8">
             {!showSecondarySidebar && (
-              <p className="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">
+              <p className="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
                 NAVIGATION
               </p>
             )}
@@ -150,7 +150,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
                     className={`w-full flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-medium transition-all relative group ${
                       isActive
                         ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg shadow-blue-500/30'
-                        : 'text-slate-300 hover:bg-slate-700/50 hover:text-white'
+                        : 'text-slate-600 hover:bg-slate-200/70 hover:text-slate-900'
                     } ${showSecondarySidebar ? 'justify-center' : ''}`}
                   >
                     <Icon className="h-5 w-5 flex-shrink-0" />
@@ -173,19 +173,19 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
 
         </div>
 
-        <div className={`p-4 border-t border-slate-700/50 ${showSecondarySidebar ? 'px-2' : 'px-4'}`}>
+        <div className={`p-4 border-t border-slate-200/50 ${showSecondarySidebar ? 'px-2' : 'px-4'}`}>
           {!showSecondarySidebar && (
             <div className="mb-4 space-y-2">
-              <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-700/50 hover:text-white transition-all">
+              <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-200/70 hover:text-slate-900 transition-all">
                 <Settings className="h-5 w-5" />
                 <span>Settings</span>
               </button>
-              <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-700/50 hover:text-white transition-all relative">
+              <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-200/70 hover:text-slate-900 transition-all relative">
                 <Mail className="h-5 w-5" />
                 <span>Messages</span>
                 <div className="absolute top-2 left-6 w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
               </button>
-              <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-700/50 hover:text-white transition-all relative">
+              <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-200/70 hover:text-slate-900 transition-all relative">
                 <Bell className="h-5 w-5" />
                 <span>Notifications</span>
                 <div className="absolute top-2 left-6 w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
@@ -196,20 +196,20 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
             <div className="mb-2 space-y-2">
               <button
                 title="Settings"
-                className="w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-700/50 hover:text-white transition-all"
+                className="w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-200/70 hover:text-slate-900 transition-all"
               >
                 <Settings className="h-5 w-5" />
               </button>
               <button
                 title="Messages"
-                className="w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-700/50 hover:text-white transition-all relative"
+                className="w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-200/70 hover:text-slate-900 transition-all relative"
               >
                 <Mail className="h-5 w-5" />
                 <div className="absolute top-1.5 right-1.5 w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
               </button>
               <button
                 title="Notifications"
-                className="w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-700/50 hover:text-white transition-all relative"
+                className="w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-200/70 hover:text-slate-900 transition-all relative"
               >
                 <Bell className="h-5 w-5" />
                 <div className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
@@ -218,7 +218,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
           )}
           <button
             onClick={() => onNavigate('profile')}
-            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-700/50 hover:text-white transition-all mb-2 ${
+            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-200/70 hover:text-slate-900 transition-all mb-2 ${
               showSecondarySidebar ? 'justify-center' : ''
             }`}
             title={showSecondarySidebar ? profile?.first_name || profile?.company_name || 'Profile' : undefined}
@@ -227,9 +227,9 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
               <img
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=faces"
                 alt="Profile"
-                className="w-8 h-8 rounded-full object-cover ring-2 ring-slate-700"
+                className="w-8 h-8 rounded-full object-cover ring-2 ring-slate-300"
               />
-              <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-400 border-2 border-slate-900 rounded-full"></div>
+              <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-400 border-2 border-slate-100 rounded-full"></div>
             </div>
             {!showSecondarySidebar && (
               <span className="flex-1 text-left truncate">{profile?.first_name || profile?.company_name || 'User'}</span>
