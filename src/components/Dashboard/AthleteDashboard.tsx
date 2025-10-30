@@ -172,18 +172,18 @@ function TrendingNewsItem({ title, author, category, time, image, isLive, descri
           </div>
         )}
       </div>
-      <div className="flex-1 flex flex-col justify-between">
-        <div>
+      <div className="flex-1 flex flex-col">
+        <div className="flex-1">
           <h4 className="font-semibold text-slate-900 mb-2 line-clamp-2 leading-snug">
             {title}
           </h4>
           {description && (
-            <p className="text-sm text-slate-600 line-clamp-2 mb-3">
+            <p className="text-sm text-slate-600 line-clamp-2">
               {description}
             </p>
           )}
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 mt-3">
           <div className="w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
             <span className="text-white text-xs font-semibold">{author.charAt(0)}</span>
           </div>
