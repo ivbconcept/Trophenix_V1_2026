@@ -64,79 +64,79 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               <div className="grid grid-cols-12 gap-6">
                 <div className="col-span-5">
                   <TrendingNewsMain
-                    title="Flavors & Feasts: Latest Culinary Trends and Savory Delights"
+                    title="Rising Stars: Top Athletes Making Waves in 2025"
                     author="Leonor Davinci"
-                    category="Food & Drink"
+                    category="Sport"
                     time="2h Ago"
-                    image="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    description="Explore the newest culinary trends and indulge in mouthwatering delights with our comprehensive coverage of flavors and feasts."
+                    image="https://images.pexels.com/photos/2385477/pexels-photo-2385477.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    description="Discover the emerging athletes who are breaking records and redefining excellence in their respective sports."
                   />
                 </div>
 
                 <div className="col-span-7 space-y-4">
                   <TrendingNewsItem
-                    title="Flavors & Feasts: Latest Culinary Trends and Savory Delights"
+                    title="Career Transition: From Athlete to Entrepreneur"
                     author="Leonor Davinci"
-                    category="Business"
-                    time="2h Ago"
-                    image="https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    category="Career"
+                    time="1h Ago"
+                    image="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600"
                     isLive
                   />
                   <TrendingNewsItem
-                    title="Flavors & Feasts: Latest Culinary Trends and Savory Delights"
+                    title="Olympic Training Secrets: How Champions Prepare"
                     author="Leonor Davinci"
                     category="Sport"
-                    time="2h Ago"
-                    image="https://images.pexels.com/photos/358042/pexels-photo-358042.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    time="3h Ago"
+                    image="https://images.pexels.com/photos/2261477/pexels-photo-2261477.jpeg?auto=compress&cs=tinysrgb&w=600"
                   />
                   <TrendingNewsItem
-                    title="Flavors & Feasts: Latest Culinary Trends and Savory Delights"
+                    title="Building Your Personal Brand as an Athlete"
                     author="Leonor Davinci"
-                    category="Technology"
-                    time="2h Ago"
-                    image="https://images.pexels.com/photos/123335/pexels-photo-123335.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    category="Career"
+                    time="4h Ago"
+                    image="https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=600"
                   />
                 </div>
               </div>
             </div>
 
             <div className="mb-6">
-              <h2 className="text-2xl font-bold text-slate-900 mb-6">Technology & Innovation</h2>
+              <h2 className="text-2xl font-bold text-slate-900 mb-6">Career Management & Development</h2>
 
               <div className="grid grid-cols-12 gap-6">
                 <div className="col-span-5">
                   <TrendingNewsMain
-                    title="Virtual Reality Training: The Next Frontier in Sports"
+                    title="Navigating Career Transitions: A Guide for Athletes"
                     author="Leonor Davinci"
-                    category="Technology"
-                    time="2h Ago"
-                    image="https://images.pexels.com/photos/8728380/pexels-photo-8728380.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    description="How VR and AR technologies are transforming the way athletes train and prepare for competition."
+                    category="Career"
+                    time="1h Ago"
+                    image="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    description="Essential strategies for athletes planning their next career move, from networking to skill development."
                   />
                 </div>
 
                 <div className="col-span-7 space-y-4">
                   <TrendingNewsItem
-                    title="Wearable Tech: Monitoring Performance in Real-Time"
+                    title="Sponsorship Deals: Maximizing Your Market Value"
                     author="Leonor Davinci"
-                    category="Technology"
+                    category="Career"
                     time="2h Ago"
-                    image="https://images.pexels.com/photos/4498362/pexels-photo-4498362.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    image="https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=600"
                   />
                   <TrendingNewsItem
-                    title="AI Coaches: The Future of Personalized Training"
+                    title="Mental Health in Professional Sports: Breaking the Stigma"
                     author="Leonor Davinci"
-                    category="Technology"
+                    category="Sport"
                     time="3h Ago"
-                    image="https://images.pexels.com/photos/8294621/pexels-photo-8294621.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    image="https://images.pexels.com/photos/3921045/pexels-photo-3921045.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    isLive
                   />
                   <TrendingNewsItem
-                    title="Blockchain in Sports: New Opportunities for Athletes"
+                    title="Financial Planning for Athletes: Securing Your Future"
                     author="Leonor Davinci"
-                    category="Technology"
-                    time="4h Ago"
-                    image="https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    isLive
+                    category="Career"
+                    time="5h Ago"
+                    image="https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=600"
                   />
                 </div>
               </div>
