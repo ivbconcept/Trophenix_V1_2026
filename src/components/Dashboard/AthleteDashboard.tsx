@@ -1,5 +1,5 @@
 import { useAuth } from '../../contexts/AuthContext';
-import { Briefcase, FileText, MessageSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper } from 'lucide-react';
+import { Briefcase, FileText, MessageSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper, Users, Compass, Target } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import arenaImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
 import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
@@ -28,7 +28,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-900">
       <div className="max-w-[1400px] mx-auto px-8 py-6">
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12">
@@ -58,8 +58,251 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               </div>
             </div>
 
+            <div className="mb-8">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold text-slate-100">Découvrir</h2>
+                <button className="text-sm text-slate-400 hover:text-slate-200 transition-colors">
+                  Tous les modes
+                </button>
+              </div>
 
+              <div className="grid grid-cols-3 gap-6">
+                <ModeCard
+                  title="Développement Carrière"
+                  description="Mode de gestion de carrière personnalisé"
+                  image="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  badge="Recommandé"
+                  participants={[
+                    'https://i.pravatar.cc/150?img=1',
+                    'https://i.pravatar.cc/150?img=2'
+                  ]}
+                  participantCount={2}
+                />
+                <ModeCard
+                  title="Recherche Sponsors"
+                  description="Trouvez des partenaires et sponsors adaptés"
+                  image="https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  participants={[
+                    'https://i.pravatar.cc/150?img=3',
+                    'https://i.pravatar.cc/150?img=4'
+                  ]}
+                  participantCount={2}
+                />
+                <ModeCard
+                  title="Reconversion Pro"
+                  description="Explorez de nouvelles opportunités professionnelles"
+                  image="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  participants={[
+                    'https://i.pravatar.cc/150?img=5',
+                    'https://i.pravatar.cc/150?img=6'
+                  ]}
+                  participantCount={2}
+                />
+              </div>
+            </div>
 
+            <div className="grid grid-cols-2 gap-6">
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-2xl font-bold text-slate-100">Offres d'Emploi</h2>
+                  <button
+                    onClick={() => onNavigate('jobs')}
+                    className="text-sm text-slate-400 hover:text-slate-200 transition-colors"
+                  >
+                    Plus
+                  </button>
+                </div>
+
+                <div className="space-y-4">
+                  <JobPostCard
+                    icon={<Target className="w-6 h-6" />}
+                    title="Consultant Sportif"
+                    description="Accompagnement d'athlètes professionnels"
+                    action="Postuler"
+                    onAction={() => onNavigate('jobs')}
+                  />
+                  <JobPostCard
+                    icon={<Users className="w-6 h-6" />}
+                    title="Coach Performance"
+                    description="Entraînement et développement athlétique"
+                    salary="3500"
+                    period="Par mois"
+                  />
+                  <JobPostCard
+                    icon={<Compass className="w-6 h-6" />}
+                    title="Ambassadeur de Marque"
+                    description="Représentation de marque sportive premium"
+                    salary="2800"
+                    period="Par mois"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-2xl font-bold text-slate-100">Dernières Actualités</h2>
+                  <button className="text-sm text-slate-400 hover:text-slate-200 transition-colors">
+                    Plus
+                  </button>
+                </div>
+
+                <div className="space-y-4">
+                  <NewsCard
+                    title="Nouvelles Technologies d'Entraînement"
+                    description="Les innovations qui transforment la performance"
+                    image="https://images.pexels.com/photos/3760607/pexels-photo-3760607.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    date="24 Juin"
+                    featured
+                  />
+                  <NewsCard
+                    title="Stratégies de Reconversion Réussie"
+                    description="Découvrez comment réussir votre transition"
+                    image="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    date="23 Juin"
+                  />
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+interface ModeCardProps {
+  title: string;
+  description: string;
+  image: string;
+  badge?: string;
+  participants: string[];
+  participantCount: number;
+}
+
+function ModeCard({ title, description, image, badge, participants, participantCount }: ModeCardProps) {
+  return (
+    <div className="bg-slate-800 rounded-2xl overflow-hidden hover:bg-slate-750 transition-all cursor-pointer group">
+      <div className="relative h-48 overflow-hidden">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+        {badge && (
+          <div className="absolute top-3 left-3 bg-slate-900/90 text-white px-3 py-1 rounded-full flex items-center gap-2">
+            <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+            <span className="text-xs font-semibold">{badge}</span>
+          </div>
+        )}
+        <div className="absolute bottom-3 left-3 flex items-center gap-2">
+          <div className="flex -space-x-2">
+            {participants.map((avatar, idx) => (
+              <img
+                key={idx}
+                src={avatar}
+                alt=""
+                className="w-8 h-8 rounded-full border-2 border-slate-800"
+              />
+            ))}
+          </div>
+          <div className="bg-yellow-500 text-slate-900 px-2 py-1 rounded-full">
+            <span className="text-xs font-bold">+{participantCount}</span>
+          </div>
+        </div>
+      </div>
+      <div className="p-4">
+        <h3 className="text-lg font-bold text-slate-100 mb-1">
+          {title}
+        </h3>
+        <p className="text-sm text-slate-400">
+          {description}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+interface JobPostCardProps {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  salary?: string;
+  period?: string;
+  action?: string;
+  onAction?: () => void;
+}
+
+function JobPostCard({ icon, title, description, salary, period, action, onAction }: JobPostCardProps) {
+  return (
+    <div className="bg-slate-800 rounded-2xl p-4 hover:bg-slate-750 transition-all group">
+      <div className="flex items-start gap-4">
+        <div className="w-12 h-12 bg-slate-700 rounded-xl flex items-center justify-center text-slate-300 flex-shrink-0">
+          {icon}
+        </div>
+        <div className="flex-1 min-w-0">
+          <h3 className="text-base font-bold text-slate-100 mb-1">
+            {title}
+          </h3>
+          <p className="text-sm text-slate-400 mb-3">
+            {description}
+          </p>
+          {action ? (
+            <button
+              onClick={onAction}
+              className="bg-white text-slate-900 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100 transition-colors"
+            >
+              {action}
+            </button>
+          ) : salary ? (
+            <div className="flex items-center gap-2">
+              <div className="bg-yellow-500 text-slate-900 px-3 py-1 rounded-full">
+                <span className="text-sm font-bold">{salary}</span>
+              </div>
+              <span className="text-xs text-slate-400">{period}</span>
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+interface NewsCardProps {
+  title: string;
+  description: string;
+  image: string;
+  date: string;
+  featured?: boolean;
+}
+
+function NewsCard({ title, description, image, date, featured }: NewsCardProps) {
+  return (
+    <div className="bg-slate-800 rounded-2xl overflow-hidden hover:bg-slate-750 transition-all cursor-pointer group">
+      <div className="flex gap-4 p-4">
+        <div className="relative w-32 h-32 flex-shrink-0 rounded-xl overflow-hidden">
+          <img
+            src={image}
+            alt={title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+          {featured && (
+            <div className="absolute top-2 right-2 bg-slate-900/90 text-white p-1.5 rounded-full">
+              <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+            </div>
+          )}
+        </div>
+        <div className="flex-1 flex flex-col justify-between">
+          <div>
+            <h3 className="text-base font-bold text-slate-100 mb-2 line-clamp-2 leading-snug">
+              {title}
+            </h3>
+            <p className="text-sm text-slate-400 line-clamp-2">
+              {description}
+            </p>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-slate-500">{date}</span>
           </div>
         </div>
       </div>
