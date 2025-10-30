@@ -32,17 +32,19 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
       <div className="max-w-[1400px] mx-auto px-8 py-6">
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12">
-            <div className="mb-4 flex items-center justify-end gap-3">
-              <button className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-slate-50 transition-all text-slate-700 hover:text-slate-900 border border-slate-200">
+            <div className="mb-4 flex items-center gap-6">
+              <button className="flex items-center gap-3 px-4 py-3 bg-white rounded-xl hover:bg-slate-50 transition-all text-slate-700 hover:text-slate-900 border border-slate-200">
                 <Mail className="h-5 w-5" />
+                <span className="font-medium">Messages</span>
               </button>
-              <button className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-slate-50 transition-all text-slate-700 hover:text-slate-900 border border-slate-200 relative">
+              <button className="flex items-center gap-3 px-4 py-3 bg-white rounded-xl hover:bg-slate-50 transition-all text-slate-700 hover:text-slate-900 border border-slate-200 relative">
                 <Bell className="h-5 w-5" />
-                <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center text-white text-[10px] font-bold">3</div>
+                <span className="font-medium">Notifications</span>
+                <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold">3</div>
               </button>
               <button
                 onClick={() => onNavigate('profile')}
-                className="flex items-center justify-center w-10 h-10 bg-white rounded-lg hover:bg-slate-50 transition-all border border-slate-200"
+                className="flex items-center gap-3 px-4 py-3 bg-white rounded-xl hover:bg-slate-50 transition-all text-slate-700 hover:text-slate-900 border border-slate-200"
               >
                 <div className="relative">
                   <img
@@ -50,8 +52,9 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     alt="Profile"
                     className="w-8 h-8 rounded-full object-cover ring-2 ring-slate-300"
                   />
-                  <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-green-400 border-2 border-white rounded-full"></div>
+                  <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-400 border-2 border-white rounded-full"></div>
                 </div>
+                <span className="font-medium">{profile?.first_name || 'User'}</span>
               </button>
             </div>
             <div className="rounded-3xl p-10 text-white mb-6 shadow-lg relative overflow-hidden flex items-end justify-between" style={{ minHeight: '291px' }}>
