@@ -28,147 +28,146 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
 
   return (
-    <div className="min-h-screen bg-slate-900">
-      <div className="max-w-[1400px] mx-auto px-8 py-6">
-        <div className="grid grid-cols-12 gap-6">
-          <div className="col-span-12">
-            <div className="rounded-3xl p-10 text-white mb-6 shadow-lg relative overflow-hidden flex items-end justify-between" style={{ minHeight: '291px' }}>
-              {currentImageIndex === 0 ? (
-                <>
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-all duration-[3000ms] ease-in-out"
-                    style={{ backgroundImage: `url('${backgroundImages[0]}')` }}
-                  ></div>
-                  <div className="absolute inset-0 bg-black/40 transition-opacity duration-[3000ms] ease-in-out"></div>
-                </>
-              ) : (
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 transition-opacity duration-[3000ms] ease-in-out"></div>
-              )}
-              <div className="relative z-10">
-                <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4">PLATEFORME TROPHENIX</p>
-                <h1 className="text-4xl font-bold leading-tight mb-4">
-                  Développez Votre Carrière
-                </h1>
-                <p className="text-white/90 text-base max-w-2xl">
-                  Découvrez des opportunités uniques adaptées à votre profil d'athlète
-                </p>
+    <div className="min-h-screen bg-[#0f0f0f]">
+      <div className="max-w-[1600px] mx-auto px-12 py-8">
+        <div className="space-y-8">
+          <div className="rounded-3xl p-10 text-white mb-6 shadow-lg relative overflow-hidden flex items-end justify-between" style={{ minHeight: '291px' }}>
+            {currentImageIndex === 0 ? (
+              <>
+                <div
+                  className="absolute inset-0 bg-cover bg-center transition-all duration-[3000ms] ease-in-out"
+                  style={{ backgroundImage: `url('${backgroundImages[0]}')` }}
+                ></div>
+                <div className="absolute inset-0 bg-black/40 transition-opacity duration-[3000ms] ease-in-out"></div>
+              </>
+            ) : (
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 transition-opacity duration-[3000ms] ease-in-out"></div>
+            )}
+            <div className="relative z-10">
+              <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4">PLATEFORME TROPHENIX</p>
+              <h1 className="text-4xl font-bold leading-tight mb-4">
+                Développez Votre Carrière
+              </h1>
+              <p className="text-white/90 text-base max-w-2xl">
+                Découvrez des opportunités uniques adaptées à votre profil d'athlète
+              </p>
+            </div>
+            <div className="relative z-10 bg-white rounded-lg px-2 py-2 shadow-lg">
+              <img src={nikeLogo} alt="Nike" className="w-16 h-auto" />
+            </div>
+          </div>
+
+          <div>
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex gap-8">
+                <button className="text-white font-normal text-base relative pb-1">
+                  Recently played
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white"></div>
+                </button>
+                <button className="text-neutral-500 font-normal text-base hover:text-white transition-colors">
+                  Favorites
+                </button>
               </div>
-              <div className="relative z-10 bg-white rounded-lg px-2 py-2 shadow-lg">
-                <img src={nikeLogo} alt="Nike" className="w-16 h-auto" />
-              </div>
+              <button className="text-neutral-500 hover:text-white transition-colors text-sm font-light">
+                All modes
+              </button>
             </div>
 
-            <div className="mb-8">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex gap-4">
-                  <button className="text-white font-medium px-4 py-2 rounded-lg bg-neutral-800">
-                    Recently played
-                  </button>
-                  <button className="text-neutral-400 font-medium px-4 py-2 rounded-lg hover:text-white transition-colors">
-                    Favorites
-                  </button>
-                </div>
-                <button className="text-neutral-400 hover:text-white transition-colors text-sm">
-                  All modes
+            <div className="grid grid-cols-3 gap-5">
+              <GameModeCard
+                title="Day mode"
+                description="Mode description"
+                image="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800"
+                badge="Day mode"
+                participants={[
+                  'https://i.pravatar.cc/150?img=1',
+                  'https://i.pravatar.cc/150?img=2'
+                ]}
+                participantCount={2}
+              />
+              <GameModeCard
+                title="Survival"
+                description="Players must gather resources and fend off enemi..."
+                image="https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=800"
+                participants={[
+                  'https://i.pravatar.cc/150?img=3',
+                  'https://i.pravatar.cc/150?img=4'
+                ]}
+                participantCount={2}
+              />
+              <GameModeCard
+                title="Adventure"
+                description="An exploration-focused mode where players emb..."
+                image="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
+                participants={[
+                  'https://i.pravatar.cc/150?img=5',
+                  'https://i.pravatar.cc/150?img=6'
+                ]}
+                participantCount={2}
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-16">
+            <div>
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-white text-2xl font-medium">Job Posts</h2>
+                <button className="text-neutral-500 hover:text-white transition-colors text-sm font-light">
+                  More
                 </button>
               </div>
 
-              <div className="grid grid-cols-3 gap-4">
-                <GameModeCard
-                  title="Day mode"
-                  description="Mode description"
-                  image="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  badge="Day mode"
-                  participants={[
-                    'https://i.pravatar.cc/150?img=1',
-                    'https://i.pravatar.cc/150?img=2'
-                  ]}
-                  participantCount={2}
+              <div className="space-y-4">
+                <JobCard
+                  icon={<Target className="w-6 h-6" />}
+                  title="Driver"
+                  description="Description for the job"
+                  action="Apply"
+                  onAction={() => onNavigate('jobs')}
                 />
-                <GameModeCard
-                  title="Survival"
-                  description="Players must gather resources and fend off enemi..."
-                  image="https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  participants={[
-                    'https://i.pravatar.cc/150?img=3',
-                    'https://i.pravatar.cc/150?img=4'
-                  ]}
-                  participantCount={2}
+                <JobCard
+                  icon={<Users className="w-6 h-6" />}
+                  title="Architector"
+                  description="Description for the job"
+                  salary="250"
+                  period="Per day"
                 />
-                <GameModeCard
-                  title="Adventure"
-                  description="An exploration-focused mode where players emb..."
-                  image="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  participants={[
-                    'https://i.pravatar.cc/150?img=5',
-                    'https://i.pravatar.cc/150?img=6'
-                  ]}
-                  participantCount={2}
+                <JobCard
+                  icon={<Compass className="w-6 h-6" />}
+                  title="Killer"
+                  description="Description for the job"
+                  salary="120"
+                  period="Per day"
                 />
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-8">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-white text-2xl font-bold">Job Posts</h2>
-                  <button className="text-neutral-400 hover:text-white transition-colors text-sm">
-                    More
-                  </button>
-                </div>
-
-                <div className="space-y-3">
-                  <JobCard
-                    icon={<Target className="w-6 h-6" />}
-                    title="Driver"
-                    description="Description for the job"
-                    action="Apply"
-                    onAction={() => onNavigate('jobs')}
-                  />
-                  <JobCard
-                    icon={<Users className="w-6 h-6" />}
-                    title="Architector"
-                    description="Description for the job"
-                    salary="250"
-                    period="Per day"
-                  />
-                  <JobCard
-                    icon={<Compass className="w-6 h-6" />}
-                    title="Killer"
-                    description="Description for the job"
-                    salary="120"
-                    period="Per day"
-                  />
-                </div>
+            <div>
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-white text-2xl font-medium">Latest news</h2>
+                <button className="text-neutral-500 hover:text-white transition-colors text-sm font-light">
+                  More
+                </button>
               </div>
 
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-white text-2xl font-bold">Latest news</h2>
-                  <button className="text-neutral-400 hover:text-white transition-colors text-sm">
-                    More
-                  </button>
-                </div>
-
-                <div className="space-y-3">
-                  <NewsItemCard
-                    title="New Innovations in Driver Assistance Technology"
-                    description="Description for the job"
-                    image="https://images.pexels.com/photos/3760607/pexels-photo-3760607.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    date="24 June"
-                    featured
-                  />
-                  <NewsItemCard
-                    title="New Innovations in Driver Assistance Technology"
-                    description="Description for the job"
-                    image="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    date="23 June"
-                  />
-                </div>
+              <div className="space-y-4">
+                <NewsItemCard
+                  title="New Innovations in Driver Assistance Technology"
+                  description="Description for the job"
+                  image="https://images.pexels.com/photos/3760607/pexels-photo-3760607.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  date="24 June"
+                  featured
+                />
+                <NewsItemCard
+                  title="New Innovations in Driver Assistance Technology"
+                  description="Description for the job"
+                  image="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  date="23 June"
+                />
               </div>
             </div>
-
           </div>
+
         </div>
       </div>
     </div>
@@ -186,17 +185,17 @@ interface GameModeCardProps {
 
 function GameModeCard({ title, description, image, badge, participants, participantCount }: GameModeCardProps) {
   return (
-    <div className="bg-neutral-800 rounded-2xl overflow-hidden hover:bg-neutral-750 transition-all cursor-pointer group">
-      <div className="relative h-48 overflow-hidden">
+    <div className="bg-[#1a1a1a] rounded-2xl overflow-hidden hover:bg-[#202020] transition-all cursor-pointer group border border-neutral-800/50">
+      <div className="relative h-52 overflow-hidden">
         <img
           src={image}
           alt={title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
         {badge && (
-          <div className="absolute top-3 left-3 bg-black/80 text-white px-3 py-1.5 rounded-full flex items-center gap-2">
-            <Star className="w-3.5 h-3.5 fill-white text-white" />
-            <span className="text-xs font-semibold">{badge}</span>
+          <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-sm text-white px-3 py-1.5 rounded-full flex items-center gap-2">
+            <Star className="w-3 h-3 fill-white text-white" />
+            <span className="text-xs font-light">{badge}</span>
           </div>
         )}
         <div className="absolute bottom-3 left-3 flex items-center gap-2">
@@ -206,20 +205,20 @@ function GameModeCard({ title, description, image, badge, participants, particip
                 key={idx}
                 src={avatar}
                 alt=""
-                className="w-8 h-8 rounded-full border-2 border-neutral-800"
+                className="w-7 h-7 rounded-full border-2 border-[#1a1a1a]"
               />
             ))}
           </div>
-          <div className="bg-amber-500 text-black px-2.5 py-1 rounded-full">
-            <span className="text-xs font-bold">+{participantCount}</span>
+          <div className="bg-amber-400 text-black px-2 py-0.5 rounded-full">
+            <span className="text-xs font-semibold">+{participantCount}</span>
           </div>
         </div>
       </div>
-      <div className="p-4">
-        <h3 className="text-white font-bold mb-1.5 text-base">
+      <div className="p-4 pb-5">
+        <h3 className="text-white font-normal mb-1 text-lg">
           {title}
         </h3>
-        <p className="text-neutral-400 text-sm">
+        <p className="text-neutral-500 text-sm font-light">
           {description}
         </p>
       </div>
@@ -239,31 +238,34 @@ interface JobCardProps {
 
 function JobCard({ icon, title, description, salary, period, action, onAction }: JobCardProps) {
   return (
-    <div className="bg-neutral-800 rounded-2xl p-4 hover:bg-neutral-750 transition-all group flex items-center gap-4">
-      <div className="w-14 h-14 bg-neutral-700 rounded-2xl flex items-center justify-center text-neutral-400 flex-shrink-0">
+    <div className="bg-[#1a1a1a] rounded-xl p-5 hover:bg-[#202020] transition-all group flex items-center gap-5 border border-neutral-800/30">
+      <div className="w-14 h-14 bg-neutral-800/50 rounded-full flex items-center justify-center text-neutral-400 flex-shrink-0">
         {icon}
       </div>
       <div className="flex-1 min-w-0">
-        <h3 className="text-white font-semibold mb-0.5 text-base">
+        <h3 className="text-white font-normal mb-1 text-base">
           {title}
         </h3>
-        <p className="text-neutral-400 text-sm">
+        <p className="text-neutral-500 text-sm font-light">
           {description}
         </p>
       </div>
       {action ? (
         <button
           onClick={onAction}
-          className="bg-white text-black px-5 py-2 rounded-xl text-sm font-semibold hover:bg-neutral-100 transition-colors flex-shrink-0"
+          className="bg-white text-black px-6 py-2 rounded-lg text-sm font-normal hover:bg-neutral-100 transition-colors flex-shrink-0"
         >
           {action}
         </button>
       ) : salary ? (
-        <div className="flex items-center gap-2 flex-shrink-0">
-          <div className="bg-amber-500 text-black px-3 py-1.5 rounded-full">
-            <span className="text-sm font-bold">{salary}</span>
+        <div className="flex items-center gap-3 flex-shrink-0">
+          <div className="text-right">
+            <div className="text-white font-medium text-base">{salary}</div>
+            <div className="text-neutral-500 text-xs font-light">{period}</div>
           </div>
-          <span className="text-xs text-neutral-400">{period}</span>
+          <div className="bg-amber-400 p-2 rounded-lg">
+            <div className="w-5 h-5"></div>
+          </div>
         </div>
       ) : null}
     </div>
@@ -280,31 +282,31 @@ interface NewsItemCardProps {
 
 function NewsItemCard({ title, description, image, date, featured }: NewsItemCardProps) {
   return (
-    <div className="bg-neutral-800 rounded-2xl overflow-hidden hover:bg-neutral-750 transition-all cursor-pointer group">
-      <div className="flex gap-4 p-4">
-        <div className="relative w-36 h-36 flex-shrink-0 rounded-xl overflow-hidden">
+    <div className="bg-[#1a1a1a] rounded-xl overflow-hidden hover:bg-[#202020] transition-all cursor-pointer group border border-neutral-800/30">
+      <div className="flex gap-5 p-4">
+        <div className="relative w-40 h-36 flex-shrink-0 rounded-lg overflow-hidden">
           <img
             src={image}
             alt={title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
           {featured && (
-            <div className="absolute top-2 right-2 bg-black/80 text-white p-1.5 rounded-full">
-              <Star className="w-3.5 h-3.5 fill-white text-white" />
+            <div className="absolute top-2 right-2 bg-black/70 backdrop-blur-sm text-white p-1.5 rounded-full">
+              <Star className="w-3 h-3 fill-white text-white" />
             </div>
           )}
         </div>
         <div className="flex-1 flex flex-col justify-between py-1">
           <div>
-            <h3 className="text-white font-semibold mb-2 line-clamp-2 leading-snug text-base">
+            <h3 className="text-white font-normal mb-2 line-clamp-2 leading-snug text-base">
               {title}
             </h3>
-            <p className="text-neutral-400 text-sm line-clamp-2">
+            <p className="text-neutral-500 text-sm font-light line-clamp-2">
               {description}
             </p>
           </div>
-          <div className="flex items-center justify-between mt-3">
-            <span className="text-neutral-500 text-xs">{date}</span>
+          <div className="flex items-center justify-between mt-2">
+            <span className="text-neutral-500 text-xs font-light">{date}</span>
           </div>
         </div>
       </div>
