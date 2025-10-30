@@ -1,5 +1,5 @@
 import { useAuth } from '../../contexts/AuthContext';
-import { Briefcase, FileText, MessageSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper, Building, Users, Video } from 'lucide-react';
+import { Briefcase, FileText, MessageSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import arenaImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
 import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
@@ -31,7 +31,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
     <div className="min-h-screen bg-slate-50">
       <div className="max-w-[1400px] mx-auto px-8 py-6">
         <div className="grid grid-cols-12 gap-6">
-          <div className="col-span-8">
+          <div className="col-span-12">
             <div className="rounded-3xl p-10 text-white mb-6 shadow-lg relative overflow-hidden flex items-end justify-between" style={{ minHeight: '291px' }}>
               {currentImageIndex === 0 ? (
                 <>
@@ -143,66 +143,6 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             </div>
 
           </div>
-
-          <div className="col-span-4">
-            <div className="mb-6">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-bold text-slate-900">Job Posts</h2>
-                <button className="text-sm text-blue-600 hover:text-blue-700 font-medium">More</button>
-              </div>
-              <div className="space-y-3">
-                <JobPostItem
-                  icon="briefcase"
-                  title="Driver"
-                  description="Description for the job"
-                  actionType="apply"
-                />
-                <JobPostItem
-                  icon="building"
-                  title="Architect"
-                  description="Description for the job"
-                  salary="250"
-                  period="Per day"
-                />
-                <JobPostItem
-                  icon="users"
-                  title="Killer"
-                  description="Description for the job"
-                  salary="120"
-                  period="Per day"
-                />
-                <JobPostItem
-                  icon="building"
-                  title="Architect"
-                  description="Description for the job"
-                  salary="250"
-                  period="Per day"
-                />
-              </div>
-            </div>
-
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-bold text-slate-900">Latest news</h2>
-                <button className="text-sm text-blue-600 hover:text-blue-700 font-medium">More</button>
-              </div>
-              <div className="space-y-3">
-                <LatestNewsItem
-                  title="New Innovations in Driver Assistance Technology"
-                  description="Description for the job"
-                  date="24 June"
-                  image="https://images.pexels.com/photos/2385477/pexels-photo-2385477.jpeg?auto=compress&cs=tinysrgb&w=400"
-                  isVideo
-                />
-                <LatestNewsItem
-                  title="New Innovations in Driver Assistance Technology"
-                  description="Description for the job"
-                  date="24 June"
-                  image="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=400"
-                />
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -296,92 +236,6 @@ function TrendingNewsItem({ title, author, category, time, image, isLive }: Tren
             </div>
           </div>
           <span className="text-xs text-slate-400">{time}</span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-interface JobPostItemProps {
-  icon: string;
-  title: string;
-  description: string;
-  actionType?: 'apply';
-  salary?: string;
-  period?: string;
-}
-
-function JobPostItem({ icon, title, description, actionType, salary, period }: JobPostItemProps) {
-  const getIcon = () => {
-    switch (icon) {
-      case 'briefcase':
-        return <Briefcase className="w-5 h-5 text-slate-400" />;
-      case 'building':
-        return <Building className="w-5 h-5 text-slate-400" />;
-      case 'users':
-        return <Users className="w-5 h-5 text-slate-400" />;
-      default:
-        return <Briefcase className="w-5 h-5 text-slate-400" />;
-    }
-  };
-
-  return (
-    <div className="bg-slate-900 rounded-xl p-4 hover:bg-slate-800 transition-all cursor-pointer">
-      <div className="flex items-start gap-3">
-        <div className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center flex-shrink-0">
-          {getIcon()}
-        </div>
-        <div className="flex-1 min-w-0">
-          <h3 className="text-white font-semibold mb-1">{title}</h3>
-          <p className="text-slate-400 text-sm">{description}</p>
-        </div>
-        {actionType === 'apply' ? (
-          <button className="bg-white text-slate-900 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100 transition-colors">
-            Apply
-          </button>
-        ) : salary ? (
-          <div className="text-right flex-shrink-0">
-            <div className="text-white font-bold text-lg">{salary}</div>
-            <div className="text-slate-400 text-xs">{period}</div>
-          </div>
-        ) : null}
-      </div>
-    </div>
-  );
-}
-
-interface LatestNewsItemProps {
-  title: string;
-  description: string;
-  date: string;
-  image: string;
-  isVideo?: boolean;
-}
-
-function LatestNewsItem({ title, description, date, image, isVideo }: LatestNewsItemProps) {
-  return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
-      <div className="flex gap-4 p-4">
-        <div className="relative w-32 h-24 flex-shrink-0 rounded-lg overflow-hidden">
-          <img
-            src={image}
-            alt={title}
-            className="w-full h-full object-cover"
-          />
-          {isVideo && (
-            <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                <Video className="w-4 h-4 text-slate-900 ml-0.5" />
-              </div>
-            </div>
-          )}
-        </div>
-        <div className="flex-1 min-w-0">
-          <h3 className="font-semibold text-slate-900 mb-1 line-clamp-2 leading-snug">
-            {title}
-          </h3>
-          <p className="text-slate-500 text-sm mb-2">{description}</p>
-          <p className="text-slate-400 text-xs">{date}</p>
         </div>
       </div>
     </div>
