@@ -226,9 +226,12 @@ function ApplicationItem({ name, position, sport, date, status }: ApplicationIte
   return (
     <div className="flex items-start justify-between py-3 border-b border-slate-100 last:border-0">
       <div className="flex-1">
+        <div className="flex items-center gap-3 mb-2">
+          <p className="text-xs text-slate-500">{sport}</p>
+          <p className="text-xs text-slate-400">{date}</p>
+        </div>
         <h4 className="font-medium text-slate-900">{name}</h4>
         <p className="text-sm text-slate-600">{position}</p>
-        <p className="text-xs text-slate-500 mt-1">{sport}</p>
       </div>
       <div className="text-right ml-4">
         <span className={`inline-block px-2 py-1 text-xs font-medium rounded ${
@@ -238,7 +241,6 @@ function ApplicationItem({ name, position, sport, date, status }: ApplicationIte
         }`}>
           {status}
         </span>
-        <p className="text-xs text-slate-500 mt-1">{date}</p>
       </div>
     </div>
   );
