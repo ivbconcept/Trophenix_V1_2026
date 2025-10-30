@@ -155,7 +155,7 @@ interface TrendingNewsItemProps {
 
 function TrendingNewsItem({ title, author, category, time, image, isLive }: TrendingNewsItemProps) {
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-all flex gap-4 min-h-[180px]">
+    <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-all flex gap-4 min-h-[220px]">
       <div className="relative w-40 h-40 flex-shrink-0 rounded-xl overflow-hidden">
         <img
           src={image}
