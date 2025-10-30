@@ -58,47 +58,6 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               </div>
             </div>
 
-            <div className="mb-6">
-              <h2 className="text-2xl font-bold text-slate-900 mb-6">Trending News</h2>
-
-              <div className="grid grid-cols-12 gap-6">
-                <div className="col-span-5">
-                  <TrendingNewsMain
-                    title="Rising Stars: Top Athletes Making Waves in 2025"
-                    author="Leonor Davinci"
-                    category="Sport"
-                    time="2h Ago"
-                    image="https://images.pexels.com/photos/2385477/pexels-photo-2385477.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    description="Discover the emerging athletes who are breaking records and redefining excellence in their respective sports."
-                  />
-                </div>
-
-                <div className="col-span-7 space-y-4">
-                  <TrendingNewsItem
-                    title="Career Transition: From Athlete to Entrepreneur"
-                    author="Leonor Davinci"
-                    category="Career"
-                    time="1h Ago"
-                    image="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    isLive
-                  />
-                  <TrendingNewsItem
-                    title="Olympic Training Secrets: How Champions Prepare"
-                    author="Leonor Davinci"
-                    category="Sport"
-                    time="3h Ago"
-                    image="https://images.pexels.com/photos/2261477/pexels-photo-2261477.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  />
-                  <TrendingNewsItem
-                    title="Building Your Personal Brand as an Athlete"
-                    author="Leonor Davinci"
-                    category="Career"
-                    time="4h Ago"
-                    image="https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  />
-                </div>
-              </div>
-            </div>
 
             <div className="mb-6">
               <h2 className="text-2xl font-bold text-slate-900 mb-6">Career Management & Development</h2>
