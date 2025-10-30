@@ -59,37 +59,37 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             </div>
 
             <div className="mb-6">
-              <h2 className="text-2xl font-bold text-slate-900 mb-6">Trending News</h2>
+              <h2 className="text-2xl font-bold text-slate-900 mb-6">Actualités Tendance</h2>
 
               <div className="grid grid-cols-12 gap-6">
                 <div className="col-span-5">
                   <TrendingNewsMain
-                    title="Flavors & Feasts: Latest Culinary Trends and Savory Delights"
+                    title="Réussir sa reconversion : Les clés pour une transition professionnelle réussie"
                     author="Leonor Davinci"
-                    category="Food & Drink"
-                    time="2h Ago"
-                    image="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    description="Explore the newest culinary trends and indulge in mouthwatering delights with our comprehensive coverage of flavors and feasts."
+                    category="Gestion de Carrière"
+                    time="Il y a 2h"
+                    image="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    description="Découvrez les étapes essentielles et les stratégies gagnantes pour réussir votre transition du sport de haut niveau vers le monde professionnel."
                   />
                 </div>
 
                 <div className="col-span-7 flex flex-col gap-4">
                   <TrendingNewsItem
-                    title="Flavors & Feasts: Latest Culinary Trends and Savory Delights"
+                    title="Développement de carrière : Les secteurs qui recrutent des profils sportifs"
                     author="Leonor Davinci"
                     category="Business"
-                    time="2h Ago"
-                    image="https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    description="Explore the newest culinary trends and indulge in mouthwatering delights with our comprehensive coverage of flavors and feasts."
+                    time="Il y a 2h"
+                    image="https://images.pexels.com/photos/936094/pexels-photo-936094.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    description="Le marché du travail s'ouvre aux athlètes. Découvrez les opportunités professionnelles et les entreprises qui valorisent vos compétences sportives."
                     isLive
                   />
                   <TrendingNewsItem
-                    title="Flavors & Feasts: Latest Culinary Trends and Savory Delights"
+                    title="Formation professionnelle : Préparez votre avenir pendant votre carrière sportive"
                     author="Leonor Davinci"
                     category="Sport"
-                    time="2h Ago"
+                    time="Il y a 2h"
                     image="https://images.pexels.com/photos/358042/pexels-photo-358042.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    description="Explore the newest culinary trends and indulge in mouthwatering delights with our comprehensive coverage of flavors and feasts."
+                    description="Les programmes de formation dédiés aux athlètes en activité. Comment acquérir de nouvelles compétences tout en poursuivant votre carrière sportive."
                   />
                 </div>
               </div>
