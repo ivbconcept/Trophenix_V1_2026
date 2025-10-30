@@ -73,7 +73,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   />
                 </div>
 
-                <div className="col-span-7 space-y-4">
+                <div className="col-span-7 flex flex-col gap-4">
                   <TrendingNewsItem
                     title="Flavors & Feasts: Latest Culinary Trends and Savory Delights"
                     author="Leonor Davinci"
