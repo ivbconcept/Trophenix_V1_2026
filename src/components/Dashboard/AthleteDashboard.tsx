@@ -80,6 +80,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     category="Business"
                     time="2h Ago"
                     image="https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    description="Explore the newest culinary trends and indulge in mouthwatering delights with our comprehensive coverage of flavors and feasts."
                     isLive
                   />
                   <TrendingNewsItem
@@ -88,6 +89,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     category="Sport"
                     time="2h Ago"
                     image="https://images.pexels.com/photos/358042/pexels-photo-358042.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    description="Explore the newest culinary trends and indulge in mouthwatering delights with our comprehensive coverage of flavors and feasts."
                   />
                 </div>
               </div>
@@ -151,9 +153,10 @@ interface TrendingNewsItemProps {
   time: string;
   image: string;
   isLive?: boolean;
+  description?: string;
 }
 
-function TrendingNewsItem({ title, author, category, time, image, isLive }: TrendingNewsItemProps) {
+function TrendingNewsItem({ title, author, category, time, image, isLive, description }: TrendingNewsItemProps) {
   return (
     <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-all flex gap-4 min-h-[220px]">
       <div className="relative w-40 h-40 flex-shrink-0 rounded-xl overflow-hidden">
@@ -174,6 +177,11 @@ function TrendingNewsItem({ title, author, category, time, image, isLive }: Tren
           <h4 className="font-semibold text-slate-900 mb-2 line-clamp-2 leading-snug">
             {title}
           </h4>
+          {description && (
+            <p className="text-sm text-slate-600 line-clamp-2 mb-3">
+              {description}
+            </p>
+          )}
         </div>
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
