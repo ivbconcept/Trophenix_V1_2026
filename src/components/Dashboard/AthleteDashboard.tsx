@@ -292,31 +292,29 @@ interface NewsItemCardProps {
 
 function NewsItemCard({ title, description, image, date, featured }: NewsItemCardProps) {
   return (
-    <div className="bg-[#1a1a1a] rounded-xl overflow-hidden hover:bg-[#202020] transition-all cursor-pointer group border border-neutral-800/30">
-      <div className="flex gap-5 p-4">
-        <div className="relative w-40 h-36 flex-shrink-0 rounded-lg overflow-hidden">
-          <img
-            src={image}
-            alt={title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-          {featured && (
-            <div className="absolute top-2 right-2 bg-black/70 backdrop-blur-sm text-white p-1.5 rounded-full">
-              <Star className="w-3 h-3 fill-white text-white" />
-            </div>
-          )}
-        </div>
-        <div className="flex-1 flex flex-col justify-between py-1">
-          <div>
-            <h3 className="text-white font-normal mb-2 line-clamp-2 leading-snug text-base">
-              {title}
-            </h3>
-            <p className="text-neutral-500 text-sm font-light line-clamp-2">
-              {description}
-            </p>
+    <div className="bg-[#1a1a1a] rounded-2xl overflow-hidden hover:bg-[#202020] transition-all cursor-pointer group border border-neutral-800/30">
+      <div className="relative h-48 overflow-hidden">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+        {featured && (
+          <div className="absolute top-3 left-3 bg-white/10 backdrop-blur-md text-white px-3 py-1 rounded-full border border-white/20">
+            <Star className="w-3 h-3 fill-white text-white inline mr-1" />
+            <span className="text-xs font-light">Featured</span>
           </div>
-          <div className="flex items-center justify-between mt-2">
-            <span className="text-neutral-500 text-xs font-light">{date}</span>
+        )}
+        <div className="absolute bottom-0 left-0 right-0 p-5">
+          <h3 className="text-white font-normal mb-2 line-clamp-2 leading-snug text-lg">
+            {title}
+          </h3>
+          <div className="flex items-center justify-between">
+            <span className="text-white/70 text-xs font-light">{date}</span>
+            <div className="bg-white/10 backdrop-blur-sm p-2 rounded-full">
+              <ChevronRight className="w-4 h-4 text-white" />
+            </div>
           </div>
         </div>
       </div>
