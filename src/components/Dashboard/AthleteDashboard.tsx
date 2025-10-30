@@ -33,39 +33,38 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12">
             <div className="rounded-3xl p-10 text-white mb-6 shadow-lg relative overflow-hidden flex items-end justify-between" style={{ minHeight: '291px' }}>
-              {currentImageIndex === 0 ? (
-                <>
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-all duration-[3000ms] ease-in-out"
-                    style={{ backgroundImage: `url('${backgroundImages[0]}')` }}
-                  ></div>
-                  <div className="absolute inset-0 bg-black/40 transition-opacity duration-[3000ms] ease-in-out"></div>
-                </>
-              ) : (
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 transition-opacity duration-[3000ms] ease-in-out"></div>
-              )}
-              <div className="relative z-10">
-                {currentImageIndex === 0 ? (
-                  <>
-                    <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4">PLATEFORME TROPHENIX</p>
-                    <h1 className="text-4xl font-bold leading-tight mb-4">
-                      Développez Votre Carrière
-                    </h1>
-                    <p className="text-white/90 text-base max-w-2xl">
-                      Découvrez des opportunités uniques adaptées à votre profil d'athlète
-                    </p>
-                  </>
-                ) : (
-                  <>
-                    <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4">Jeux Olympiques 2028</p>
-                    <h1 className="text-4xl font-bold leading-tight mb-4">
-                      Préparez-vous plus sereinement
-                    </h1>
-                    <p className="text-white/90 text-base max-w-2xl">
-                      Trouvez des solutions personnalisées à votre situation
-                    </p>
-                  </>
-                )}
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-opacity duration-[2000ms] ease-in-out"
+                style={{
+                  backgroundImage: `url('${backgroundImages[0]}')`,
+                  opacity: currentImageIndex === 0 ? 1 : 0
+                }}
+              ></div>
+              <div
+                className="absolute inset-0 bg-black/40 transition-opacity duration-[2000ms] ease-in-out"
+                style={{ opacity: currentImageIndex === 0 ? 1 : 0 }}
+              ></div>
+              <div
+                className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 transition-opacity duration-[2000ms] ease-in-out"
+                style={{ opacity: currentImageIndex === 1 ? 1 : 0 }}
+              ></div>
+              <div className="relative z-10 transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 0 ? 1 : 0 }}>
+                <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4">PLATEFORME TROPHENIX</p>
+                <h1 className="text-4xl font-bold leading-tight mb-4">
+                  Développez Votre Carrière
+                </h1>
+                <p className="text-white/90 text-base max-w-2xl">
+                  Découvrez des opportunités uniques adaptées à votre profil d'athlète
+                </p>
+              </div>
+              <div className="absolute left-10 bottom-10 z-10 transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 1 ? 1 : 0 }}>
+                <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4">Jeux Olympiques 2028</p>
+                <h1 className="text-4xl font-bold leading-tight mb-4">
+                  Préparez-vous plus sereinement
+                </h1>
+                <p className="text-white/90 text-base max-w-2xl">
+                  Trouvez des solutions personnalisées à votre situation
+                </p>
               </div>
               <div className="relative z-10 bg-white rounded-lg px-2 py-2 shadow-lg">
                 <img src={nikeLogo} alt="Nike" className="w-16 h-auto" />
