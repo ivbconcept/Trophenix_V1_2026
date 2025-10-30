@@ -158,8 +158,8 @@ interface TrendingNewsItemProps {
 
 function TrendingNewsItem({ title, author, category, time, image, isLive, description }: TrendingNewsItemProps) {
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-all flex items-end gap-4 min-h-[220px]">
-      <div className="relative w-40 h-40 flex-shrink-0 rounded-xl overflow-hidden self-start">
+    <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-all flex gap-4 min-h-[220px]">
+      <div className="relative w-40 h-40 flex-shrink-0 rounded-xl overflow-hidden">
         <img
           src={image}
           alt={title}
@@ -172,13 +172,13 @@ function TrendingNewsItem({ title, author, category, time, image, isLive, descri
           </div>
         )}
       </div>
-      <div className="flex-1 flex flex-col justify-end pb-2">
-        <div className="mb-auto">
+      <div className="flex-1 flex flex-col justify-between">
+        <div>
           <h4 className="font-semibold text-slate-900 mb-2 line-clamp-2 leading-snug">
             {title}
           </h4>
           {description && (
-            <p className="text-sm text-slate-600 line-clamp-2">
+            <p className="text-sm text-slate-600 line-clamp-2 mb-3">
               {description}
             </p>
           )}
