@@ -45,12 +45,12 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 transition-opacity duration-[3000ms] ease-in-out"></div>
               )}
               <div className="relative z-10">
-                <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4">PLATEFORME TROPHENIX</p>
+                <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4">Jeux Olympiques 2028</p>
                 <h1 className="text-4xl font-bold leading-tight mb-4">
-                  Développez Votre Carrière
+                  Préparez-vous plus sereinement
                 </h1>
                 <p className="text-white/90 text-base max-w-2xl">
-                  Découvrez des opportunités uniques adaptées à votre profil d'athlète
+                  Trouvez des solutions personnalisées à votre situation
                 </p>
               </div>
               <div className="relative z-10 bg-white rounded-lg px-2 py-2 shadow-lg">
