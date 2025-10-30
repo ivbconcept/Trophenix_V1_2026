@@ -57,67 +57,6 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             </div>
           </div>
 
-          <div>
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex gap-8">
-                <button className="text-white font-normal text-base relative pb-1">
-                  Recently played
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white"></div>
-                </button>
-                <button className="text-neutral-500 font-normal text-base hover:text-white transition-colors">
-                  Favorites
-                </button>
-              </div>
-              <button className="text-neutral-500 hover:text-white transition-colors text-sm font-light">
-                All modes
-              </button>
-            </div>
-
-            <div className="grid grid-cols-4 gap-5">
-              <GameModeCard
-                title="Day mode"
-                description="Mode description"
-                image="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800"
-                badge="Day mode"
-                participants={[
-                  'https://i.pravatar.cc/150?img=1',
-                  'https://i.pravatar.cc/150?img=2'
-                ]}
-                participantCount={2}
-              />
-              <GameModeCard
-                title="Survival"
-                description="Players must gather resources and fend off enemi..."
-                image="https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=800"
-                participants={[
-                  'https://i.pravatar.cc/150?img=3',
-                  'https://i.pravatar.cc/150?img=4'
-                ]}
-                participantCount={2}
-              />
-              <GameModeCard
-                title="Adventure"
-                description="An exploration-focused mode where players emb..."
-                image="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
-                participants={[
-                  'https://i.pravatar.cc/150?img=5',
-                  'https://i.pravatar.cc/150?img=6'
-                ]}
-                participantCount={2}
-              />
-              <GameModeCard
-                title="Creative"
-                description="Build and create without limitations in this fre..."
-                image="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=800"
-                participants={[
-                  'https://i.pravatar.cc/150?img=7',
-                  'https://i.pravatar.cc/150?img=8'
-                ]}
-                participantCount={2}
-              />
-            </div>
-          </div>
-
           <div className="grid grid-cols-2 gap-16">
             <div>
               <div className="flex items-center justify-between mb-6">
