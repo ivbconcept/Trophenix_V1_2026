@@ -59,28 +59,35 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             </div>
 
             <div className="mb-8">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold text-slate-100">Découvrir</h2>
-                <button className="text-sm text-slate-400 hover:text-slate-200 transition-colors">
-                  Tous les modes
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex gap-4">
+                  <button className="text-white font-medium px-4 py-2 rounded-lg bg-neutral-800">
+                    Recently played
+                  </button>
+                  <button className="text-neutral-400 font-medium px-4 py-2 rounded-lg hover:text-white transition-colors">
+                    Favorites
+                  </button>
+                </div>
+                <button className="text-neutral-400 hover:text-white transition-colors text-sm">
+                  All modes
                 </button>
               </div>
 
-              <div className="grid grid-cols-3 gap-6">
-                <ModeCard
-                  title="Développement Carrière"
-                  description="Mode de gestion de carrière personnalisé"
+              <div className="grid grid-cols-3 gap-4">
+                <GameModeCard
+                  title="Day mode"
+                  description="Mode description"
                   image="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  badge="Recommandé"
+                  badge="Day mode"
                   participants={[
                     'https://i.pravatar.cc/150?img=1',
                     'https://i.pravatar.cc/150?img=2'
                   ]}
                   participantCount={2}
                 />
-                <ModeCard
-                  title="Recherche Sponsors"
-                  description="Trouvez des partenaires et sponsors adaptés"
+                <GameModeCard
+                  title="Survival"
+                  description="Players must gather resources and fend off enemi..."
                   image="https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=800"
                   participants={[
                     'https://i.pravatar.cc/150?img=3',
@@ -88,9 +95,9 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   ]}
                   participantCount={2}
                 />
-                <ModeCard
-                  title="Reconversion Pro"
-                  description="Explorez de nouvelles opportunités professionnelles"
+                <GameModeCard
+                  title="Adventure"
+                  description="An exploration-focused mode where players emb..."
                   image="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
                   participants={[
                     'https://i.pravatar.cc/150?img=5',
@@ -101,64 +108,61 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-8">
               <div>
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-2xl font-bold text-slate-100">Offres d'Emploi</h2>
-                  <button
-                    onClick={() => onNavigate('jobs')}
-                    className="text-sm text-slate-400 hover:text-slate-200 transition-colors"
-                  >
-                    Plus
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-white text-2xl font-bold">Job Posts</h2>
+                  <button className="text-neutral-400 hover:text-white transition-colors text-sm">
+                    More
                   </button>
                 </div>
 
-                <div className="space-y-4">
-                  <JobPostCard
+                <div className="space-y-3">
+                  <JobCard
                     icon={<Target className="w-6 h-6" />}
-                    title="Consultant Sportif"
-                    description="Accompagnement d'athlètes professionnels"
-                    action="Postuler"
+                    title="Driver"
+                    description="Description for the job"
+                    action="Apply"
                     onAction={() => onNavigate('jobs')}
                   />
-                  <JobPostCard
+                  <JobCard
                     icon={<Users className="w-6 h-6" />}
-                    title="Coach Performance"
-                    description="Entraînement et développement athlétique"
-                    salary="3500"
-                    period="Par mois"
+                    title="Architector"
+                    description="Description for the job"
+                    salary="250"
+                    period="Per day"
                   />
-                  <JobPostCard
+                  <JobCard
                     icon={<Compass className="w-6 h-6" />}
-                    title="Ambassadeur de Marque"
-                    description="Représentation de marque sportive premium"
-                    salary="2800"
-                    period="Par mois"
+                    title="Killer"
+                    description="Description for the job"
+                    salary="120"
+                    period="Per day"
                   />
                 </div>
               </div>
 
               <div>
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-2xl font-bold text-slate-100">Dernières Actualités</h2>
-                  <button className="text-sm text-slate-400 hover:text-slate-200 transition-colors">
-                    Plus
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-white text-2xl font-bold">Latest news</h2>
+                  <button className="text-neutral-400 hover:text-white transition-colors text-sm">
+                    More
                   </button>
                 </div>
 
-                <div className="space-y-4">
-                  <NewsCard
-                    title="Nouvelles Technologies d'Entraînement"
-                    description="Les innovations qui transforment la performance"
+                <div className="space-y-3">
+                  <NewsItemCard
+                    title="New Innovations in Driver Assistance Technology"
+                    description="Description for the job"
                     image="https://images.pexels.com/photos/3760607/pexels-photo-3760607.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    date="24 Juin"
+                    date="24 June"
                     featured
                   />
-                  <NewsCard
-                    title="Stratégies de Reconversion Réussie"
-                    description="Découvrez comment réussir votre transition"
+                  <NewsItemCard
+                    title="New Innovations in Driver Assistance Technology"
+                    description="Description for the job"
                     image="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    date="23 Juin"
+                    date="23 June"
                   />
                 </div>
               </div>
@@ -171,7 +175,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
   );
 }
 
-interface ModeCardProps {
+interface GameModeCardProps {
   title: string;
   description: string;
   image: string;
@@ -180,9 +184,9 @@ interface ModeCardProps {
   participantCount: number;
 }
 
-function ModeCard({ title, description, image, badge, participants, participantCount }: ModeCardProps) {
+function GameModeCard({ title, description, image, badge, participants, participantCount }: GameModeCardProps) {
   return (
-    <div className="bg-slate-800 rounded-2xl overflow-hidden hover:bg-slate-750 transition-all cursor-pointer group">
+    <div className="bg-neutral-800 rounded-2xl overflow-hidden hover:bg-neutral-750 transition-all cursor-pointer group">
       <div className="relative h-48 overflow-hidden">
         <img
           src={image}
@@ -190,8 +194,8 @@ function ModeCard({ title, description, image, badge, participants, participantC
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
         {badge && (
-          <div className="absolute top-3 left-3 bg-slate-900/90 text-white px-3 py-1 rounded-full flex items-center gap-2">
-            <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+          <div className="absolute top-3 left-3 bg-black/80 text-white px-3 py-1.5 rounded-full flex items-center gap-2">
+            <Star className="w-3.5 h-3.5 fill-white text-white" />
             <span className="text-xs font-semibold">{badge}</span>
           </div>
         )}
@@ -202,20 +206,20 @@ function ModeCard({ title, description, image, badge, participants, participantC
                 key={idx}
                 src={avatar}
                 alt=""
-                className="w-8 h-8 rounded-full border-2 border-slate-800"
+                className="w-8 h-8 rounded-full border-2 border-neutral-800"
               />
             ))}
           </div>
-          <div className="bg-yellow-500 text-slate-900 px-2 py-1 rounded-full">
+          <div className="bg-amber-500 text-black px-2.5 py-1 rounded-full">
             <span className="text-xs font-bold">+{participantCount}</span>
           </div>
         </div>
       </div>
       <div className="p-4">
-        <h3 className="text-lg font-bold text-slate-100 mb-1">
+        <h3 className="text-white font-bold mb-1.5 text-base">
           {title}
         </h3>
-        <p className="text-sm text-slate-400">
+        <p className="text-neutral-400 text-sm">
           {description}
         </p>
       </div>
@@ -223,7 +227,7 @@ function ModeCard({ title, description, image, badge, participants, participantC
   );
 }
 
-interface JobPostCardProps {
+interface JobCardProps {
   icon: React.ReactNode;
   title: string;
   description: string;
@@ -233,42 +237,40 @@ interface JobPostCardProps {
   onAction?: () => void;
 }
 
-function JobPostCard({ icon, title, description, salary, period, action, onAction }: JobPostCardProps) {
+function JobCard({ icon, title, description, salary, period, action, onAction }: JobCardProps) {
   return (
-    <div className="bg-slate-800 rounded-2xl p-4 hover:bg-slate-750 transition-all group">
-      <div className="flex items-start gap-4">
-        <div className="w-12 h-12 bg-slate-700 rounded-xl flex items-center justify-center text-slate-300 flex-shrink-0">
-          {icon}
-        </div>
-        <div className="flex-1 min-w-0">
-          <h3 className="text-base font-bold text-slate-100 mb-1">
-            {title}
-          </h3>
-          <p className="text-sm text-slate-400 mb-3">
-            {description}
-          </p>
-          {action ? (
-            <button
-              onClick={onAction}
-              className="bg-white text-slate-900 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-100 transition-colors"
-            >
-              {action}
-            </button>
-          ) : salary ? (
-            <div className="flex items-center gap-2">
-              <div className="bg-yellow-500 text-slate-900 px-3 py-1 rounded-full">
-                <span className="text-sm font-bold">{salary}</span>
-              </div>
-              <span className="text-xs text-slate-400">{period}</span>
-            </div>
-          ) : null}
-        </div>
+    <div className="bg-neutral-800 rounded-2xl p-4 hover:bg-neutral-750 transition-all group flex items-center gap-4">
+      <div className="w-14 h-14 bg-neutral-700 rounded-2xl flex items-center justify-center text-neutral-400 flex-shrink-0">
+        {icon}
       </div>
+      <div className="flex-1 min-w-0">
+        <h3 className="text-white font-semibold mb-0.5 text-base">
+          {title}
+        </h3>
+        <p className="text-neutral-400 text-sm">
+          {description}
+        </p>
+      </div>
+      {action ? (
+        <button
+          onClick={onAction}
+          className="bg-white text-black px-5 py-2 rounded-xl text-sm font-semibold hover:bg-neutral-100 transition-colors flex-shrink-0"
+        >
+          {action}
+        </button>
+      ) : salary ? (
+        <div className="flex items-center gap-2 flex-shrink-0">
+          <div className="bg-amber-500 text-black px-3 py-1.5 rounded-full">
+            <span className="text-sm font-bold">{salary}</span>
+          </div>
+          <span className="text-xs text-neutral-400">{period}</span>
+        </div>
+      ) : null}
     </div>
   );
 }
 
-interface NewsCardProps {
+interface NewsItemCardProps {
   title: string;
   description: string;
   image: string;
@@ -276,33 +278,33 @@ interface NewsCardProps {
   featured?: boolean;
 }
 
-function NewsCard({ title, description, image, date, featured }: NewsCardProps) {
+function NewsItemCard({ title, description, image, date, featured }: NewsItemCardProps) {
   return (
-    <div className="bg-slate-800 rounded-2xl overflow-hidden hover:bg-slate-750 transition-all cursor-pointer group">
+    <div className="bg-neutral-800 rounded-2xl overflow-hidden hover:bg-neutral-750 transition-all cursor-pointer group">
       <div className="flex gap-4 p-4">
-        <div className="relative w-32 h-32 flex-shrink-0 rounded-xl overflow-hidden">
+        <div className="relative w-36 h-36 flex-shrink-0 rounded-xl overflow-hidden">
           <img
             src={image}
             alt={title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
           {featured && (
-            <div className="absolute top-2 right-2 bg-slate-900/90 text-white p-1.5 rounded-full">
-              <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+            <div className="absolute top-2 right-2 bg-black/80 text-white p-1.5 rounded-full">
+              <Star className="w-3.5 h-3.5 fill-white text-white" />
             </div>
           )}
         </div>
-        <div className="flex-1 flex flex-col justify-between">
+        <div className="flex-1 flex flex-col justify-between py-1">
           <div>
-            <h3 className="text-base font-bold text-slate-100 mb-2 line-clamp-2 leading-snug">
+            <h3 className="text-white font-semibold mb-2 line-clamp-2 leading-snug text-base">
               {title}
             </h3>
-            <p className="text-sm text-slate-400 line-clamp-2">
+            <p className="text-neutral-400 text-sm line-clamp-2">
               {description}
             </p>
           </div>
-          <div className="flex items-center justify-between">
-            <span className="text-xs text-slate-500">{date}</span>
+          <div className="flex items-center justify-between mt-3">
+            <span className="text-neutral-500 text-xs">{date}</span>
           </div>
         </div>
       </div>
