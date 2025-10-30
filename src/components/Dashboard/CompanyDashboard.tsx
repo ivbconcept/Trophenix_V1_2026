@@ -96,24 +96,24 @@ export function CompanyDashboard({ onNavigate }: CompanyDashboardProps) {
             </div>
             <div className="space-y-4">
               <ApplicationItem
-                name="Marie Dupont"
-                position="Coach Sportif"
-                sport="Athlétisme"
+                name="Alexandre Mercier"
+                position="Directeur Sportif"
+                sport="Basketball"
                 date="Il y a 2h"
                 status="Nouvelle"
               />
               <ApplicationItem
-                name="Thomas Martin"
-                position="Préparateur Physique"
-                sport="Football"
-                date="Il y a 5h"
+                name="Julie Rousseau"
+                position="Manager de Carrière Athlète"
+                sport="Tennis"
+                date="Il y a 4h"
                 status="Nouvelle"
               />
               <ApplicationItem
-                name="Sophie Bernard"
-                position="Conseiller Sport"
-                sport="Natation"
-                date="Hier"
+                name="Vincent Leblanc"
+                position="Consultant Performance Sportive"
+                sport="Rugby"
+                date="Il y a 6h"
                 status="Vue"
               />
             </div>
@@ -132,22 +132,22 @@ export function CompanyDashboard({ onNavigate }: CompanyDashboardProps) {
             </div>
             <div className="space-y-4">
               <OfferItem
-                title="Entraîneur Assistant"
-                candidates="8"
-                views="45"
-                daysLeft="12"
-              />
-              <OfferItem
-                title="Responsable Développement"
-                candidates="15"
-                views="89"
-                daysLeft="20"
-              />
-              <OfferItem
-                title="Consultant Sportif"
-                candidates="11"
+                title="Coach Reconversion Professionnelle - Athlètes"
+                candidates="12"
                 views="67"
-                daysLeft="8"
+                daysLeft="15"
+              />
+              <OfferItem
+                title="Conseiller en Gestion de Carrière Sportive"
+                candidates="18"
+                views="94"
+                daysLeft="22"
+              />
+              <OfferItem
+                title="Responsable Développement Talents Sportifs"
+                candidates="9"
+                views="53"
+                daysLeft="10"
               />
             </div>
           </div>
