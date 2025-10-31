@@ -32,14 +32,12 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
       <div className="max-w-[1400px] mx-auto px-8 py-6">
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12">
-            <div className="mb-4 flex items-center gap-6">
-              <button className="flex items-center gap-3 px-4 py-3 bg-white rounded-xl hover:bg-slate-50 transition-all text-slate-700 hover:text-slate-900 border border-slate-200">
+            <div className="mb-4 flex items-center justify-end gap-3">
+              <button className="flex items-center justify-center w-12 h-12 bg-white rounded-xl hover:bg-slate-50 transition-all text-slate-700 hover:text-slate-900 border border-slate-200">
                 <Mail className="h-5 w-5" />
-                <span className="font-medium">Messages</span>
               </button>
-              <button className="flex items-center gap-3 px-4 py-3 bg-white rounded-xl hover:bg-slate-50 transition-all text-slate-700 hover:text-slate-900 border border-slate-200 relative">
+              <button className="flex items-center justify-center w-12 h-12 bg-white rounded-xl hover:bg-slate-50 transition-all text-slate-700 hover:text-slate-900 border border-slate-200 relative">
                 <Bell className="h-5 w-5" />
-                <span className="font-medium">Notifications</span>
                 <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold">3</div>
               </button>
               <button
