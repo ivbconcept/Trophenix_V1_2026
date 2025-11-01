@@ -56,28 +56,53 @@ export default function CVBuilder() {
         setAthleteProfile(data);
         setEditedProfile(data);
       } else {
-        const emptyProfile: AthleteProfile = {
+        const { data: profileData } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('id', user?.id)
+          .maybeSingle();
+
+        const userMeta = profileData?.metadata as any || {};
+        const profileInfo = userMeta?.profile_data || {};
+
+        const initialProfile: AthleteProfile = {
           user_id: user?.id || '',
-          first_name: '',
-          last_name: '',
-          sport: '',
-          sport_level: '',
-          birth_date: null,
-          situation: null,
-          achievements: null,
-          professional_history: null,
-          degrees: null,
-          birth_club: null,
-          training_center: null,
-          ministerial_list: null,
-          athlete_type: null,
-          geographic_zone: null,
-          desired_field: null,
+          first_name: profileInfo.first_name || '',
+          last_name: profileInfo.last_name || '',
+          sport: profileInfo.sport || '',
+          sport_level: profileInfo.sport_level || '',
+          birth_date: profileInfo.birth_date || null,
+          situation: profileInfo.situation || null,
+          achievements: profileInfo.achievements || null,
+          professional_history: profileInfo.professional_history || null,
+          degrees: profileInfo.degrees || null,
+          birth_club: profileInfo.birth_club || profileInfo.current_club || null,
+          training_center: profileInfo.training_center || null,
+          ministerial_list: profileInfo.ministerial_list || null,
+          athlete_type: profileInfo.athlete_type || null,
+          geographic_zone: profileInfo.geographic_zone || null,
+          desired_field: profileInfo.desired_field || null,
           photo_url: null
         };
-        setAthleteProfile(emptyProfile);
-        setEditedProfile(emptyProfile);
-        setShowForm(true);
+
+        const { data: createdProfile, error: createError } = await supabase
+          .from('athlete_profiles')
+          .insert(initialProfile)
+          .select()
+          .single();
+
+        if (createError) {
+          console.error('Error creating profile:', createError);
+          setAthleteProfile(initialProfile);
+          setEditedProfile(initialProfile);
+        } else {
+          setAthleteProfile(createdProfile);
+          setEditedProfile(createdProfile);
+        }
+
+        if (!initialProfile.first_name || !initialProfile.sport) {
+          setShowForm(true);
+        }
       }
     } catch (err) {
       console.error('Error loading athlete profile:', err);
