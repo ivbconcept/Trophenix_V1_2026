@@ -15,6 +15,16 @@ interface AthleteProfileData {
   position_type: string | null;
   availability: string | null;
   bio: string | null;
+  achievements: string | null;
+  professional_history: string | null;
+  degrees: string | null;
+  situation: string | null;
+  birth_club: string | null;
+  training_center: string | null;
+  ministerial_list: string | null;
+  athlete_type: string | null;
+  geographic_zone: string | null;
+  desired_field: string | null;
 }
 
 interface CompanyProfileData {
@@ -282,6 +292,138 @@ export function UserProfile() {
                     rows={4}
                     className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50"
                   />
+                </div>
+
+                <div className="pt-6 border-t border-slate-200">
+                  <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center">
+                    <Trophy className="h-5 w-5 mr-2 text-blue-600" />
+                    Informations du CV
+                  </h3>
+
+                  <div className="space-y-6">
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">Situation actuelle</label>
+                      <textarea
+                        value={athleteData.situation || ''}
+                        onChange={(e) => setAthleteData({ ...athleteData, situation: e.target.value })}
+                        disabled={!editMode}
+                        rows={3}
+                        className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50"
+                        placeholder="Décrivez votre situation actuelle..."
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">Palmarès sportif</label>
+                      <textarea
+                        value={athleteData.achievements || ''}
+                        onChange={(e) => setAthleteData({ ...athleteData, achievements: e.target.value })}
+                        disabled={!editMode}
+                        rows={4}
+                        className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50"
+                        placeholder="Listez vos principaux résultats et titres..."
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">Club formateur</label>
+                        <input
+                          type="text"
+                          value={athleteData.birth_club || ''}
+                          onChange={(e) => setAthleteData({ ...athleteData, birth_club: e.target.value })}
+                          disabled={!editMode}
+                          className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50"
+                          placeholder="Nom du club..."
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">Centre de formation</label>
+                        <input
+                          type="text"
+                          value={athleteData.training_center || ''}
+                          onChange={(e) => setAthleteData({ ...athleteData, training_center: e.target.value })}
+                          disabled={!editMode}
+                          className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50"
+                          placeholder="INSEP, CREPS..."
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">Liste ministérielle</label>
+                        <input
+                          type="text"
+                          value={athleteData.ministerial_list || ''}
+                          onChange={(e) => setAthleteData({ ...athleteData, ministerial_list: e.target.value })}
+                          disabled={!editMode}
+                          className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50"
+                          placeholder="Elite, Senior, Relève..."
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">Type d'athlète</label>
+                        <input
+                          type="text"
+                          value={athleteData.athlete_type || ''}
+                          onChange={(e) => setAthleteData({ ...athleteData, athlete_type: e.target.value })}
+                          disabled={!editMode}
+                          className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50"
+                          placeholder="Valide, Handisport..."
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">Expérience professionnelle</label>
+                      <textarea
+                        value={athleteData.professional_history || ''}
+                        onChange={(e) => setAthleteData({ ...athleteData, professional_history: e.target.value })}
+                        disabled={!editMode}
+                        rows={4}
+                        className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50"
+                        placeholder="Décrivez vos expériences professionnelles..."
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">Formation et diplômes</label>
+                      <textarea
+                        value={athleteData.degrees || ''}
+                        onChange={(e) => setAthleteData({ ...athleteData, degrees: e.target.value })}
+                        disabled={!editMode}
+                        rows={4}
+                        className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50"
+                        placeholder="Listez vos diplômes et formations..."
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">Zone géographique</label>
+                        <input
+                          type="text"
+                          value={athleteData.geographic_zone || ''}
+                          onChange={(e) => setAthleteData({ ...athleteData, geographic_zone: e.target.value })}
+                          disabled={!editMode}
+                          className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50"
+                          placeholder="Île-de-France..."
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">Domaine souhaité</label>
+                        <input
+                          type="text"
+                          value={athleteData.desired_field || ''}
+                          onChange={(e) => setAthleteData({ ...athleteData, desired_field: e.target.value })}
+                          disabled={!editMode}
+                          className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50"
+                          placeholder="Marketing, Commercial..."
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
