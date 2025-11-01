@@ -100,9 +100,6 @@ export default function CVBuilder() {
           setEditedProfile(createdProfile);
         }
 
-        if (!initialProfile.first_name || !initialProfile.sport) {
-          setShowForm(true);
-        }
       }
     } catch (err) {
       console.error('Error loading athlete profile:', err);
@@ -213,12 +210,6 @@ export default function CVBuilder() {
     setTimeout(() => setShowSuccessMessage(false), 3000);
   };
 
-  const hasMinimalInfo = athleteProfile && (
-    athleteProfile.first_name ||
-    athleteProfile.last_name ||
-    athleteProfile.sport
-  );
-
   const isCVEmpty = athleteProfile && !(
     athleteProfile.situation ||
     athleteProfile.achievements ||
@@ -238,28 +229,20 @@ export default function CVBuilder() {
     );
   }
 
-  if (!athleteProfile || !hasMinimalInfo) {
+
+  if (!editedProfile && athleteProfile) {
+    setEditedProfile(athleteProfile);
+  }
+
+  if (!athleteProfile) {
     return (
-      <div className="min-h-screen bg-slate-50 py-8">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="bg-white rounded-lg shadow-sm p-8 text-center">
-            <User className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-            <h2 className="text-xl font-semibold text-slate-900 mb-2">Profil incomplet</h2>
-            <p className="text-slate-600 mb-6">Veuillez compléter votre profil pour générer votre CV</p>
-            <button
-              onClick={() => setShowForm(true)}
-              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Compléter mon profil
-            </button>
-          </div>
+      <div className="min-h-screen bg-slate-50 py-8 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="mt-4 text-slate-600">Chargement...</p>
         </div>
       </div>
     );
-  }
-
-  if (!editedProfile) {
-    setEditedProfile(athleteProfile);
   }
 
   const displayProfile = isEditing ? editedProfile : athleteProfile;
@@ -381,9 +364,9 @@ export default function CVBuilder() {
               </div>
               <div className="flex-1 text-white">
                 <h2 className="text-4xl font-bold mb-2">
-                  {displayProfile.first_name} {displayProfile.last_name}
+                  {displayProfile.first_name || 'Prénom'} {displayProfile.last_name || 'Nom'}
                 </h2>
-                <p className="text-xl text-blue-100 mb-4">{displayProfile.sport}</p>
+                <p className="text-xl text-blue-100 mb-4">{displayProfile.sport || 'Votre sport'}</p>
                 <div className="flex flex-wrap gap-4 text-sm">
                   {displayProfile.sport_level && (
                     <div className="flex items-center gap-2">
