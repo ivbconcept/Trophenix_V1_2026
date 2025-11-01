@@ -74,8 +74,8 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             <div className="mb-6">
               <h2 className="text-2xl font-bold text-slate-900 mb-6">Actualités Tendance</h2>
 
-              <div className="grid grid-cols-12 gap-6">
-                <div className="col-span-5">
+              <div className="grid grid-cols-3 gap-6">
+                <div>
                   <TrendingNewsMain
                     title="Réussir sa reconversion : Les clés pour une transition professionnelle réussie"
                     author="Leonor Davinci"
@@ -86,7 +86,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   />
                 </div>
 
-                <div className="col-span-7 flex flex-col gap-4">
+                <div>
                   <TrendingNewsMain
                     title="Développement de carrière : Les secteurs qui recrutent des profils sportifs"
                     author="Leonor Davinci"
@@ -95,6 +95,9 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     image="https://images.pexels.com/photos/936094/pexels-photo-936094.jpeg?auto=compress&cs=tinysrgb&w=600"
                     description="Le marché du travail s'ouvre aux athlètes. Découvrez les opportunités professionnelles et les entreprises qui valorisent vos compétences sportives."
                   />
+                </div>
+
+                <div>
                   <TrendingNewsMain
                     title="Formation professionnelle : Préparez votre avenir pendant votre carrière sportive"
                     author="Leonor Davinci"
