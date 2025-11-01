@@ -24,6 +24,7 @@ import { MessagesList } from './components/Messages/MessagesList';
 import { UserProfile } from './components/Profile/UserProfile';
 import { supabase } from './lib/supabase';
 import InvestorsPage from './components/InvestorsPage';
+import CVBuilder from './components/CV/CVBuilder';
 
 type View =
   | 'landing'
@@ -39,6 +40,7 @@ type View =
   | 'company-dashboard'
   | 'job-offers'
   | 'my-applications'
+  | 'cv-builder'
   | 'manage-offers'
   | 'create-offer'
   | 'received-applications'
@@ -230,6 +232,8 @@ function AppContent() {
         {view === 'job-offers' && <JobsList />}
 
         {view === 'my-applications' && <MyApplications />}
+
+        {view === 'cv-builder' && <CVBuilder />}
 
         {view === 'manage-offers' && <ManageJobOffers />}
 
