@@ -87,16 +87,15 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 </div>
 
                 <div className="col-span-7 flex flex-col gap-4">
-                  <TrendingNewsItem
+                  <TrendingNewsMain
                     title="Développement de carrière : Les secteurs qui recrutent des profils sportifs"
                     author="Leonor Davinci"
                     category="Business"
                     time="Il y a 2h"
                     image="https://images.pexels.com/photos/936094/pexels-photo-936094.jpeg?auto=compress&cs=tinysrgb&w=600"
                     description="Le marché du travail s'ouvre aux athlètes. Découvrez les opportunités professionnelles et les entreprises qui valorisent vos compétences sportives."
-                    isLive
                   />
-                  <TrendingNewsItem
+                  <TrendingNewsMain
                     title="Formation professionnelle : Préparez votre avenir pendant votre carrière sportive"
                     author="Leonor Davinci"
                     category="Sport"
