@@ -3,6 +3,7 @@ import { Briefcase, FileText, MessageSquare, Star, TrendingUp, Award, Heart, Che
 import { useState, useEffect } from 'react';
 import arenaImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
 import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
+import NewsSidebar from '../News/NewsSidebar';
 
 interface AthleteDashboardProps {
   onNavigate: (view: string) => void;
@@ -29,9 +30,9 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <div className="max-w-[1200px] mx-auto px-8 py-6">
+      <div className="max-w-[1400px] mx-auto px-8 py-6">
         <div className="grid grid-cols-12 gap-6">
-          <div className="col-span-12">
+          <div className="col-span-12 lg:col-span-8">
             <div className="rounded-3xl p-10 text-white mb-6 shadow-lg relative overflow-hidden flex items-end justify-between" style={{ minHeight: '291px' }}>
               <div
                 className="absolute inset-0 bg-cover bg-center transition-opacity duration-[2000ms] ease-in-out"
@@ -143,6 +144,10 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               </div>
             </div>
 
+          </div>
+
+          <div className="col-span-12 lg:col-span-4">
+            <NewsSidebar />
           </div>
         </div>
       </div>

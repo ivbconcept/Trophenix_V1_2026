@@ -1,5 +1,6 @@
 import { useAuth } from '../../contexts/AuthContext';
 import { Briefcase, Users, MessageSquare, Eye, TrendingUp, Plus, Radio } from 'lucide-react';
+import NewsSidebar from '../News/NewsSidebar';
 
 interface CompanyDashboardProps {
   onNavigate: (view: string) => void;
@@ -10,19 +11,21 @@ export function CompanyDashboard({ onNavigate }: CompanyDashboardProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Welcome Section */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">
-            Bienvenue, {profile?.company_name || 'Entreprise'}
-          </h1>
-          <p className="text-slate-600">
-            Gérez vos offres d'emploi et trouvez les meilleurs talents sportifs
-          </p>
-        </div>
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid grid-cols-12 gap-6">
+          <div className="col-span-12 lg:col-span-8">
+            {/* Welcome Section */}
+            <div className="mb-8">
+              <h1 className="text-3xl font-bold text-slate-900 mb-2">
+                Bienvenue, {profile?.company_name || 'Entreprise'}
+              </h1>
+              <p className="text-slate-600">
+                Gérez vos offres d'emploi et trouvez les meilleurs talents sportifs
+              </p>
+            </div>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            {/* Stats Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <StatCard
             icon={Briefcase}
             label="Offres actives"
@@ -51,12 +54,12 @@ export function CompanyDashboard({ onNavigate }: CompanyDashboardProps) {
             trend="+23 cette semaine"
             onClick={() => onNavigate('profile')}
           />
-        </div>
+            </div>
 
-        {/* Quick Actions */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
-          <h2 className="text-xl font-bold text-slate-900 mb-4">Actions rapides</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* Quick Actions */}
+            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
+              <h2 className="text-xl font-bold text-slate-900 mb-4">Actions rapides</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <ActionCard
               icon={Plus}
               title="Créer une offre"
@@ -78,13 +81,13 @@ export function CompanyDashboard({ onNavigate }: CompanyDashboardProps) {
               onClick={() => onNavigate('manage-offers')}
               color="purple"
             />
-          </div>
-        </div>
+              </div>
+            </div>
 
-        {/* Trending News */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">Actualités Sport & Carrière</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Trending News */}
+            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
+              <h2 className="text-2xl font-bold text-slate-900 mb-6">Actualités Sport & Carrière</h2>
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <NewsCard
               image="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=800"
               title="Réussir sa reconversion : 5 clés pour les athlètes de haut niveau"
@@ -109,13 +112,13 @@ export function CompanyDashboard({ onNavigate }: CompanyDashboardProps) {
               date="Il y a 5h"
               isLive={false}
             />
-          </div>
-        </div>
+              </div>
+            </div>
 
-        {/* Recent Activity */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Recent Applications */}
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            {/* Recent Activity */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {/* Recent Applications */}
+              <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-bold text-slate-900">Candidatures récentes</h2>
               <button
@@ -147,11 +150,11 @@ export function CompanyDashboard({ onNavigate }: CompanyDashboardProps) {
                 date="Il y a 6h"
                 status="Vue"
               />
-            </div>
-          </div>
+                </div>
+              </div>
 
-          {/* Active Offers */}
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+              {/* Active Offers */}
+              <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-bold text-slate-900">Offres actives</h2>
               <button
@@ -180,7 +183,13 @@ export function CompanyDashboard({ onNavigate }: CompanyDashboardProps) {
                 views="53"
                 daysLeft="10"
               />
+                </div>
+              </div>
             </div>
+          </div>
+
+          <div className="col-span-12 lg:col-span-4">
+            <NewsSidebar />
           </div>
         </div>
       </div>
