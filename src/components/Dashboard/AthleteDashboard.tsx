@@ -113,7 +113,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             <div className="mb-6">
               <h2 className="text-2xl font-bold text-slate-900 mb-6">Toutes les informations</h2>
 
-              <div className="grid grid-cols-3 gap-6">
+              <div className="space-y-4">
                 <InfoCard
                   title="Stratégies de networking : Comment construire votre réseau professionnel"
                   author="Sophie Martin"
@@ -206,31 +206,31 @@ interface InfoCardProps {
 function InfoCard({ title, author, category, time, image, description }: InfoCardProps) {
   return (
     <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all">
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-64 overflow-hidden">
         <img
           src={image}
           alt={title}
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="p-5">
-        <div className="flex items-center gap-3 mb-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-            <span className="text-white text-sm font-semibold">{author.charAt(0)}</span>
+      <div className="p-6">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+            <span className="text-white text-base font-semibold">{author.charAt(0)}</span>
           </div>
           <div className="flex-1">
-            <p className="text-sm font-semibold text-slate-900">{author}</p>
-            <div className="flex items-center gap-2 text-xs text-slate-500">
+            <p className="text-base font-semibold text-slate-900">{author}</p>
+            <div className="flex items-center gap-2 text-sm text-slate-500">
               <span className="w-1.5 h-1.5 bg-slate-400 rounded-full"></span>
               <span>{category}</span>
             </div>
           </div>
-          <span className="text-xs text-slate-400">{time}</span>
+          <span className="text-sm text-slate-400">{time}</span>
         </div>
-        <h3 className="text-lg font-bold text-slate-900 mb-2 leading-snug">
+        <h3 className="text-2xl font-bold text-slate-900 mb-3 leading-tight">
           {title}
         </h3>
-        <p className="text-sm text-slate-600 line-clamp-2">
+        <p className="text-base text-slate-600 line-clamp-2">
           {description}
         </p>
       </div>
