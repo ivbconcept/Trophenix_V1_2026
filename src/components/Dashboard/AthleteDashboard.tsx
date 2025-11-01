@@ -29,7 +29,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <div className="max-w-[1400px] mx-auto px-8 py-6">
+      <div className="max-w-[1200px] mx-auto px-8 py-6">
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12">
             <div className="rounded-3xl p-10 text-white mb-6 shadow-lg relative overflow-hidden flex items-end justify-between" style={{ minHeight: '291px' }}>
