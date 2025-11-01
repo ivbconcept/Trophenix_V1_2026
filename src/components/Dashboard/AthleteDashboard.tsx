@@ -72,7 +72,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             </div>
 
             <div className="mb-6">
-              <h2 className="text-2xl font-bold text-slate-900 mb-6">Actualités Tendance</h2>
+              <h2 className="text-2xl font-bold text-slate-900 mb-6">Dernières news</h2>
 
               <div className="grid grid-cols-3 gap-6">
                 <div>
