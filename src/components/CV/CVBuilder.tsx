@@ -158,17 +158,32 @@ export default function CVBuilder() {
     setTimeout(() => setShowSuccessMessage(false), 3000);
   };
 
-  if (!athleteProfile || !editedProfile) {
-    if (showForm) {
-      return (
-        <CVForm
-          initialData={{}}
-          onSave={handleFormSave}
-          onCancel={() => setShowForm(false)}
-        />
-      );
-    }
+  const hasMinimalInfo = athleteProfile && (
+    athleteProfile.first_name ||
+    athleteProfile.last_name ||
+    athleteProfile.sport
+  );
 
+  const isCVEmpty = athleteProfile && !(
+    athleteProfile.situation ||
+    athleteProfile.achievements ||
+    athleteProfile.professional_history ||
+    athleteProfile.degrees ||
+    athleteProfile.birth_club ||
+    athleteProfile.training_center
+  );
+
+  if (showForm) {
+    return (
+      <CVForm
+        initialData={athleteProfile || {}}
+        onSave={handleFormSave}
+        onCancel={() => setShowForm(false)}
+      />
+    );
+  }
+
+  if (!athleteProfile || !hasMinimalInfo) {
     return (
       <div className="min-h-screen bg-slate-50 py-8">
         <div className="max-w-5xl mx-auto px-4">
@@ -186,6 +201,10 @@ export default function CVBuilder() {
         </div>
       </div>
     );
+  }
+
+  if (!editedProfile) {
+    setEditedProfile(athleteProfile);
   }
 
   const displayProfile = isEditing ? editedProfile : athleteProfile;
@@ -243,6 +262,15 @@ export default function CVBuilder() {
               </>
             ) : (
               <>
+                {isCVEmpty && (
+                  <button
+                    onClick={() => setShowForm(true)}
+                    className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                  >
+                    <Edit2 className="w-4 h-4" />
+                    Compléter mon CV
+                  </button>
+                )}
                 <button
                   onClick={() => setIsEditing(true)}
                   className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors"
@@ -261,6 +289,30 @@ export default function CVBuilder() {
             )}
           </div>
         </div>
+
+        {isCVEmpty && !isEditing && (
+          <div className="mb-6 bg-blue-50 border border-blue-200 rounded-lg p-6 no-print">
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <Trophy className="w-6 h-6 text-blue-600" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-lg font-semibold text-blue-900 mb-2">
+                  Votre CV est presque prêt !
+                </h3>
+                <p className="text-blue-700 mb-4">
+                  Complétez vos informations (palmarès, expériences, formations) pour créer un CV complet et attractif pour les recruteurs.
+                </p>
+                <button
+                  onClick={() => setShowForm(true)}
+                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  Compléter maintenant
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div id="cv-content" className="bg-white rounded-lg shadow-sm overflow-hidden">
           <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-12">
