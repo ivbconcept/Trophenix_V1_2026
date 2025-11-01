@@ -114,38 +114,32 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               <h2 className="text-2xl font-bold text-slate-900 mb-6">Toutes les informations</h2>
 
               <div className="grid grid-cols-3 gap-6">
-                <div>
-                  <TrendingNewsMain
-                    title="Stratégies de networking : Comment construire votre réseau professionnel"
-                    author="Sophie Martin"
-                    category="Réseautage"
-                    time="Il y a 5h"
-                    image="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    description="Apprenez à développer et entretenir un réseau professionnel solide qui vous aidera dans votre transition vers le monde de l'entreprise."
-                  />
-                </div>
+                <InfoCard
+                  title="Stratégies de networking : Comment construire votre réseau professionnel"
+                  author="Sophie Martin"
+                  category="Réseautage"
+                  time="Il y a 5h"
+                  image="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  description="Apprenez à développer et entretenir un réseau professionnel solide qui vous aidera dans votre transition vers le monde de l'entreprise."
+                />
 
-                <div>
-                  <TrendingNewsMain
-                    title="Témoignages d'athlètes : Réussites et parcours inspirants après le sport"
-                    author="Marc Dubois"
-                    category="Inspiration"
-                    time="Il y a 8h"
-                    image="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    description="Découvrez les histoires de sportifs de haut niveau qui ont réussi leur reconversion et trouvé leur voie dans différents secteurs."
-                  />
-                </div>
+                <InfoCard
+                  title="Témoignages d'athlètes : Réussites et parcours inspirants après le sport"
+                  author="Marc Dubois"
+                  category="Inspiration"
+                  time="Il y a 8h"
+                  image="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  description="Découvrez les histoires de sportifs de haut niveau qui ont réussi leur reconversion et trouvé leur voie dans différents secteurs."
+                />
 
-                <div>
-                  <TrendingNewsMain
-                    title="Les compétences transférables : Valoriser votre expérience sportive"
-                    author="Julie Bernard"
-                    category="Compétences"
-                    time="Il y a 12h"
-                    image="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    description="Identifiez et mettez en valeur les compétences acquises dans le sport qui sont recherchées par les entreprises."
-                  />
-                </div>
+                <InfoCard
+                  title="Les compétences transférables : Valoriser votre expérience sportive"
+                  author="Julie Bernard"
+                  category="Compétences"
+                  time="Il y a 12h"
+                  image="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  description="Identifiez et mettez en valeur les compétences acquises dans le sport qui sont recherchées par les entreprises."
+                />
               </div>
             </div>
 
@@ -190,6 +184,50 @@ function TrendingNewsMain({ title, author, category, time, image, description }:
           <span className="text-xs text-slate-400">{time}</span>
         </div>
         <h3 className="text-xl font-bold text-slate-900 mb-3 leading-tight">
+          {title}
+        </h3>
+        <p className="text-sm text-slate-600 line-clamp-2">
+          {description}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+interface InfoCardProps {
+  title: string;
+  author: string;
+  category: string;
+  time: string;
+  image: string;
+  description: string;
+}
+
+function InfoCard({ title, author, category, time, image, description }: InfoCardProps) {
+  return (
+    <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all">
+      <div className="relative h-48 overflow-hidden">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="p-5">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+            <span className="text-white text-sm font-semibold">{author.charAt(0)}</span>
+          </div>
+          <div className="flex-1">
+            <p className="text-sm font-semibold text-slate-900">{author}</p>
+            <div className="flex items-center gap-2 text-xs text-slate-500">
+              <span className="w-1.5 h-1.5 bg-slate-400 rounded-full"></span>
+              <span>{category}</span>
+            </div>
+          </div>
+          <span className="text-xs text-slate-400">{time}</span>
+        </div>
+        <h3 className="text-lg font-bold text-slate-900 mb-2 leading-snug">
           {title}
         </h3>
         <p className="text-sm text-slate-600 line-clamp-2">
