@@ -133,7 +133,7 @@ export function UserProfile() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
           <p className="mt-4 text-slate-600">Chargement...</p>
@@ -143,75 +143,214 @@ export function UserProfile() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-          <div className="bg-gradient-to-r from-blue-600 to-cyan-600 px-8 py-6">
-            <div className="flex justify-between items-center mb-6">
-              <h1 className="text-3xl font-bold text-white flex items-center">
-                <User className="mr-3" />
-                Mon Profil
-              </h1>
-              <div className="flex space-x-2">
-                {editMode ? (
-                  <>
-                    <button
-                      onClick={() => setEditMode(false)}
-                      className="px-4 py-2 bg-white/20 text-white rounded-lg hover:bg-white/30 transition-colors flex items-center space-x-2"
-                    >
-                      <X className="h-4 w-4" />
-                      <span>Annuler</span>
+    <div className="min-h-screen bg-slate-50 p-4 md:p-8">
+      <div className="max-w-6xl mx-auto">
+        <div className="bg-white rounded-3xl shadow-lg overflow-hidden">
+          <div className="px-6 md:px-8 py-8">
+            <div className="flex flex-col md:flex-row gap-6 md:gap-8">
+              <div className="flex-shrink-0">
+                <div className="relative">
+                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-4xl font-bold shadow-lg">
+                    {profile?.user_type === 'athlete' && athleteData
+                      ? `${athleteData.first_name?.[0] || 'A'}${athleteData.last_name?.[0] || 'A'}`
+                      : profile?.user_type === 'company' && companyData
+                      ? companyData.company_name?.[0] || 'C'
+                      : profile?.user_type === 'sponsor' && sponsorData
+                      ? sponsorData.company_name?.[0] || 'S'
+                      : 'U'}
+                  </div>
+                  {editMode && (
+                    <button className="absolute bottom-0 right-0 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors shadow-lg">
+                      <User className="w-5 h-5" />
                     </button>
-                    <button
-                      onClick={saveProfile}
-                      disabled={saving}
-                      className="px-4 py-2 bg-white text-blue-600 rounded-lg hover:bg-slate-50 transition-colors flex items-center space-x-2 disabled:opacity-50"
-                    >
-                      <Save className="h-4 w-4" />
-                      <span>{saving ? 'Enregistrement...' : 'Enregistrer'}</span>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex-1">
+                <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-4">
+                  <div>
+                    <h1 className="text-2xl md:text-3xl font-bold text-slate-900">
+                      {profile?.user_type === 'athlete' && athleteData
+                        ? `${athleteData.first_name || 'Prénom'} ${athleteData.last_name || 'Nom'}`
+                        : profile?.user_type === 'company' && companyData
+                        ? companyData.company_name || 'Entreprise'
+                        : profile?.user_type === 'sponsor' && sponsorData
+                        ? sponsorData.company_name || 'Sponsor'
+                        : 'Utilisateur'}
+                    </h1>
+                    <div className="flex items-center text-slate-500 mt-2">
+                      <MapPin className="w-4 h-4 mr-1" />
+                      <span className="text-sm">
+                        {profile?.user_type === 'athlete' && athleteData
+                          ? athleteData.location || 'Localisation non renseignée'
+                          : profile?.user_type === 'company' && companyData
+                          ? companyData.location || 'Localisation non renseignée'
+                          : profile?.user_type === 'sponsor' && sponsorData
+                          ? sponsorData.location || 'Localisation non renseignée'
+                          : 'Non renseigné'}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-2">
+                    {editMode ? (
+                      <>
+                        <button
+                          onClick={() => setEditMode(false)}
+                          className="px-4 py-2 border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 transition-colors text-sm"
+                        >
+                          Annuler
+                        </button>
+                        <button
+                          onClick={saveProfile}
+                          disabled={saving}
+                          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 text-sm"
+                        >
+                          {saving ? 'Enregistrement...' : 'Enregistrer'}
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <button
+                          onClick={() => setEditMode(true)}
+                          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                        >
+                          Modifier Profil
+                        </button>
+                        <button className="px-4 py-2 border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 transition-colors text-sm">
+                          Vue Publique
+                        </button>
+                      </>
+                    )}
+                  </div>
+                </div>
+
+                <p className="text-slate-600 leading-relaxed text-sm md:text-base mb-4">
+                  {profile?.user_type === 'athlete' && athleteData?.bio
+                    ? athleteData.bio.length > 150
+                      ? `${athleteData.bio.substring(0, 150)}...`
+                      : athleteData.bio
+                    : profile?.user_type === 'company' && companyData?.description
+                    ? companyData.description.length > 150
+                      ? `${companyData.description.substring(0, 150)}...`
+                      : companyData.description
+                    : profile?.user_type === 'sponsor' && sponsorData?.description
+                    ? sponsorData.description.length > 150
+                      ? `${sponsorData.description.substring(0, 150)}...`
+                      : sponsorData.description
+                    : 'Ajoutez une description pour présenter votre profil.'}
+                  {' '}
+                  {!editMode && (
+                    <button className="text-blue-600 hover:underline font-medium text-sm">
+                      plus
                     </button>
-                  </>
-                ) : (
-                  <button
-                    onClick={() => setEditMode(true)}
-                    className="px-4 py-2 bg-white text-blue-600 rounded-lg hover:bg-slate-50 transition-colors"
-                  >
-                    Modifier
-                  </button>
+                  )}
+                </p>
+
+                {profile?.user_type === 'athlete' && athleteData && (
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-6">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Trophy className="w-6 h-6 text-slate-600" />
+                      </div>
+                      <div>
+                        <div className="text-xs text-slate-500">Sport</div>
+                        <div className="font-semibold text-slate-900 text-sm">{athleteData.sport || 'Non renseigné'}</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Award className="w-6 h-6 text-slate-600" />
+                      </div>
+                      <div>
+                        <div className="text-xs text-slate-500">Niveau</div>
+                        <div className="font-semibold text-slate-900 text-sm">{athleteData.sport_level || 'Non renseigné'}</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Briefcase className="w-6 h-6 text-slate-600" />
+                      </div>
+                      <div>
+                        <div className="text-xs text-slate-500">Disponibilité</div>
+                        <div className="font-semibold text-slate-900 text-sm">{athleteData.availability || 'Non renseigné'}</div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {profile?.user_type === 'company' && companyData && (
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-6">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Briefcase className="w-6 h-6 text-slate-600" />
+                      </div>
+                      <div>
+                        <div className="text-xs text-slate-500">Secteur</div>
+                        <div className="font-semibold text-slate-900 text-sm">{companyData.sector || 'Non renseigné'}</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <User className="w-6 h-6 text-slate-600" />
+                      </div>
+                      <div>
+                        <div className="text-xs text-slate-500">Taille</div>
+                        <div className="font-semibold text-slate-900 text-sm">{companyData.company_size || 'Non renseigné'}</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Phone className="w-6 h-6 text-slate-600" />
+                      </div>
+                      <div>
+                        <div className="text-xs text-slate-500">Contact</div>
+                        <div className="font-semibold text-slate-900 text-sm">{companyData.phone || 'Non renseigné'}</div>
+                      </div>
+                    </div>
+                  </div>
                 )}
               </div>
             </div>
+          </div>
 
-            <div className="flex space-x-1 bg-white/10 rounded-lg p-1">
+          <div className="border-t border-slate-200">
+            <div className="flex gap-8 px-6 md:px-8 overflow-x-auto">
               <button
                 onClick={() => setActiveTab('personal')}
-                className={`flex-1 px-4 py-2 rounded-md transition-all font-medium flex items-center justify-center gap-2 ${
+                className={`py-4 font-medium transition-all border-b-2 whitespace-nowrap ${
                   activeTab === 'personal'
-                    ? 'bg-white text-blue-600 shadow-md'
-                    : 'text-white hover:bg-white/20'
+                    ? 'border-blue-600 text-blue-600'
+                    : 'border-transparent text-slate-500 hover:text-slate-700'
                 }`}
               >
-                <Lock className="w-4 h-4" />
-                Profil Personnel
+                Informations
               </button>
               <button
                 onClick={() => setActiveTab('public')}
-                className={`flex-1 px-4 py-2 rounded-md transition-all font-medium flex items-center justify-center gap-2 ${
+                className={`py-4 font-medium transition-all border-b-2 whitespace-nowrap ${
                   activeTab === 'public'
-                    ? 'bg-white text-blue-600 shadow-md'
-                    : 'text-white hover:bg-white/20'
+                    ? 'border-blue-600 text-blue-600'
+                    : 'border-transparent text-slate-500 hover:text-slate-700'
                 }`}
               >
-                <Eye className="w-4 h-4" />
                 Profil Public
               </button>
             </div>
           </div>
 
-          <div className="p-8">
+          <div className="p-6 md:p-8">
             {activeTab === 'personal' ? (
               <div>
-                <h2 className="text-xl font-semibold text-slate-900 mb-6">Informations personnelles</h2>
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-xl font-semibold text-slate-900">Informations personnelles</h2>
+                  <div className="flex items-center gap-2 text-sm text-slate-500">
+                    <Lock className="w-4 h-4" />
+                    <span>Privé</span>
+                  </div>
+                </div>
+
                 <div className="mb-6 pb-6 border-b border-slate-200 space-y-4">
                   <div className="flex items-center space-x-3">
                     <Mail className="h-5 w-5 text-slate-400" />
@@ -231,7 +370,7 @@ export function UserProfile() {
 
                 {profile?.user_type === 'athlete' && athleteData && (
                   <div className="space-y-6">
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-slate-700 mb-2">Téléphone</label>
                         <input
@@ -270,7 +409,7 @@ export function UserProfile() {
 
                 {profile?.user_type === 'company' && companyData && (
                   <div className="space-y-6">
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-slate-700 mb-2">Téléphone</label>
                         <input
@@ -297,7 +436,7 @@ export function UserProfile() {
 
                 {profile?.user_type === 'sponsor' && sponsorData && (
                   <div className="space-y-6">
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-slate-700 mb-2">Téléphone</label>
                         <input
@@ -324,12 +463,20 @@ export function UserProfile() {
               </div>
             ) : (
               <div>
-                <h2 className="text-xl font-semibold text-slate-900 mb-2">Profil public</h2>
-                <p className="text-sm text-slate-500 mb-6">Ces informations sont visibles par tous les utilisateurs de la plateforme</p>
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 className="text-xl font-semibold text-slate-900">Profil public</h2>
+                    <p className="text-sm text-slate-500 mt-1">Ces informations sont visibles par tous</p>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-slate-500">
+                    <Eye className="w-4 h-4" />
+                    <span>Public</span>
+                  </div>
+                </div>
 
                 {profile?.user_type === 'athlete' && athleteData && (
                   <div className="space-y-6">
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-slate-700 mb-2">Prénom</label>
                         <input
@@ -352,7 +499,7 @@ export function UserProfile() {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-slate-700 mb-2">Sport</label>
                         <input
@@ -399,7 +546,7 @@ export function UserProfile() {
                       />
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-slate-700 mb-2">Club formateur</label>
                         <input
@@ -437,7 +584,7 @@ export function UserProfile() {
                       />
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-slate-700 mb-2">Secteur</label>
                         <input
@@ -497,7 +644,7 @@ export function UserProfile() {
                       />
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-slate-700 mb-2">Secteur d'activité</label>
                         <input
