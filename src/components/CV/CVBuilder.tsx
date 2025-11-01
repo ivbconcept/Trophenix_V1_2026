@@ -51,8 +51,34 @@ export default function CVBuilder() {
         .maybeSingle();
 
       if (error) throw error;
-      setAthleteProfile(data);
-      setEditedProfile(data);
+
+      if (data) {
+        setAthleteProfile(data);
+        setEditedProfile(data);
+      } else {
+        const emptyProfile: AthleteProfile = {
+          user_id: user?.id || '',
+          first_name: '',
+          last_name: '',
+          sport: '',
+          sport_level: '',
+          birth_date: null,
+          situation: null,
+          achievements: null,
+          professional_history: null,
+          degrees: null,
+          birth_club: null,
+          training_center: null,
+          ministerial_list: null,
+          athlete_type: null,
+          geographic_zone: null,
+          desired_field: null,
+          photo_url: null
+        };
+        setAthleteProfile(emptyProfile);
+        setEditedProfile(emptyProfile);
+        setShowForm(true);
+      }
     } catch (err) {
       console.error('Error loading athlete profile:', err);
     } finally {
@@ -67,7 +93,8 @@ export default function CVBuilder() {
       setSaving(true);
       const { error } = await supabase
         .from('athlete_profiles')
-        .update({
+        .upsert({
+          user_id: user.id,
           situation: editedProfile.situation,
           achievements: editedProfile.achievements,
           birth_club: editedProfile.birth_club,
@@ -81,12 +108,13 @@ export default function CVBuilder() {
           degrees: editedProfile.degrees,
           geographic_zone: editedProfile.geographic_zone,
           updated_at: new Date().toISOString()
-        })
-        .eq('user_id', user.id);
+        }, {
+          onConflict: 'user_id'
+        });
 
       if (error) throw error;
 
-      setAthleteProfile(editedProfile);
+      await loadAthleteProfile();
       setIsEditing(false);
       setShowSuccessMessage(true);
       setTimeout(() => setShowSuccessMessage(false), 3000);
@@ -133,7 +161,8 @@ export default function CVBuilder() {
 
     const { error } = await supabase
       .from('athlete_profiles')
-      .update({
+      .upsert({
+        user_id: user.id,
         situation: formData.situation,
         achievements: formData.achievements,
         birth_club: formData.birth_club,
@@ -147,8 +176,9 @@ export default function CVBuilder() {
         degrees: formData.degrees,
         geographic_zone: formData.geographic_zone,
         updated_at: new Date().toISOString()
-      })
-      .eq('user_id', user.id);
+      }, {
+        onConflict: 'user_id'
+      });
 
     if (error) throw error;
 
