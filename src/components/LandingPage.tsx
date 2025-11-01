@@ -1,7 +1,8 @@
-import { Trophy, Users, Briefcase, CheckCircle, ArrowRight, Award, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Trophy, Users, Briefcase, CheckCircle, ArrowRight, Award, ChevronDown, ChevronLeft, ChevronRight, Heart, MessageCircle, Eye } from 'lucide-react';
 import { AgentElea } from './AI/AgentElea';
 import { FEATURES } from '../config/features';
 import { useState, useEffect } from 'react';
+import { NewsModal } from './NewsModal';
 
 const CARD_IMAGES = [
   'https://images.pexels.com/photos/2524739/pexels-photo-2524739.jpeg?auto=compress&cs=tinysrgb&w=1200',
@@ -511,9 +512,162 @@ function ProgramSection() {
   );
 }
 
+const NEWS_ARTICLES = [
+  {
+    id: 1,
+    title: '10 Clés pour Réussir sa Reconversion après le Sport de Haut Niveau',
+    description: 'Découvrez les stratégies essentielles pour transformer votre expérience sportive en atout professionnel et réussir votre transition.',
+    fullContent: `La reconversion après une carrière sportive de haut niveau est un défi majeur pour de nombreux athlètes. Voici 10 clés essentielles pour réussir cette transition :
+
+1. **Anticiper la reconversion** : Ne attendez pas la fin de votre carrière. Commencez à réfléchir à votre après-sport dès que possible. Les athlètes qui réussissent le mieux sont ceux qui ont préparé leur transition plusieurs années à l'avance.
+
+2. **Identifier vos compétences transférables** : Le leadership, la gestion du stress, la discipline, la capacité à travailler en équipe sont autant de compétences que vous avez développées dans le sport et qui sont très recherchées en entreprise.
+
+3. **Se former pendant sa carrière** : Profitez des périodes moins intenses pour suivre des formations, obtenir des diplômes ou des certifications dans le domaine qui vous intéresse.
+
+4. **Développer son réseau professionnel** : Participez à des événements, des conférences, rencontrez des professionnels de différents secteurs. Votre réseau sera votre plus grand atout.
+
+5. **Construire son personal branding** : Travaillez votre image professionnelle sur LinkedIn et les réseaux sociaux. Partagez votre expertise et vos réflexions.
+
+6. **Être réaliste sur ses objectifs** : Votre premier poste ne sera peut-être pas au niveau de votre carrière sportive. Acceptez de repartir de plus bas pour mieux rebondir.
+
+7. **Valoriser son expérience sportive** : Apprenez à "traduire" votre parcours sportif en langage entreprise. Chaque médaille, chaque compétition raconte une histoire de persévérance.
+
+8. **Se faire accompagner** : N'hésitez pas à faire appel à des coachs, des mentors ou des organismes spécialisés dans la reconversion des sportifs.
+
+9. **Rester patient et persévérant** : La reconversion prend du temps. Gardez en tête que vous avez déjà surmonté de nombreux défis dans votre carrière sportive.
+
+10. **Prendre soin de sa santé mentale** : Le passage du statut d'athlète de haut niveau à celui de professionnel peut être difficile psychologiquement. N'hésitez pas à consulter si nécessaire.`,
+    image: 'https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    category: 'Reconversion',
+    author: 'Marie Dubois',
+    date: '15 oct 2025',
+    readTime: '8 min',
+    likes: 247,
+    comments: 12,
+    views: 1834
+  },
+  {
+    id: 2,
+    title: 'Les Secteurs qui Recrutent le Plus d\'Anciens Sportifs en 2025',
+    description: 'Analyse des industries et entreprises qui valorisent particulièrement les profils d\'athlètes dans leurs recrutements.',
+    fullContent: `Le marché de l'emploi évolue et certains secteurs ont compris la valeur ajoutée qu'apportent les anciens sportifs de haut niveau. Voici les domaines les plus prometteurs :
+
+**1. Le secteur du conseil et du management**
+Les cabinets de conseil en stratégie et en management recherchent activement des profils d'anciens sportifs pour leur capacité à gérer la pression et à atteindre des objectifs. Des entreprises comme McKinsey, BCG ou Deloitte ont mis en place des programmes dédiés.
+
+**2. Les ressources humaines et le recrutement**
+Votre expérience en matière de gestion d'équipe et de développement des talents est un atout majeur. De nombreux DRH sont d'anciens sportifs qui comprennent l'importance de la cohésion d'équipe.
+
+**3. La tech et le digital**
+Les start-ups et scale-ups valorisent l'agilité, la résilience et la capacité d'adaptation des sportifs. Le secteur de la tech offre également de nombreuses opportunités de formation.
+
+**4. Le commerce et la vente**
+Les compétences relationnelles, la ténacité et l'esprit de compétition sont essentiels dans ces métiers. Les anciens sportifs excellent souvent dans ces domaines.
+
+**5. L'événementiel et le sport business**
+Un secteur naturel pour les anciens athlètes qui souhaitent rester proches de l'univers sportif tout en développant une nouvelle carrière.
+
+**Témoignages**
+"Après 15 ans de natation de haut niveau, j'ai rejoint une entreprise de conseil. Mon expérience sportive m'a permis de progresser rapidement" - Thomas, ancien nageur international
+
+Les entreprises qui recrutent comprennent que les sportifs apportent des soft skills uniques et précieux dans le monde professionnel.`,
+    image: 'https://images.pexels.com/photos/2524739/pexels-photo-2524739.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    category: 'Emploi',
+    author: 'Jean-Philippe Martin',
+    date: '12 oct 2025',
+    readTime: '6 min',
+    likes: 189,
+    comments: 8,
+    views: 1456
+  },
+  {
+    id: 3,
+    title: 'Comment Valoriser son Palmarès Sportif sur son CV',
+    description: 'Guide pratique pour transformer vos performances sportives en arguments convaincants auprès des recruteurs.',
+    fullContent: `Votre palmarès sportif est une richesse, mais encore faut-il savoir le présenter efficacement sur un CV professionnel. Voici nos conseils d'experts :
+
+**Structure du CV**
+Contrairement à ce qu'on pourrait penser, ne mettez pas votre palmarès en premier. Commencez par vos compétences professionnelles et votre formation, puis créez une section dédiée "Parcours Sportif" ou "Réalisations Sportives".
+
+**Quantifier vos résultats**
+- Au lieu de : "Nageur de haut niveau"
+- Préférez : "Médaillé d'argent aux Championnats d'Europe, membre de l'équipe de France pendant 8 ans"
+
+**Traduire en compétences professionnelles**
+Pour chaque réalisation sportive, expliquez ce qu'elle démontre :
+- "Champion de France 2023 → Capacité à performer sous pression"
+- "Capitaine d'équipe → Leadership et management d'équipe"
+- "Retour après blessure → Résilience et détermination"
+
+**Adapter selon le poste visé**
+Un poste commercial valorisera votre esprit de compétition et votre capacité à atteindre des objectifs. Un poste en gestion de projet mettra en avant votre capacité à planifier et coordonner.
+
+**Les pièges à éviter**
+- Ne listez pas toutes vos médailles
+- Évitez le jargon sportif incompréhensible pour un non-initié
+- Ne faites pas un CV de plus de 2 pages
+
+**Le format vidéo**
+De plus en plus de recruteurs apprécient les CV vidéo où vous pouvez montrer votre aisance à l'oral et partager votre histoire de manière plus personnelle.
+
+Votre parcours sportif est unique, valorisez-le intelligemment !`,
+    image: 'https://images.pexels.com/photos/3760607/pexels-photo-3760607.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    category: 'Carrière',
+    author: 'Sophie Leroux',
+    date: '10 oct 2025',
+    readTime: '5 min',
+    likes: 312,
+    comments: 15,
+    views: 2103
+  },
+  {
+    id: 4,
+    title: 'Témoignage : De l\'Athlétisme à la Tech, le Parcours de Laura',
+    description: 'Rencontre avec Laura, ancienne athlète de haut niveau qui a réussi sa reconversion dans une startup parisienne.',
+    fullContent: `À 28 ans, Laura ferme définitivement le chapitre de sa carrière d'athlète après 12 ans de compétition au plus haut niveau. Aujourd'hui Product Manager dans une startup tech parisienne, elle nous raconte son parcours.
+
+**Les débuts**
+"J'ai commencé l'athlétisme à 8 ans. À 16 ans, j'intègre un pôle espoir, puis l'INSEP. J'ai vécu 12 ans de ma vie avec un seul objectif : performer. Les JO de Tokyo étaient mon rêve ultime."
+
+**Le tournant**
+"Une blessure au genou en 2023 m'a obligée à arrêter. Du jour au lendemain, tout s'écroule. Plus d'entraînements, plus de compétitions, plus de structure. Le vide."
+
+**La reconversion**
+"J'ai commencé à me former au développement web pendant ma rééducation. Le code, c'était comme un nouveau terrain de jeu. Il fallait être méthodique, persévérant, résoudre des problèmes. Exactement comme dans le sport."
+
+**Les difficultés**
+"Le syndrome de l'imposteur était terrible. J'avais l'impression de repartir de zéro, d'être nulle. Mais j'ai vite compris que mes années de sport m'avaient donné des compétences uniques : la gestion du stress, la capacité à recevoir du feedback, l'obsession du résultat."
+
+**Le déclic**
+"Mon premier entretien dans la tech. Le recruteur m'a dit : 'On ne recrute pas que des développeurs, on recrute des mentalités gagnantes.' J'ai compris que mon parcours était un atout, pas un handicap."
+
+**Aujourd'hui**
+"Je suis Product Manager. Je gère une équipe de 6 personnes. Mon expérience sportive m'aide tous les jours : fixer des objectifs clairs, motiver une équipe, gérer les échecs. Le sport m'a préparée à tout ça."
+
+**Ses conseils**
+1. Ne pas avoir peur de changer de domaine
+2. S'entourer de mentors
+3. Se former continuellement
+4. Networker sans relâche
+5. Être patient avec soi-même
+
+"La reconversion, c'est comme recommencer un cycle olympique. Il faut du temps, de la préparation, et beaucoup de travail. Mais c'est possible."`,
+    image: 'https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    category: 'Témoignage',
+    author: 'Laura Petit',
+    date: '8 oct 2025',
+    readTime: '10 min',
+    likes: 456,
+    comments: 24,
+    views: 3201
+  }
+];
+
 export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoLogin }: LandingPageProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [opportunityType, setOpportunityType] = useState<'emploi' | 'sponsoring'>('emploi');
+  const [selectedArticle, setSelectedArticle] = useState<typeof NEWS_ARTICLES[0] | null>(null);
   const [jobSearchForm, setJobSearchForm] = useState({
     job: '',
     sector: '',
@@ -1134,6 +1288,83 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
         </div>
       </section>
 
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Actualités & Conseils</h2>
+            <p className="text-xl text-slate-600">Découvrez nos derniers articles pour réussir votre reconversion</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {NEWS_ARTICLES.map((article) => (
+              <div
+                key={article.id}
+                onClick={() => setSelectedArticle(article)}
+                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer group"
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={article.image}
+                    alt={article.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
+                      {article.category}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-slate-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                    {article.title}
+                  </h3>
+                  <p className="text-sm text-slate-600 mb-4 line-clamp-2">
+                    {article.description}
+                  </p>
+
+                  <div className="flex items-center justify-between text-xs text-slate-500">
+                    <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-1">
+                        <Heart className="w-4 h-4" />
+                        <span>{article.likes}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <MessageCircle className="w-4 h-4" />
+                        <span>{article.comments}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Eye className="w-4 h-4" />
+                        <span>{article.views}</span>
+                      </div>
+                    </div>
+                    <span>{article.readTime}</span>
+                  </div>
+
+                  <div className="mt-4 pt-4 border-t border-slate-200 flex items-center justify-between">
+                    <span className="text-xs text-slate-500">{article.author}</span>
+                    <span className="text-xs text-slate-500">{article.date}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <button className="px-8 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors font-semibold">
+              Voir tous les articles
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {selectedArticle && (
+        <NewsModal
+          article={selectedArticle}
+          onClose={() => setSelectedArticle(null)}
+        />
+      )}
+
       <footer className="bg-slate-900 text-white border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
@@ -1143,7 +1374,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
                 <span className="text-xl font-bold">Trophenix</span>
               </div>
               <p className="text-slate-400 mb-4 leading-relaxed">
-                Expert en aides financières pour la rénovation énergétique et l'installation de pompes à chaleur.
+                La plateforme qui transforme les talents sportifs en opportunités professionnelles.
               </p>
               <p className="text-slate-400 text-sm">Du lundi au vendredi : 9h - 19h</p>
               <p className="text-blue-400 font-semibold mt-2">📞 01 23 45 67 89</p>
