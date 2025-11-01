@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { User, Trophy, Award, Briefcase, GraduationCap, MapPin, Mail, Download, Edit2, Save, X, CheckCircle } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase } from '../../lib/supabase';
+import CVForm from './CVForm';
 
 interface AthleteProfile {
   first_name: string;
@@ -32,6 +33,7 @@ export default function CVBuilder() {
   const [isEditing, setIsEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -126,14 +128,60 @@ export default function CVBuilder() {
     );
   }
 
+  const handleFormSave = async (formData: any) => {
+    if (!user) return;
+
+    const { error } = await supabase
+      .from('athlete_profiles')
+      .update({
+        situation: formData.situation,
+        achievements: formData.achievements,
+        birth_club: formData.birth_club,
+        training_center: formData.training_center,
+        ministerial_list: formData.ministerial_list,
+        athlete_type: formData.athlete_type,
+        desired_field: formData.desired_field,
+        position_type: formData.position_type,
+        availability: formData.availability,
+        professional_history: formData.professional_history,
+        degrees: formData.degrees,
+        geographic_zone: formData.geographic_zone,
+        updated_at: new Date().toISOString()
+      })
+      .eq('user_id', user.id);
+
+    if (error) throw error;
+
+    await loadAthleteProfile();
+    setShowForm(false);
+    setShowSuccessMessage(true);
+    setTimeout(() => setShowSuccessMessage(false), 3000);
+  };
+
   if (!athleteProfile || !editedProfile) {
+    if (showForm) {
+      return (
+        <CVForm
+          initialData={{}}
+          onSave={handleFormSave}
+          onCancel={() => setShowForm(false)}
+        />
+      );
+    }
+
     return (
       <div className="min-h-screen bg-slate-50 py-8">
         <div className="max-w-5xl mx-auto px-4">
           <div className="bg-white rounded-lg shadow-sm p-8 text-center">
             <User className="w-16 h-16 text-slate-300 mx-auto mb-4" />
             <h2 className="text-xl font-semibold text-slate-900 mb-2">Profil incomplet</h2>
-            <p className="text-slate-600">Veuillez compléter votre profil pour générer votre CV</p>
+            <p className="text-slate-600 mb-6">Veuillez compléter votre profil pour générer votre CV</p>
+            <button
+              onClick={() => setShowForm(true)}
+              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              Compléter mon profil
+            </button>
           </div>
         </div>
       </div>
