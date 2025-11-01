@@ -1297,10 +1297,13 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {NEWS_ARTICLES.map((article) => (
-              <div
+              <button
                 key={article.id}
-                onClick={() => setSelectedArticle(article)}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer group"
+                onClick={() => {
+                  console.log('Article cliqué:', article.title);
+                  setSelectedArticle(article);
+                }}
+                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer group text-left w-full"
               >
                 <div className="relative h-48 overflow-hidden">
                   <img
@@ -1346,7 +1349,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
                     <span className="text-xs text-slate-500">{article.date}</span>
                   </div>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
 
@@ -1361,9 +1364,14 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
       {selectedArticle && (
         <NewsModal
           article={selectedArticle}
-          onClose={() => setSelectedArticle(null)}
+          onClose={() => {
+            console.log('Fermeture du modal');
+            setSelectedArticle(null);
+          }}
         />
       )}
+
+      {selectedArticle && console.log('Modal devrait être visible pour:', selectedArticle.title)}
 
       <footer className="bg-slate-900 text-white border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

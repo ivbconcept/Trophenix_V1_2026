@@ -1,5 +1,5 @@
 import { X, Heart, MessageCircle, Share2, Bookmark, User, Clock, Eye } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface NewsModalProps {
   article: {
@@ -28,6 +28,13 @@ export function NewsModal({ article, onClose }: NewsModalProps) {
     { id: 1, author: 'Marie Dupont', text: 'Article très intéressant, merci pour le partage !', time: 'Il y a 2h' },
     { id: 2, author: 'Thomas Martin', text: 'Exactement ce dont j\'avais besoin pour ma reconversion', time: 'Il y a 5h' }
   ]);
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
 
   const handleLike = () => {
     if (liked) {
@@ -63,20 +70,26 @@ export function NewsModal({ article, onClose }: NewsModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative">
+    <div
+      className="fixed inset-0 bg-black/60 z-[9999] flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      <div
+        className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative"
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           onClick={onClose}
-          className="sticky top-4 right-4 ml-auto flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-lg hover:bg-slate-100 transition-colors z-10"
+          className="absolute top-4 right-4 z-20 flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-lg hover:bg-slate-100 transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
 
-        <div className="relative h-96 -mt-14">
+        <div className="relative h-96">
           <img
             src={article.image}
             alt={article.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover rounded-t-2xl"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
