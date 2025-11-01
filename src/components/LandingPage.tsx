@@ -1288,75 +1288,86 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
         </div>
       </section>
 
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Actualités & Conseils</h2>
-            <p className="text-xl text-slate-600">Découvrez nos derniers articles pour réussir votre reconversion</p>
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-3xl font-bold text-white">Trending News</h2>
+            <div className="flex gap-4 text-sm">
+              <button className="text-blue-400 border-b-2 border-blue-400 pb-1 font-medium">All</button>
+              <button className="text-slate-400 hover:text-white transition-colors">Reconversion</button>
+              <button className="text-slate-400 hover:text-white transition-colors">Emploi</button>
+              <button className="text-slate-400 hover:text-white transition-colors">Carrière</button>
+            </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {NEWS_ARTICLES.map((article) => (
+          <div className="space-y-6">
+            {NEWS_ARTICLES.map((article, index) => (
               <button
                 key={article.id}
                 onClick={() => {
                   console.log('Article cliqué:', article.title);
                   setSelectedArticle(article);
                 }}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer group text-left w-full"
+                className="relative w-full rounded-2xl overflow-hidden group cursor-pointer text-left block"
               >
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-80 md:h-96">
                   <img
                     src={article.image}
                     alt={article.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="w-full h-full object-cover brightness-75 group-hover:brightness-90 group-hover:scale-105 transition-all duration-500"
                   />
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
-                      {article.category}
-                    </span>
-                  </div>
-                </div>
 
-                <div className="p-6">
-                  <h3 className="text-lg font-bold text-slate-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
-                    {article.title}
-                  </h3>
-                  <p className="text-sm text-slate-600 mb-4 line-clamp-2">
-                    {article.description}
-                  </p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
 
-                  <div className="flex items-center justify-between text-xs text-slate-500">
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center gap-1">
-                        <Heart className="w-4 h-4" />
-                        <span>{article.likes}</span>
+                  {index < 2 && (
+                    <div className="absolute top-6 left-6">
+                      <span className="px-4 py-2 bg-yellow-500 text-slate-900 text-sm font-bold rounded-full inline-flex items-center gap-2">
+                        Trending #{index + 1}
+                      </span>
+                    </div>
+                  )}
+
+                  <div className="absolute bottom-0 left-0 right-0 p-8">
+                    <div className="mb-4">
+                      <span className="px-3 py-1.5 bg-purple-600 text-white text-xs font-semibold rounded-lg">
+                        {article.category}
+                      </span>
+                    </div>
+
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                      {article.title}
+                    </h3>
+
+                    <p className="text-slate-300 text-sm md:text-base mb-4 line-clamp-2 max-w-4xl">
+                      {article.description}
+                    </p>
+
+                    <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400">
+                      <div className="flex items-center gap-2">
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
+                        </svg>
+                        <span>{article.date}</span>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <MessageCircle className="w-4 h-4" />
-                        <span>{article.comments}</span>
+
+                      <div className="flex items-center gap-2">
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
+                        </svg>
+                        <span>{article.readTime} read</span>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <Eye className="w-4 h-4" />
-                        <span>{article.views}</span>
+
+                      <div className="flex items-center gap-2">
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <span>Source</span>
                       </div>
                     </div>
-                    <span>{article.readTime}</span>
-                  </div>
-
-                  <div className="mt-4 pt-4 border-t border-slate-200 flex items-center justify-between">
-                    <span className="text-xs text-slate-500">{article.author}</span>
-                    <span className="text-xs text-slate-500">{article.date}</span>
                   </div>
                 </div>
               </button>
             ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <button className="px-8 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors font-semibold">
-              Voir tous les articles
-            </button>
           </div>
         </div>
       </section>
