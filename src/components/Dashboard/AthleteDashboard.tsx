@@ -107,7 +107,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               </div>
             </div>
 
-            <div className="mb-6 mt-12">
+            <div className="mb-6 mt-6">
               <h2 className="text-2xl font-bold text-slate-900 mb-6">Dernières infos</h2>
 
               <div className="grid grid-cols-3 gap-6">
