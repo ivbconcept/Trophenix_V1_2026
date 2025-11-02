@@ -126,28 +126,30 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
           <div className="col-span-12">
             <div className="mb-6">
               <h2 className="text-4xl font-bold leading-tight text-slate-900 mb-4">Les dernières news</h2>
-              <div className="bg-slate-50/50 rounded-3xl p-2 flex overflow-x-auto mb-6">
-                <button className="px-8 py-3 bg-white text-slate-900 rounded-2xl text-base font-medium shadow-sm transition-all whitespace-nowrap">
-                  Overview
-                </button>
-                <button className="px-8 py-3 bg-transparent text-slate-500 rounded-2xl text-base font-medium hover:text-slate-700 transition-all whitespace-nowrap">
-                  Football
-                </button>
-                <button className="px-8 py-3 bg-transparent text-slate-500 rounded-2xl text-base font-medium hover:text-slate-700 transition-all whitespace-nowrap">
-                  Basketball
-                </button>
-                <button className="px-8 py-3 bg-transparent text-slate-500 rounded-2xl text-base font-medium hover:text-slate-700 transition-all whitespace-nowrap">
-                  Tennis
-                </button>
-                <button className="px-8 py-3 bg-transparent text-slate-500 rounded-2xl text-base font-medium hover:text-slate-700 transition-all whitespace-nowrap">
-                  Athlétisme
-                </button>
-                <button className="px-8 py-3 bg-transparent text-slate-500 rounded-2xl text-base font-medium hover:text-slate-700 transition-all whitespace-nowrap">
-                  Natation
-                </button>
-                <button className="px-8 py-3 bg-transparent text-slate-500 rounded-2xl text-base font-medium hover:text-slate-700 transition-all whitespace-nowrap">
-                  Rugby
-                </button>
+              <div className="relative mb-6">
+                <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+                  <div className="px-6 py-2.5 bg-slate-900 text-white rounded-full text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:bg-slate-800">
+                    Overview
+                  </div>
+                  <div className="px-6 py-2.5 bg-slate-100 text-slate-600 rounded-full text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:bg-slate-200">
+                    Football
+                  </div>
+                  <div className="px-6 py-2.5 bg-slate-100 text-slate-600 rounded-full text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:bg-slate-200">
+                    Basketball
+                  </div>
+                  <div className="px-6 py-2.5 bg-slate-100 text-slate-600 rounded-full text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:bg-slate-200">
+                    Tennis
+                  </div>
+                  <div className="px-6 py-2.5 bg-slate-100 text-slate-600 rounded-full text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:bg-slate-200">
+                    Athlétisme
+                  </div>
+                  <div className="px-6 py-2.5 bg-slate-100 text-slate-600 rounded-full text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:bg-slate-200">
+                    Natation
+                  </div>
+                  <div className="px-6 py-2.5 bg-slate-100 text-slate-600 rounded-full text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:bg-slate-200">
+                    Rugby
+                  </div>
+                </div>
               </div>
 
               <div className="grid grid-cols-12 gap-6">
