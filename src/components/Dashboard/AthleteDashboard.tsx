@@ -33,13 +33,13 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12">
             <div className="flex items-center justify-between mb-6">
-              <div className="flex-1 max-w-2xl">
+              <div className="flex-1 max-w-md">
                 <div className="relative">
                   <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                   <input
                     type="text"
                     placeholder="Search"
-                    className="w-full pl-12 pr-4 py-3 bg-white rounded-full border border-slate-200 focus:outline-none focus:border-slate-300 text-slate-900 placeholder-slate-400"
+                    className="w-full pl-12 pr-4 py-3 bg-white rounded-lg border border-slate-200 focus:outline-none focus:border-slate-300 text-slate-900 placeholder-slate-400"
                   />
                 </div>
               </div>
