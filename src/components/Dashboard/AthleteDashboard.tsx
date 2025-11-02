@@ -124,6 +124,35 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
           </div>
 
           <div className="col-span-12">
+            <div className="bg-white rounded-2xl p-6 shadow-sm">
+              <h2 className="text-2xl font-bold text-slate-900 mb-6">Les dernières news</h2>
+              <div className="flex gap-3 overflow-x-auto pb-2">
+                <button className="px-6 py-2.5 bg-slate-900 text-white rounded-full text-sm font-medium hover:bg-slate-800 transition-colors whitespace-nowrap">
+                  Overview
+                </button>
+                <button className="px-6 py-2.5 bg-slate-100 text-slate-700 rounded-full text-sm font-medium hover:bg-slate-200 transition-colors whitespace-nowrap">
+                  Football
+                </button>
+                <button className="px-6 py-2.5 bg-slate-100 text-slate-700 rounded-full text-sm font-medium hover:bg-slate-200 transition-colors whitespace-nowrap">
+                  Basketball
+                </button>
+                <button className="px-6 py-2.5 bg-slate-100 text-slate-700 rounded-full text-sm font-medium hover:bg-slate-200 transition-colors whitespace-nowrap">
+                  Tennis
+                </button>
+                <button className="px-6 py-2.5 bg-slate-100 text-slate-700 rounded-full text-sm font-medium hover:bg-slate-200 transition-colors whitespace-nowrap">
+                  Athlétisme
+                </button>
+                <button className="px-6 py-2.5 bg-slate-100 text-slate-700 rounded-full text-sm font-medium hover:bg-slate-200 transition-colors whitespace-nowrap">
+                  Natation
+                </button>
+                <button className="px-6 py-2.5 bg-slate-100 text-slate-700 rounded-full text-sm font-medium hover:bg-slate-200 transition-colors whitespace-nowrap">
+                  Rugby
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-span-12">
             <div className="grid grid-cols-12 gap-6">
               <div className="col-span-12 lg:col-span-8">
                 <div className="bg-white rounded-3xl overflow-hidden shadow-lg">
