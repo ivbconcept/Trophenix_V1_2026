@@ -29,45 +29,45 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <div className="max-w-[1200px] mx-auto px-8 py-6">
+      <div className="max-w-[1200px] mx-auto px-8 py-6 relative">
+        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center justify-between bg-white rounded-2xl p-4 shadow-sm max-w-[calc(1200px-4rem)] w-[calc(100%-4rem)]">
+          <div className="flex-1 max-w-md">
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search"
+                className="w-full pl-12 pr-4 py-3 bg-slate-50 rounded-xl border border-slate-200 focus:outline-none focus:border-slate-300 text-slate-900 placeholder-slate-400"
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 ml-6">
+            <button className="relative p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl transition-all hover:shadow-sm group">
+              <MessageSquareText className="w-6 h-6 text-slate-600 group-hover:text-slate-900 transition-colors" strokeWidth={1.5} />
+              <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+            </button>
+
+            <button className="relative p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl transition-all hover:shadow-sm group">
+              <Bell className="w-6 h-6 text-slate-600 group-hover:text-slate-900 transition-colors" strokeWidth={1.5} />
+              <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+            </button>
+
+            <button className="flex items-center gap-3 pl-3 pr-4 py-2 hover:bg-slate-100 rounded-full transition-colors">
+              <img
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=faces"
+                alt="Profile"
+                className="w-10 h-10 rounded-full object-cover ring-2 ring-slate-300"
+              />
+              <span className="text-slate-900 font-medium">
+                {profile?.first_name || 'Jayson'}
+              </span>
+            </button>
+          </div>
+        </div>
+
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12">
-            <div className="fixed top-6 z-50 flex items-center justify-between bg-white rounded-2xl p-4 shadow-sm" style={{ left: 'calc(50% + 120px)', transform: 'translateX(-50%)', width: 'calc(100vw - 320px)', maxWidth: '1200px' }}>
-              <div className="flex-1 max-w-md">
-                <div className="relative">
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                  <input
-                    type="text"
-                    placeholder="Search"
-                    className="w-full pl-12 pr-4 py-3 bg-slate-50 rounded-xl border border-slate-200 focus:outline-none focus:border-slate-300 text-slate-900 placeholder-slate-400"
-                  />
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 ml-6">
-                <button className="relative p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl transition-all hover:shadow-sm group">
-                  <MessageSquareText className="w-6 h-6 text-slate-600 group-hover:text-slate-900 transition-colors" strokeWidth={1.5} />
-                  <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
-                </button>
-
-                <button className="relative p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl transition-all hover:shadow-sm group">
-                  <Bell className="w-6 h-6 text-slate-600 group-hover:text-slate-900 transition-colors" strokeWidth={1.5} />
-                  <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
-                </button>
-
-                <button className="flex items-center gap-3 pl-3 pr-4 py-2 hover:bg-slate-100 rounded-full transition-colors">
-                  <img
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=faces"
-                    alt="Profile"
-                    className="w-10 h-10 rounded-full object-cover ring-2 ring-slate-300"
-                  />
-                  <span className="text-slate-900 font-medium">
-                    {profile?.first_name || 'Jayson'}
-                  </span>
-                </button>
-              </div>
-            </div>
-
             <div className="mt-24"></div>
 
             <div className="rounded-3xl p-10 text-white mb-6 shadow-lg relative overflow-hidden flex items-end justify-between" style={{ minHeight: '291px' }}>
