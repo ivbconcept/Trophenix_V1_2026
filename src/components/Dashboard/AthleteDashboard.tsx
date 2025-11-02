@@ -68,7 +68,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12">
-            <div className="mt-24"></div>
+            <div className="mt-32"></div>
 
             <div className="rounded-3xl p-10 text-white mb-6 shadow-lg relative overflow-hidden flex items-end justify-between" style={{ minHeight: '291px' }}>
               <div
