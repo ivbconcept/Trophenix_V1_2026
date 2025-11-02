@@ -5,6 +5,7 @@ import arenaImage from '../../assets/images/venti-views-cHRDevKFDBw-unsplash.jpg
 import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
 import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
 import newsDesignImage from '../../assets/images/news-design-section.png';
+import allInfoImage from '../../assets/images/all-information-section.png';
 
 interface AthleteDashboardProps {
   onNavigate: (view: string) => void;
@@ -127,36 +128,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             </div>
 
             <div className="mb-6">
-              <h2 className="text-2xl font-bold text-slate-900 mb-6">Toutes les informations</h2>
-
-              <div className="space-y-4">
-                <InfoCard
-                  title="Stratégies de networking : Comment construire votre réseau professionnel"
-                  author="Sophie Martin"
-                  category="Réseautage"
-                  time="Il y a 5h"
-                  image="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  description="Apprenez à développer et entretenir un réseau professionnel solide qui vous aidera dans votre transition vers le monde de l'entreprise."
-                />
-
-                <InfoCard
-                  title="Témoignages d'athlètes : Réussites et parcours inspirants après le sport"
-                  author="Marc Dubois"
-                  category="Inspiration"
-                  time="Il y a 8h"
-                  image="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  description="Découvrez les histoires de sportifs de haut niveau qui ont réussi leur reconversion et trouvé leur voie dans différents secteurs."
-                />
-
-                <InfoCard
-                  title="Les compétences transférables : Valoriser votre expérience sportive"
-                  author="Julie Bernard"
-                  category="Compétences"
-                  time="Il y a 12h"
-                  image="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  description="Identifiez et mettez en valeur les compétences acquises dans le sport qui sont recherchées par les entreprises."
-                />
-              </div>
+              <img src={allInfoImage} alt="Toutes les informations" className="w-full rounded-3xl shadow-lg" />
             </div>
 
           </div>
