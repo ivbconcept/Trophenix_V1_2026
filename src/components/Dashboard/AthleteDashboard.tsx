@@ -195,7 +195,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     alt="News 1"
                     className="w-32 h-28 rounded-lg object-cover flex-shrink-0"
                   />
-                  <div className="flex-1 flex flex-col justify-between py-2">
+                  <div className="flex-1 flex flex-col justify-center">
                     <h4 className="text-base font-semibold text-slate-900 line-clamp-2 leading-tight mb-3">
                       Jabodebek LRT Instagram Account Offers Cheap Redeem iPhone 14 Pro Max
                     </h4>
@@ -213,7 +213,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     alt="News 2"
                     className="w-32 h-28 rounded-lg object-cover flex-shrink-0"
                   />
-                  <div className="flex-1 flex flex-col justify-between py-2">
+                  <div className="flex-1 flex flex-col justify-center">
                     <h4 className="text-base font-semibold text-slate-900 line-clamp-2 leading-tight mb-3">
                       PDIP Headquarters Became Material for Volunteer Anger
                     </h4>
@@ -231,7 +231,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     alt="News 3"
                     className="w-32 h-28 rounded-lg object-cover flex-shrink-0"
                   />
-                  <div className="flex-1 flex flex-col justify-between py-2">
+                  <div className="flex-1 flex flex-col justify-center">
                     <h4 className="text-base font-semibold text-slate-900 line-clamp-2 leading-tight mb-3">
                       Video of Chinese-Speaking Police Prepared for Duty at IKN
                     </h4>
