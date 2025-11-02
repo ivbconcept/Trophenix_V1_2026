@@ -173,7 +173,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     </div>
 
                     <div className="absolute bottom-8 left-8 right-8">
-                      <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
+                      <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
                         Global Markets<br />and Enterprise
                       </h2>
                       <p className="text-white/90 text-lg mb-6 max-w-3xl leading-relaxed">
