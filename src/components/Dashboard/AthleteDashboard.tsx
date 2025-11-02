@@ -45,12 +45,12 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               </div>
 
               <div className="flex items-center gap-2 ml-6">
-                <button className="relative p-2.5 hover:bg-white/80 rounded-xl transition-all hover:shadow-sm group">
+                <button className="relative p-2.5 bg-white hover:bg-white/80 rounded-xl transition-all hover:shadow-sm group">
                   <MessageSquareText className="w-6 h-6 text-slate-600 group-hover:text-slate-900 transition-colors" strokeWidth={1.5} />
                   <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
                 </button>
 
-                <button className="relative p-2.5 hover:bg-white/80 rounded-xl transition-all hover:shadow-sm group">
+                <button className="relative p-2.5 bg-white hover:bg-white/80 rounded-xl transition-all hover:shadow-sm group">
                   <Bell className="w-6 h-6 text-slate-600 group-hover:text-slate-900 transition-colors" strokeWidth={1.5} />
                   <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
                 </button>
