@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import arenaImage from '../../assets/images/venti-views-cHRDevKFDBw-unsplash.jpg';
 import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
 import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
-import newsDesignImage from '../../assets/images/news-design.png';
+import newsDesignImage from '../../assets/images/news-design-section.png';
 
 interface AthleteDashboardProps {
   onNavigate: (view: string) => void;
