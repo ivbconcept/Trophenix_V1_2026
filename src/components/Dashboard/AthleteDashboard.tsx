@@ -127,26 +127,26 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             <div className="mb-6">
               <h2 className="text-4xl font-bold leading-tight text-slate-900 mb-4">Les dernières news</h2>
               <div className="relative mb-6">
-                <div className="inline-flex bg-slate-100/80 rounded-2xl p-1.5 gap-1">
-                  <div className="px-8 py-2.5 bg-white text-slate-900 rounded-xl text-sm font-semibold whitespace-nowrap cursor-pointer shadow-sm transition-all">
+                <div className="inline-flex bg-slate-100/80 rounded-2xl p-1">
+                  <div className="px-5 py-2 bg-white text-slate-900 rounded-xl text-sm font-semibold whitespace-nowrap cursor-pointer shadow-sm transition-all">
                     Overview
                   </div>
-                  <div className="px-8 py-2.5 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
+                  <div className="px-5 py-2 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
                     Football
                   </div>
-                  <div className="px-8 py-2.5 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
+                  <div className="px-5 py-2 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
                     Basketball
                   </div>
-                  <div className="px-8 py-2.5 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
+                  <div className="px-5 py-2 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
                     Tennis
                   </div>
-                  <div className="px-8 py-2.5 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
+                  <div className="px-5 py-2 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
                     Athlétisme
                   </div>
-                  <div className="px-8 py-2.5 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
+                  <div className="px-5 py-2 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
                     Natation
                   </div>
-                  <div className="px-8 py-2.5 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
+                  <div className="px-5 py-2 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
                     Rugby
                   </div>
                 </div>
