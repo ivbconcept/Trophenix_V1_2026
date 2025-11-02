@@ -1,5 +1,5 @@
 import { useAuth } from '../../contexts/AuthContext';
-import { Briefcase, FileText, MessageSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper, Mail, Bell } from 'lucide-react';
+import { Briefcase, FileText, MessageSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper, Mail, Bell, Search } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import arenaImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
 import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
@@ -32,6 +32,41 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
       <div className="max-w-[1200px] mx-auto px-8 py-6">
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex-1 max-w-2xl">
+                <div className="relative">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                  <input
+                    type="text"
+                    placeholder="Search"
+                    className="w-full pl-12 pr-4 py-3 bg-white rounded-full border border-slate-200 focus:outline-none focus:border-slate-300 text-slate-900 placeholder-slate-400"
+                  />
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4 ml-6">
+                <button className="relative p-2 hover:bg-slate-100 rounded-full transition-colors">
+                  <MessageSquare className="w-6 h-6 text-slate-700" />
+                  <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                </button>
+
+                <button className="relative p-2 hover:bg-slate-100 rounded-full transition-colors">
+                  <Bell className="w-6 h-6 text-slate-700" />
+                  <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                </button>
+
+                <button className="flex items-center gap-3 pl-3 pr-4 py-2 hover:bg-slate-100 rounded-full transition-colors">
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold">
+                    {profile?.first_name?.[0]}{profile?.last_name?.[0]}
+                  </div>
+                  <span className="text-slate-900 font-medium">
+                    {profile?.first_name || 'Jayson'}
+                  </span>
+                  <ChevronRight className="w-4 h-4 text-slate-400 rotate-90" />
+                </button>
+              </div>
+            </div>
+
             <div className="rounded-3xl p-10 text-white mb-6 shadow-lg relative overflow-hidden flex items-end justify-between" style={{ minHeight: '291px' }}>
               <div
                 className="absolute inset-0 bg-cover bg-center transition-opacity duration-[2000ms] ease-in-out"
