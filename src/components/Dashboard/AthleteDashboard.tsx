@@ -123,99 +123,103 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
           </div>
 
-          <div className="col-span-12 lg:col-span-8">
-            <div className="bg-white rounded-3xl overflow-hidden shadow-lg">
-              <div className="relative h-[500px]">
-                <img
-                  src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1200&h=500&fit=crop"
-                  alt="Global Markets"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-
-                <div className="absolute top-8 left-8">
-                  <div className="flex items-center gap-3 text-white/90">
-                    <span className="text-sm font-semibold">Network</span>
-                    <span className="text-sm">|</span>
-                    <span className="text-sm">9d ago</span>
-                  </div>
-                </div>
-
-                <div className="absolute bottom-8 left-8 right-8">
-                  <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
-                    The Pulse of Global Markets<br />and Enterprise
-                  </h2>
-                  <p className="text-white/90 text-lg mb-6 max-w-3xl leading-relaxed">
-                    To spread the word, the company embarked on a mass marketing drive. TV campaigns launched in the platform's key markets. Nisi dignissim tortor sed quam sed ipsum ut. Dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                  <div className="flex items-center gap-3">
+          <div className="col-span-12">
+            <div className="grid grid-cols-12 gap-6">
+              <div className="col-span-12 lg:col-span-8">
+                <div className="bg-white rounded-3xl overflow-hidden shadow-lg">
+                  <div className="relative h-[500px]">
                     <img
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=faces"
-                      alt="Nisi Nyung"
-                      className="w-10 h-10 rounded-full object-cover ring-2 ring-white/30"
+                      src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1200&h=500&fit=crop"
+                      alt="Global Markets"
+                      className="w-full h-full object-cover"
                     />
-                    <span className="text-white font-medium">Nisi Nyung</span>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+
+                    <div className="absolute top-8 left-8">
+                      <div className="flex items-center gap-3 text-white/90">
+                        <span className="text-sm font-semibold">Network</span>
+                        <span className="text-sm">|</span>
+                        <span className="text-sm">9d ago</span>
+                      </div>
+                    </div>
+
+                    <div className="absolute bottom-8 left-8 right-8">
+                      <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
+                        The Pulse of Global Markets<br />and Enterprise
+                      </h2>
+                      <p className="text-white/90 text-lg mb-6 max-w-3xl leading-relaxed">
+                        To spread the word, the company embarked on a mass marketing drive. TV campaigns launched in the platform's key markets. Nisi dignissim tortor sed quam sed ipsum ut. Dolor sit amet, consectetur adipiscing elit.
+                      </p>
+                      <div className="flex items-center gap-3">
+                        <img
+                          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=faces"
+                          alt="Nisi Nyung"
+                          className="w-10 h-10 rounded-full object-cover ring-2 ring-white/30"
+                        />
+                        <span className="text-white font-medium">Nisi Nyung</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
 
-          <div className="col-span-12 lg:col-span-4 flex flex-col gap-4 h-[500px]">
-            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 flex-1">
-              <img
-                src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=160&h=100&fit=crop"
-                alt="News 1"
-                className="w-32 h-28 rounded-lg object-cover flex-shrink-0"
-              />
-              <div className="flex-1 flex flex-col justify-between py-2">
-                <h4 className="text-base font-semibold text-slate-900 line-clamp-2 leading-tight mb-3">
-                  Jabodebek LRT Instagram Account Offers Cheap Redeem iPhone 14 Pro Max
-                </h4>
-                <div className="flex items-center gap-2 text-sm text-slate-500">
-                  <span>12K Views</span>
-                  <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
-                  <span>15 minutes</span>
+              <div className="col-span-12 lg:col-span-4 flex flex-col gap-4 h-[500px]">
+                <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 flex-1">
+                  <img
+                    src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=160&h=100&fit=crop"
+                    alt="News 1"
+                    className="w-32 h-28 rounded-lg object-cover flex-shrink-0"
+                  />
+                  <div className="flex-1 flex flex-col justify-between py-2">
+                    <h4 className="text-base font-semibold text-slate-900 line-clamp-2 leading-tight mb-3">
+                      Jabodebek LRT Instagram Account Offers Cheap Redeem iPhone 14 Pro Max
+                    </h4>
+                    <div className="flex items-center gap-2 text-sm text-slate-500">
+                      <span>12K Views</span>
+                      <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
+                      <span>15 minutes</span>
+                    </div>
+                  </div>
                 </div>
+
+                <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 flex-1">
+                  <img
+                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=160&h=100&fit=crop"
+                    alt="News 2"
+                    className="w-32 h-28 rounded-lg object-cover flex-shrink-0"
+                  />
+                  <div className="flex-1 flex flex-col justify-between py-2">
+                    <h4 className="text-base font-semibold text-slate-900 line-clamp-2 leading-tight mb-3">
+                      PDIP Headquarters Became Material for Volunteer Anger
+                    </h4>
+                    <div className="flex items-center gap-2 text-sm text-slate-500">
+                      <span>239 Views</span>
+                      <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
+                      <span>20 minutes</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 flex-1">
+                  <img
+                    src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=160&h=100&fit=crop"
+                    alt="News 3"
+                    className="w-32 h-28 rounded-lg object-cover flex-shrink-0"
+                  />
+                  <div className="flex-1 flex flex-col justify-between py-2">
+                    <h4 className="text-base font-semibold text-slate-900 line-clamp-2 leading-tight mb-3">
+                      Video of Chinese-Speaking Police Prepared for Duty at IKN
+                    </h4>
+                    <div className="flex items-center gap-2 text-sm text-slate-500">
+                      <span>100 Views</span>
+                      <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
+                      <span>25 minutes</span>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
-
-            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 flex-1">
-              <img
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=160&h=100&fit=crop"
-                alt="News 2"
-                className="w-32 h-28 rounded-lg object-cover flex-shrink-0"
-              />
-              <div className="flex-1 flex flex-col justify-between py-2">
-                <h4 className="text-base font-semibold text-slate-900 line-clamp-2 leading-tight mb-3">
-                  PDIP Headquarters Became Material for Volunteer Anger
-                </h4>
-                <div className="flex items-center gap-2 text-sm text-slate-500">
-                  <span>239 Views</span>
-                  <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
-                  <span>20 minutes</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 flex-1">
-              <img
-                src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=160&h=100&fit=crop"
-                alt="News 3"
-                className="w-32 h-28 rounded-lg object-cover flex-shrink-0"
-              />
-              <div className="flex-1 flex flex-col justify-between py-2">
-                <h4 className="text-base font-semibold text-slate-900 line-clamp-2 leading-tight mb-3">
-                  Video of Chinese-Speaking Police Prepared for Duty at IKN
-                </h4>
-                <div className="flex items-center gap-2 text-sm text-slate-500">
-                  <span>100 Views</span>
-                  <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
-                  <span>25 minutes</span>
-                </div>
-              </div>
-            </div>
-
           </div>
 
         </div>
