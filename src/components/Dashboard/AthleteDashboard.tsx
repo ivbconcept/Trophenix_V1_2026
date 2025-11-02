@@ -86,7 +86,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 }}
               ></div>
               <div
-                className="absolute inset-0 bg-black/40 transition-opacity duration-[2000ms] ease-in-out"
+                className="absolute inset-0 bg-black/30 transition-opacity duration-[2000ms] ease-in-out"
                 style={{ opacity: currentImageIndex === 0 ? 1 : 0 }}
               ></div>
               <div
@@ -97,7 +97,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 }}
               ></div>
               <div
-                className="absolute inset-0 bg-black/0 transition-opacity duration-[2000ms] ease-in-out"
+                className="absolute inset-0 bg-black/30 transition-opacity duration-[2000ms] ease-in-out"
                 style={{ opacity: currentImageIndex === 1 ? 1 : 0 }}
               ></div>
               <div
@@ -108,7 +108,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 }}
               ></div>
               <div
-                className="absolute inset-0 bg-black/40 transition-opacity duration-[2000ms] ease-in-out"
+                className="absolute inset-0 bg-black/30 transition-opacity duration-[2000ms] ease-in-out"
                 style={{ opacity: currentImageIndex === 2 ? 1 : 0 }}
               ></div>
               <div className="relative z-10 transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 0 ? 1 : 0 }}>
