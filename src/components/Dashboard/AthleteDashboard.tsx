@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import arenaImage from '../../assets/images/venti-views-cHRDevKFDBw-unsplash.jpg';
 import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
 import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
+import newsDesignImage from '../../assets/images/news-design.png';
 
 interface AthleteDashboardProps {
   onNavigate: (view: string) => void;
@@ -122,32 +123,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             </div>
 
             <div className="mb-6 mt-12">
-              <h2 className="text-2xl font-bold text-slate-900 mb-6">Dernières infos</h2>
-
-              <div className="grid grid-cols-2 gap-6">
-                <div>
-                  <TrendingNewsMain
-                    title="Réussir sa reconversion : Les clés pour une transition professionnelle réussie"
-                    author="Leonor Davinci"
-                    category="Gestion de Carrière"
-                    time="Il y a 2h"
-                    image="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    description="Découvrez les étapes essentielles et les stratégies gagnantes pour réussir votre transition du sport de haut niveau vers le monde professionnel."
-                  />
-                </div>
-
-                <div>
-                  <TrendingNewsMain
-                    title="Développement de carrière : Les secteurs qui recrutent des profils sportifs"
-                    author="Leonor Davinci"
-                    category="Business"
-                    time="Il y a 2h"
-                    image="https://images.pexels.com/photos/936094/pexels-photo-936094.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    description="Le marché du travail s'ouvre aux athlètes. Découvrez les opportunités professionnelles et les entreprises qui valorisent vos compétences sportives."
-                  />
-                </div>
-
-              </div>
+              <img src={newsDesignImage} alt="Dernières infos" className="w-full rounded-3xl shadow-lg" />
             </div>
 
             <div className="mb-6">
