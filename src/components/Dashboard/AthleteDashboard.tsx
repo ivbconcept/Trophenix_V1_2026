@@ -39,7 +39,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   <input
                     type="text"
                     placeholder="Search"
-                    className="w-full pl-12 pr-4 py-3 bg-white rounded-lg border border-slate-200 focus:outline-none focus:border-slate-300 text-slate-900 placeholder-slate-400"
+                    className="w-full pl-12 pr-4 py-3 bg-white rounded-xl border border-slate-200 focus:outline-none focus:border-slate-300 text-slate-900 placeholder-slate-400"
                   />
                 </div>
               </div>
