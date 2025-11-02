@@ -129,7 +129,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               <div className="relative mb-6 flex items-center gap-6">
                 <div className="inline-flex bg-slate-100/80 rounded-2xl p-0.5 gap-0.5">
                   <div className="px-4 py-1.5 bg-white text-slate-900 rounded-xl text-sm font-semibold whitespace-nowrap cursor-pointer shadow-sm transition-all">
-                    Vue d'ensemble
+                    Top
                   </div>
                   <div className="px-4 py-1.5 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
                     Football
