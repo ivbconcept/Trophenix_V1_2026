@@ -32,25 +32,25 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
       <div className="max-w-[1200px] mx-auto px-8 py-6">
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12">
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center justify-between mb-8 bg-white rounded-2xl p-4 shadow-sm">
               <div className="flex-1 max-w-md">
                 <div className="relative">
                   <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                   <input
                     type="text"
                     placeholder="Search"
-                    className="w-full pl-12 pr-4 py-3 bg-white rounded-xl border border-slate-200 focus:outline-none focus:border-slate-300 text-slate-900 placeholder-slate-400"
+                    className="w-full pl-12 pr-4 py-3 bg-slate-50 rounded-xl border border-slate-200 focus:outline-none focus:border-slate-300 text-slate-900 placeholder-slate-400"
                   />
                 </div>
               </div>
 
               <div className="flex items-center gap-2 ml-6">
-                <button className="relative p-2.5 bg-white hover:bg-white/80 rounded-xl transition-all hover:shadow-sm group">
+                <button className="relative p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl transition-all hover:shadow-sm group">
                   <MessageSquareText className="w-6 h-6 text-slate-600 group-hover:text-slate-900 transition-colors" strokeWidth={1.5} />
                   <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
                 </button>
 
-                <button className="relative p-2.5 bg-white hover:bg-white/80 rounded-xl transition-all hover:shadow-sm group">
+                <button className="relative p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl transition-all hover:shadow-sm group">
                   <Bell className="w-6 h-6 text-slate-600 group-hover:text-slate-900 transition-colors" strokeWidth={1.5} />
                   <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
                 </button>
