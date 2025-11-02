@@ -216,23 +216,6 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-3 p-3">
-              <img
-                src="https://images.unsplash.com/photo-1591213373726-d1bf2e48791a?w=160&h=100&fit=crop"
-                alt="News 4"
-                className="w-24 h-20 rounded-lg object-cover flex-shrink-0"
-              />
-              <div className="flex-1 flex flex-col justify-between py-1">
-                <h4 className="text-sm font-semibold text-slate-900 line-clamp-2 leading-tight mb-2">
-                  Airlangga Orders DPD Golkar All Indonesia to Support Anies
-                </h4>
-                <div className="flex items-center gap-2 text-xs text-slate-500">
-                  <span>73 Views</span>
-                  <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
-                  <span>30 minutes</span>
-                </div>
-              </div>
-            </div>
           </div>
 
         </div>
