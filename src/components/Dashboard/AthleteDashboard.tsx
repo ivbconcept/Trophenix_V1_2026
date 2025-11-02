@@ -124,7 +124,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             <div className="mb-6 mt-12">
               <h2 className="text-2xl font-bold text-slate-900 mb-6">Dernières infos</h2>
 
-              <div className="grid grid-cols-3 gap-6">
+              <div className="grid grid-cols-2 gap-6">
                 <div>
                   <TrendingNewsMain
                     title="Réussir sa reconversion : Les clés pour une transition professionnelle réussie"
@@ -147,16 +147,6 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   />
                 </div>
 
-                <div>
-                  <TrendingNewsMain
-                    title="Formation professionnelle : Préparez votre avenir pendant votre carrière sportive"
-                    author="Leonor Davinci"
-                    category="Sport"
-                    time="Il y a 2h"
-                    image="https://images.pexels.com/photos/358042/pexels-photo-358042.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    description="Les programmes de formation dédiés aux athlètes en activité. Comment acquérir de nouvelles compétences tout en poursuivant votre carrière sportive."
-                  />
-                </div>
               </div>
             </div>
 
