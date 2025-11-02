@@ -161,18 +161,18 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             </div>
           </div>
 
-          <div className="col-span-12 lg:col-span-4 flex flex-col gap-4">
-            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-3 p-3">
+          <div className="col-span-12 lg:col-span-4 flex flex-col gap-4 h-[500px]">
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 flex-1">
               <img
                 src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=160&h=100&fit=crop"
                 alt="News 1"
-                className="w-24 h-20 rounded-lg object-cover flex-shrink-0"
+                className="w-32 h-28 rounded-lg object-cover flex-shrink-0"
               />
-              <div className="flex-1 flex flex-col justify-between py-1">
-                <h4 className="text-sm font-semibold text-slate-900 line-clamp-2 leading-tight mb-2">
+              <div className="flex-1 flex flex-col justify-between py-2">
+                <h4 className="text-base font-semibold text-slate-900 line-clamp-2 leading-tight mb-3">
                   Jabodebek LRT Instagram Account Offers Cheap Redeem iPhone 14 Pro Max
                 </h4>
-                <div className="flex items-center gap-2 text-xs text-slate-500">
+                <div className="flex items-center gap-2 text-sm text-slate-500">
                   <span>12K Views</span>
                   <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
                   <span>15 minutes</span>
@@ -180,17 +180,17 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-3 p-3">
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 flex-1">
               <img
                 src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=160&h=100&fit=crop"
                 alt="News 2"
-                className="w-24 h-20 rounded-lg object-cover flex-shrink-0"
+                className="w-32 h-28 rounded-lg object-cover flex-shrink-0"
               />
-              <div className="flex-1 flex flex-col justify-between py-1">
-                <h4 className="text-sm font-semibold text-slate-900 line-clamp-2 leading-tight mb-2">
+              <div className="flex-1 flex flex-col justify-between py-2">
+                <h4 className="text-base font-semibold text-slate-900 line-clamp-2 leading-tight mb-3">
                   PDIP Headquarters Became Material for Volunteer Anger
                 </h4>
-                <div className="flex items-center gap-2 text-xs text-slate-500">
+                <div className="flex items-center gap-2 text-sm text-slate-500">
                   <span>239 Views</span>
                   <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
                   <span>20 minutes</span>
@@ -198,17 +198,17 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-3 p-3">
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 flex-1">
               <img
                 src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=160&h=100&fit=crop"
                 alt="News 3"
-                className="w-24 h-20 rounded-lg object-cover flex-shrink-0"
+                className="w-32 h-28 rounded-lg object-cover flex-shrink-0"
               />
-              <div className="flex-1 flex flex-col justify-between py-1">
-                <h4 className="text-sm font-semibold text-slate-900 line-clamp-2 leading-tight mb-2">
+              <div className="flex-1 flex flex-col justify-between py-2">
+                <h4 className="text-base font-semibold text-slate-900 line-clamp-2 leading-tight mb-3">
                   Video of Chinese-Speaking Police Prepared for Duty at IKN
                 </h4>
-                <div className="flex items-center gap-2 text-xs text-slate-500">
+                <div className="flex items-center gap-2 text-sm text-slate-500">
                   <span>100 Views</span>
                   <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
                   <span>25 minutes</span>
