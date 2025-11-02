@@ -32,7 +32,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
       <div className="max-w-[1200px] mx-auto px-8 py-6">
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12">
-            <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-white rounded-2xl p-4 shadow-sm mx-auto max-w-[1200px] mt-6">
+            <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center justify-between bg-white rounded-2xl p-4 shadow-sm w-full max-w-[1200px] px-8">
               <div className="flex-1 max-w-md">
                 <div className="relative">
                   <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
