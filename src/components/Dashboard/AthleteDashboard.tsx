@@ -56,9 +56,11 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 </button>
 
                 <button className="flex items-center gap-3 pl-3 pr-4 py-2 hover:bg-slate-100 rounded-full transition-colors">
-                  <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold">
-                    {profile?.first_name?.[0]}{profile?.last_name?.[0]}
-                  </div>
+                  <img
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=faces"
+                    alt="Profile"
+                    className="w-10 h-10 rounded-full object-cover ring-2 ring-slate-300"
+                  />
                   <span className="text-slate-900 font-medium">
                     {profile?.first_name || 'Jayson'}
                   </span>
