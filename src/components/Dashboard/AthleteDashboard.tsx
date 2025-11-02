@@ -10,7 +10,7 @@ interface AthleteDashboardProps {
 
 const backgroundImages = [
   arenaImage,
-  'https://images.pexels.com/photos/2695679/pexels-photo-2695679.jpeg?auto=compress&cs=tinysrgb&w=1200'
+  'https://images.pexels.com/photos/3756042/pexels-photo-3756042.jpeg?auto=compress&cs=tinysrgb&w=1200'
 ];
 
 export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
