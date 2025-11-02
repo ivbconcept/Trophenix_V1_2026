@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import arenaImage from '../../assets/images/venti-views-cHRDevKFDBw-unsplash.jpg';
 import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
 import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
-import allInfoImage from '../../assets/images/all-information-section.png';
 
 interface AthleteDashboardProps {
   onNavigate: (view: string) => void;
@@ -120,10 +119,6 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               <div className="relative z-10 bg-white rounded-lg px-2 py-2 shadow-lg">
                 <img src={nikeLogo} alt="Nike" className="w-16 h-auto" />
               </div>
-            </div>
-
-            <div className="mb-6">
-              <img src={allInfoImage} alt="Toutes les informations" className="w-full rounded-3xl shadow-lg" />
             </div>
 
           </div>
