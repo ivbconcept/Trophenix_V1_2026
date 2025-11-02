@@ -140,15 +140,6 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   <div className="px-5 py-2 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
                     Tennis
                   </div>
-                  <div className="px-5 py-2 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
-                    Athlétisme
-                  </div>
-                  <div className="px-5 py-2 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
-                    Natation
-                  </div>
-                  <div className="px-5 py-2 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
-                    Rugby
-                  </div>
                 </div>
                 <button className="flex items-center gap-2 px-6 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
