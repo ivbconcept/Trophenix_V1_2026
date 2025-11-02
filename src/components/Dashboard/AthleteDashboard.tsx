@@ -2,6 +2,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { Briefcase, FileText, MessagesSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper, Mail, Bell, Search, MessageSquareText } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import arenaImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
+import laImage from '../../assets/images/mos-sukjaroenkraisri-vO2XxMeYmnY-unsplash copy.jpg';
 import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
 
 interface AthleteDashboardProps {
@@ -10,7 +11,7 @@ interface AthleteDashboardProps {
 
 const backgroundImages = [
   arenaImage,
-  'https://images.pexels.com/photos/3756042/pexels-photo-3756042.jpeg?auto=compress&cs=tinysrgb&w=1200'
+  laImage
 ];
 
 export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
