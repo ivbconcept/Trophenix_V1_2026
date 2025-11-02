@@ -122,6 +122,45 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             </div>
 
           </div>
+
+          <div className="col-span-12">
+            <div className="bg-white rounded-3xl overflow-hidden shadow-lg">
+              <div className="relative h-[500px]">
+                <img
+                  src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1200&h=500&fit=crop"
+                  alt="Global Markets"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+
+                <div className="absolute top-8 left-8">
+                  <div className="flex items-center gap-3 text-white/90">
+                    <span className="text-sm font-semibold">Network</span>
+                    <span className="text-sm">|</span>
+                    <span className="text-sm">9d ago</span>
+                  </div>
+                </div>
+
+                <div className="absolute bottom-8 left-8 right-8">
+                  <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
+                    The Pulse of Global Markets<br />and Enterprise
+                  </h2>
+                  <p className="text-white/90 text-lg mb-6 max-w-3xl leading-relaxed">
+                    To spread the word, the company embarked on a mass marketing drive. TV campaigns launched in the platform's key markets. Nisi dignissim tortor sed quam sed ipsum ut. Dolor sit amet, consectetur adipiscing elit.
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <img
+                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=faces"
+                      alt="Nisi Nyung"
+                      className="w-10 h-10 rounded-full object-cover ring-2 ring-white/30"
+                    />
+                    <span className="text-white font-medium">Nisi Nyung</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
