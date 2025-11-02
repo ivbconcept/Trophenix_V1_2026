@@ -127,7 +127,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             <div className="grid grid-cols-12 gap-6">
               <div className="col-span-12 lg:col-span-8">
                 <div className="bg-white rounded-3xl overflow-hidden shadow-lg">
-                  <div className="relative h-[500px]">
+                  <div className="relative h-[400px]">
                     <img
                       src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1200&h=500&fit=crop"
                       alt="Global Markets"
@@ -163,7 +163,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 </div>
               </div>
 
-              <div className="col-span-12 lg:col-span-4 flex flex-col gap-4 h-[500px]">
+              <div className="col-span-12 lg:col-span-4 flex flex-col gap-4 h-[400px]">
                 <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 flex-1">
                   <img
                     src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=160&h=100&fit=crop"
