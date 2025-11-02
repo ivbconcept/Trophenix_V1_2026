@@ -3,7 +3,6 @@ import { Briefcase, FileText, MessagesSquare, Star, TrendingUp, Award, Heart, Ch
 import { useState, useEffect } from 'react';
 import arenaImage from '../../assets/images/venti-views-cHRDevKFDBw-unsplash.jpg';
 import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
-import sponsoringImage from '../../assets/images/launde-morel-jcc_mL07QpA-unsplash copy copy.jpg';
 import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
 
 interface AthleteDashboardProps {
@@ -12,8 +11,7 @@ interface AthleteDashboardProps {
 
 const backgroundImages = [
   arenaImage,
-  laImage,
-  sponsoringImage
+  laImage
 ];
 
 export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
@@ -100,17 +98,6 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 className="absolute inset-0 bg-black/30 transition-opacity duration-[2000ms] ease-in-out"
                 style={{ opacity: currentImageIndex === 1 ? 1 : 0 }}
               ></div>
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-opacity duration-[2000ms] ease-in-out"
-                style={{
-                  backgroundImage: `url('${backgroundImages[2]}')`,
-                  opacity: currentImageIndex === 2 ? 1 : 0
-                }}
-              ></div>
-              <div
-                className="absolute inset-0 bg-black/30 transition-opacity duration-[2000ms] ease-in-out"
-                style={{ opacity: currentImageIndex === 2 ? 1 : 0 }}
-              ></div>
               <div className="relative z-10 transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 0 ? 1 : 0 }}>
                 <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-md inline-block">PLATEFORME TROPHENIX</p>
                 <h1 className="text-4xl font-bold leading-tight mb-4">
@@ -127,15 +114,6 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 </h1>
                 <p className="text-white/90 text-base max-w-2xl">
                   Trouvez des solutions personnalisées à votre situation
-                </p>
-              </div>
-              <div className="absolute left-10 bottom-10 z-10 transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 2 ? 1 : 0 }}>
-                <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-md inline-block">Tournoi Sponsoring</p>
-                <h1 className="text-4xl font-bold leading-tight mb-4">
-                  Développez votre image de marque
-                </h1>
-                <p className="text-white/90 text-base max-w-2xl">
-                  Connectez-vous avec des sponsors qui partagent vos valeurs
                 </p>
               </div>
               <div className="relative z-10 bg-white rounded-lg px-2 py-2 shadow-lg">
