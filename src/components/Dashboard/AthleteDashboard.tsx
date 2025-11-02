@@ -30,36 +30,36 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
   return (
     <div className="min-h-screen bg-slate-50">
       <div className="max-w-[1200px] mx-auto px-8 py-6 relative">
-        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center justify-between bg-white rounded-2xl p-4 shadow-sm w-[calc(100%-2rem)] sm:w-[calc(100%-3rem)] md:w-[calc(100%-4rem)] lg:w-[calc(100%-8rem)] xl:w-[1152px]">
-          <div className="flex-1 max-w-md">
+        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center justify-between bg-white rounded-2xl p-3 md:p-4 shadow-sm transition-all duration-300 w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] lg:w-[900px] xl:w-[1000px] 2xl:w-[1152px]">
+          <div className="flex-1 max-w-[200px] md:max-w-xs lg:max-w-md">
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <Search className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400" />
               <input
                 type="text"
                 placeholder="Search"
-                className="w-full pl-12 pr-4 py-3 bg-slate-50 rounded-xl border border-slate-200 focus:outline-none focus:border-slate-300 text-slate-900 placeholder-slate-400"
+                className="w-full pl-9 md:pl-12 pr-3 md:pr-4 py-2 md:py-3 bg-slate-50 rounded-xl border border-slate-200 focus:outline-none focus:border-slate-300 text-slate-900 placeholder-slate-400 text-sm md:text-base"
               />
             </div>
           </div>
 
-          <div className="flex items-center gap-2 ml-6">
-            <button className="relative p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl transition-all hover:shadow-sm group">
-              <MessageSquareText className="w-6 h-6 text-slate-600 group-hover:text-slate-900 transition-colors" strokeWidth={1.5} />
-              <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+          <div className="flex items-center gap-1.5 md:gap-2 ml-3 md:ml-6">
+            <button className="relative p-2 md:p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl transition-all hover:shadow-sm group">
+              <MessageSquareText className="w-5 h-5 md:w-6 md:h-6 text-slate-600 group-hover:text-slate-900 transition-colors" strokeWidth={1.5} />
+              <span className="absolute top-1 right-1 md:top-1.5 md:right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
             </button>
 
-            <button className="relative p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl transition-all hover:shadow-sm group">
-              <Bell className="w-6 h-6 text-slate-600 group-hover:text-slate-900 transition-colors" strokeWidth={1.5} />
-              <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+            <button className="relative p-2 md:p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl transition-all hover:shadow-sm group">
+              <Bell className="w-5 h-5 md:w-6 md:h-6 text-slate-600 group-hover:text-slate-900 transition-colors" strokeWidth={1.5} />
+              <span className="absolute top-1 right-1 md:top-1.5 md:right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
             </button>
 
-            <button className="flex items-center gap-3 pl-3 pr-4 py-2 hover:bg-slate-100 rounded-full transition-colors">
+            <button className="flex items-center gap-2 md:gap-3 pl-2 md:pl-3 pr-3 md:pr-4 py-1.5 md:py-2 hover:bg-slate-100 rounded-full transition-colors">
               <img
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=faces"
                 alt="Profile"
-                className="w-10 h-10 rounded-full object-cover ring-2 ring-slate-300"
+                className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover ring-2 ring-slate-300"
               />
-              <span className="text-slate-900 font-medium">
+              <span className="text-slate-900 font-medium text-sm md:text-base hidden sm:inline">
                 {profile?.first_name || 'Jayson'}
               </span>
             </button>
