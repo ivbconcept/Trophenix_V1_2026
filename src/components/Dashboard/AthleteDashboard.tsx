@@ -1,5 +1,5 @@
 import { useAuth } from '../../contexts/AuthContext';
-import { Briefcase, FileText, MessageSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper, Mail, Bell, Search } from 'lucide-react';
+import { Briefcase, FileText, MessageSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper, Mail, BellDot, Search, MessagesSquare } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import arenaImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
 import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
@@ -46,12 +46,12 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
               <div className="flex items-center gap-4 ml-6">
                 <button className="relative p-2 hover:bg-slate-100 rounded-full transition-colors">
-                  <MessageSquare className="w-6 h-6 text-slate-700" />
+                  <MessagesSquare className="w-6 h-6 text-slate-700" />
                   <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
                 </button>
 
                 <button className="relative p-2 hover:bg-slate-100 rounded-full transition-colors">
-                  <Bell className="w-6 h-6 text-slate-700" />
+                  <BellDot className="w-6 h-6 text-slate-700" />
                   <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
                 </button>
 
