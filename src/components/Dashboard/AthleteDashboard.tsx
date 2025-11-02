@@ -123,7 +123,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
           </div>
 
-          <div className="col-span-12">
+          <div className="col-span-12 lg:col-span-8">
             <div className="bg-white rounded-3xl overflow-hidden shadow-lg">
               <div className="relative h-[500px]">
                 <img
@@ -156,6 +156,80 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     />
                     <span className="text-white font-medium">Nisi Nyung</span>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-span-12 lg:col-span-4 flex flex-col gap-4">
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-3 p-3">
+              <img
+                src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=160&h=100&fit=crop"
+                alt="News 1"
+                className="w-24 h-20 rounded-lg object-cover flex-shrink-0"
+              />
+              <div className="flex-1 flex flex-col justify-between py-1">
+                <h4 className="text-sm font-semibold text-slate-900 line-clamp-2 leading-tight mb-2">
+                  Jabodebek LRT Instagram Account Offers Cheap Redeem iPhone 14 Pro Max
+                </h4>
+                <div className="flex items-center gap-2 text-xs text-slate-500">
+                  <span>12K Views</span>
+                  <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
+                  <span>15 minutes</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-3 p-3">
+              <img
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=160&h=100&fit=crop"
+                alt="News 2"
+                className="w-24 h-20 rounded-lg object-cover flex-shrink-0"
+              />
+              <div className="flex-1 flex flex-col justify-between py-1">
+                <h4 className="text-sm font-semibold text-slate-900 line-clamp-2 leading-tight mb-2">
+                  PDIP Headquarters Became Material for Volunteer Anger
+                </h4>
+                <div className="flex items-center gap-2 text-xs text-slate-500">
+                  <span>239 Views</span>
+                  <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
+                  <span>20 minutes</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-3 p-3">
+              <img
+                src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=160&h=100&fit=crop"
+                alt="News 3"
+                className="w-24 h-20 rounded-lg object-cover flex-shrink-0"
+              />
+              <div className="flex-1 flex flex-col justify-between py-1">
+                <h4 className="text-sm font-semibold text-slate-900 line-clamp-2 leading-tight mb-2">
+                  Video of Chinese-Speaking Police Prepared for Duty at IKN
+                </h4>
+                <div className="flex items-center gap-2 text-xs text-slate-500">
+                  <span>100 Views</span>
+                  <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
+                  <span>25 minutes</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-3 p-3">
+              <img
+                src="https://images.unsplash.com/photo-1591213373726-d1bf2e48791a?w=160&h=100&fit=crop"
+                alt="News 4"
+                className="w-24 h-20 rounded-lg object-cover flex-shrink-0"
+              />
+              <div className="flex-1 flex flex-col justify-between py-1">
+                <h4 className="text-sm font-semibold text-slate-900 line-clamp-2 leading-tight mb-2">
+                  Airlangga Orders DPD Golkar All Indonesia to Support Anies
+                </h4>
+                <div className="flex items-center gap-2 text-xs text-slate-500">
+                  <span>73 Views</span>
+                  <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
+                  <span>30 minutes</span>
                 </div>
               </div>
             </div>
