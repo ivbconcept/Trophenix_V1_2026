@@ -3,7 +3,7 @@ import { Briefcase, FileText, MessagesSquare, Star, TrendingUp, Award, Heart, Ch
 import { useState, useEffect } from 'react';
 import arenaImage from '../../assets/images/venti-views-cHRDevKFDBw-unsplash.jpg';
 import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
-import sponsoringImage from '../../assets/images/matthieu-petiard-Pf6e3o0GL4M-unsplash.jpg';
+import sponsoringImage from '../../assets/images/launde-morel-jcc_mL07QpA-unsplash copy copy.jpg';
 import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
 
 interface AthleteDashboardProps {
