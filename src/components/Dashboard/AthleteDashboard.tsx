@@ -126,7 +126,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
           <div className="col-span-12">
             <div className="mb-6">
               <h2 className="text-4xl font-bold leading-tight text-slate-900 mb-4">Les dernières news</h2>
-              <div className="relative mb-6">
+              <div className="relative mb-6 flex items-center justify-between">
                 <div className="inline-flex bg-slate-100/80 rounded-2xl p-0.5 gap-0.5">
                   <div className="px-5 py-2 bg-white text-slate-900 rounded-xl text-sm font-semibold whitespace-nowrap cursor-pointer shadow-sm transition-all">
                     Overview
@@ -150,6 +150,12 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     Rugby
                   </div>
                 </div>
+                <button className="flex items-center gap-2 px-6 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                  </svg>
+                  Filter
+                </button>
               </div>
 
               <div className="grid grid-cols-12 gap-6">
