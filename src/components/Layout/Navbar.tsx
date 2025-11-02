@@ -180,16 +180,6 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
                 <Settings className="h-5 w-5" />
                 <span>Settings</span>
               </button>
-              <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-200/70 hover:text-slate-900 transition-all relative">
-                <Mail className="h-5 w-5" />
-                <span>Messages</span>
-                <div className="absolute top-2 left-6 w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-              </button>
-              <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-200/70 hover:text-slate-900 transition-all relative">
-                <Bell className="h-5 w-5" />
-                <span>Notifications</span>
-                <div className="absolute top-2 left-6 w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-              </button>
             </div>
           )}
           {showSecondarySidebar && (
@@ -200,41 +190,8 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
               >
                 <Settings className="h-5 w-5" />
               </button>
-              <button
-                title="Messages"
-                className="w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-200/70 hover:text-slate-900 transition-all relative"
-              >
-                <Mail className="h-5 w-5" />
-                <div className="absolute top-1.5 right-1.5 w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-              </button>
-              <button
-                title="Notifications"
-                className="w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-200/70 hover:text-slate-900 transition-all relative"
-              >
-                <Bell className="h-5 w-5" />
-                <div className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-              </button>
             </div>
           )}
-          <button
-            onClick={() => onNavigate('profile')}
-            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-200/70 hover:text-slate-900 transition-all mb-2 ${
-              showSecondarySidebar ? 'justify-center' : ''
-            }`}
-            title={showSecondarySidebar ? profile?.first_name || profile?.company_name || 'Profile' : undefined}
-          >
-            <div className="relative">
-              <img
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=faces"
-                alt="Profile"
-                className="w-8 h-8 rounded-full object-cover ring-2 ring-slate-300"
-              />
-              <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-400 border-2 border-slate-100 rounded-full"></div>
-            </div>
-            {!showSecondarySidebar && (
-              <span className="flex-1 text-left truncate">{profile?.first_name || profile?.company_name || 'User'}</span>
-            )}
-          </button>
           <button
             onClick={onLogout}
             title={showSecondarySidebar ? "Logout" : undefined}
