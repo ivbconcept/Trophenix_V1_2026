@@ -126,7 +126,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
           <div className="col-span-12">
             <div className="mb-8">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Les dernières news</h2>
-              <div className="bg-slate-50/50 rounded-3xl p-2 inline-flex gap-2 overflow-x-auto">
+              <div className="bg-slate-50/50 rounded-3xl p-2 flex gap-2 overflow-x-auto">
                 <button className="px-8 py-3 bg-white text-slate-900 rounded-2xl text-base font-medium shadow-sm transition-all whitespace-nowrap">
                   Overview
                 </button>
