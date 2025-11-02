@@ -103,7 +103,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 <h1 className="text-4xl font-bold leading-tight mb-4">
                   Développez Votre Carrière
                 </h1>
-                <p className="text-white/90 text-base max-w-2xl">
+                <p className="text-white/90 text-lg max-w-2xl leading-relaxed">
                   Découvrez des opportunités uniques adaptées à votre profil d'athlète
                 </p>
               </div>
@@ -112,7 +112,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 <h1 className="text-4xl font-bold leading-tight mb-4">
                   Préparez-vous plus sereinement
                 </h1>
-                <p className="text-white/90 text-base max-w-2xl">
+                <p className="text-white/90 text-lg max-w-2xl leading-relaxed">
                   Trouvez des solutions personnalisées à votre situation
                 </p>
               </div>
@@ -293,7 +293,7 @@ function TrendingNewsMain({ title, author, category, time, image, description }:
         <h3 className="text-xl font-bold text-slate-900 mb-3 leading-tight">
           {title}
         </h3>
-        <p className="text-sm text-slate-600 line-clamp-2">
+        <p className="text-sm text-slate-600 line-clamp-2 leading-relaxed">
           {description}
         </p>
       </div>
@@ -337,7 +337,7 @@ function InfoCard({ title, author, category, time, image, description }: InfoCar
         <h3 className="text-2xl font-bold text-slate-900 mb-3 leading-tight">
           {title}
         </h3>
-        <p className="text-base text-slate-600 line-clamp-2">
+        <p className="text-base text-slate-600 line-clamp-2 leading-relaxed">
           {description}
         </p>
       </div>
@@ -377,7 +377,7 @@ function TrendingNewsItem({ title, author, category, time, image, isLive, descri
             {title}
           </h4>
           {description && (
-            <p className="text-sm text-slate-600 line-clamp-2 mb-3">
+            <p className="text-sm text-slate-600 line-clamp-2 mb-3 leading-relaxed">
               {description}
             </p>
           )}

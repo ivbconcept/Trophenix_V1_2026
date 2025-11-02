@@ -16,7 +16,7 @@ export function CompanyDashboard({ onNavigate }: CompanyDashboardProps) {
           <h1 className="text-3xl font-bold text-slate-900 mb-2">
             Bienvenue, {profile?.company_name || 'Entreprise'}
           </h1>
-          <p className="text-slate-600">
+          <p className="text-slate-600 text-lg leading-relaxed">
             Gérez vos offres d'emploi et trouvez les meilleurs talents sportifs
           </p>
         </div>
@@ -240,7 +240,7 @@ function ActionCard({ icon: Icon, title, description, onClick, color }: ActionCa
         <Icon className="w-5 h-5" />
       </div>
       <h3 className="font-semibold text-slate-900 mb-1">{title}</h3>
-      <p className="text-sm text-slate-600">{description}</p>
+      <p className="text-sm text-slate-600 leading-relaxed">{description}</p>
     </button>
   );
 }
@@ -347,7 +347,7 @@ function NewsCard({ image, title, description, category, date, isLive }: NewsCar
         <h3 className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-2">
           {title}
         </h3>
-        <p className="text-sm text-slate-600 line-clamp-2">
+        <p className="text-sm text-slate-600 line-clamp-2 leading-relaxed">
           {description}
         </p>
       </div>

@@ -182,7 +182,7 @@ const SupportersCarousel = () => {
           <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-4">
             Opportunités du moment
           </h2>
-          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed">
             Découvrez les offres d'emploi et opportunités de sponsoring disponibles sur Trophenix
           </p>
         </div>
@@ -424,7 +424,7 @@ function VisionTabs() {
       <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-8 border-2 border-blue-200">
         <div className="text-center mb-8">
           <h3 className="text-2xl font-bold text-slate-900 mb-2">{currentContent.title}</h3>
-          <p className="text-lg text-slate-600">{currentContent.description}</p>
+          <p className="text-lg text-slate-600 leading-relaxed">{currentContent.description}</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
@@ -467,7 +467,7 @@ function ProgramSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent"></div>
             <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
               <h3 className="text-3xl font-bold mb-4">Notre Programme & Enquête</h3>
-              <p className="text-lg text-slate-200">
+              <p className="text-lg text-slate-200 leading-relaxed">
                 {selectedCard !== null ? CARD_DATA[selectedCard].description : 'Cliquez sur une carte pour en savoir plus sur nos programmes et initiatives.'}
               </p>
             </div>
@@ -786,7 +786,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
                 Un seul espace pour gérer <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">votre carrière sportive</span>
               </h1>
-              <p className="text-lg md:text-xl text-slate-600 mb-8">
+              <p className="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed">
                 Trophenix regroupe les outils et l'écosystème sportif dans un seul espace pour optimiser votre réussite.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -946,7 +946,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Notre Réponse aux Défis du Sport</h2>
-              <p className="text-xl text-slate-600">Comprendre les enjeux pour mieux y répondre</p>
+              <p className="text-xl text-slate-600 leading-relaxed">Comprendre les enjeux pour mieux y répondre</p>
             </div>
             <div className="grid md:grid-cols-2 gap-12">
               <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
@@ -1008,7 +1008,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Trouvez votre opportunité en 2 minutes</h2>
-              <p className="text-xl text-slate-600">Découvrez les opportunités qui correspondent à votre profil</p>
+              <p className="text-xl text-slate-600 leading-relaxed">Découvrez les opportunités qui correspondent à votre profil</p>
             </div>
             <div className="grid md:grid-cols-2 gap-8 items-stretch">
               <div className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
@@ -1248,7 +1248,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
                   <h3 className="text-3xl font-bold mb-4">Nos experts vous accompagnent</h3>
-                  <p className="text-lg text-blue-100 mb-8">
+                  <p className="text-lg text-blue-100 mb-8 leading-relaxed">
                     Remplissez le formulaire pour découvrir vos opportunités personnalisées
                   </p>
                 </div>
@@ -1265,7 +1265,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-slate-900 mb-4">Qui sommes-nous ?</h2>
-            <p className="text-xl text-slate-600">L'infrastructure complète pour la gestion de carrière</p>
+            <p className="text-xl text-slate-600 leading-relaxed">L'infrastructure complète pour la gestion de carrière</p>
           </div>
 
           <VisionTabs />
@@ -1292,7 +1292,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-slate-900 mb-4">Actualités & Conseils</h2>
-            <p className="text-xl text-slate-600">Découvrez nos derniers articles pour réussir votre reconversion</p>
+            <p className="text-xl text-slate-600 leading-relaxed">Découvrez nos derniers articles pour réussir votre reconversion</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -1322,7 +1322,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
                   <h3 className="text-lg font-bold text-slate-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
                     {article.title}
                   </h3>
-                  <p className="text-sm text-slate-600 mb-4 line-clamp-2">
+                  <p className="text-sm text-slate-600 mb-4 line-clamp-2 leading-relaxed">
                     {article.description}
                   </p>
 

@@ -192,7 +192,7 @@ const InvestorsPage: React.FC<InvestorsPageProps> = ({ onBack }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-slate-900 mb-4">Notre Vision</h2>
-            <p className="text-xl text-slate-600">L'infrastructure complète du sport mondial</p>
+            <p className="text-xl text-slate-600 leading-relaxed">L'infrastructure complète du sport mondial</p>
           </div>
 
           {/* Tabs */}
@@ -249,7 +249,7 @@ const InvestorsPage: React.FC<InvestorsPageProps> = ({ onBack }) => {
                     <div className="flex-shrink-0 w-3 h-3 bg-blue-600 rounded-full mt-1.5"></div>
                     <div className="flex-1 bg-white rounded-lg p-6 shadow-sm border border-slate-200">
                       <h4 className="font-bold text-slate-900 mb-2">MVP & Product-Market Fit</h4>
-                      <p className="text-slate-600 mb-3">Recrutement athlètes + Multi-contextes + Agent IA</p>
+                      <p className="text-slate-600 mb-3 leading-relaxed">Recrutement athlètes + Multi-contextes + Agent IA</p>
                       <div className="flex items-center text-sm text-slate-600">
                         <TrendingUp className="h-4 w-4 mr-1 text-green-600" />
                         <span className="font-semibold">10M€ revenus</span>
@@ -265,7 +265,7 @@ const InvestorsPage: React.FC<InvestorsPageProps> = ({ onBack }) => {
                     <div className="flex-shrink-0 w-3 h-3 bg-cyan-600 rounded-full mt-1.5"></div>
                     <div className="flex-1 bg-white rounded-lg p-6 shadow-sm border border-slate-200">
                       <h4 className="font-bold text-slate-900 mb-2">Scale & Modules</h4>
-                      <p className="text-slate-600 mb-3">Social Network + Sponsoring + Tournois + E-commerce</p>
+                      <p className="text-slate-600 mb-3 leading-relaxed">Social Network + Sponsoring + Tournois + E-commerce</p>
                       <div className="flex items-center text-sm text-slate-600">
                         <TrendingUp className="h-4 w-4 mr-1 text-green-600" />
                         <span className="font-semibold">150M€ revenus cumulés</span>
@@ -281,7 +281,7 @@ const InvestorsPage: React.FC<InvestorsPageProps> = ({ onBack }) => {
                     <div className="flex-shrink-0 w-3 h-3 bg-blue-600 rounded-full mt-1.5"></div>
                     <div className="flex-1 bg-white rounded-lg p-6 shadow-sm border border-slate-200">
                       <h4 className="font-bold text-slate-900 mb-2">Expansion Globale</h4>
-                      <p className="text-slate-600 mb-3">USA + Asie + Comités Olympiques + FIFA/UEFA</p>
+                      <p className="text-slate-600 mb-3 leading-relaxed">USA + Asie + Comités Olympiques + FIFA/UEFA</p>
                       <div className="flex items-center text-sm text-slate-600">
                         <TrendingUp className="h-4 w-4 mr-1 text-green-600" />
                         <span className="font-semibold">600M€ revenus année 7</span>
@@ -297,7 +297,7 @@ const InvestorsPage: React.FC<InvestorsPageProps> = ({ onBack }) => {
                     <div className="flex-shrink-0 w-3 h-3 bg-cyan-600 rounded-full mt-1.5"></div>
                     <div className="flex-1 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-lg p-6 shadow-sm border border-blue-200">
                       <h4 className="font-bold text-slate-900 mb-2">Domination Mondiale</h4>
-                      <p className="text-slate-600 mb-3">Leader incontesté - 100+ pays - 50M utilisateurs</p>
+                      <p className="text-slate-600 mb-3 leading-relaxed">Leader incontesté - 100+ pays - 50M utilisateurs</p>
                       <div className="flex items-center text-sm text-slate-600">
                         <TrendingUp className="h-4 w-4 mr-1 text-green-600" />
                         <span className="font-semibold">1 Milliard € revenus/an</span>
@@ -499,7 +499,7 @@ const InvestorsPage: React.FC<InvestorsPageProps> = ({ onBack }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-slate-900 mb-4">Cas d'Usage Majeurs</h2>
-            <p className="text-xl text-slate-600">Des clients prestigieux, des revenus récurrents</p>
+            <p className="text-xl text-slate-600 leading-relaxed">Des clients prestigieux, des revenus récurrents</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -559,7 +559,7 @@ const InvestorsPage: React.FC<InvestorsPageProps> = ({ onBack }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-slate-900 mb-4">Opportunité d'Investissement</h2>
-            <p className="text-xl text-slate-600">Rejoignez-nous dans cette aventure</p>
+            <p className="text-xl text-slate-600 leading-relaxed">Rejoignez-nous dans cette aventure</p>
           </div>
 
           <div className="max-w-4xl mx-auto">
@@ -656,7 +656,7 @@ const InvestorsPage: React.FC<InvestorsPageProps> = ({ onBack }) => {
       <section id="contact" className="py-20 bg-gradient-to-br from-blue-600 to-cyan-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6">Prêt à Investir dans le Futur du Sport ?</h2>
-          <p className="text-xl text-blue-100 mb-8">
+          <p className="text-xl text-blue-100 mb-8 leading-relaxed">
             Contactez-nous pour recevoir notre deck complet et échanger sur l'opportunité
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
