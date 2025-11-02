@@ -29,8 +29,8 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <div className="max-w-[1200px] mx-auto px-4 md:px-8 py-6 relative">
-        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center justify-between bg-white rounded-2xl p-3 md:p-4 shadow-sm transition-all duration-300 max-w-[1200px] w-[calc(100%-2rem)] md:w-[calc(100%-4rem)]">
+      <div className="max-w-[1200px] mx-auto px-4 md:px-8 py-6">
+        <div className="sticky top-4 z-50 flex items-center justify-between bg-white rounded-2xl p-3 md:p-4 shadow-sm mb-8">
           <div className="flex-1 max-w-[200px] md:max-w-xs lg:max-w-md">
             <div className="relative">
               <Search className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400" />
@@ -68,7 +68,6 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12">
-            <div className="mt-32"></div>
 
             <div className="rounded-3xl p-10 text-white mb-6 shadow-lg relative overflow-hidden flex items-end justify-between" style={{ minHeight: '291px' }}>
               <div
