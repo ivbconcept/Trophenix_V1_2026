@@ -44,15 +44,15 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 ml-6">
-                <button className="relative p-2 hover:bg-slate-100 rounded-full transition-colors">
-                  <MessageCircle className="w-6 h-6 text-slate-700" />
-                  <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+              <div className="flex items-center gap-2 ml-6">
+                <button className="relative p-2.5 hover:bg-white/80 rounded-xl transition-all hover:shadow-sm group">
+                  <MessageCircle className="w-5 h-5 text-slate-600 group-hover:text-slate-900 transition-colors" strokeWidth={2} />
+                  <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
                 </button>
 
-                <button className="relative p-2 hover:bg-slate-100 rounded-full transition-colors">
-                  <Bell className="w-6 h-6 text-slate-700" />
-                  <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                <button className="relative p-2.5 hover:bg-white/80 rounded-xl transition-all hover:shadow-sm group">
+                  <Bell className="w-5 h-5 text-slate-600 group-hover:text-slate-900 transition-colors" strokeWidth={2} />
+                  <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
                 </button>
 
                 <button className="flex items-center gap-3 pl-3 pr-4 py-2 hover:bg-slate-100 rounded-full transition-colors">
