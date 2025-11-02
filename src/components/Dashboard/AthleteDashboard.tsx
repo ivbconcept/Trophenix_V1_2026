@@ -62,7 +62,6 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   <span className="text-slate-900 font-medium">
                     {profile?.first_name || 'Jayson'}
                   </span>
-                  <ChevronRight className="w-4 h-4 text-slate-400 rotate-90" />
                 </button>
               </div>
             </div>
