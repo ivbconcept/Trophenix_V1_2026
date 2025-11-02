@@ -174,7 +174,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                     <div className="absolute bottom-8 left-8 right-8">
                       <h2 className="text-5xl font-bold text-white mb-6 leading-tight">
-                        The Pulse of Global Markets<br />and Enterprise
+                        Global Markets<br />and Enterprise
                       </h2>
                       <p className="text-white/90 text-lg mb-6 max-w-3xl leading-relaxed">
                         To spread the word, the company embarked on a mass marketing drive. TV campaigns launched in the platform's key markets. Nisi dignissim tortor sed quam sed ipsum ut. Dolor sit amet, consectetur adipiscing elit.
