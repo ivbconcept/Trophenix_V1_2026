@@ -179,7 +179,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                     <div className="absolute top-8 left-8">
                       <div className="flex items-center gap-3 text-white/90">
-                        <span className="text-sm font-semibold">Sport</span>
+                        <span className="text-sm font-semibold">Athlétisme</span>
                         <span className="text-sm">|</span>
                         <span className="text-sm">Il y a 2h</span>
                       </div>
