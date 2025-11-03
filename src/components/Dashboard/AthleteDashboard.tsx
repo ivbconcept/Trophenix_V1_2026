@@ -428,7 +428,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
 
-                    <div className="absolute bottom-16 left-4 flex gap-2">
+                    <div className="absolute bottom-11 left-4 flex gap-2">
                       <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-lg text-white text-xs font-medium hover:bg-white/20 transition-all border border-white/20">
                         <FileText className="w-3 h-3" />
                         Reviews
@@ -440,7 +440,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     </div>
 
                     <div className="absolute bottom-4 left-4 right-4">
-                      <h3 className="text-base font-bold text-white mb-2 leading-tight">
+                      <h3 className="text-base font-bold text-white mb-0 leading-tight">
                         Formula 1: Drive to Survive
                       </h3>
                     </div>
@@ -454,7 +454,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
 
-                    <div className="absolute bottom-16 left-4 flex gap-2">
+                    <div className="absolute bottom-11 left-4 flex gap-2">
                       <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-lg text-white text-xs font-medium hover:bg-white/20 transition-all border border-white/20">
                         <FileText className="w-3 h-3" />
                         Reviews
@@ -466,7 +466,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     </div>
 
                     <div className="absolute bottom-4 left-4 right-4">
-                      <h3 className="text-base font-bold text-white mb-2 leading-tight">
+                      <h3 className="text-base font-bold text-white mb-0 leading-tight">
                         All or Nothing
                       </h3>
                     </div>
