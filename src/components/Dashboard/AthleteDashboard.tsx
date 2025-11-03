@@ -208,8 +208,8 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               <div className="col-span-12 lg:col-span-4 flex flex-col gap-3">
                 <div className="bg-white dark:bg-zinc-950 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
                   <img
-                    src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=160&h=100&fit=crop"
-                    alt="News 1"
+                    src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?w=160&h=100&fit=crop"
+                    alt="Swimming"
                     className="w-28 h-24 rounded-lg object-cover flex-shrink-0"
                   />
                   <div className="flex-1">
