@@ -144,7 +144,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
                     title={showSecondarySidebar ? section.label : undefined}
                     className={`w-full flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-medium transition-all relative group ${
                       isActive
-                        ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg shadow-blue-500/30'
+                        ? 'bg-slate-200 dark:bg-zinc-800 text-slate-900 dark:text-white'
                         : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
                     } ${showSecondarySidebar ? 'justify-center' : ''}`}
                   >
