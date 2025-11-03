@@ -6,8 +6,6 @@ import arenaImage from '../../assets/images/city-break-los-angeles.jpg';
 import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
 import financeImage from '../../assets/images/tuvalum-0L5wXMtaFWg-unsplash copy.jpg';
 import rugbyImage from '../../assets/images/the-uplifting-times-a34aBWYwnKY-unsplash.jpg';
-import accorLogo from '../../assets/images/1196px-Accor_Logo.png';
-import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
 
 interface AthleteDashboardProps {
   onNavigate: (view: string) => void;
@@ -153,11 +151,14 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   Bénéficiez de conseils financiers personnalisés pour optimiser votre patrimoine
                 </p>
               </div>
-              <div className="relative z-10 bg-white rounded-lg px-2 py-2 shadow-lg transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 0 ? 1 : 0 }}>
-                <img src={accorLogo} alt="Accor" className="w-16 h-auto" />
+              <div className="relative z-10 bg-white rounded-lg px-4 py-3 shadow-lg transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 0 ? 1 : 0 }}>
+                <span className="text-2xl font-bold text-[#a36c4c]">ACCOR</span>
               </div>
-              <div className="absolute right-10 bottom-10 z-10 bg-white rounded-lg px-2 py-2 shadow-lg transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 1 ? 1 : 0 }}>
-                <img src={nikeLogo} alt="Nike" className="w-16 h-auto" />
+              <div className="absolute right-10 bottom-10 z-10 bg-white rounded-lg px-4 py-3 shadow-lg transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 1 ? 1 : 0 }}>
+                <svg className="w-16 h-auto" viewBox="0 0 1000 356" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M245.8 91.5c-25.6 0-46.3 20.7-46.3 46.3s20.7 46.3 46.3 46.3 46.3-20.7 46.3-46.3-20.7-46.3-46.3-46.3zm0 70.7c-13.5 0-24.4-10.9-24.4-24.4s10.9-24.4 24.4-24.4 24.4 10.9 24.4 24.4-10.9 24.4-24.4 24.4z" fill="#000"/>
+                  <path d="M110.8 0L0 137.8h35.5L146.3 0h-35.5zm130.9 183.9c-25.6 0-46.3-20.7-46.3-46.3s20.7-46.3 46.3-46.3v-22c-37.7 0-68.3 30.6-68.3 68.3s30.6 68.3 68.3 68.3c18.9 0 35.9-7.7 48.3-20.1l-15.5-15.5c-8.3 8.3-19.8 13.6-32.8 13.6z" fill="#000"/>
+                </svg>
               </div>
               <div className="absolute right-10 bottom-10 z-10 bg-white rounded-lg px-2.5 py-5 shadow-lg transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 2 ? 1 : 0 }}>
                 <div className="flex items-center gap-1.5">
