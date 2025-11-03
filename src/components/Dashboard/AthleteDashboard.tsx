@@ -3,7 +3,7 @@ import { Briefcase, FileText, MessagesSquare, Star, TrendingUp, Award, Heart, Ch
 import { useState, useEffect } from 'react';
 import arenaImage from '../../assets/images/mos-sukjaroenkraisri-vO2XxMeYmnY-unsplash copy copy copy.jpg';
 import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
-import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
+import accorLogo from '../../assets/images/1196px-Accor_Logo.png';
 
 interface AthleteDashboardProps {
   onNavigate: (view: string) => void;
@@ -117,7 +117,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 </p>
               </div>
               <div className="relative z-10 bg-white rounded-lg px-2 py-2 shadow-lg">
-                <img src={nikeLogo} alt="Nike" className="w-16 h-auto" />
+                <img src={accorLogo} alt="Accor" className="w-16 h-auto" />
               </div>
             </div>
 
