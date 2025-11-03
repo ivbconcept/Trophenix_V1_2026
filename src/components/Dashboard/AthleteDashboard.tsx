@@ -171,8 +171,8 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 <div className="bg-white dark:bg-zinc-950 rounded-3xl overflow-hidden shadow-lg">
                   <div className="relative h-[400px]">
                     <img
-                      src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1200&h=500&fit=crop"
-                      alt="Global Markets"
+                      src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&h=500&fit=crop"
+                      alt="Paris 2024 Olympics"
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
