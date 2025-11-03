@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import arenaImage from '../../assets/images/mos-sukjaroenkraisri-vO2XxMeYmnY-unsplash copy copy copy.jpg';
 import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
 import financeImage from '../../assets/images/tuvalum-0L5wXMtaFWg-unsplash copy.jpg';
+import rugbyImage from '../../assets/images/stefan-lehner-fqrzserMsX4-unsplash.jpg';
 import accorLogo from '../../assets/images/1196px-Accor_Logo.png';
 import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
 
@@ -366,8 +367,8 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   <div className="bg-white dark:bg-zinc-950 rounded-3xl overflow-hidden shadow-lg h-full">
                     <div className="relative h-[400px]">
                       <img
-                        src="https://images.pexels.com/photos/3764538/pexels-photo-3764538.jpeg?auto=compress&cs=tinysrgb&w=800"
-                        alt="Technology Innovation"
+                        src={rugbyImage}
+                        alt="Rugby Match"
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
