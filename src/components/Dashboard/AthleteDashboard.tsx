@@ -464,7 +464,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   </p>
                   <button className="flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-xl text-slate-900 dark:text-slate-900 font-semibold hover:bg-white transition-all">
                     <FileText className="w-4 h-4" />
-                    Critiques
+                    Insport
                   </button>
                 </div>
 
@@ -480,7 +480,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     <div className="absolute bottom-11 left-4 flex gap-2">
                       <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-lg text-white text-xs font-medium hover:bg-white/20 transition-all border border-white/20">
                         <FileText className="w-3 h-3" />
-                        Critiques
+                        Insport
                       </button>
                       <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-lg text-white text-xs font-medium hover:bg-white/20 transition-all border border-white/20">
                         <Play className="w-3 h-3" />
@@ -506,7 +506,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     <div className="absolute bottom-11 left-4 flex gap-2">
                       <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-lg text-white text-xs font-medium hover:bg-white/20 transition-all border border-white/20">
                         <FileText className="w-3 h-3" />
-                        Critiques
+                        Insport
                       </button>
                       <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-lg text-white text-xs font-medium hover:bg-white/20 transition-all border border-white/20">
                         <Play className="w-3 h-3" />
