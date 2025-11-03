@@ -226,8 +226,8 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                 <div className="bg-white dark:bg-zinc-950 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
                   <img
-                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=160&h=100&fit=crop"
-                    alt="News 2"
+                    src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=160&h=100&fit=crop"
+                    alt="Football"
                     className="w-28 h-24 rounded-lg object-cover flex-shrink-0"
                   />
                   <div className="flex-1">
