@@ -63,6 +63,7 @@ import davideAracri from '../assets/images/davide-aracri-Q2mL8cqqI7E-unsplash.jp
 import jacekDylag from '../assets/images/jacek-dylag-fZglO1JkwoM-unsplash.jpg';
 import jadonJohnson from '../assets/images/jadon-johnson-1wS1AHSvqeg-unsplash.jpg';
 import matthieuPetiard from '../assets/images/matthieu-petiard-Pf6e3o0GL4M-unsplash.jpg';
+import gersonRepreza from '../assets/images/gerson-repreza-tNQ2tmQiC6g-unsplash copy.jpg';
 import franceTravailLogo from '../assets/images/logo france travaiil.webp';
 import wexecutiveLogo from '../assets/images/logo w executivve.png';
 import diversidaysLogo from '../assets/images/Diversidays_Logo.png';
@@ -1541,7 +1542,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
               <div className="col-span-12 lg:col-span-7">
                 <div className="relative h-[500px] rounded-3xl overflow-hidden group">
                   <img
-                    src="https://images.pexels.com/photos/4246120/pexels-photo-4246120.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                    src={gersonRepreza}
                     alt="Global Markets and Enterprise"
                     className="w-full h-full object-cover"
                   />
