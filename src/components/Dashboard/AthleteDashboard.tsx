@@ -413,8 +413,8 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   <p className="text-white/90 text-lg leading-relaxed mb-6">
                     L'histoire captivante de Michael Jordan et des Chicago Bulls durant leur quête du sixième titre NBA en 1998...
                   </p>
-                  <button className="flex items-center gap-2 px-6 py-3 bg-white/90 backdrop-blur-sm rounded-xl text-slate-900 font-semibold hover:bg-white transition-all">
-                    <FileText className="w-5 h-5" />
+                  <button className="flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-xl text-slate-900 font-semibold hover:bg-white transition-all">
+                    <FileText className="w-4 h-4" />
                     Reviews
                   </button>
                 </div>
