@@ -99,21 +99,21 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 style={{ opacity: currentImageIndex === 1 ? 1 : 0 }}
               ></div>
               <div className="relative z-10 transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 0 ? 1 : 0 }}>
-                <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-md inline-block">PLATEFORME TROPHENIX</p>
-                <h1 className="text-4xl font-bold leading-tight mb-4">
-                  Développez Votre Carrière
-                </h1>
-                <p className="text-white/90 text-lg max-w-2xl leading-relaxed">
-                  Découvrez des opportunités uniques adaptées à votre profil d'athlète
-                </p>
-              </div>
-              <div className="absolute left-10 bottom-10 z-10 transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 1 ? 1 : 0 }}>
                 <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-md inline-block">Jeux Olympiques 2028</p>
                 <h1 className="text-4xl font-bold leading-tight mb-4">
                   Préparez-vous plus sereinement
                 </h1>
                 <p className="text-white/90 text-lg max-w-2xl leading-relaxed">
                   Trouvez des solutions personnalisées à votre situation
+                </p>
+              </div>
+              <div className="absolute left-10 bottom-10 z-10 transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 1 ? 1 : 0 }}>
+                <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-md inline-block">PLATEFORME TROPHENIX</p>
+                <h1 className="text-4xl font-bold leading-tight mb-4">
+                  Développez Votre Carrière
+                </h1>
+                <p className="text-white/90 text-lg max-w-2xl leading-relaxed">
+                  Découvrez des opportunités uniques adaptées à votre profil d'athlète
                 </p>
               </div>
               <div className="relative z-10 bg-white rounded-lg px-2 py-2 shadow-lg">
