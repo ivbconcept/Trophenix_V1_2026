@@ -490,7 +490,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                     <div className="absolute bottom-4 left-4 right-4">
                       <h3 className="text-base font-bold text-white mb-0 leading-tight">
-                        Formula 1: Drive to Survive
+                        Ma boxe : ma raison d'être
                       </h3>
                     </div>
                   </div>
@@ -516,7 +516,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                     <div className="absolute bottom-4 left-4 right-4">
                       <h3 className="text-base font-bold text-white mb-0 leading-tight">
-                        All or Nothing
+                        Tout ou rien
                       </h3>
                     </div>
                   </div>
