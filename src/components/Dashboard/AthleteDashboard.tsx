@@ -1,5 +1,5 @@
 import { useAuth } from '../../contexts/AuthContext';
-import { Briefcase, FileText, MessagesSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper, Mail, Bell, Search, MessageSquareText } from 'lucide-react';
+import { Briefcase, FileText, MessagesSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper, Mail, Bell, Search, MessageSquareText, Moon } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import arenaImage from '../../assets/images/mos-sukjaroenkraisri-vO2XxMeYmnY-unsplash copy copy copy.jpg';
 import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
@@ -46,6 +46,10 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             </div>
 
             <div className="flex items-center gap-1.5 md:gap-2 ml-3 md:ml-6">
+              <button className="p-2 md:p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl transition-all hover:shadow-sm group">
+                <Moon className="w-5 h-5 md:w-6 md:h-6 text-slate-600 group-hover:text-slate-900 transition-colors" strokeWidth={1.5} />
+              </button>
+
               <button className="relative p-2 md:p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl transition-all hover:shadow-sm group">
                 <MessageSquareText className="w-5 h-5 md:w-6 md:h-6 text-slate-600 group-hover:text-slate-900 transition-colors" strokeWidth={1.5} />
                 <span className="absolute top-1 right-1 md:top-1.5 md:right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
