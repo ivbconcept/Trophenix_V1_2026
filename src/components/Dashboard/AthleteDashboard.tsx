@@ -2,7 +2,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { useTheme } from '../../contexts/ThemeContext';
 import { Briefcase, FileText, MessagesSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper, Mail, Bell, Search, MessageSquareText, Moon, Sun } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import arenaImage from '../../assets/images/1s9kie13d7j81.jpg';
+import arenaImage from '../../assets/images/g37qbdk3yci01.jpg';
 import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
 import financeImage from '../../assets/images/tuvalum-0L5wXMtaFWg-unsplash copy.jpg';
 import rugbyImage from '../../assets/images/the-uplifting-times-a34aBWYwnKY-unsplash.jpg';
