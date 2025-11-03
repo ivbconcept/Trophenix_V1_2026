@@ -133,6 +133,11 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
 
         <div className="flex-1 py-8 px-4 overflow-y-auto">
           <div className="mb-8">
+            {!showSecondarySidebar && (
+              <p className="px-3 text-xs font-semibold text-slate-500 dark:text-zinc-400 uppercase tracking-wider mb-3">
+                NAVIGATION
+              </p>
+            )}
             <nav className="space-y-2">
               {primarySections.map((section) => {
                 const Icon = section.icon;
