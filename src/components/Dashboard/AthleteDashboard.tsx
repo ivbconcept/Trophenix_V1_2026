@@ -125,7 +125,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
           <div className="col-span-12">
             <div className="mb-6">
-              <h2 className="text-4xl font-bold leading-tight text-slate-900 mb-4">Les dernières news</h2>
+              <h2 className="text-2xl font-semibold leading-tight text-slate-600 mb-4">Les dernières news</h2>
               <div className="relative mb-6 flex items-center gap-6">
                 <div className="inline-flex bg-slate-100/80 rounded-2xl p-0.5 gap-0.5">
                   <div className="px-4 py-1.5 bg-white text-slate-900 rounded-xl text-sm font-semibold whitespace-nowrap cursor-pointer shadow-sm transition-all">
