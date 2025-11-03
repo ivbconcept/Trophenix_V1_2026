@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import arenaImage from '../../assets/images/mos-sukjaroenkraisri-vO2XxMeYmnY-unsplash copy copy copy.jpg';
 import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
 import accorLogo from '../../assets/images/1196px-Accor_Logo.png';
+import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
 
 interface AthleteDashboardProps {
   onNavigate: (view: string) => void;
@@ -116,8 +117,11 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   Découvrez des opportunités uniques adaptées à votre profil d'athlète
                 </p>
               </div>
-              <div className="relative z-10 bg-white rounded-lg px-2 py-2 shadow-lg">
+              <div className="relative z-10 bg-white rounded-lg px-2 py-2 shadow-lg transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 0 ? 1 : 0 }}>
                 <img src={accorLogo} alt="Accor" className="w-16 h-auto" />
+              </div>
+              <div className="absolute right-10 bottom-10 z-10 bg-white rounded-lg px-2 py-2 shadow-lg transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 1 ? 1 : 0 }}>
+                <img src={nikeLogo} alt="Nike" className="w-16 h-auto" />
               </div>
             </div>
 
