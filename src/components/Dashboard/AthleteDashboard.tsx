@@ -185,11 +185,11 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                       </div>
                     </div>
 
-                    <div className="absolute bottom-8 left-8 right-8">
+                    <div className="absolute bottom-8 left-8 right-8 max-w-[60%]">
                       <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
                         Paris 2024 :<br />Un bilan historique
                       </h2>
-                      <p className="text-white/90 text-lg mb-6 max-w-3xl leading-relaxed">
+                      <p className="text-white/90 text-lg mb-6 leading-relaxed">
                         Les Jeux Olympiques de Paris 2024 resteront dans les mémoires comme un moment exceptionnel pour le sport français. Avec 64 médailles au compteur, l'équipe de France a dépassé tous les objectifs initiaux et s'est positionnée parmi les meilleures nations sportives mondiales.
                       </p>
                       <div className="flex items-center gap-3">
