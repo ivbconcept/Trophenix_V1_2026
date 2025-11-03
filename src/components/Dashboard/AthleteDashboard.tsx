@@ -428,7 +428,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
 
-                    <div className="absolute top-4 left-4 flex gap-2">
+                    <div className="absolute bottom-16 left-4 flex gap-2">
                       <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-lg text-white text-xs font-medium hover:bg-white/20 transition-all border border-white/20">
                         <FileText className="w-3 h-3" />
                         Reviews
@@ -454,7 +454,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
 
-                    <div className="absolute top-4 left-4 flex gap-2">
+                    <div className="absolute bottom-16 left-4 flex gap-2">
                       <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-lg text-white text-xs font-medium hover:bg-white/20 transition-all border border-white/20">
                         <FileText className="w-3 h-3" />
                         Reviews
