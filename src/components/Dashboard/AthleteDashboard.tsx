@@ -185,7 +185,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                       </div>
                     </div>
 
-                    <div className="absolute bottom-8 left-8 right-8 max-w-[60%]">
+                    <div className="absolute bottom-8 left-8 right-8 max-w-[80%]">
                       <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
                         Paris 2024 :<br />Un bilan historique
                       </h2>
