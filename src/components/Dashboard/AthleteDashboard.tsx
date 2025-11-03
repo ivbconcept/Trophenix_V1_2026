@@ -295,7 +295,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                       </div>
 
                       <div className="absolute bottom-6 left-6 right-6">
-                        <h2 className="text-2xl font-bold text-white mb-3 leading-tight">
+                        <h2 className="text-2xl font-bold text-white mb-3 leading-tight line-clamp-2">
                           Global Markets and Enterprise
                         </h2>
                         <p className="text-white/90 text-sm mb-4 line-clamp-3 leading-relaxed">
@@ -333,7 +333,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                       </div>
 
                       <div className="absolute bottom-6 left-6 right-6">
-                        <h2 className="text-2xl font-bold text-white mb-3 leading-tight">
+                        <h2 className="text-2xl font-bold text-white mb-3 leading-tight line-clamp-2">
                           Innovation in Digital Sports
                         </h2>
                         <p className="text-white/90 text-sm mb-4 line-clamp-3 leading-relaxed">
@@ -371,7 +371,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                       </div>
 
                       <div className="absolute bottom-6 left-6 right-6">
-                        <h2 className="text-2xl font-bold text-white mb-3 leading-tight">
+                        <h2 className="text-2xl font-bold text-white mb-3 leading-tight line-clamp-2">
                           Strategic Partnerships for Athletes
                         </h2>
                         <p className="text-white/90 text-sm mb-4 line-clamp-3 leading-relaxed">
