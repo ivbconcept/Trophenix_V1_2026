@@ -4,7 +4,7 @@ import { Briefcase, FileText, MessagesSquare, Star, TrendingUp, Award, Heart, Ch
 import { useState, useEffect } from 'react';
 import arenaImage from '../../assets/images/mos-sukjaroenkraisri-vO2XxMeYmnY-unsplash copy copy copy.jpg';
 import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
-import financeImage from '../../assets/images/gerson-repreza-tNQ2tmQiC6g-unsplash copy copy.jpg';
+import financeImage from '../../assets/images/tuvalum-6ab6lSfTPn0-unsplash.jpg';
 import accorLogo from '../../assets/images/1196px-Accor_Logo.png';
 import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
 
@@ -146,7 +146,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               <div className="absolute left-10 bottom-10 z-10 transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 2 ? 1 : 0 }}>
                 <p className="text-white/90 text-xs font-semibold tracking-wider uppercase mb-4 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-md inline-block">GESTION FINANCIÈRE</p>
                 <h1 className="text-4xl font-bold leading-tight mb-4">
-                  Sécurisez Votre Avenir
+                  Optimisez Vos Finances
                 </h1>
                 <p className="text-white/90 text-lg max-w-2xl leading-relaxed">
                   Bénéficiez de conseils financiers personnalisés pour optimiser votre patrimoine
@@ -158,12 +158,12 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               <div className="absolute right-10 bottom-10 z-10 bg-white rounded-lg px-2 py-2 shadow-lg transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 1 ? 1 : 0 }}>
                 <img src={nikeLogo} alt="Nike" className="w-16 h-auto" />
               </div>
-              <div className="absolute right-10 bottom-10 z-10 bg-white rounded-lg px-3 py-2 shadow-lg transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 2 ? 1 : 0 }}>
-                <div className="flex items-center gap-1">
+              <div className="absolute right-10 bottom-10 z-10 bg-white rounded-lg px-4 py-3 shadow-lg transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 2 ? 1 : 0 }}>
+                <div className="flex items-center gap-1.5">
                   <span className="text-2xl font-bold text-black">SG</span>
-                  <div className="flex flex-col gap-0.5">
-                    <div className="w-8 h-1 bg-red-600"></div>
-                    <div className="w-8 h-1 bg-black"></div>
+                  <div className="flex flex-col gap-1">
+                    <div className="w-9 h-1.5 bg-red-600"></div>
+                    <div className="w-9 h-1.5 bg-black"></div>
                   </div>
                 </div>
               </div>
