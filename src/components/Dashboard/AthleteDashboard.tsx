@@ -422,7 +422,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 <div className="absolute top-6 right-6 w-[400px] h-[calc(100%-48px)] flex flex-col gap-6">
                   <div className="relative rounded-3xl overflow-hidden shadow-lg flex-1 group">
                     <img
-                      src="https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      src="/src/assets/images/zachary-kadolph-CmwNM-XHM48-unsplash.jpg"
                       alt="Formula 1: Drive to Survive"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
