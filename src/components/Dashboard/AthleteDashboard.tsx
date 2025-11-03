@@ -405,16 +405,6 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
 
-                <div className="absolute top-6 left-6 flex gap-3">
-                  <button className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-lg text-white text-sm font-medium hover:bg-white/20 transition-all border border-white/20">
-                    <FileText className="w-4 h-4" />
-                    Reviews
-                  </button>
-                  <button className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-lg text-white text-sm font-medium hover:bg-white/20 transition-all border border-white/20">
-                    <Play className="w-4 h-4" />
-                    Streaming Series
-                  </button>
-                </div>
 
                 <div className="absolute bottom-8 left-8 right-[450px]">
                   <h2 className="text-5xl font-bold text-white mb-4 leading-tight">
