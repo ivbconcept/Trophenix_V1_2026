@@ -457,10 +457,10 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                 <div className="absolute bottom-8 left-8 right-[450px]">
                   <h2 className="text-2xl font-bold text-white mb-4 leading-tight">
-                    The Last Dance
+                    LA 2028 : le backstage français
                   </h2>
                   <p className="text-white/90 text-lg leading-relaxed mb-6 max-w-[80%]">
-                    L'histoire captivante de Michael Jordan et des Chicago Bulls durant leur quête du sixième titre NBA en 1998...
+                    Plongez dans les coulisses de la préparation des athlètes français pour les Jeux Olympiques de Los Angeles 2028...
                   </p>
                   <button className="flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-xl text-slate-900 dark:text-slate-900 font-semibold hover:bg-white transition-all">
                     <FileText className="w-4 h-4" />
