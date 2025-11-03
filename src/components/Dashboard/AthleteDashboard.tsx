@@ -407,7 +407,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                       <img
                         src="https://images.pexels.com/photos/3621180/pexels-photo-3621180.jpeg?auto=compress&cs=tinysrgb&w=800"
                         alt="Sports Partnership"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover object-top"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
 
