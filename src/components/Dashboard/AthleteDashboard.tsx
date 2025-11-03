@@ -276,8 +276,8 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               </div>
 
               <div className="grid grid-cols-12 gap-6">
-                <div className="col-span-12">
-                  <div className="bg-white rounded-3xl overflow-hidden shadow-lg">
+                <div className="col-span-12 lg:col-span-4">
+                  <div className="bg-white rounded-3xl overflow-hidden shadow-lg h-full">
                     <div className="relative h-[400px]">
                       <img
                         src="https://images.pexels.com/photos/4246120/pexels-photo-4246120.jpeg?auto=compress&cs=tinysrgb&w=1200"
@@ -286,28 +286,104 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
 
-                      <div className="absolute top-8 left-8">
+                      <div className="absolute top-6 left-6">
                         <div className="flex items-center gap-3 text-white/90">
-                          <span className="text-sm font-semibold">Network</span>
-                          <span className="text-sm">|</span>
-                          <span className="text-sm">9d ago</span>
+                          <span className="text-xs font-semibold">Network</span>
+                          <span className="text-xs">|</span>
+                          <span className="text-xs">9d ago</span>
                         </div>
                       </div>
 
-                      <div className="absolute bottom-8 left-8 right-8">
-                        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
-                          Global Markets<br />and Enterprise
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <h2 className="text-2xl font-bold text-white mb-3 leading-tight">
+                          Global Markets and Enterprise
                         </h2>
-                        <p className="text-white/90 text-lg mb-6 max-w-3xl leading-relaxed">
-                          To spread the word, the company embarked on a mass marketing drive. TV campaigns launched in the platform's key markets. Nisi dignissim tortor sed quam sed ipsum ut. Dolor sit amet, consectetur adipiscing elit.
+                        <p className="text-white/90 text-sm mb-4 line-clamp-3 leading-relaxed">
+                          To spread the word, the company embarked on a mass marketing drive. TV campaigns launched in the platform's key markets.
                         </p>
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2">
                           <img
                             src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=faces"
                             alt="Nisi Nyung"
-                            className="w-10 h-10 rounded-full object-cover ring-2 ring-white/30"
+                            className="w-8 h-8 rounded-full object-cover ring-2 ring-white/30"
                           />
-                          <span className="text-white font-medium">Nisi Nyung</span>
+                          <span className="text-white text-sm font-medium">Nisi Nyung</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-span-12 lg:col-span-4">
+                  <div className="bg-white rounded-3xl overflow-hidden shadow-lg h-full">
+                    <div className="relative h-[400px]">
+                      <img
+                        src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800"
+                        alt="Technology Innovation"
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+
+                      <div className="absolute top-6 left-6">
+                        <div className="flex items-center gap-3 text-white/90">
+                          <span className="text-xs font-semibold">Technology</span>
+                          <span className="text-xs">|</span>
+                          <span className="text-xs">2d ago</span>
+                        </div>
+                      </div>
+
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <h2 className="text-2xl font-bold text-white mb-3 leading-tight">
+                          Innovation in Digital Sports
+                        </h2>
+                        <p className="text-white/90 text-sm mb-4 line-clamp-3 leading-relaxed">
+                          New technologies are transforming how athletes train and compete at the highest levels of performance.
+                        </p>
+                        <div className="flex items-center gap-2">
+                          <img
+                            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=faces"
+                            alt="Sarah Johnson"
+                            className="w-8 h-8 rounded-full object-cover ring-2 ring-white/30"
+                          />
+                          <span className="text-white text-sm font-medium">Sarah Johnson</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-span-12 lg:col-span-4">
+                  <div className="bg-white rounded-3xl overflow-hidden shadow-lg h-full">
+                    <div className="relative h-[400px]">
+                      <img
+                        src="https://images.pexels.com/photos/3766111/pexels-photo-3766111.jpeg?auto=compress&cs=tinysrgb&w=800"
+                        alt="Sports Partnership"
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+
+                      <div className="absolute top-6 left-6">
+                        <div className="flex items-center gap-3 text-white/90">
+                          <span className="text-xs font-semibold">Partnership</span>
+                          <span className="text-xs">|</span>
+                          <span className="text-xs">5d ago</span>
+                        </div>
+                      </div>
+
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <h2 className="text-2xl font-bold text-white mb-3 leading-tight">
+                          Strategic Partnerships for Athletes
+                        </h2>
+                        <p className="text-white/90 text-sm mb-4 line-clamp-3 leading-relaxed">
+                          Building meaningful connections between athletes and brands to create long-term success stories.
+                        </p>
+                        <div className="flex items-center gap-2">
+                          <img
+                            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=faces"
+                            alt="Michael Chen"
+                            className="w-8 h-8 rounded-full object-cover ring-2 ring-white/30"
+                          />
+                          <span className="text-white text-sm font-medium">Michael Chen</span>
                         </div>
                       </div>
                     </div>
