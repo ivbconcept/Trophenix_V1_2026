@@ -122,9 +122,6 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
           showSecondarySidebar ? 'px-4' : 'px-6'
         }`}>
           <div className="flex items-center gap-3 justify-center">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-500 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/50">
-              <Trophy className="h-6 w-6 text-white" />
-            </div>
             {!showSecondarySidebar && (
               <span className="text-xl font-bold text-slate-900 dark:text-white">Trophenix</span>
             )}
