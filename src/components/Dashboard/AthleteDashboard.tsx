@@ -448,7 +448,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                   <div className="relative rounded-3xl overflow-hidden shadow-lg flex-1 group">
                     <img
-                      src="https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      src="/src/assets/images/susan-flynn-h4d4m2IkBxA-unsplash.jpg"
                       alt="All or Nothing"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
