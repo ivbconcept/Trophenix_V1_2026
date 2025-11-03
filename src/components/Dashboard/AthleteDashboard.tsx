@@ -186,8 +186,8 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     </div>
 
                     <div className="absolute bottom-8 left-8 right-8 max-w-[80%]">
-                      <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
-                        Athlétisme :<br />Records et performances exceptionnelles
+                      <h2 className="text-4xl font-bold text-white mb-6 leading-tight line-clamp-2">
+                        Athlétisme : Records et performances exceptionnelles
                       </h2>
                       <p className="text-white/90 text-lg mb-6 leading-relaxed line-clamp-3 lg:line-clamp-4">
                         L'athlétisme français connaît une nouvelle ère dorée avec des performances remarquables sur les pistes mondiales. Entre records battus et podiums internationaux, les athlètes tricolores repoussent sans cesse les limites et inspirent une nouvelle génération de champions.
