@@ -64,6 +64,7 @@ import jacekDylag from '../assets/images/jacek-dylag-fZglO1JkwoM-unsplash.jpg';
 import jadonJohnson from '../assets/images/jadon-johnson-1wS1AHSvqeg-unsplash.jpg';
 import matthieuPetiard from '../assets/images/matthieu-petiard-Pf6e3o0GL4M-unsplash.jpg';
 import gersonRepreza from '../assets/images/gerson-repreza-tNQ2tmQiC6g-unsplash copy.jpg';
+import gersonReprezaTwo from '../assets/images/gerson-repreza-tNQ2tmQiC6g-unsplash copy copy.jpg';
 import franceTravailLogo from '../assets/images/logo france travaiil.webp';
 import wexecutiveLogo from '../assets/images/logo w executivve.png';
 import diversidaysLogo from '../assets/images/Diversidays_Logo.png';
@@ -135,6 +136,14 @@ const SupportersCarousel = () => {
       sport: 'Sponsoring',
       achievement: 'Budget 50k€+ - Tennis',
       image: 'https://images.pexels.com/photos/1661950/pexels-photo-1661950.jpeg?auto=compress&cs=tinysrgb&w=800',
+      gradient: 'from-slate-900/90'
+    },
+    {
+      id: 9,
+      name: 'Plateforme Trophenix',
+      sport: 'Innovation',
+      achievement: 'Votre carrière sportive optimisée',
+      image: gersonReprezaTwo,
       gradient: 'from-slate-900/90'
     }
   ];
