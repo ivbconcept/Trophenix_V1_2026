@@ -32,17 +32,17 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors">
-      <div className="sticky top-0 z-50 bg-white dark:bg-slate-800 shadow-sm mb-8 transition-colors">
+    <div className="min-h-screen bg-slate-50 dark:bg-black transition-colors">
+      <div className="sticky top-0 z-50 bg-white dark:bg-zinc-950 shadow-sm dark:shadow-zinc-900 mb-8 transition-colors">
         <div className="max-w-[1200px] mx-auto px-4 md:px-8 py-3 md:py-4">
           <div className="flex items-center justify-between">
             <div className="flex-1 max-w-[200px] md:max-w-xs lg:max-w-md">
               <div className="relative">
-                <Search className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400" />
+                <Search className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400 dark:text-zinc-500" />
                 <input
                   type="text"
                   placeholder="Search"
-                  className="w-full pl-9 md:pl-12 pr-3 md:pr-4 py-2 md:py-3 bg-slate-50 dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600 focus:outline-none focus:border-slate-300 dark:focus:border-slate-500 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-400 text-sm md:text-base transition-colors"
+                  className="w-full pl-9 md:pl-12 pr-3 md:pr-4 py-2 md:py-3 bg-slate-50 dark:bg-zinc-900 rounded-xl border border-slate-200 dark:border-zinc-800 focus:outline-none focus:border-slate-300 dark:focus:border-zinc-700 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 text-sm md:text-base transition-colors"
                 />
               </div>
             </div>
@@ -50,26 +50,26 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             <div className="flex items-center gap-1.5 md:gap-2 ml-3 md:ml-6">
               <button
                 onClick={toggleDarkMode}
-                className="p-2 md:p-2.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-xl transition-all hover:shadow-sm group"
+                className="p-2 md:p-2.5 bg-slate-50 hover:bg-slate-100 dark:bg-zinc-900 dark:hover:bg-zinc-800 rounded-xl transition-all hover:shadow-sm group"
               >
                 {isDarkMode ? (
-                  <Sun className="w-5 h-5 md:w-6 md:h-6 text-slate-600 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" strokeWidth={1.5} />
+                  <Sun className="w-5 h-5 md:w-6 md:h-6 text-slate-600 dark:text-zinc-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" strokeWidth={1.5} />
                 ) : (
                   <Moon className="w-5 h-5 md:w-6 md:h-6 text-slate-600 group-hover:text-slate-900 transition-colors" strokeWidth={1.5} />
                 )}
               </button>
 
-              <button className="relative p-2 md:p-2.5 bg-slate-50 dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600 rounded-xl transition-all hover:shadow-sm group">
-                <MessageSquareText className="w-5 h-5 md:w-6 md:h-6 text-slate-600 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" strokeWidth={1.5} />
+              <button className="relative p-2 md:p-2.5 bg-slate-50 dark:bg-zinc-900 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-xl transition-all hover:shadow-sm group">
+                <MessageSquareText className="w-5 h-5 md:w-6 md:h-6 text-slate-600 dark:text-zinc-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" strokeWidth={1.5} />
                 <span className="absolute top-1 right-1 md:top-1.5 md:right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
               </button>
 
-              <button className="relative p-2 md:p-2.5 bg-slate-50 dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600 rounded-xl transition-all hover:shadow-sm group">
-                <Bell className="w-5 h-5 md:w-6 md:h-6 text-slate-600 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" strokeWidth={1.5} />
+              <button className="relative p-2 md:p-2.5 bg-slate-50 dark:bg-zinc-900 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-xl transition-all hover:shadow-sm group">
+                <Bell className="w-5 h-5 md:w-6 md:h-6 text-slate-600 dark:text-zinc-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" strokeWidth={1.5} />
                 <span className="absolute top-1 right-1 md:top-1.5 md:right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
               </button>
 
-              <button className="flex items-center gap-2 md:gap-3 pl-2 md:pl-3 pr-3 md:pr-4 py-1.5 md:py-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors">
+              <button className="flex items-center gap-2 md:gap-3 pl-2 md:pl-3 pr-3 md:pr-4 py-1.5 md:py-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-full transition-colors">
                 <img
                   src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=faces"
                   alt="Profile"
@@ -142,23 +142,23 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
           <div className="col-span-12">
             <div className="mb-6">
-              <h2 className="text-2xl font-semibold leading-tight text-slate-600 mb-4">Les dernières actus</h2>
+              <h2 className="text-2xl font-semibold leading-tight text-slate-600 dark:text-zinc-300 mb-4">Les dernières actus</h2>
               <div className="relative mb-6 flex items-center gap-6">
-                <div className="inline-flex bg-slate-100/80 rounded-2xl p-0.5 gap-0.5">
-                  <div className="px-4 py-1.5 bg-white text-slate-900 rounded-xl text-sm font-semibold whitespace-nowrap cursor-pointer shadow-sm transition-all">
+                <div className="inline-flex bg-slate-100/80 dark:bg-zinc-900 rounded-2xl p-0.5 gap-0.5">
+                  <div className="px-4 py-1.5 bg-white dark:bg-zinc-800 text-slate-900 dark:text-white rounded-xl text-sm font-semibold whitespace-nowrap cursor-pointer shadow-sm transition-all">
                     Top
                   </div>
-                  <div className="px-4 py-1.5 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
+                  <div className="px-4 py-1.5 text-slate-500 dark:text-zinc-400 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700 dark:hover:text-zinc-200">
                     Football
                   </div>
-                  <div className="px-4 py-1.5 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
+                  <div className="px-4 py-1.5 text-slate-500 dark:text-zinc-400 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700 dark:hover:text-zinc-200">
                     Basketball
                   </div>
-                  <div className="px-4 py-1.5 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
+                  <div className="px-4 py-1.5 text-slate-500 dark:text-zinc-400 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700 dark:hover:text-zinc-200">
                     Tennis
                   </div>
                 </div>
-                <button className="flex items-center gap-2 px-4 py-1.5 bg-white border border-slate-200 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+                <button className="flex items-center gap-2 px-4 py-1.5 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-xl text-sm font-medium text-slate-700 dark:text-zinc-300 hover:bg-slate-50 dark:hover:bg-zinc-800 transition-all">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
                   </svg>
@@ -168,7 +168,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
               <div className="grid grid-cols-12 gap-6">
               <div className="col-span-12 lg:col-span-8">
-                <div className="bg-white rounded-3xl overflow-hidden shadow-lg">
+                <div className="bg-white dark:bg-zinc-950 rounded-3xl overflow-hidden shadow-lg">
                   <div className="relative h-[400px]">
                     <img
                       src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1200&h=500&fit=crop"
@@ -206,17 +206,17 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               </div>
 
               <div className="col-span-12 lg:col-span-4 flex flex-col gap-3">
-                <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
+                <div className="bg-white dark:bg-zinc-950 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
                   <img
                     src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=160&h=100&fit=crop"
                     alt="News 1"
                     className="w-28 h-24 rounded-lg object-cover flex-shrink-0"
                   />
                   <div className="flex-1">
-                    <h4 className="text-sm font-semibold text-slate-900 line-clamp-2 leading-tight mb-2">
+                    <h4 className="text-sm font-semibold text-slate-900 dark:text-white line-clamp-2 leading-tight mb-2">
                       Jabodebek LRT Instagram Account Offers Cheap Redeem iPhone 14 Pro Max
                     </h4>
-                    <div className="flex items-center gap-2 text-xs text-slate-500">
+                    <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-zinc-400">
                       <span>12K Views</span>
                       <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
                       <span>15 minutes</span>
@@ -224,17 +224,17 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
+                <div className="bg-white dark:bg-zinc-950 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
                   <img
                     src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=160&h=100&fit=crop"
                     alt="News 2"
                     className="w-28 h-24 rounded-lg object-cover flex-shrink-0"
                   />
                   <div className="flex-1">
-                    <h4 className="text-sm font-semibold text-slate-900 line-clamp-2 leading-tight mb-2">
+                    <h4 className="text-sm font-semibold text-slate-900 dark:text-white line-clamp-2 leading-tight mb-2">
                       PDIP Headquarters Became Material for Volunteer Anger
                     </h4>
-                    <div className="flex items-center gap-2 text-xs text-slate-500">
+                    <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-zinc-400">
                       <span>239 Views</span>
                       <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
                       <span>20 minutes</span>
@@ -242,17 +242,17 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
+                <div className="bg-white dark:bg-zinc-950 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
                   <img
                     src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=160&h=100&fit=crop"
                     alt="News 3"
                     className="w-28 h-24 rounded-lg object-cover flex-shrink-0"
                   />
                   <div className="flex-1">
-                    <h4 className="text-sm font-semibold text-slate-900 line-clamp-2 leading-tight mb-2">
+                    <h4 className="text-sm font-semibold text-slate-900 dark:text-white line-clamp-2 leading-tight mb-2">
                       Video of Chinese-Speaking Police Prepared for Duty at IKN
                     </h4>
-                    <div className="flex items-center gap-2 text-xs text-slate-500">
+                    <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-zinc-400">
                       <span>100 Views</span>
                       <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
                       <span>25 minutes</span>
@@ -267,24 +267,24 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
           <div className="col-span-12">
             <div className="mb-6">
-              <h2 className="text-2xl font-semibold leading-tight text-slate-600 mb-6">Toute l'actualité</h2>
+              <h2 className="text-2xl font-semibold leading-tight text-slate-600 dark:text-zinc-300 mb-6">Toute l'actualité</h2>
 
               <div className="relative mb-6 flex items-center gap-6">
-                <div className="inline-flex bg-slate-100/80 rounded-2xl p-0.5 gap-0.5">
-                  <div className="px-4 py-1.5 bg-white text-slate-900 rounded-xl text-sm font-semibold whitespace-nowrap cursor-pointer shadow-sm transition-all">
+                <div className="inline-flex bg-slate-100/80 dark:bg-zinc-900 rounded-2xl p-0.5 gap-0.5">
+                  <div className="px-4 py-1.5 bg-white dark:bg-zinc-800 text-slate-900 dark:text-white rounded-xl text-sm font-semibold whitespace-nowrap cursor-pointer shadow-sm transition-all">
                     Top
                   </div>
-                  <div className="px-4 py-1.5 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
+                  <div className="px-4 py-1.5 text-slate-500 dark:text-zinc-400 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700 dark:hover:text-zinc-200">
                     Football
                   </div>
-                  <div className="px-4 py-1.5 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
+                  <div className="px-4 py-1.5 text-slate-500 dark:text-zinc-400 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700 dark:hover:text-zinc-200">
                     Basketball
                   </div>
-                  <div className="px-4 py-1.5 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
+                  <div className="px-4 py-1.5 text-slate-500 dark:text-zinc-400 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700 dark:hover:text-zinc-200">
                     Tennis
                   </div>
                 </div>
-                <button className="flex items-center gap-2 px-4 py-1.5 bg-white border border-slate-200 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+                <button className="flex items-center gap-2 px-4 py-1.5 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-xl text-sm font-medium text-slate-700 dark:text-zinc-300 hover:bg-slate-50 dark:hover:bg-zinc-800 transition-all">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
                   </svg>
@@ -294,7 +294,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
               <div className="grid grid-cols-12 gap-6">
                 <div className="col-span-12 lg:col-span-4">
-                  <div className="bg-white rounded-3xl overflow-hidden shadow-lg h-full">
+                  <div className="bg-white dark:bg-zinc-950 rounded-3xl overflow-hidden shadow-lg h-full">
                     <div className="relative h-[400px]">
                       <img
                         src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1200"
@@ -332,7 +332,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 </div>
 
                 <div className="col-span-12 lg:col-span-4">
-                  <div className="bg-white rounded-3xl overflow-hidden shadow-lg h-full">
+                  <div className="bg-white dark:bg-zinc-950 rounded-3xl overflow-hidden shadow-lg h-full">
                     <div className="relative h-[400px]">
                       <img
                         src="https://images.pexels.com/photos/3764538/pexels-photo-3764538.jpeg?auto=compress&cs=tinysrgb&w=800"
@@ -370,7 +370,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 </div>
 
                 <div className="col-span-12 lg:col-span-4">
-                  <div className="bg-white rounded-3xl overflow-hidden shadow-lg h-full">
+                  <div className="bg-white dark:bg-zinc-950 rounded-3xl overflow-hidden shadow-lg h-full">
                     <div className="relative h-[400px]">
                       <img
                         src="https://images.pexels.com/photos/3621180/pexels-photo-3621180.jpeg?auto=compress&cs=tinysrgb&w=800"
@@ -412,7 +412,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
           <div className="col-span-12">
             <div className="mb-6">
-              <h2 className="text-2xl font-semibold leading-tight text-slate-600 mb-6">Documentaires sportifs</h2>
+              <h2 className="text-2xl font-semibold leading-tight text-slate-600 dark:text-zinc-300 mb-6">Documentaires sportifs</h2>
 
               <div className="relative rounded-3xl overflow-hidden shadow-lg h-[500px] group cursor-pointer">
                 <img
