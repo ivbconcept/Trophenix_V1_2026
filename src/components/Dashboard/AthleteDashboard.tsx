@@ -6,7 +6,6 @@ import arenaImage from '../../assets/images/mos-sukjaroenkraisri-vO2XxMeYmnY-uns
 import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
 import financeImage from '../../assets/images/tuvalum-0L5wXMtaFWg-unsplash copy.jpg';
 import rugbyImage from '../../assets/images/the-uplifting-times-a34aBWYwnKY-unsplash.jpg';
-import sunsetImage from '../../assets/images/gerson-repreza-tNQ2tmQiC6g-unsplash copy copy copy.jpg';
 import accorLogo from '../../assets/images/1196px-Accor_Logo.png';
 import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
 
@@ -330,15 +329,15 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   <div className="bg-white dark:bg-zinc-950 rounded-3xl overflow-hidden shadow-lg h-full">
                     <div className="relative h-[400px]">
                       <img
-                        src={sunsetImage}
-                        alt="California Sunset"
+                        src="https://images.unsplash.com/photo-1608245449230-4ac19066d2d0?w=1200&h=800&fit=crop"
+                        alt="Victor Wembanyama Basketball"
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
 
                       <div className="absolute top-6 left-6">
                         <div className="flex items-center gap-3 text-white/90">
-                          <span className="text-xs font-semibold">Lifestyle</span>
+                          <span className="text-xs font-semibold">Basket</span>
                           <span className="text-xs">|</span>
                           <span className="text-xs">Il y a 3h</span>
                         </div>
@@ -346,10 +345,10 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                       <div className="absolute bottom-6 left-6 right-6">
                         <h2 className="text-2xl font-bold text-white mb-3 leading-tight line-clamp-2">
-                          Californie : Le rêve américain des athlètes
+                          Victor Wembanyama domine la NBA
                         </h2>
                         <p className="text-white/90 text-sm mb-4 line-clamp-3 leading-relaxed">
-                          De nombreux sportifs français choisissent la Californie pour poursuivre leur carrière et profiter d'un cadre de vie exceptionnel sous le soleil de l'Ouest américain.
+                          Le prodige français continue d'éblouir la NBA avec des performances exceptionnelles. Sa saison rookie est déjà considérée comme historique.
                         </p>
                         <div className="flex items-center gap-2">
                           <img
