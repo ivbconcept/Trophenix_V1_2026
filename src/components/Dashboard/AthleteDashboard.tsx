@@ -187,10 +187,10 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                     <div className="absolute bottom-8 left-8 right-8 max-w-[80%]">
                       <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
-                        Paris 2024 :<br />Un bilan historique
+                        Athlétisme :<br />Records et performances exceptionnelles
                       </h2>
                       <p className="text-white/90 text-lg mb-6 leading-relaxed line-clamp-3 lg:line-clamp-4">
-                        Les Jeux Olympiques de Paris 2024 resteront dans les mémoires comme un moment exceptionnel pour le sport français. Avec 64 médailles au compteur, l'équipe de France a dépassé tous les objectifs initiaux et s'est positionnée parmi les meilleures nations sportives mondiales.
+                        L'athlétisme français connaît une nouvelle ère dorée avec des performances remarquables sur les pistes mondiales. Entre records battus et podiums internationaux, les athlètes tricolores repoussent sans cesse les limites et inspirent une nouvelle génération de champions.
                       </p>
                       <div className="flex items-center gap-3">
                         <img
