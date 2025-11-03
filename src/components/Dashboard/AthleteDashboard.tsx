@@ -1,5 +1,6 @@
 import { useAuth } from '../../contexts/AuthContext';
-import { Briefcase, FileText, MessagesSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper, Mail, Bell, Search, MessageSquareText, Moon } from 'lucide-react';
+import { useTheme } from '../../contexts/ThemeContext';
+import { Briefcase, FileText, MessagesSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper, Mail, Bell, Search, MessageSquareText, Moon, Sun } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import arenaImage from '../../assets/images/mos-sukjaroenkraisri-vO2XxMeYmnY-unsplash copy copy copy.jpg';
 import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
@@ -17,6 +18,7 @@ const backgroundImages = [
 
 export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
   const { profile } = useAuth();
+  const { isDarkMode, toggleDarkMode } = useTheme();
   const [activeTab, setActiveTab] = useState<'all' | 'jobs' | 'sponsoring'>('all');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -30,8 +32,8 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <div className="sticky top-0 z-50 bg-white shadow-sm mb-8">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors">
+      <div className="sticky top-0 z-50 bg-white dark:bg-slate-800 shadow-sm mb-8 transition-colors">
         <div className="max-w-[1200px] mx-auto px-4 md:px-8 py-3 md:py-4">
           <div className="flex items-center justify-between">
             <div className="flex-1 max-w-[200px] md:max-w-xs lg:max-w-md">
@@ -40,33 +42,40 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 <input
                   type="text"
                   placeholder="Search"
-                  className="w-full pl-9 md:pl-12 pr-3 md:pr-4 py-2 md:py-3 bg-slate-50 rounded-xl border border-slate-200 focus:outline-none focus:border-slate-300 text-slate-900 placeholder-slate-400 text-sm md:text-base"
+                  className="w-full pl-9 md:pl-12 pr-3 md:pr-4 py-2 md:py-3 bg-slate-50 dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600 focus:outline-none focus:border-slate-300 dark:focus:border-slate-500 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-400 text-sm md:text-base transition-colors"
                 />
               </div>
             </div>
 
             <div className="flex items-center gap-1.5 md:gap-2 ml-3 md:ml-6">
-              <button className="p-2 md:p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl transition-all hover:shadow-sm group">
-                <Moon className="w-5 h-5 md:w-6 md:h-6 text-slate-600 group-hover:text-slate-900 transition-colors" strokeWidth={1.5} />
+              <button
+                onClick={toggleDarkMode}
+                className="p-2 md:p-2.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-xl transition-all hover:shadow-sm group"
+              >
+                {isDarkMode ? (
+                  <Sun className="w-5 h-5 md:w-6 md:h-6 text-slate-600 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" strokeWidth={1.5} />
+                ) : (
+                  <Moon className="w-5 h-5 md:w-6 md:h-6 text-slate-600 group-hover:text-slate-900 transition-colors" strokeWidth={1.5} />
+                )}
               </button>
 
-              <button className="relative p-2 md:p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl transition-all hover:shadow-sm group">
-                <MessageSquareText className="w-5 h-5 md:w-6 md:h-6 text-slate-600 group-hover:text-slate-900 transition-colors" strokeWidth={1.5} />
+              <button className="relative p-2 md:p-2.5 bg-slate-50 dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600 rounded-xl transition-all hover:shadow-sm group">
+                <MessageSquareText className="w-5 h-5 md:w-6 md:h-6 text-slate-600 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" strokeWidth={1.5} />
                 <span className="absolute top-1 right-1 md:top-1.5 md:right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
               </button>
 
-              <button className="relative p-2 md:p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl transition-all hover:shadow-sm group">
-                <Bell className="w-5 h-5 md:w-6 md:h-6 text-slate-600 group-hover:text-slate-900 transition-colors" strokeWidth={1.5} />
+              <button className="relative p-2 md:p-2.5 bg-slate-50 dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600 rounded-xl transition-all hover:shadow-sm group">
+                <Bell className="w-5 h-5 md:w-6 md:h-6 text-slate-600 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" strokeWidth={1.5} />
                 <span className="absolute top-1 right-1 md:top-1.5 md:right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
               </button>
 
-              <button className="flex items-center gap-2 md:gap-3 pl-2 md:pl-3 pr-3 md:pr-4 py-1.5 md:py-2 hover:bg-slate-100 rounded-full transition-colors">
+              <button className="flex items-center gap-2 md:gap-3 pl-2 md:pl-3 pr-3 md:pr-4 py-1.5 md:py-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors">
                 <img
                   src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=faces"
                   alt="Profile"
                   className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover ring-2 ring-slate-300"
                 />
-                <span className="text-slate-900 font-medium text-sm md:text-base hidden sm:inline">
+                <span className="text-slate-900 dark:text-white font-medium text-sm md:text-base hidden sm:inline">
                   {profile?.first_name || 'Jayson'}
                 </span>
               </button>
