@@ -393,6 +393,103 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             </div>
           </div>
 
+          <div className="col-span-12">
+            <div className="mb-6">
+              <h2 className="text-2xl font-semibold leading-tight text-slate-600 mb-6">Documentaires sportifs</h2>
+
+              <div className="grid grid-cols-12 gap-6">
+                <div className="col-span-12 lg:col-span-7">
+                  <div className="relative rounded-3xl overflow-hidden shadow-lg h-[500px] group cursor-pointer">
+                    <img
+                      src="https://images.pexels.com/photos/863988/pexels-photo-863988.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                      alt="The Last Dance"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+
+                    <div className="absolute top-6 left-6 flex gap-3">
+                      <button className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-lg text-white text-sm font-medium hover:bg-white/20 transition-all border border-white/20">
+                        <FileText className="w-4 h-4" />
+                        Reviews
+                      </button>
+                      <button className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-lg text-white text-sm font-medium hover:bg-white/20 transition-all border border-white/20">
+                        <Play className="w-4 h-4" />
+                        Streaming Series
+                      </button>
+                    </div>
+
+                    <div className="absolute bottom-8 left-8 right-8">
+                      <h2 className="text-5xl font-bold text-white mb-4 leading-tight">
+                        The Last Dance
+                      </h2>
+                      <p className="text-white/90 text-lg max-w-2xl leading-relaxed mb-6">
+                        L'histoire captivante de Michael Jordan et des Chicago Bulls durant leur quête du sixième titre NBA en 1998...
+                      </p>
+                      <button className="flex items-center gap-2 px-6 py-3 bg-white/90 backdrop-blur-sm rounded-xl text-slate-900 font-semibold hover:bg-white transition-all">
+                        <FileText className="w-5 h-5" />
+                        Reviews
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-span-12 lg:col-span-5 flex flex-col gap-6">
+                  <div className="relative rounded-3xl overflow-hidden shadow-lg h-[237px] group cursor-pointer">
+                    <img
+                      src="https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="Formula 1: Drive to Survive"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+
+                    <div className="absolute top-4 left-4 flex gap-2">
+                      <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-lg text-white text-xs font-medium hover:bg-white/20 transition-all border border-white/20">
+                        <FileText className="w-3 h-3" />
+                        Reviews
+                      </button>
+                      <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-lg text-white text-xs font-medium hover:bg-white/20 transition-all border border-white/20">
+                        <Play className="w-3 h-3" />
+                        Streaming Series
+                      </button>
+                    </div>
+
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <h3 className="text-2xl font-bold text-white mb-2 leading-tight">
+                        Formula 1: Drive to Survive
+                      </h3>
+                    </div>
+                  </div>
+
+                  <div className="relative rounded-3xl overflow-hidden shadow-lg h-[237px] group cursor-pointer">
+                    <img
+                      src="https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="All or Nothing"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+
+                    <div className="absolute top-4 left-4 flex gap-2">
+                      <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-lg text-white text-xs font-medium hover:bg-white/20 transition-all border border-white/20">
+                        <FileText className="w-3 h-3" />
+                        Reviews
+                      </button>
+                      <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-lg text-white text-xs font-medium hover:bg-white/20 transition-all border border-white/20">
+                        <Play className="w-3 h-3" />
+                        Streaming Series
+                      </button>
+                    </div>
+
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <h3 className="text-2xl font-bold text-white mb-2 leading-tight">
+                        All or Nothing
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
