@@ -407,7 +407,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
 
                 <div className="absolute bottom-8 left-8 right-[450px]">
-                  <h2 className="text-5xl font-bold text-white mb-4 leading-tight">
+                  <h2 className="text-2xl font-bold text-white mb-4 leading-tight">
                     The Last Dance
                   </h2>
                   <p className="text-white/90 text-lg leading-relaxed mb-6">
