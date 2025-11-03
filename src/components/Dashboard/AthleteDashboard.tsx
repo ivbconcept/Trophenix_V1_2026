@@ -4,7 +4,7 @@ import { Briefcase, FileText, MessagesSquare, Star, TrendingUp, Award, Heart, Ch
 import { useState, useEffect } from 'react';
 import arenaImage from '../../assets/images/mos-sukjaroenkraisri-vO2XxMeYmnY-unsplash copy copy copy.jpg';
 import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
-import financeImage from '../../assets/images/tuvalum-6ab6lSfTPn0-unsplash.jpg';
+import financeImage from '../../assets/images/tuvalum-0L5wXMtaFWg-unsplash copy.jpg';
 import accorLogo from '../../assets/images/1196px-Accor_Logo.png';
 import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
 
@@ -158,12 +158,12 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               <div className="absolute right-10 bottom-10 z-10 bg-white rounded-lg px-2 py-2 shadow-lg transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 1 ? 1 : 0 }}>
                 <img src={nikeLogo} alt="Nike" className="w-16 h-auto" />
               </div>
-              <div className="absolute right-10 bottom-10 z-10 bg-white rounded-lg px-4 py-3 shadow-lg transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 2 ? 1 : 0 }}>
+              <div className="absolute right-10 bottom-10 z-10 bg-white rounded-lg px-2.5 py-5 shadow-lg transition-opacity duration-[1000ms] ease-in-out" style={{ opacity: currentImageIndex === 2 ? 1 : 0 }}>
                 <div className="flex items-center gap-1.5">
                   <span className="text-2xl font-bold text-black">SG</span>
                   <div className="flex flex-col gap-1">
-                    <div className="w-9 h-1.5 bg-red-600"></div>
-                    <div className="w-9 h-1.5 bg-black"></div>
+                    <div className="w-7 h-1.5 bg-red-600"></div>
+                    <div className="w-7 h-1.5 bg-black"></div>
                   </div>
                 </div>
               </div>
