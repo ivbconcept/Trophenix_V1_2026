@@ -297,8 +297,8 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   <div className="bg-white dark:bg-zinc-950 rounded-3xl overflow-hidden shadow-lg h-full">
                     <div className="relative h-[400px]">
                       <img
-                        src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                        alt="Global Markets"
+                        src="https://images.unsplash.com/photo-1608245449230-4ac19066d2d0?w=1200&h=800&fit=crop"
+                        alt="Victor Wembanyama Basketball"
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
