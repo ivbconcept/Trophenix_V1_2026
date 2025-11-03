@@ -192,7 +192,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 </div>
               </div>
 
-              <div className="col-span-12 lg:col-span-4 flex flex-col gap-4">
+              <div className="col-span-12 lg:col-span-4 flex flex-col gap-3">
                 <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
                   <img
                     src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=160&h=100&fit=crop"
