@@ -248,6 +248,132 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
             </div>
           </div>
 
+          <div className="col-span-12">
+            <div className="mb-6">
+              <h2 className="text-4xl font-bold leading-tight text-slate-900 mb-6">Les infos</h2>
+
+              <div className="relative mb-6 flex items-center gap-6">
+                <div className="inline-flex bg-slate-100/80 rounded-2xl p-0.5 gap-0.5">
+                  <div className="px-4 py-1.5 bg-white text-slate-900 rounded-xl text-sm font-semibold whitespace-nowrap cursor-pointer shadow-sm transition-all">
+                    Top
+                  </div>
+                  <div className="px-4 py-1.5 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
+                    Football
+                  </div>
+                  <div className="px-4 py-1.5 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
+                    Basketball
+                  </div>
+                  <div className="px-4 py-1.5 text-slate-500 rounded-xl text-sm font-medium whitespace-nowrap cursor-pointer transition-all hover:text-slate-700">
+                    Tennis
+                  </div>
+                </div>
+                <button className="flex items-center gap-2 px-4 py-1.5 bg-white border border-slate-200 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                  </svg>
+                  Filter
+                </button>
+              </div>
+
+              <div className="grid grid-cols-12 gap-6">
+                <div className="col-span-12 lg:col-span-8">
+                  <div className="bg-white rounded-3xl overflow-hidden shadow-lg">
+                    <div className="relative h-[400px]">
+                      <img
+                        src="https://images.pexels.com/photos/4246120/pexels-photo-4246120.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                        alt="Global Markets"
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+
+                      <div className="absolute top-8 left-8">
+                        <div className="flex items-center gap-3 text-white/90">
+                          <span className="text-sm font-semibold">Network</span>
+                          <span className="text-sm">|</span>
+                          <span className="text-sm">9d ago</span>
+                        </div>
+                      </div>
+
+                      <div className="absolute bottom-8 left-8 right-8">
+                        <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
+                          Global Markets<br />and Enterprise
+                        </h2>
+                        <p className="text-white/90 text-lg mb-6 max-w-3xl leading-relaxed">
+                          To spread the word, the company embarked on a mass marketing drive. TV campaigns launched in the platform's key markets. Nisi dignissim tortor sed quam sed ipsum ut. Dolor sit amet, consectetur adipiscing elit.
+                        </p>
+                        <div className="flex items-center gap-3">
+                          <img
+                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=faces"
+                            alt="Nisi Nyung"
+                            className="w-10 h-10 rounded-full object-cover ring-2 ring-white/30"
+                          />
+                          <span className="text-white font-medium">Nisi Nyung</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-span-12 lg:col-span-4 flex flex-col gap-4">
+                  <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
+                    <div className="w-28 h-24 rounded-lg flex-shrink-0 bg-red-600 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-white font-bold text-2xl mb-1">SALE</div>
+                        <div className="bg-red-700 text-white px-3 py-1 rounded-lg font-bold text-lg">50%</div>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-sm font-semibold text-slate-900 line-clamp-2 leading-tight mb-2">
+                        Jabodebek LRT Instagram
+                      </h4>
+                      <div className="flex items-center gap-2 text-xs text-slate-500">
+                        <span>12K Views</span>
+                        <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
+                        <span>15 minutes</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
+                    <img
+                      src="https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&w=200"
+                      alt="PDIP Headquarters"
+                      className="w-28 h-24 rounded-lg object-cover flex-shrink-0"
+                    />
+                    <div className="flex-1">
+                      <h4 className="text-sm font-semibold text-slate-900 line-clamp-2 leading-tight mb-2">
+                        PDIP Headquarters
+                      </h4>
+                      <div className="flex items-center gap-2 text-xs text-slate-500">
+                        <span>239 Views</span>
+                        <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
+                        <span>20 minutes</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
+                    <img
+                      src="https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=200"
+                      alt="Video of Chinese"
+                      className="w-28 h-24 rounded-lg object-cover flex-shrink-0"
+                    />
+                    <div className="flex-1">
+                      <h4 className="text-sm font-semibold text-slate-900 line-clamp-2 leading-tight mb-2">
+                        Video of Chinese-
+                      </h4>
+                      <div className="flex items-center gap-2 text-xs text-slate-500">
+                        <span>100 Views</span>
+                        <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
+                        <span>25 minutes</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
