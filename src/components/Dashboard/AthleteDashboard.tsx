@@ -1,5 +1,5 @@
 import { useAuth } from '../../contexts/AuthContext';
-import { Briefcase, FileText, MessagesSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper, Mail, Bell, Search, MessageSquareText } from 'lucide-react';
+import { Briefcase, FileText, MessagesSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper, Mail, Bell, Search, MessageSquareText, Bookmark, Share2 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import arenaImage from '../../assets/images/mos-sukjaroenkraisri-vO2XxMeYmnY-unsplash copy copy copy.jpg';
 import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
@@ -193,7 +193,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               </div>
 
               <div className="col-span-12 lg:col-span-4 flex flex-col gap-3">
-                <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
+                <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center relative group">
                   <img
                     src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=160&h=100&fit=crop"
                     alt="News 1"
@@ -209,9 +209,20 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                       <span>15 minutes</span>
                     </div>
                   </div>
+                  <div className="flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button className="p-2 hover:bg-slate-100 rounded-lg transition-colors">
+                      <Heart className="w-4 h-4 text-slate-600" />
+                    </button>
+                    <button className="p-2 hover:bg-slate-100 rounded-lg transition-colors">
+                      <Bookmark className="w-4 h-4 text-slate-600" />
+                    </button>
+                    <button className="p-2 hover:bg-slate-100 rounded-lg transition-colors">
+                      <Share2 className="w-4 h-4 text-slate-600" />
+                    </button>
+                  </div>
                 </div>
 
-                <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
+                <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center relative group">
                   <img
                     src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=160&h=100&fit=crop"
                     alt="News 2"
@@ -227,9 +238,20 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                       <span>20 minutes</span>
                     </div>
                   </div>
+                  <div className="flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button className="p-2 hover:bg-slate-100 rounded-lg transition-colors">
+                      <Heart className="w-4 h-4 text-slate-600" />
+                    </button>
+                    <button className="p-2 hover:bg-slate-100 rounded-lg transition-colors">
+                      <Bookmark className="w-4 h-4 text-slate-600" />
+                    </button>
+                    <button className="p-2 hover:bg-slate-100 rounded-lg transition-colors">
+                      <Share2 className="w-4 h-4 text-slate-600" />
+                    </button>
+                  </div>
                 </div>
 
-                <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
+                <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center relative group">
                   <img
                     src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=160&h=100&fit=crop"
                     alt="News 3"
@@ -244,6 +266,17 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                       <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
                       <span>25 minutes</span>
                     </div>
+                  </div>
+                  <div className="flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button className="p-2 hover:bg-slate-100 rounded-lg transition-colors">
+                      <Heart className="w-4 h-4 text-slate-600" />
+                    </button>
+                    <button className="p-2 hover:bg-slate-100 rounded-lg transition-colors">
+                      <Bookmark className="w-4 h-4 text-slate-600" />
+                    </button>
+                    <button className="p-2 hover:bg-slate-100 rounded-lg transition-colors">
+                      <Share2 className="w-4 h-4 text-slate-600" />
+                    </button>
                   </div>
                 </div>
 
@@ -281,7 +314,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
               <div className="grid grid-cols-12 gap-6">
                 <div className="col-span-12 lg:col-span-4">
-                  <div className="bg-white rounded-3xl overflow-hidden shadow-lg h-full">
+                  <div className="bg-white rounded-3xl overflow-hidden shadow-lg h-full group">
                     <div className="relative h-[400px]">
                       <img
                         src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1200"
@@ -296,6 +329,18 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                           <span className="text-xs">|</span>
                           <span className="text-xs">9d ago</span>
                         </div>
+                      </div>
+
+                      <div className="absolute top-6 right-6 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button className="p-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-lg transition-colors">
+                          <Heart className="w-4 h-4 text-white" />
+                        </button>
+                        <button className="p-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-lg transition-colors">
+                          <Bookmark className="w-4 h-4 text-white" />
+                        </button>
+                        <button className="p-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-lg transition-colors">
+                          <Share2 className="w-4 h-4 text-white" />
+                        </button>
                       </div>
 
                       <div className="absolute bottom-6 left-6 right-6">
@@ -319,7 +364,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 </div>
 
                 <div className="col-span-12 lg:col-span-4">
-                  <div className="bg-white rounded-3xl overflow-hidden shadow-lg h-full">
+                  <div className="bg-white rounded-3xl overflow-hidden shadow-lg h-full group">
                     <div className="relative h-[400px]">
                       <img
                         src="https://images.pexels.com/photos/3764538/pexels-photo-3764538.jpeg?auto=compress&cs=tinysrgb&w=800"
@@ -334,6 +379,18 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                           <span className="text-xs">|</span>
                           <span className="text-xs">2d ago</span>
                         </div>
+                      </div>
+
+                      <div className="absolute top-6 right-6 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button className="p-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-lg transition-colors">
+                          <Heart className="w-4 h-4 text-white" />
+                        </button>
+                        <button className="p-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-lg transition-colors">
+                          <Bookmark className="w-4 h-4 text-white" />
+                        </button>
+                        <button className="p-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-lg transition-colors">
+                          <Share2 className="w-4 h-4 text-white" />
+                        </button>
                       </div>
 
                       <div className="absolute bottom-6 left-6 right-6">
@@ -357,7 +414,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 </div>
 
                 <div className="col-span-12 lg:col-span-4">
-                  <div className="bg-white rounded-3xl overflow-hidden shadow-lg h-full">
+                  <div className="bg-white rounded-3xl overflow-hidden shadow-lg h-full group">
                     <div className="relative h-[400px]">
                       <img
                         src="https://images.pexels.com/photos/3621180/pexels-photo-3621180.jpeg?auto=compress&cs=tinysrgb&w=800"
@@ -372,6 +429,18 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                           <span className="text-xs">|</span>
                           <span className="text-xs">5d ago</span>
                         </div>
+                      </div>
+
+                      <div className="absolute top-6 right-6 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button className="p-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-lg transition-colors">
+                          <Heart className="w-4 h-4 text-white" />
+                        </button>
+                        <button className="p-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-lg transition-colors">
+                          <Bookmark className="w-4 h-4 text-white" />
+                        </button>
+                        <button className="p-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-lg transition-colors">
+                          <Share2 className="w-4 h-4 text-white" />
+                        </button>
                       </div>
 
                       <div className="absolute bottom-6 left-6 right-6">
