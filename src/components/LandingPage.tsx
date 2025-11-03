@@ -1508,6 +1508,161 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
         </div>
       </section>
 
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Informations Générales</h2>
+            <p className="text-xl text-slate-600 leading-relaxed">Tout ce que vous devez savoir sur Trophenix</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-200 hover:shadow-xl transition-all">
+              <div className="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+                <Users className="h-7 w-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">+5000 Sportifs</h3>
+              <p className="text-slate-600 leading-relaxed">
+                Une communauté dynamique d'athlètes en reconversion professionnelle
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-200 hover:shadow-xl transition-all">
+              <div className="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+                <Briefcase className="h-7 w-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">+200 Entreprises</h3>
+              <p className="text-slate-600 leading-relaxed">
+                Des recruteurs partenaires à la recherche de talents sportifs
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-200 hover:shadow-xl transition-all">
+              <div className="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+                <Trophy className="h-7 w-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">+150 Offres</h3>
+              <p className="text-slate-600 leading-relaxed">
+                Des opportunités d'emploi et de sponsoring actualisées quotidiennement
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-200 hover:shadow-xl transition-all">
+              <div className="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+                <Award className="h-7 w-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">85% de Réussite</h3>
+              <p className="text-slate-600 leading-relaxed">
+                Taux de placement des sportifs accompagnés par notre plateforme
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-16 bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-8 border border-blue-200">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <h3 className="text-3xl font-bold text-slate-900 mb-6">Comment ça marche ?</h3>
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                      1
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900 mb-1">Créez votre profil</h4>
+                      <p className="text-slate-600 leading-relaxed">
+                        Inscrivez-vous gratuitement et complétez votre profil sportif et professionnel
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                      2
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900 mb-1">Découvrez les opportunités</h4>
+                      <p className="text-slate-600 leading-relaxed">
+                        Accédez aux offres d'emploi et de sponsoring qui correspondent à votre profil
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                      3
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900 mb-1">Faites-vous accompagner</h4>
+                      <p className="text-slate-600 leading-relaxed">
+                        Bénéficiez de l'aide d'ELEA, notre agent IA, pour optimiser vos candidatures
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                      4
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900 mb-1">Réussissez votre reconversion</h4>
+                      <p className="text-slate-600 leading-relaxed">
+                        Trouvez l'emploi ou le sponsor idéal et lancez votre nouvelle carrière
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="relative h-96 rounded-xl overflow-hidden shadow-2xl">
+                <img
+                  src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  alt="Comment ça marche"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent"></div>
+                <div className="absolute bottom-6 left-6 right-6 text-white">
+                  <p className="text-2xl font-bold mb-2">Simple, Rapide, Efficace</p>
+                  <p className="text-blue-100">Rejoignez des milliers de sportifs qui ont déjà franchi le cap</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-16 grid md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200">
+              <div className="text-center mb-4">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="h-8 w-8 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">100% Gratuit</h3>
+                <p className="text-slate-600 leading-relaxed">
+                  Aucun frais caché. Créez votre compte et accédez à toutes les fonctionnalités gratuitement
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200">
+              <div className="text-center mb-4">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="h-8 w-8 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Réseau Exclusif</h3>
+                <p className="text-slate-600 leading-relaxed">
+                  Connectez-vous avec des entreprises, sponsors et autres athlètes partageant vos valeurs
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200">
+              <div className="text-center mb-4">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Trophy className="h-8 w-8 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Support Dédié</h3>
+                <p className="text-slate-600 leading-relaxed">
+                  Une équipe d'experts disponible pour vous accompagner à chaque étape de votre parcours
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer className="bg-slate-900 text-white border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
