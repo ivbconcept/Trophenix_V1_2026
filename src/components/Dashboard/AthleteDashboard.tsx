@@ -276,7 +276,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               </div>
 
               <div className="grid grid-cols-12 gap-6">
-                <div className="col-span-12 lg:col-span-8">
+                <div className="col-span-12">
                   <div className="bg-white rounded-3xl overflow-hidden shadow-lg">
                     <div className="relative h-[400px]">
                       <img
@@ -309,63 +309,6 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                           />
                           <span className="text-white font-medium">Nisi Nyung</span>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-span-12 lg:col-span-4 flex flex-col gap-4">
-                  <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
-                    <div className="w-28 h-24 rounded-lg flex-shrink-0 bg-red-600 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="text-white font-bold text-2xl mb-1">SALE</div>
-                        <div className="bg-red-700 text-white px-3 py-1 rounded-lg font-bold text-lg">50%</div>
-                      </div>
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="text-sm font-semibold text-slate-900 line-clamp-2 leading-tight mb-2">
-                        Jabodebek LRT Instagram
-                      </h4>
-                      <div className="flex items-center gap-2 text-xs text-slate-500">
-                        <span>12K Views</span>
-                        <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
-                        <span>15 minutes</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
-                    <img
-                      src="https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&w=200"
-                      alt="PDIP Headquarters"
-                      className="w-28 h-24 rounded-lg object-cover flex-shrink-0"
-                    />
-                    <div className="flex-1">
-                      <h4 className="text-sm font-semibold text-slate-900 line-clamp-2 leading-tight mb-2">
-                        PDIP Headquarters
-                      </h4>
-                      <div className="flex items-center gap-2 text-xs text-slate-500">
-                        <span>239 Views</span>
-                        <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
-                        <span>20 minutes</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
-                    <img
-                      src="https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=200"
-                      alt="Video of Chinese"
-                      className="w-28 h-24 rounded-lg object-cover flex-shrink-0"
-                    />
-                    <div className="flex-1">
-                      <h4 className="text-sm font-semibold text-slate-900 line-clamp-2 leading-tight mb-2">
-                        Video of Chinese-
-                      </h4>
-                      <div className="flex items-center gap-2 text-xs text-slate-500">
-                        <span>100 Views</span>
-                        <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
-                        <span>25 minutes</span>
                       </div>
                     </div>
                   </div>
