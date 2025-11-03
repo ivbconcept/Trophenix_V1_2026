@@ -399,7 +399,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
               <div className="relative rounded-3xl overflow-hidden shadow-lg h-[500px] group cursor-pointer">
                 <img
-                  src="/src/assets/images/mos-sukjaroenkraisri-vO2XxMeYmnY-unsplash copy copy.jpg"
+                  src="/src/assets/images/mariah-hewines-2JMd-1IlIZI-unsplash.jpg"
                   alt="The Last Dance"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
