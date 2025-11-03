@@ -179,26 +179,26 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                     <div className="absolute top-8 left-8">
                       <div className="flex items-center gap-3 text-white/90">
-                        <span className="text-sm font-semibold">Network</span>
+                        <span className="text-sm font-semibold">Sport</span>
                         <span className="text-sm">|</span>
-                        <span className="text-sm">9d ago</span>
+                        <span className="text-sm">Il y a 2h</span>
                       </div>
                     </div>
 
                     <div className="absolute bottom-8 left-8 right-8">
                       <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
-                        Global Markets<br />and Enterprise
+                        Paris 2024 :<br />Bilan historique pour les athlètes français
                       </h2>
                       <p className="text-white/90 text-lg mb-6 max-w-3xl leading-relaxed">
-                        To spread the word, the company embarked on a mass marketing drive. TV campaigns launched in the platform's key markets. Nisi dignissim tortor sed quam sed ipsum ut. Dolor sit amet, consectetur adipiscing elit.
+                        Les Jeux Olympiques de Paris 2024 resteront dans les mémoires comme un moment exceptionnel pour le sport français. Avec 64 médailles au compteur, l'équipe de France a dépassé tous les objectifs initiaux et s'est positionnée parmi les meilleures nations sportives mondiales.
                       </p>
                       <div className="flex items-center gap-3">
                         <img
                           src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=faces"
-                          alt="Nisi Nyung"
+                          alt="Pierre Dubois"
                           className="w-10 h-10 rounded-full object-cover ring-2 ring-white/30"
                         />
-                        <span className="text-white font-medium">Nisi Nyung</span>
+                        <span className="text-white font-medium">Pierre Dubois</span>
                       </div>
                     </div>
                   </div>
@@ -214,12 +214,12 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   />
                   <div className="flex-1">
                     <h4 className="text-sm font-semibold text-slate-900 dark:text-white line-clamp-2 leading-tight mb-2">
-                      Jabodebek LRT Instagram Account Offers Cheap Redeem iPhone 14 Pro Max
+                      Léon Marchand : Le nageur français qui a révolutionné la natation mondiale
                     </h4>
                     <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-zinc-400">
-                      <span>12K Views</span>
+                      <span>45K Vues</span>
                       <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
-                      <span>15 minutes</span>
+                      <span>Il y a 30 min</span>
                     </div>
                   </div>
                 </div>
@@ -232,12 +232,12 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   />
                   <div className="flex-1">
                     <h4 className="text-sm font-semibold text-slate-900 dark:text-white line-clamp-2 leading-tight mb-2">
-                      PDIP Headquarters Became Material for Volunteer Anger
+                      Mbappé rejoint le Real Madrid : Un transfert historique pour le football mondial
                     </h4>
                     <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-zinc-400">
-                      <span>239 Views</span>
+                      <span>128K Vues</span>
                       <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
-                      <span>20 minutes</span>
+                      <span>Il y a 1h</span>
                     </div>
                   </div>
                 </div>
@@ -250,12 +250,12 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   />
                   <div className="flex-1">
                     <h4 className="text-sm font-semibold text-slate-900 dark:text-white line-clamp-2 leading-tight mb-2">
-                      Video of Chinese-Speaking Police Prepared for Duty at IKN
+                      Roland-Garros 2024 : Les jeunes espoirs français en quête de gloire
                     </h4>
                     <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-zinc-400">
-                      <span>100 Views</span>
+                      <span>67K Vues</span>
                       <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
-                      <span>25 minutes</span>
+                      <span>Il y a 2h</span>
                     </div>
                   </div>
                 </div>
@@ -305,26 +305,26 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                       <div className="absolute top-6 left-6">
                         <div className="flex items-center gap-3 text-white/90">
-                          <span className="text-xs font-semibold">Network</span>
+                          <span className="text-xs font-semibold">Basket</span>
                           <span className="text-xs">|</span>
-                          <span className="text-xs">9d ago</span>
+                          <span className="text-xs">Il y a 3h</span>
                         </div>
                       </div>
 
                       <div className="absolute bottom-6 left-6 right-6">
                         <h2 className="text-2xl font-bold text-white mb-3 leading-tight line-clamp-2">
-                          Global Markets and Enterprise
+                          Victor Wembanyama domine la NBA
                         </h2>
                         <p className="text-white/90 text-sm mb-4 line-clamp-3 leading-relaxed">
-                          To spread the word, the company embarked on a mass marketing drive. TV campaigns launched in the platform's key markets.
+                          Le prodige français continue d'éblouir la NBA avec des performances exceptionnelles. Sa saison rookie est déjà considérée comme historique.
                         </p>
                         <div className="flex items-center gap-2">
                           <img
                             src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=faces"
-                            alt="Nisi Nyung"
+                            alt="Marc Lefevre"
                             className="w-8 h-8 rounded-full object-cover ring-2 ring-white/30"
                           />
-                          <span className="text-white text-sm font-medium">Nisi Nyung</span>
+                          <span className="text-white text-sm font-medium">Marc Lefevre</span>
                         </div>
                       </div>
                     </div>
@@ -343,26 +343,26 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                       <div className="absolute top-6 left-6">
                         <div className="flex items-center gap-3 text-white/90">
-                          <span className="text-xs font-semibold">Technology</span>
+                          <span className="text-xs font-semibold">Rugby</span>
                           <span className="text-xs">|</span>
-                          <span className="text-xs">2d ago</span>
+                          <span className="text-xs">Il y a 5h</span>
                         </div>
                       </div>
 
                       <div className="absolute bottom-6 left-6 right-6">
                         <h2 className="text-2xl font-bold text-white mb-3 leading-tight line-clamp-2">
-                          Innovation in Digital Sports
+                          XV de France : Objectif Coupe du Monde
                         </h2>
                         <p className="text-white/90 text-sm mb-4 line-clamp-3 leading-relaxed">
-                          New technologies are transforming how athletes train and compete at the highest levels of performance.
+                          L'équipe de France de rugby se prépare intensivement pour la prochaine Coupe du Monde avec une nouvelle génération de talents prometteurs.
                         </p>
                         <div className="flex items-center gap-2">
                           <img
                             src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=faces"
-                            alt="Sarah Johnson"
+                            alt="Sophie Martin"
                             className="w-8 h-8 rounded-full object-cover ring-2 ring-white/30"
                           />
-                          <span className="text-white text-sm font-medium">Sarah Johnson</span>
+                          <span className="text-white text-sm font-medium">Sophie Martin</span>
                         </div>
                       </div>
                     </div>
@@ -381,26 +381,26 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                       <div className="absolute top-6 left-6">
                         <div className="flex items-center gap-3 text-white/90">
-                          <span className="text-xs font-semibold">Partnership</span>
+                          <span className="text-xs font-semibold">Carrière</span>
                           <span className="text-xs">|</span>
-                          <span className="text-xs">5d ago</span>
+                          <span className="text-xs">Il y a 1 jour</span>
                         </div>
                       </div>
 
                       <div className="absolute bottom-6 left-6 right-6">
                         <h2 className="text-2xl font-bold text-white mb-3 leading-tight line-clamp-2">
-                          Strategic Partnerships for Athletes
+                          Reconversion : Les athlètes et leur deuxième vie
                         </h2>
                         <p className="text-white/90 text-sm mb-4 line-clamp-3 leading-relaxed">
-                          Building meaningful connections between athletes and brands to create long-term success stories.
+                          Comment les sportifs de haut niveau préparent leur reconversion professionnelle et les opportunités qui s'offrent à eux après leur carrière.
                         </p>
                         <div className="flex items-center gap-2">
                           <img
                             src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=faces"
-                            alt="Michael Chen"
+                            alt="Thomas Rousseau"
                             className="w-8 h-8 rounded-full object-cover ring-2 ring-white/30"
                           />
-                          <span className="text-white text-sm font-medium">Michael Chen</span>
+                          <span className="text-white text-sm font-medium">Thomas Rousseau</span>
                         </div>
                       </div>
                     </div>
@@ -430,9 +430,9 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   <p className="text-white/90 text-lg leading-relaxed mb-6">
                     L'histoire captivante de Michael Jordan et des Chicago Bulls durant leur quête du sixième titre NBA en 1998...
                   </p>
-                  <button className="flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-xl text-slate-900 font-semibold hover:bg-white transition-all">
+                  <button className="flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-xl text-slate-900 dark:text-slate-900 font-semibold hover:bg-white transition-all">
                     <FileText className="w-4 h-4" />
-                    Reviews
+                    Critiques
                   </button>
                 </div>
 
@@ -448,11 +448,11 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     <div className="absolute bottom-11 left-4 flex gap-2">
                       <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-lg text-white text-xs font-medium hover:bg-white/20 transition-all border border-white/20">
                         <FileText className="w-3 h-3" />
-                        Reviews
+                        Critiques
                       </button>
                       <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-lg text-white text-xs font-medium hover:bg-white/20 transition-all border border-white/20">
                         <Play className="w-3 h-3" />
-                        Streaming Series
+                        Regarder la série
                       </button>
                     </div>
 
@@ -474,11 +474,11 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     <div className="absolute bottom-11 left-4 flex gap-2">
                       <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-lg text-white text-xs font-medium hover:bg-white/20 transition-all border border-white/20">
                         <FileText className="w-3 h-3" />
-                        Reviews
+                        Critiques
                       </button>
                       <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-lg text-white text-xs font-medium hover:bg-white/20 transition-all border border-white/20">
                         <Play className="w-3 h-3" />
-                        Streaming Series
+                        Regarder la série
                       </button>
                     </div>
 
