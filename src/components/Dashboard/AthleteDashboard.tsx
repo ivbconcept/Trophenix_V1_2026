@@ -1,7 +1,7 @@
 import { useAuth } from '../../contexts/AuthContext';
 import { Briefcase, FileText, MessagesSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper, Mail, Bell, Search, MessageSquareText } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import arenaImage from '../../assets/images/venti-views-cHRDevKFDBw-unsplash.jpg';
+import arenaImage from '../../assets/images/mos-sukjaroenkraisri-vO2XxMeYmnY-unsplash copy copy copy.jpg';
 import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
 import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
 
