@@ -117,8 +117,8 @@ export default function AthleteDirectory() {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-black">
-      <div className="fixed top-0 left-0 right-0 bg-slate-50 dark:bg-black z-50 border-b border-slate-200 dark:border-zinc-800">
-        <div className="max-w-[1400px] mx-auto px-6 py-6">
+      <div className="sticky top-0 bg-slate-50 dark:bg-black z-40 border-b border-slate-200 dark:border-zinc-800">
+        <div className="px-6 py-6">
           <h1 className="text-3xl font-bold text-slate-700 dark:text-white mb-6">Explorer l'annuaire</h1>
 
           <div className="flex items-center justify-between gap-4">
@@ -168,7 +168,7 @@ export default function AthleteDirectory() {
         </div>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 pt-56 pb-8">
+      <div className="px-6 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {filteredAthletes.map((athlete) => {
             const statusStyle = statusConfig[athlete.status];
