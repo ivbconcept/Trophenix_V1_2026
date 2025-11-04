@@ -74,7 +74,6 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
         { id: 'job-offers', label: "Offres d'emploi", icon: BookOpen },
         { id: 'my-applications', label: 'Mes candidatures', icon: Briefcase },
         { id: 'cv-builder', label: 'Mon CV', icon: FileText },
-        { id: 'formations', label: 'Formations', icon: GraduationCap },
       ];
     }
 
