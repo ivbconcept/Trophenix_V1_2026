@@ -226,6 +226,11 @@ export default function CVBuilder() {
         )}
 
         <div id="cv-content">
+          <section className="px-8 py-8 bg-white border-b border-slate-200">
+            <h3 className="text-2xl font-bold text-slate-900 mb-3">Mes Candidatures</h3>
+            <p className="text-slate-600 text-lg">Suivez l'état de vos candidatures</p>
+          </section>
+
           <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 px-8 py-10">
             <div className="flex items-start justify-between">
               <div className="flex items-start gap-6">
@@ -295,11 +300,6 @@ export default function CVBuilder() {
           </div>
 
           <div className="px-8 py-10 space-y-8 bg-gradient-to-br from-slate-50 via-white to-slate-50">
-            <section>
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">Mes Candidatures</h3>
-              <p className="text-slate-600 text-lg">Suivez l'état de vos candidatures</p>
-            </section>
-
             <section>
               <h3 className="text-xl font-bold text-slate-700 mb-4 flex items-center gap-2 bg-gradient-to-r from-slate-100 to-blue-50 px-4 py-3 rounded-lg shadow-sm border border-slate-200">
                 <User className="w-5 h-5 text-blue-600" />
