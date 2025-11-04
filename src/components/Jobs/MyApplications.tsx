@@ -185,7 +185,7 @@ function KanbanColumn({ title, count, applications, config, onApplicationClick }
                   <img src="/src/assets/images/stadium-rugby-unsplash.jpg" alt="Paris Saint-Germain" className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-base font-semibold text-gray-900 mb-1">
+                  <h3 className="text-base font-semibold text-gray-900 mb-2">
                     Entraîneur de Football
                   </h3>
                   <div className="flex items-center gap-2 mb-1">
@@ -196,9 +196,17 @@ function KanbanColumn({ title, count, applications, config, onApplicationClick }
                       Paris Saint-Germain
                     </p>
                   </div>
-                  <p className="text-xs text-gray-400">
+                  <p className="text-xs text-gray-400 mb-2">
                     Paris, France
                   </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    <span className="px-2 py-0.5 bg-blue-50 text-blue-700 rounded text-[10px] font-medium">
+                      CDI
+                    </span>
+                    <span className="px-2 py-0.5 bg-green-50 text-green-700 rounded text-[10px] font-medium">
+                      Temps plein
+                    </span>
+                  </div>
                 </div>
               </div>
 
