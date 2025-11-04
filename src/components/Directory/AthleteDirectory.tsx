@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search, MapPin, Filter, MessageSquare, GraduationCap, Target, Building2 } from 'lucide-react';
+import { Search, MapPin, Filter, GraduationCap, Target, Building2 } from 'lucide-react';
 
 type TabType = 'sportifs' | 'experts';
 type StatusType = 'En Blessure' | 'En activité' | 'En reconversion' | 'En Réflexion';
@@ -159,7 +159,7 @@ export default function AthleteDirectory() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
           {filteredAthletes.map((athlete) => {
             const statusStyle = statusConfig[athlete.status];
 
@@ -168,15 +168,15 @@ export default function AthleteDirectory() {
                 key={athlete.id}
                 className="bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden hover:shadow-2xl transition-all cursor-pointer"
               >
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-40 overflow-hidden">
                   <img
                     src={athlete.image}
                     alt={athlete.name}
                     className="w-full h-full object-cover"
                   />
 
-                  <div className="absolute bottom-4 left-4 flex items-center gap-3">
-                    <div className="w-16 h-16 rounded-full border-4 border-white overflow-hidden bg-white shadow-lg">
+                  <div className="absolute bottom-3 left-3 flex items-center gap-2">
+                    <div className="w-12 h-12 rounded-full border-3 border-white overflow-hidden bg-white shadow-lg">
                       <img
                         src={athlete.avatar}
                         alt={athlete.name}
@@ -185,17 +185,17 @@ export default function AthleteDirectory() {
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-bold text-white drop-shadow-lg">
+                      <h3 className="text-lg font-bold text-white drop-shadow-lg">
                         {athlete.name}
                       </h3>
-                      <p className="text-white/95 font-medium drop-shadow-md">
+                      <p className="text-sm text-white/95 font-medium drop-shadow-md">
                         {athlete.sport}
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-5 space-y-3">
+                <div className="p-4 space-y-2">
                   <div className="flex items-center gap-2">
                     <div className={`w-2 h-2 rounded-full ${statusStyle.dotColor}`}></div>
                     <span className={`text-sm font-semibold ${statusStyle.color}`}>
@@ -223,10 +223,6 @@ export default function AthleteDirectory() {
                     <span className="text-sm">Recherche : {athlete.seeking}</span>
                   </div>
 
-                  <button className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all font-semibold mt-4">
-                    <MessageSquare className="h-4 w-4" />
-                    Contacter
-                  </button>
                 </div>
               </div>
             );
