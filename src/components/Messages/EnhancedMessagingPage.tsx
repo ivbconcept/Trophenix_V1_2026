@@ -430,7 +430,7 @@ export function EnhancedMessagingPage() {
         {selectedConversation ? (
           <>
             {/* Header conversation */}
-            <div className="px-6 py-3 bg-slate-100 dark:bg-zinc-950 border-b border-slate-200 dark:border-zinc-800 flex items-center justify-between">
+            <div className="px-6 py-3 bg-white dark:bg-zinc-950 border-b border-slate-200 dark:border-zinc-800 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white font-semibold">
                   {selectedConversation.type === 'group' ? <Users className="w-5 h-5" /> : getConversationTitle(selectedConversation)[0]}
@@ -448,13 +448,13 @@ export function EnhancedMessagingPage() {
               </div>
 
               <div className="flex items-center gap-1">
-                <button className="p-2 hover:bg-white dark:hover:bg-zinc-900 rounded-full transition-colors">
+                <button className="p-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-full transition-colors">
                   <Video className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
                 </button>
-                <button className="p-2 hover:bg-white dark:hover:bg-zinc-900 rounded-full transition-colors">
+                <button className="p-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-full transition-colors">
                   <Search className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
                 </button>
-                <button className="p-2 hover:bg-white dark:hover:bg-zinc-900 rounded-full transition-colors">
+                <button className="p-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-full transition-colors">
                   <MoreVertical className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
                 </button>
               </div>
