@@ -183,8 +183,6 @@ export default function JobsList() {
 
           {/* Search and Filter Section */}
           <div className="mt-8">
-            <h2 className="text-4xl font-bold text-gray-900 mb-8">Explorer l'annuaire</h2>
-
             <div className="flex items-center gap-4">
               {/* Tab Buttons */}
               <div className="flex gap-3">
