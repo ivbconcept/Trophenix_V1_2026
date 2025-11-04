@@ -34,6 +34,7 @@ export default function JobsList() {
           salary_max: 4500,
           required_skills: ['Coaching', 'Tactique', 'Management', 'Formation'],
           job_sector: 'Sport',
+          image_url: '/src/assets/images/stadium-rugby-unsplash.jpg',
           is_active: true,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
@@ -49,6 +50,7 @@ export default function JobsList() {
           salary_max: 3500,
           required_skills: ['Préparation physique', 'Nutrition sportive', 'Suivi athlètes'],
           job_sector: 'Sport',
+          image_url: '/src/assets/images/zachary-kadolph-CmwNM-XHM48-unsplash.jpg',
           is_active: true,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
@@ -64,6 +66,7 @@ export default function JobsList() {
           salary_max: 4000,
           required_skills: ['Marketing digital', 'Sponsoring', 'Communication', 'Réseaux sociaux'],
           job_sector: 'Sport',
+          image_url: '/src/assets/images/venti-views-cHRDevKFDBw-unsplash.jpg',
           is_active: true,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
@@ -79,6 +82,7 @@ export default function JobsList() {
           salary_max: 3200,
           required_skills: ['Kinésithérapie', 'Sport santé', 'Rééducation', 'Prévention'],
           job_sector: 'Sport',
+          image_url: '/src/assets/images/susan-flynn-h4d4m2IkBxA-unsplash.jpg',
           is_active: true,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
@@ -94,6 +98,7 @@ export default function JobsList() {
           salary_max: 3800,
           required_skills: ['Analyse de données', 'Statistiques', 'Video analyse', 'Reporting'],
           job_sector: 'Sport',
+          image_url: '/src/assets/images/cycling-road-unsplash.jpg',
           is_active: true,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
@@ -109,6 +114,7 @@ export default function JobsList() {
           salary_max: 5000,
           required_skills: ['Management', 'Gestion', 'Développement commercial', 'Leadership'],
           job_sector: 'Sport',
+          image_url: '/src/assets/images/mariah-hewines-2JMd-1IlIZI-unsplash.jpg',
           is_active: true,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
@@ -193,8 +199,12 @@ export default function JobsList() {
             >
               <div className="p-6">
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-20 h-20 bg-gray-100 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <Briefcase className="w-10 h-10 text-gray-600" />
+                  <div className="w-20 h-20 bg-gray-100 rounded-2xl flex items-center justify-center flex-shrink-0 overflow-hidden">
+                    {job.image_url ? (
+                      <img src={job.image_url} alt={job.title} className="w-full h-full object-cover" />
+                    ) : (
+                      <Briefcase className="w-10 h-10 text-gray-600" />
+                    )}
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="text-base font-semibold text-gray-900 mb-1">
