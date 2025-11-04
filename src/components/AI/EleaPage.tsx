@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Bot, Send, Trash2, Plus, MessageCircle, Sparkles, Archive, X } from 'lucide-react';
+import { Bot, Send, Trash2, Plus, MessageCircle, Sparkles, Archive, Search, Settings, Smile } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { EleaService } from '../../services/eleaService';
 import type { EleaConversation, EleaMessage } from '../../types/database';
@@ -13,6 +13,8 @@ interface Message {
   timestamp: Date;
 }
 
+type FilterType = 'all' | 'archived' | 'favorites';
+
 export function EleaPage() {
   const { user, profile } = useAuth();
   const [conversations, setConversations] = useState<EleaConversation[]>([]);
@@ -21,7 +23,10 @@ export function EleaPage() {
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [suggestions, setSuggestions] = useState<Array<{ id: string; text: string }>>([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeFilter, setActiveFilter] = useState<FilterType>('all');
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const context: AgentContext = {
     page: 'elea_chat',
@@ -50,6 +55,13 @@ export function EleaPage() {
       setSuggestions(EleaService.getSuggestionsForUser(profile, context));
     }
   }, [profile]);
+
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = Math.min(textareaRef.current.scrollHeight, 120) + 'px';
+    }
+  }, [inputMessage]);
 
   const loadConversations = async () => {
     if (!user) return;
@@ -220,112 +232,192 @@ export function EleaPage() {
     }
   };
 
+  const filterConversations = () => {
+    let filtered = conversations;
+
+    if (searchQuery) {
+      filtered = filtered.filter(conv =>
+        conv.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
+    if (activeFilter === 'archived') {
+      filtered = filtered.filter(conv => !conv.is_active);
+    } else if (activeFilter === 'all') {
+      filtered = filtered.filter(conv => conv.is_active);
+    }
+
+    return filtered;
+  };
+
+  const filteredConversations = filterConversations();
+  const activeConversation = conversations.find(c => c.id === activeConversationId);
+
   return (
-    <div className="flex h-full bg-slate-50 dark:bg-black">
-      <div className="w-80 bg-white dark:bg-zinc-950 border-r border-slate-200 dark:border-zinc-800 flex flex-col">
-        <div className="p-6 border-b border-slate-200 dark:border-zinc-800">
+    <div className="h-screen flex bg-white dark:bg-black">
+      <div className="w-96 bg-white dark:bg-zinc-950 border-r border-slate-200 dark:border-zinc-800 flex flex-col">
+        <div className="p-4 border-b border-slate-200 dark:border-zinc-800">
           <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-xl flex items-center justify-center">
-                <Bot className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <h2 className="text-lg font-bold text-slate-900 dark:text-white">Elea</h2>
-                <p className="text-xs text-slate-500 dark:text-zinc-400">Assistant IA</p>
-              </div>
+            <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Elea</h1>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={createNewConversation}
+                className="p-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-full transition-colors bg-slate-100 dark:bg-zinc-900"
+                title="Nouvelle conversation"
+              >
+                <Plus className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
+              </button>
+              <button
+                className="p-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-lg transition-colors"
+                title="Paramètres"
+              >
+                <Settings className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
+              </button>
             </div>
+          </div>
+
+          <div className="relative mb-3">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <input
+              type="text"
+              placeholder="Rechercher ou démarrer une discussion"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-zinc-900 rounded-lg border-0 focus:outline-none focus:ring-1 focus:ring-blue-500 text-sm text-slate-900 dark:text-white placeholder-slate-500"
+            />
+          </div>
+
+          <div className="flex gap-2">
             <button
-              onClick={createNewConversation}
-              className="p-2 rounded-lg bg-teal-500 text-white hover:bg-teal-600 transition-colors"
-              title="Nouvelle conversation"
+              onClick={() => setActiveFilter('all')}
+              className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                activeFilter === 'all'
+                  ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300'
+                  : 'bg-slate-100 dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-200 dark:hover:bg-zinc-800'
+              }`}
             >
-              <Plus className="h-5 w-5" />
+              Toutes
+            </button>
+            <button
+              onClick={() => setActiveFilter('archived')}
+              className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                activeFilter === 'archived'
+                  ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300'
+                  : 'bg-slate-100 dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-200 dark:hover:bg-zinc-800'
+              }`}
+            >
+              Archivées
+            </button>
+            <button
+              onClick={() => setActiveFilter('favorites')}
+              className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                activeFilter === 'favorites'
+                  ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300'
+                  : 'bg-slate-100 dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-200 dark:hover:bg-zinc-800'
+              }`}
+            >
+              Favoris
             </button>
           </div>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-4 space-y-2">
-          <h3 className="text-xs font-semibold text-slate-500 dark:text-zinc-400 uppercase tracking-wider mb-3">
-            Conversations
-          </h3>
-          {conversations.length === 0 ? (
-            <div className="text-center py-8">
-              <MessageCircle className="h-12 w-12 text-slate-300 dark:text-zinc-700 mx-auto mb-3" />
-              <p className="text-sm text-slate-500 dark:text-zinc-400">Aucune conversation</p>
-              <button
-                onClick={createNewConversation}
-                className="mt-4 text-sm text-teal-500 hover:text-teal-600"
-              >
-                Créer une conversation
-              </button>
+        <div className="flex-1 overflow-y-auto">
+          {filteredConversations.length === 0 ? (
+            <div className="flex items-center justify-center h-full">
+              <div className="text-center py-8 px-4">
+                <MessageCircle className="h-12 w-12 text-slate-300 dark:text-zinc-700 mx-auto mb-3" />
+                <p className="text-sm text-slate-500 dark:text-zinc-400 mb-2">Aucune conversation</p>
+                <button
+                  onClick={createNewConversation}
+                  className="text-sm text-blue-500 hover:text-blue-600 font-medium"
+                >
+                  Créer une conversation
+                </button>
+              </div>
             </div>
           ) : (
-            conversations.map((conv) => (
-              <div
-                key={conv.id}
-                className={`group relative p-3 rounded-lg cursor-pointer transition-all ${
-                  activeConversationId === conv.id
-                    ? 'bg-gradient-to-r from-teal-500 to-cyan-500 text-white'
-                    : 'bg-slate-50 dark:bg-zinc-900 text-slate-700 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-zinc-800'
-                }`}
-                onClick={() => setActiveConversationId(conv.id)}
-              >
-                <div className="flex items-start justify-between">
-                  <div className="flex-1 min-w-0">
-                    <h4 className="text-sm font-medium truncate">{conv.title}</h4>
-                    <p className="text-xs opacity-70 mt-1">
-                      {new Date(conv.last_message_at).toLocaleDateString('fr-FR')}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleArchiveConversation(conv.id);
-                      }}
-                      className="p-1 rounded hover:bg-white/20"
-                      title="Archiver"
-                    >
-                      <Archive className="h-4 w-4" />
-                    </button>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleDeleteConversation(conv.id);
-                      }}
-                      className="p-1 rounded hover:bg-white/20"
-                      title="Supprimer"
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </button>
+            filteredConversations.map((conv) => {
+              const isActive = activeConversationId === conv.id;
+              return (
+                <div
+                  key={conv.id}
+                  onClick={() => setActiveConversationId(conv.id)}
+                  className={`group p-4 cursor-pointer border-b border-slate-100 dark:border-zinc-900 transition-colors ${
+                    isActive
+                      ? 'bg-blue-50 dark:bg-blue-900/20'
+                      : 'hover:bg-slate-50 dark:hover:bg-zinc-900'
+                  }`}
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
+                      <Bot className="h-6 w-6 text-white" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between mb-1">
+                        <h3 className="font-semibold text-slate-900 dark:text-white text-sm truncate">
+                          {conv.title}
+                        </h3>
+                        <span className="text-xs text-slate-500 dark:text-zinc-500 flex-shrink-0 ml-2">
+                          {new Date(conv.last_message_at).toLocaleDateString('fr-FR', {
+                            day: 'numeric',
+                            month: 'short',
+                          })}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <p className="text-sm text-slate-600 dark:text-zinc-400 truncate">
+                          Conversation avec Elea
+                        </p>
+                        <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleArchiveConversation(conv.id);
+                            }}
+                            className="p-1 rounded hover:bg-white/50 dark:hover:bg-zinc-800"
+                            title="Archiver"
+                          >
+                            <Archive className="h-4 w-4 text-slate-500 dark:text-zinc-400" />
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleDeleteConversation(conv.id);
+                            }}
+                            className="p-1 rounded hover:bg-white/50 dark:hover:bg-zinc-800"
+                            title="Supprimer"
+                          >
+                            <Trash2 className="h-4 w-4 text-slate-500 dark:text-zinc-400" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))
+              );
+            })
           )}
         </div>
       </div>
 
       <div className="flex-1 flex flex-col">
-        {activeConversationId ? (
+        {activeConversation ? (
           <>
-            <div className="bg-white dark:bg-zinc-950 border-b border-slate-200 dark:border-zinc-800 p-6">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-full flex items-center justify-center animate-pulse">
-                  <Bot className="h-7 w-7 text-white" />
-                </div>
-                <div>
-                  <h1 className="text-xl font-bold text-slate-900 dark:text-white">
-                    Conversation avec Elea
-                  </h1>
-                  <p className="text-sm text-slate-500 dark:text-zinc-400">
-                    Assistant intelligent pour vous guider
-                  </p>
+            <div className="bg-white dark:bg-zinc-950 border-b border-slate-200 dark:border-zinc-800 px-6 py-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center">
+                    <Bot className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h2 className="font-semibold text-slate-900 dark:text-white">Elea</h2>
+                    <p className="text-xs text-green-600 dark:text-green-400">En ligne</p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-6 space-y-4">
+            <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-slate-50 dark:bg-black">
               {messages.map((message) => (
                 <div
                   key={message.id}
@@ -336,7 +428,7 @@ export function EleaPage() {
                   <div
                     className={`max-w-[70%] rounded-2xl px-5 py-3 shadow-sm ${
                       message.sender === 'user'
-                        ? 'bg-gradient-to-r from-teal-500 to-cyan-500 text-white'
+                        ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white'
                         : message.type === 'error'
                         ? 'bg-red-50 dark:bg-red-950 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800'
                         : 'bg-white dark:bg-zinc-900 text-slate-800 dark:text-zinc-200 border border-slate-200 dark:border-zinc-800'
@@ -348,7 +440,7 @@ export function EleaPage() {
                     <p
                       className={`text-xs mt-2 ${
                         message.sender === 'user'
-                          ? 'text-teal-100'
+                          ? 'text-blue-100'
                           : 'text-slate-500 dark:text-zinc-500'
                       }`}
                     >
@@ -365,9 +457,9 @@ export function EleaPage() {
                 <div className="flex justify-start animate-in fade-in slide-in-from-bottom-2">
                   <div className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl px-5 py-3 shadow-sm">
                     <div className="flex space-x-2">
-                      <div className="w-2 h-2 bg-teal-500 rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-teal-500 rounded-full animate-bounce delay-100"></div>
-                      <div className="w-2 h-2 bg-teal-500 rounded-full animate-bounce delay-200"></div>
+                      <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce"></div>
+                      <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce delay-100"></div>
+                      <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce delay-200"></div>
                     </div>
                   </div>
                 </div>
@@ -377,9 +469,9 @@ export function EleaPage() {
             </div>
 
             {suggestions.length > 0 && messages.length <= 1 && (
-              <div className="px-6 py-4 bg-white dark:bg-zinc-950 border-t border-slate-200 dark:border-zinc-800">
+              <div className="px-6 py-3 bg-white dark:bg-zinc-950 border-t border-slate-200 dark:border-zinc-800">
                 <div className="flex items-center gap-2 mb-3">
-                  <Sparkles className="h-4 w-4 text-teal-500" />
+                  <Sparkles className="h-4 w-4 text-blue-500" />
                   <p className="text-sm font-medium text-slate-700 dark:text-zinc-300">
                     Suggestions
                   </p>
@@ -389,7 +481,7 @@ export function EleaPage() {
                     <button
                       key={suggestion.id}
                       onClick={() => handleSuggestionClick(suggestion)}
-                      className="text-left text-sm px-4 py-3 rounded-xl bg-slate-50 dark:bg-zinc-900 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors text-slate-700 dark:text-zinc-300 border border-slate-200 dark:border-zinc-800 hover:border-teal-300 dark:hover:border-teal-700"
+                      className="text-left text-sm px-4 py-3 rounded-xl bg-slate-50 dark:bg-zinc-900 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors text-slate-700 dark:text-zinc-300 border border-slate-200 dark:border-zinc-800 hover:border-blue-300 dark:hover:border-blue-700"
                       disabled={isLoading}
                     >
                       {suggestion.text}
@@ -399,21 +491,42 @@ export function EleaPage() {
               </div>
             )}
 
-            <div className="p-6 bg-white dark:bg-zinc-950 border-t border-slate-200 dark:border-zinc-800">
-              <form onSubmit={handleSendMessage} className="flex gap-3">
-                <input
-                  type="text"
+            <div className="p-4 bg-white dark:bg-zinc-950 border-t border-slate-200 dark:border-zinc-800">
+              <form onSubmit={handleSendMessage} className="flex items-end gap-3">
+                <button
+                  type="button"
+                  className="p-2.5 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-lg transition-colors text-slate-600 dark:text-zinc-400"
+                  title="Ajouter un fichier"
+                >
+                  <Plus className="w-5 h-5" />
+                </button>
+                <button
+                  type="button"
+                  className="p-2.5 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-lg transition-colors text-slate-600 dark:text-zinc-400"
+                  title="Emoji"
+                >
+                  <Smile className="w-5 h-5" />
+                </button>
+                <textarea
+                  ref={textareaRef}
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
-                  placeholder="Posez votre question à Elea..."
-                  className="flex-1 px-4 py-3 border border-slate-300 dark:border-zinc-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm bg-slate-50 dark:bg-zinc-900 text-slate-900 dark:text-white"
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                      e.preventDefault();
+                      handleSendMessage(e);
+                    }
+                  }}
+                  placeholder="Entrez un message"
+                  rows={1}
+                  className="flex-1 px-4 py-2.5 bg-slate-100 dark:bg-zinc-900 rounded-lg resize-none focus:outline-none focus:ring-1 focus:ring-blue-500 text-sm text-slate-900 dark:text-white placeholder-slate-500 max-h-[120px]"
                   disabled={isLoading}
-                  autoComplete="off"
                 />
                 <button
                   type="submit"
                   disabled={isLoading || !inputMessage.trim()}
-                  className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white px-6 py-3 rounded-xl hover:from-teal-600 hover:to-cyan-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md font-medium"
+                  className="p-2.5 bg-slate-100 dark:bg-zinc-900 hover:bg-slate-200 dark:hover:bg-zinc-800 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-slate-600 dark:text-zinc-400"
+                  title="Envoyer"
                 >
                   <Send className="w-5 h-5" />
                 </button>
@@ -423,21 +536,15 @@ export function EleaPage() {
         ) : (
           <div className="flex-1 flex items-center justify-center">
             <div className="text-center">
-              <div className="w-24 h-24 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
-                <Bot className="h-12 w-12 text-white" />
+              <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <MessageCircle className="h-16 w-16 text-white" />
               </div>
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
-                Bienvenue sur Elea
+                Assistant IA Elea
               </h2>
-              <p className="text-slate-500 dark:text-zinc-400 mb-6">
+              <p className="text-slate-500 dark:text-zinc-400">
                 Sélectionnez ou créez une conversation pour commencer
               </p>
-              <button
-                onClick={createNewConversation}
-                className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white px-6 py-3 rounded-xl hover:from-teal-600 hover:to-cyan-600 transition-all shadow-md hover:shadow-lg font-medium"
-              >
-                Nouvelle conversation
-              </button>
             </div>
           </div>
         )}
