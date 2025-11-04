@@ -284,85 +284,87 @@ export default function CVBuilder() {
         )}
 
         <div id="cv-content">
-          <div className="bg-white border-b border-slate-200 px-8 py-8 flex items-center justify-between">
-            <div className="flex items-center gap-6">
-              <div className="w-24 h-24 rounded-full bg-slate-200 flex items-center justify-center overflow-hidden flex-shrink-0">
-                {displayProfile.photo_url ? (
-                  <img src={displayProfile.photo_url} alt="Profile" className="w-full h-full object-cover" />
-                ) : (
-                  <User className="w-12 h-12 text-slate-400" />
-                )}
+          <div className="bg-white px-8 py-10">
+            <div className="flex items-start justify-between">
+              <div className="flex items-start gap-6">
+                <div className="w-28 h-28 rounded-full bg-slate-200 flex items-center justify-center overflow-hidden flex-shrink-0">
+                  {displayProfile.photo_url ? (
+                    <img src={displayProfile.photo_url} alt="Profile" className="w-full h-full object-cover" />
+                  ) : (
+                    <User className="w-14 h-14 text-slate-400" />
+                  )}
+                </div>
+                <div className="pt-2">
+                  <h1 className="text-4xl font-bold text-slate-900 mb-2">
+                    {displayProfile.first_name || 'Prénom'} {displayProfile.last_name || 'Nom'}
+                  </h1>
+                  <p className="text-lg text-slate-600 mb-3">{displayProfile.sport || 'Votre sport'}</p>
+                  {profile?.email && (
+                    <div className="flex items-center gap-2 text-slate-600">
+                      <Mail className="w-4 h-4" />
+                      <span className="text-sm">{profile.email}</span>
+                    </div>
+                  )}
+                </div>
               </div>
-              <div>
-                <h1 className="text-3xl font-bold text-slate-900 mb-1">
-                  {displayProfile.first_name || 'Prénom'} {displayProfile.last_name || 'Nom'}
-                </h1>
-                <p className="text-lg text-slate-600 mb-2">{displayProfile.sport || 'Votre sport'}</p>
-                {profile?.email && (
-                  <div className="flex items-center gap-2 text-slate-600">
-                    <Mail className="w-4 h-4" />
-                    <span className="text-sm">{profile.email}</span>
-                  </div>
-                )}
-              </div>
-            </div>
-            <div className="flex gap-3 no-print">
-              {isEditing ? (
-                <>
-                  <button
-                    onClick={handleCancel}
-                    className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors"
-                  >
-                    <X className="w-4 h-4" />
-                    Annuler
-                  </button>
-                  <button
-                    onClick={handleSave}
-                    disabled={saving}
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
-                  >
-                    <Save className="w-4 h-4" />
-                    {saving ? 'Enregistrement...' : 'Enregistrer'}
-                  </button>
-                </>
-              ) : (
-                <>
-                  {isCVEmpty && (
+              <div className="flex gap-3 no-print">
+                {isEditing ? (
+                  <>
                     <button
-                      onClick={() => setShowForm(true)}
-                      className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                      onClick={handleCancel}
+                      className="flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors font-medium"
+                    >
+                      <X className="w-4 h-4" />
+                      Annuler
+                    </button>
+                    <button
+                      onClick={handleSave}
+                      disabled={saving}
+                      className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 font-medium"
+                    >
+                      <Save className="w-4 h-4" />
+                      {saving ? 'Enregistrement...' : 'Enregistrer'}
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    {isCVEmpty && (
+                      <button
+                        onClick={() => setShowForm(true)}
+                        className="flex items-center gap-2 px-5 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium"
+                      >
+                        <Edit2 className="w-4 h-4" />
+                        Compléter mon CV
+                      </button>
+                    )}
+                    <button
+                      onClick={() => setIsEditing(true)}
+                      className="flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors font-medium"
                     >
                       <Edit2 className="w-4 h-4" />
-                      Compléter mon CV
+                      Modifier
                     </button>
-                  )}
-                  <button
-                    onClick={() => setIsEditing(true)}
-                    className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors"
-                  >
-                    <Edit2 className="w-4 h-4" />
-                    Modifier
-                  </button>
-                  <button
-                    onClick={handleDownloadPDF}
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                  >
-                    <Download className="w-4 h-4" />
-                    Télécharger PDF
-                  </button>
-                </>
-              )}
+                    <button
+                      onClick={handleDownloadPDF}
+                      className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                    >
+                      <Download className="w-4 h-4" />
+                      Télécharger PDF
+                    </button>
+                  </>
+                )}
+              </div>
             </div>
           </div>
 
           {isCVEmpty && !isEditing && (
-            <div className="mx-8 mt-6 mb-6 bg-blue-50 border border-blue-200 rounded-xl p-5 no-print">
+            <div className="mx-8 mb-6 bg-blue-50 border border-blue-200 rounded-xl p-6 no-print">
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
                   <Trophy className="w-6 h-6 text-blue-600" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-blue-900 mb-2">
+                  <h3 className="text-lg font-bold text-blue-900 mb-2">
                     Votre CV est presque prêt !
                   </h3>
                   <p className="text-blue-700 mb-4">
@@ -370,7 +372,7 @@ export default function CVBuilder() {
                   </p>
                   <button
                     onClick={() => setShowForm(true)}
-                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    className="px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
                   >
                     Compléter maintenant
                   </button>
