@@ -154,14 +154,12 @@ export function UserProfile() {
             <div className="flex flex-col md:flex-row gap-6 md:gap-8">
               <div className="flex-shrink-0">
                 <div className="relative">
-                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-4xl font-bold shadow-xl ring-4 ring-white dark:ring-zinc-950">
-                    {profile?.user_type === 'athlete' && athleteData
-                      ? `${athleteData.first_name?.[0] || 'A'}${athleteData.last_name?.[0] || 'A'}`
-                      : profile?.user_type === 'company' && companyData
-                      ? companyData.company_name?.[0] || 'C'
-                      : profile?.user_type === 'sponsor' && sponsorData
-                      ? sponsorData.company_name?.[0] || 'S'
-                      : 'U'}
+                  <div className="w-32 h-32 rounded-full overflow-hidden shadow-xl ring-4 ring-white dark:ring-zinc-950">
+                    <img
+                      src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=300"
+                      alt="Profile"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   {editMode && (
                     <button className="absolute bottom-0 right-0 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors shadow-lg">
