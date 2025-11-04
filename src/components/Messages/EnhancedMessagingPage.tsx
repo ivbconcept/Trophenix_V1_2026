@@ -641,17 +641,48 @@ export function EnhancedMessagingPage() {
             </div>
           </>
         ) : (
-          <div className="flex-1 flex items-center justify-center">
-            <div className="text-center max-w-md px-8">
-              <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl">
-                <MessageSquare className="w-16 h-16 text-white" />
+          <div className="flex-1 flex flex-col">
+            <div className="flex-1 flex items-center justify-center">
+              <div className="text-center max-w-md px-8">
+                <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl">
+                  <MessageSquare className="w-16 h-16 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
+                  Messagerie Trophenix
+                </h3>
+                <p className="text-slate-500 dark:text-zinc-500 mb-6">
+                  Envoyez et recevez des messages sans garder votre téléphone connecté
+                </p>
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
-                Messagerie Trophenix
-              </h3>
-              <p className="text-slate-500 dark:text-zinc-500 mb-6">
-                Envoyez et recevez des messages sans garder votre téléphone connecté
-              </p>
+            </div>
+
+            {/* Input zone - visible même sans conversation sélectionnée */}
+            <div className="px-4 py-3 bg-slate-100 dark:bg-zinc-950 border-t border-slate-200 dark:border-zinc-800">
+              <div className="flex items-center gap-2">
+                <button
+                  className="p-2.5 hover:bg-slate-200 dark:hover:bg-zinc-900 rounded-full transition-colors flex-shrink-0"
+                  disabled
+                >
+                  <Plus className="w-5 h-5 text-slate-400 dark:text-zinc-600" />
+                </button>
+
+                <div className="flex-1 relative bg-white dark:bg-zinc-900 rounded-lg opacity-50">
+                  <textarea
+                    value=""
+                    placeholder="Sélectionnez une conversation pour commencer"
+                    disabled
+                    className="w-full px-4 py-2.5 bg-transparent focus:outline-none resize-none text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-600"
+                    rows={1}
+                  />
+                </div>
+
+                <button
+                  className="p-2.5 rounded-full transition-colors flex-shrink-0 bg-slate-200 dark:bg-zinc-800"
+                  disabled
+                >
+                  <Send className="w-5 h-5 text-slate-400 dark:text-zinc-600" />
+                </button>
+              </div>
             </div>
           </div>
         )}
