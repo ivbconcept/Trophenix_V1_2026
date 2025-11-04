@@ -1,10 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { advancedMessagingService, Conversation, Message } from '../../services/advancedMessagingService';
-import {
-  Send, Search, MoreVertical, Phone, Video, Paperclip, Smile, Circle, X, Plus,
-  Image as ImageIcon, File, Mic, Star, Users, Settings, MessageSquare, Bell, Menu, UserCircle
-} from 'lucide-react';
+import { Send, Search, MoreVertical, Phone, Video, Paperclip, Smile, Circle, X, Plus, Image as ImageIcon, File, Mic, Star, Users, Settings, MessageSquare, Bell, Menu, CircleUser as UserCircle } from 'lucide-react';
 
 const EMOJI_QUICK_REACTIONS = ['👍', '❤️', '😂', '😮', '😢', '🎉'];
 
