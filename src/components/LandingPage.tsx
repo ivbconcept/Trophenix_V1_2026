@@ -1012,6 +1012,95 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
           </div>
         </section>
 
+        <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-cyan-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Performances & Actualités Sportives</h2>
+            <p className="text-xl text-slate-600 leading-relaxed">Suivez les dernières actualités du monde du sport</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
+              <div className="relative h-56 overflow-hidden">
+                <img
+                  src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  alt="Athlétisme"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <span className="inline-block px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full mb-2">
+                    Athlétisme
+                  </span>
+                  <h3 className="text-xl font-bold text-white">Championnats d'Europe 2025</h3>
+                </div>
+              </div>
+              <div className="p-6">
+                <p className="text-slate-600 mb-4 leading-relaxed">
+                  Découvrez les performances exceptionnelles des athlètes français lors des derniers championnats européens.
+                </p>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-slate-500">3 nov 2025</span>
+                  <span className="text-blue-600 font-semibold">5 min de lecture</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
+              <div className="relative h-56 overflow-hidden">
+                <img
+                  src="https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  alt="Football"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <span className="inline-block px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full mb-2">
+                    Football
+                  </span>
+                  <h3 className="text-xl font-bold text-white">Ligue des Champions</h3>
+                </div>
+              </div>
+              <div className="p-6">
+                <p className="text-slate-600 mb-4 leading-relaxed">
+                  Les clubs français brillent sur la scène européenne avec des performances remarquables cette saison.
+                </p>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-slate-500">2 nov 2025</span>
+                  <span className="text-blue-600 font-semibold">4 min de lecture</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
+              <div className="relative h-56 overflow-hidden">
+                <img
+                  src="https://images.pexels.com/photos/863988/pexels-photo-863988.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  alt="Basketball"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <span className="inline-block px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full mb-2">
+                    Basketball
+                  </span>
+                  <h3 className="text-xl font-bold text-white">EuroLeague 2025</h3>
+                </div>
+              </div>
+              <div className="p-6">
+                <p className="text-slate-600 mb-4 leading-relaxed">
+                  Les équipes françaises s'imposent comme des favorites avec des victoires impressionnantes en EuroLeague.
+                </p>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-slate-500">1 nov 2025</span>
+                  <span className="text-blue-600 font-semibold">6 min de lecture</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
         <ProgramSection />
 
         <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
@@ -1296,95 +1385,6 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
       )}
 
       {selectedArticle && console.log('Modal devrait être visible pour:', selectedArticle.title)}
-
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-cyan-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Performances & Actualités Sportives</h2>
-            <p className="text-xl text-slate-600 leading-relaxed">Suivez les dernières actualités du monde du sport</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
-              <div className="relative h-56 overflow-hidden">
-                <img
-                  src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="Athlétisme"
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <span className="inline-block px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full mb-2">
-                    Athlétisme
-                  </span>
-                  <h3 className="text-xl font-bold text-white">Championnats d'Europe 2025</h3>
-                </div>
-              </div>
-              <div className="p-6">
-                <p className="text-slate-600 mb-4 leading-relaxed">
-                  Découvrez les performances exceptionnelles des athlètes français lors des derniers championnats européens.
-                </p>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-slate-500">3 nov 2025</span>
-                  <span className="text-blue-600 font-semibold">5 min de lecture</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
-              <div className="relative h-56 overflow-hidden">
-                <img
-                  src="https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="Football"
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <span className="inline-block px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full mb-2">
-                    Football
-                  </span>
-                  <h3 className="text-xl font-bold text-white">Ligue des Champions</h3>
-                </div>
-              </div>
-              <div className="p-6">
-                <p className="text-slate-600 mb-4 leading-relaxed">
-                  Les clubs français brillent sur la scène européenne avec des performances remarquables cette saison.
-                </p>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-slate-500">2 nov 2025</span>
-                  <span className="text-blue-600 font-semibold">4 min de lecture</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
-              <div className="relative h-56 overflow-hidden">
-                <img
-                  src="https://images.pexels.com/photos/863988/pexels-photo-863988.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="Basketball"
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <span className="inline-block px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full mb-2">
-                    Basketball
-                  </span>
-                  <h3 className="text-xl font-bold text-white">EuroLeague 2025</h3>
-                </div>
-              </div>
-              <div className="p-6">
-                <p className="text-slate-600 mb-4 leading-relaxed">
-                  Les équipes françaises s'imposent comme des favorites avec des victoires impressionnantes en EuroLeague.
-                </p>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-slate-500">1 nov 2025</span>
-                  <span className="text-blue-600 font-semibold">6 min de lecture</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <footer className="bg-slate-900 text-white border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
