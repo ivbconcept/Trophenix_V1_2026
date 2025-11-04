@@ -260,15 +260,15 @@ export default function JobsList() {
               onClick={() => setSelectedJob(job)}
             >
               <div className="p-6">
-                <div className="mb-4">
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden shadow-md border-2 border-gray-100 -mt-12 mb-4">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden">
                     {job.company_logo ? (
                       <img src={job.company_logo} alt={job.company_name} className="w-full h-full object-cover" />
                     ) : (
-                      <Briefcase className="w-8 h-8 text-gray-600" />
+                      <Briefcase className="w-10 h-10 text-gray-600" />
                     )}
                   </div>
-                  <div>
+                  <div className="flex-1 min-w-0">
                     <h3 className="text-base font-semibold text-gray-900 mb-1">
                       {job.title}
                     </h3>
