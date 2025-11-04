@@ -121,10 +121,10 @@ export default function AthleteDirectory() {
 
         <div className="flex items-center justify-between gap-4 mb-8">
           <div className="flex items-center gap-4 flex-1">
-            <div className="inline-flex items-center gap-0 bg-slate-100 dark:bg-zinc-800 rounded-2xl p-1.5 shadow-sm">
+            <div className="inline-flex items-center gap-0 bg-slate-100 dark:bg-zinc-800 rounded-2xl p-1 shadow-sm">
           <button
             onClick={() => setSportFilter('top')}
-            className={`px-6 py-2 rounded-xl font-semibold text-base transition-all ${
+            className={`px-6 py-1.5 rounded-xl font-semibold text-base transition-all ${
               sportFilter === 'top'
                 ? 'bg-white dark:bg-black text-slate-900 dark:text-white shadow-md'
                 : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
@@ -134,7 +134,7 @@ export default function AthleteDirectory() {
           </button>
           <button
             onClick={() => setSportFilter('football')}
-            className={`px-6 py-2 rounded-xl font-semibold text-base transition-all ${
+            className={`px-6 py-1.5 rounded-xl font-semibold text-base transition-all ${
               sportFilter === 'football'
                 ? 'bg-white dark:bg-black text-slate-900 dark:text-white shadow-md'
                 : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
