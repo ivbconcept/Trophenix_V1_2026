@@ -80,8 +80,8 @@ export function MyProjects() {
                 onClick={() => setShowCreateModal(true)}
                 className="inline-flex items-center gap-4 px-6 py-4 bg-slate-100 hover:bg-slate-200 rounded-2xl transition-all"
               >
-                <div className="flex-shrink-0 w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center">
-                  <Plus className="w-6 h-6 text-white" />
+                <div className="flex-shrink-0 w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center">
+                  <Plus className="w-6 h-6 text-slate-900" />
                 </div>
                 <div className="text-left">
                   <div className="text-lg font-bold text-slate-900">Nouveau</div>
