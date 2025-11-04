@@ -226,7 +226,7 @@ export default function CVBuilder() {
         )}
 
         <div id="cv-content">
-          <section className="px-8 py-8 bg-white border-b border-slate-200">
+          <section className="sticky top-0 px-8 py-8 bg-white border-b border-slate-200 z-40">
             <h3 className="text-2xl font-bold text-slate-900 mb-3">Mon CV</h3>
             <p className="text-slate-600 text-lg">Suivez l'état de vos candidatures</p>
           </section>
