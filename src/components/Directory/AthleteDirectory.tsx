@@ -115,7 +115,7 @@ export default function AthleteDirectory() {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-black">
-      <div className="max-w-[1600px] mx-auto px-6 py-8">
+      <div className="max-w-[1400px] mx-auto px-6 py-8">
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">
             <button
@@ -159,7 +159,7 @@ export default function AthleteDirectory() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4">
           {filteredAthletes.map((athlete) => {
             const statusStyle = statusConfig[athlete.status];
 
@@ -169,13 +169,14 @@ export default function AthleteDirectory() {
                 className="bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden hover:shadow-2xl transition-all cursor-pointer"
               >
                 <div className="relative h-40 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10"></div>
                   <img
                     src={athlete.image}
                     alt={athlete.name}
                     className="w-full h-full object-cover"
                   />
 
-                  <div className="absolute bottom-3 left-3 flex items-center gap-2">
+                  <div className="absolute bottom-3 left-3 flex items-center gap-2 z-20">
                     <div className="w-12 h-12 rounded-full border-3 border-white overflow-hidden bg-white shadow-lg">
                       <img
                         src={athlete.avatar}
