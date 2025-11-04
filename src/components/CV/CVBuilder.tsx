@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { User, Trophy, Award, Briefcase, GraduationCap, MapPin, Mail, Download, Edit2, CheckCircle, MoreVertical } from 'lucide-react';
+import { User, Trophy, Award, Briefcase, GraduationCap, MapPin, Mail, Download, Edit2, CheckCircle, MoreVertical, Camera } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase } from '../../lib/supabase';
 import CVForm from './CVForm';
@@ -229,12 +229,15 @@ export default function CVBuilder() {
           <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 px-8 py-10">
             <div className="flex items-start justify-between">
               <div className="flex items-start gap-6">
-                <div className="w-28 h-28 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center overflow-hidden flex-shrink-0 border-4 border-white/30">
+                <div className="relative w-28 h-28 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center overflow-hidden flex-shrink-0 border-4 border-white/30 group cursor-pointer hover:border-white/50 transition-all">
                   {displayProfile.photo_url ? (
                     <img src={displayProfile.photo_url} alt="Profile" className="w-full h-full object-cover" />
                   ) : (
                     <User className="w-14 h-14 text-white/70" />
                   )}
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <Camera className="w-8 h-8 text-white" />
+                  </div>
                 </div>
                 <div className="pt-2">
                   <h1 className="text-4xl font-bold text-white mb-2 drop-shadow-sm">
