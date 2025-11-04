@@ -292,7 +292,96 @@ export default function CVBuilder() {
           </div>
 
 
-          <div className="px-8 py-6">
+          <div className="px-8 py-10 space-y-8">
+            <section>
+              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <User className="w-5 h-5 text-blue-600" />
+                Situation actuelle
+              </h3>
+              <p className="text-slate-700 leading-relaxed">
+                {displayProfile.situation || 'Non renseigné'}
+              </p>
+            </section>
+
+            <section>
+              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <Trophy className="w-5 h-5 text-blue-600" />
+                Palmarès sportif
+              </h3>
+              <p className="text-slate-700 leading-relaxed whitespace-pre-line">
+                {displayProfile.achievements || 'Non renseigné'}
+              </p>
+            </section>
+
+            <section>
+              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <Award className="w-5 h-5 text-blue-600" />
+                Parcours sportif
+              </h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <p className="text-sm font-medium text-slate-500 mb-1">Club formateur</p>
+                  <p className="text-slate-900">{displayProfile.birth_club || 'Non renseigné'}</p>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-slate-500 mb-1">Centre de formation</p>
+                  <p className="text-slate-900">{displayProfile.training_center || 'Non renseigné'}</p>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-slate-500 mb-1">Liste ministérielle</p>
+                  <p className="text-slate-900">{displayProfile.ministerial_list || 'Non renseigné'}</p>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-slate-500 mb-1">Type d'athlète</p>
+                  <p className="text-slate-900">{displayProfile.athlete_type || 'Non renseigné'}</p>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <Briefcase className="w-5 h-5 text-blue-600" />
+                Projet professionnel
+              </h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <p className="text-sm font-medium text-slate-500 mb-1">Domaine souhaité</p>
+                  <p className="text-slate-900">{displayProfile.desired_field || 'Non renseigné'}</p>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-slate-500 mb-1">Type de poste</p>
+                  <p className="text-slate-900">{displayProfile.position_type || 'Non renseigné'}</p>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-slate-500 mb-1">Disponibilité</p>
+                  <p className="text-slate-900">{displayProfile.availability || 'Non renseigné'}</p>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-slate-500 mb-1">Zone géographique</p>
+                  <p className="text-slate-900">{displayProfile.geographic_zone || 'Non renseigné'}</p>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <GraduationCap className="w-5 h-5 text-blue-600" />
+                Formation
+              </h3>
+              <p className="text-slate-700 leading-relaxed whitespace-pre-line">
+                {displayProfile.degrees || 'Non renseigné'}
+              </p>
+            </section>
+
+            <section>
+              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <Briefcase className="w-5 h-5 text-blue-600" />
+                Expérience professionnelle
+              </h3>
+              <p className="text-slate-700 leading-relaxed whitespace-pre-line">
+                {displayProfile.professional_history || 'Non renseigné'}
+              </p>
+            </section>
           </div>
         </div>
       </div>
