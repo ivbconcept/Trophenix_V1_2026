@@ -93,60 +93,54 @@ export default function JobsList() {
           <p className="text-gray-600">Essayez de modifier vos filtres de recherche</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {jobs.map((job) => (
             <div
               key={job.id}
-              className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-all cursor-pointer"
+              className="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all cursor-pointer overflow-hidden"
               onClick={() => setSelectedJob(job)}
             >
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Briefcase className="w-8 h-8 text-gray-600" />
+              <div className="p-6">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-20 h-20 bg-gray-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <Briefcase className="w-10 h-10 text-gray-600" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-1">
+                      {job.title}
+                    </h3>
+                    <p className="text-sm text-gray-500">
+                      {job.location}
+                    </p>
+                  </div>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-1 truncate">
-                    {job.title}
-                  </h3>
-                  <p className="text-sm text-gray-500 truncate">
-                    {job.location}
-                  </p>
-                </div>
-                {profile?.user_type === 'athlete' && (
+
+                <p className="text-gray-500 text-sm mb-6 line-clamp-3 leading-relaxed">
+                  {job.description}
+                </p>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">
+                      <span className="text-gray-600 text-sm font-medium">$</span>
+                    </div>
+                    <div>
+                      <p className="text-lg font-semibold text-gray-900">
+                        {formatSalary(job.salary_min, job.salary_max)}
+                      </p>
+                      <p className="text-xs text-gray-500">/Mounth</p>
+                    </div>
+                  </div>
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleSaveJob(job.id);
+                      setSelectedJob(job);
                     }}
-                    className="text-gray-400 hover:text-blue-600 transition-colors flex-shrink-0"
+                    className="px-6 py-2.5 bg-gray-100 text-gray-700 rounded-xl text-sm font-medium hover:bg-gray-200 transition-colors"
                   >
-                    {savedJobs.has(job.id) ? (
-                      <BookmarkCheck className="h-5 w-5 text-blue-600" />
-                    ) : (
-                      <Bookmark className="h-5 w-5" />
-                    )}
+                    Apply
                   </button>
-                )}
-              </div>
-
-              <p className="text-gray-600 text-sm mb-4 line-clamp-3">{job.description}</p>
-
-              <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                <div className="flex items-center gap-1 text-gray-700">
-                  <span className="text-sm font-medium">
-                    {formatSalary(job.salary_min, job.salary_max)}
-                  </span>
-                  <span className="text-xs text-gray-500">/Mois</span>
                 </div>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedJob(job);
-                  }}
-                  className="px-4 py-2 bg-purple-50 text-purple-700 rounded-lg text-sm font-medium hover:bg-purple-100 transition-colors"
-                >
-                  Apply
-                </button>
               </div>
             </div>
           ))}
