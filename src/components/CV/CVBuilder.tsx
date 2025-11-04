@@ -294,8 +294,15 @@ export default function CVBuilder() {
             </div>
           </div>
 
-
           <div className="px-8 py-10 space-y-8 bg-gradient-to-br from-slate-50 via-white to-slate-50">
+            <section>
+              <h3 className="text-2xl font-bold text-slate-900 mb-6">Mes Candidatures</h3>
+              <p className="text-slate-600 text-lg">Suivez l'état de vos candidatures</p>
+              <div className="mt-6 p-6 bg-white rounded-lg border border-slate-200 shadow-sm">
+                <p className="text-slate-500 text-center py-8">Aucune candidature pour le moment</p>
+              </div>
+            </section>
+
             <section>
               <h3 className="text-xl font-bold text-slate-700 mb-4 flex items-center gap-2 bg-gradient-to-r from-slate-100 to-blue-50 px-4 py-3 rounded-lg shadow-sm border border-slate-200">
                 <User className="w-5 h-5 text-blue-600" />
