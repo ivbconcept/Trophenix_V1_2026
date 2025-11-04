@@ -251,6 +251,7 @@ export function EnhancedMessagingPage() {
 
               <button
                 className="p-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-lg transition-colors"
+                title="Paramètres"
               >
                 <Settings className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
               </button>
