@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search, MapPin, Filter, Mail, GraduationCap, Target, Building2 } from 'lucide-react';
+import { Search, MapPin, Filter, MessageSquare, GraduationCap, Target, Building2 } from 'lucide-react';
 
 type TabType = 'sportifs' | 'experts';
 type StatusType = 'En Blessure' | 'En activité' | 'En reconversion' | 'En Réflexion';
@@ -168,7 +168,7 @@ export default function AthleteDirectory() {
                 key={athlete.id}
                 className="bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden hover:shadow-2xl transition-all cursor-pointer"
               >
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
                   <img
                     src={athlete.image}
                     alt={athlete.name}
@@ -223,8 +223,8 @@ export default function AthleteDirectory() {
                     <span className="text-sm">Recherche : {athlete.seeking}</span>
                   </div>
 
-                  <button className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all font-semibold mt-4">
-                    <Mail className="h-5 w-5" />
+                  <button className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all font-semibold mt-4">
+                    <MessageSquare className="h-4 w-4" />
                     Contacter
                   </button>
                 </div>
