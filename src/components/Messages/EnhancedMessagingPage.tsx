@@ -448,16 +448,13 @@ export function EnhancedMessagingPage() {
               </div>
 
               <div className="flex items-center gap-1">
-                <button className="p-2 hover:bg-slate-200 dark:hover:bg-zinc-900 rounded-full transition-colors">
+                <button className="p-2 hover:bg-white dark:hover:bg-zinc-900 rounded-full transition-colors">
                   <Video className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
                 </button>
-                <button className="p-2 hover:bg-slate-200 dark:hover:bg-zinc-900 rounded-full transition-colors">
-                  <Phone className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
-                </button>
-                <button className="p-2 hover:bg-slate-200 dark:hover:bg-zinc-900 rounded-full transition-colors">
+                <button className="p-2 hover:bg-white dark:hover:bg-zinc-900 rounded-full transition-colors">
                   <Search className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
                 </button>
-                <button className="p-2 hover:bg-slate-200 dark:hover:bg-zinc-900 rounded-full transition-colors">
+                <button className="p-2 hover:bg-white dark:hover:bg-zinc-900 rounded-full transition-colors">
                   <MoreVertical className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
                 </button>
               </div>
