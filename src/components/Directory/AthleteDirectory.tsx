@@ -119,7 +119,16 @@ export default function AthleteDirectory() {
     <div className="min-h-screen bg-slate-50 dark:bg-black">
       <div className="max-w-[1400px] mx-auto px-6 py-8">
 
-        <div className="inline-flex items-center gap-0 mb-8 bg-slate-100 dark:bg-zinc-800 rounded-full p-1.5 shadow-sm">
+        <div className="flex items-center gap-4 mb-8">
+          <button className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-300 dark:border-zinc-600 bg-white dark:bg-zinc-900 text-slate-900 dark:text-white font-semibold text-base hover:border-slate-400 dark:hover:border-zinc-500 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M7 7h10v10"></path>
+              <path d="M7 17 17 7"></path>
+            </svg>
+            Tout
+          </button>
+
+          <div className="inline-flex items-center gap-0 bg-slate-100 dark:bg-zinc-800 rounded-full p-1.5 shadow-sm">
           <button
             onClick={() => setSportFilter('top')}
             className={`px-8 py-3 rounded-2xl font-semibold text-base transition-all ${
@@ -140,6 +149,7 @@ export default function AthleteDirectory() {
           >
             Football
           </button>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
