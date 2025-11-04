@@ -116,7 +116,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 style={{ opacity: currentImageIndex === 1 ? 1 : 0 }}
               ></div>
               <div
-                className="absolute inset-0 bg-cover bg-center transition-opacity duration-[2000ms] ease-in-out"
+                className="absolute inset-0 bg-cover bg-[center_top_30%] transition-opacity duration-[2000ms] ease-in-out"
                 style={{
                   backgroundImage: `url('${backgroundImages[2]}')`,
                   opacity: currentImageIndex === 2 ? 1 : 0
