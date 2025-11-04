@@ -117,7 +117,7 @@ export default function AthleteDirectory() {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-black">
-      <div className="sticky top-0 bg-slate-50 dark:bg-black z-40 border-b border-slate-200 dark:border-zinc-800">
+      <div className="sticky top-0 bg-slate-50 dark:bg-black z-40">
         <div className="px-6 py-6">
           <h1 className="text-3xl font-bold text-slate-700 dark:text-white mb-6">Explorer l'annuaire</h1>
 
