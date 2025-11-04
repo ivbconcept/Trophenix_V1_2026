@@ -160,10 +160,10 @@ export default function CoverLetterBuilder() {
           <div className="flex items-center gap-3">
             <button
               onClick={handleCreateNew}
-              className="flex items-center gap-3 px-5 py-2.5 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all font-medium shadow-lg hover:shadow-xl"
+              className="flex items-center gap-3 px-5 py-2.5 text-slate-900 hover:text-slate-700 transition-colors font-medium"
             >
-              <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
-                <Plus className="w-4 h-4" />
+              <div className="w-8 h-8 bg-slate-900 hover:bg-slate-800 rounded-full flex items-center justify-center transition-colors">
+                <Plus className="w-5 h-5 text-white" />
               </div>
               Nouvelle lettre
             </button>
