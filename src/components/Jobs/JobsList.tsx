@@ -140,23 +140,20 @@ export default function JobsList() {
           {jobs.map((job) => (
             <div
               key={job.id}
-              className="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow cursor-pointer"
+              className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-all cursor-pointer"
               onClick={() => setSelectedJob(job)}
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Briefcase className="w-8 h-8 text-gray-600" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-1 truncate">
                     {job.title}
                   </h3>
-                  <div className="flex items-center gap-4 text-sm text-gray-600">
-                    <span className="inline-flex items-center gap-1">
-                      <MapPin className="h-4 w-4" />
-                      {job.location}
-                    </span>
-                    {job.remote_possible && (
-                      <span className="text-green-600 font-medium">Télétravail possible</span>
-                    )}
-                  </div>
+                  <p className="text-sm text-gray-500 truncate">
+                    {job.location}
+                  </p>
                 </div>
                 {profile?.user_type === 'athlete' && (
                   <button
@@ -164,39 +161,35 @@ export default function JobsList() {
                       e.stopPropagation();
                       handleSaveJob(job.id);
                     }}
-                    className="text-gray-400 hover:text-blue-600 transition-colors"
+                    className="text-gray-400 hover:text-blue-600 transition-colors flex-shrink-0"
                   >
                     {savedJobs.has(job.id) ? (
-                      <BookmarkCheck className="h-6 w-6 text-blue-600" />
+                      <BookmarkCheck className="h-5 w-5 text-blue-600" />
                     ) : (
-                      <Bookmark className="h-6 w-6" />
+                      <Bookmark className="h-5 w-5" />
                     )}
                   </button>
                 )}
               </div>
 
-              <p className="text-gray-600 mb-4 line-clamp-2">{job.description}</p>
+              <p className="text-gray-600 text-sm mb-4 line-clamp-3">{job.description}</p>
 
-              <div className="flex flex-wrap gap-2 mb-4">
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
-                  {job.contract_type}
-                </span>
-                <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
-                  {job.experience_level}
-                </span>
-                <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
-                  {job.job_sector}
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between text-sm">
-                <span className="font-semibold text-gray-900">
-                  {formatSalary(job.salary_min, job.salary_max)}
-                </span>
-                <span className="text-gray-500 flex items-center gap-1">
-                  <Clock className="h-4 w-4" />
-                  {new Date(job.published_at || job.created_at).toLocaleDateString('fr-FR')}
-                </span>
+              <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                <div className="flex items-center gap-1 text-gray-700">
+                  <span className="text-sm font-medium">
+                    {formatSalary(job.salary_min, job.salary_max)}
+                  </span>
+                  <span className="text-xs text-gray-500">/Mois</span>
+                </div>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedJob(job);
+                  }}
+                  className="px-4 py-2 bg-purple-50 text-purple-700 rounded-lg text-sm font-medium hover:bg-purple-100 transition-colors"
+                >
+                  Apply
+                </button>
               </div>
             </div>
           ))}
