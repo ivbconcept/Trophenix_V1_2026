@@ -217,7 +217,7 @@ export default function JobsList() {
                   placeholder="Type d'emploi"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 bg-gray-50 rounded-xl text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                  className="w-full pl-12 pr-4 py-3 bg-gray-50 rounded-xl text-gray-700 placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
                 />
               </div>
 
@@ -229,14 +229,14 @@ export default function JobsList() {
                   placeholder="Lieu"
                   value={locationQuery}
                   onChange={(e) => setLocationQuery(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 bg-gray-50 rounded-xl text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                  className="w-full pl-12 pr-4 py-3 bg-gray-50 rounded-xl text-gray-700 placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
                 />
               </div>
 
               {/* Filter Button */}
-              <button className="px-8 py-3 bg-white rounded-xl flex items-center gap-2 text-gray-900 font-semibold hover:bg-gray-50 transition-all shadow-sm border-0">
+              <button className="px-8 py-3 bg-white rounded-xl flex items-center gap-2 text-gray-900 font-semibold hover:bg-gray-50 transition-all shadow-sm border border-gray-200">
                 <Filter className="w-5 h-5" />
-                Filter
+                Filtre
               </button>
             </div>
           </div>
