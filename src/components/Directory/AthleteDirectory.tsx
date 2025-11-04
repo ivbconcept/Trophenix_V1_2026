@@ -166,7 +166,7 @@ export default function AthleteDirectory() {
             return (
               <div
                 key={athlete.id}
-                className="bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden hover:shadow-2xl transition-all cursor-pointer"
+                className="bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden hover:shadow-2xl transition-all cursor-pointer max-w-md mx-auto"
               >
                 <div className="relative h-40 overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10"></div>
