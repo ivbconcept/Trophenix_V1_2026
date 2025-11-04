@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Briefcase, MapPin, Clock, Bookmark, BookmarkCheck } from 'lucide-react';
+import { Briefcase, MapPin, Clock, Bookmark, BookmarkCheck, Search, Filter } from 'lucide-react';
 import { JobService } from '../../services/jobService';
 import type { JobOffer, JobSearchFilters } from '../../types/jobs';
 import { useAuth } from '../../contexts/AuthContext';
@@ -11,6 +11,8 @@ export default function JobsList() {
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState<JobSearchFilters>({});
   const [selectedJob, setSelectedJob] = useState<JobOffer | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeTab, setActiveTab] = useState<'sportif' | 'entreprise'>('sportif');
 
   useEffect(() => {
     loadJobs();
@@ -178,6 +180,55 @@ export default function JobsList() {
         <div className="max-w-7xl mx-auto">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Offres d'Emploi</h1>
           <p className="text-gray-600">Trouvez votre prochaine opportunité professionnelle</p>
+
+          {/* Search and Filter Section */}
+          <div className="mt-8">
+            <h2 className="text-4xl font-bold text-gray-900 mb-8">Explorer l'annuaire</h2>
+
+            <div className="flex items-center gap-4">
+              {/* Tab Buttons */}
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setActiveTab('sportif')}
+                  className={`px-8 py-3 rounded-full text-base font-semibold transition-all ${
+                    activeTab === 'sportif'
+                      ? 'bg-gray-900 text-white'
+                      : 'bg-white text-gray-600 hover:bg-gray-50'
+                  }`}
+                >
+                  Sportif
+                </button>
+                <button
+                  onClick={() => setActiveTab('entreprise')}
+                  className={`px-8 py-3 rounded-full text-base font-semibold transition-all ${
+                    activeTab === 'entreprise'
+                      ? 'bg-gray-900 text-white'
+                      : 'bg-white text-gray-600 hover:bg-gray-50'
+                  }`}
+                >
+                  Entreprise
+                </button>
+              </div>
+
+              {/* Search Bar */}
+              <div className="flex-1 relative">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Search"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-full text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                />
+              </div>
+
+              {/* Filter Button */}
+              <button className="px-8 py-3 bg-white border border-gray-200 rounded-full flex items-center gap-2 text-gray-900 font-semibold hover:bg-gray-50 transition-all">
+                <Filter className="w-5 h-5" />
+                Filter
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
