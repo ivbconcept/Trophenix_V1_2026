@@ -242,10 +242,6 @@ export function EnhancedMessagingPage() {
             <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Messages</h1>
             <div className="flex items-center gap-2">
               <button className="p-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-lg transition-colors">
-                <UserCircle className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
-              </button>
-
-              <button className="p-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-lg transition-colors">
                 <Plus className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
               </button>
 
