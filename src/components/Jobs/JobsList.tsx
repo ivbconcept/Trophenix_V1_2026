@@ -159,9 +159,9 @@ export default function JobsList() {
 
   const formatSalary = (min?: number, max?: number) => {
     if (!min && !max) return 'Non spécifié';
-    if (min && max) return `${min} - ${max} €`;
-    if (min) return `À partir de ${min} €`;
-    return `Jusqu'à ${max} €`;
+    if (min && max) return `${min} - ${max}€`;
+    if (min) return `À partir de ${min}€`;
+    return `Jusqu'à ${max}€`;
   };
 
   if (loading) {
@@ -221,16 +221,11 @@ export default function JobsList() {
                 </p>
 
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">
-                      <span className="text-gray-600 text-xs font-medium">$</span>
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-gray-900">
-                        {formatSalary(job.salary_min, job.salary_max)}
-                      </p>
-                      <p className="text-[10px] text-gray-500">/Mounth</p>
-                    </div>
+                  <div>
+                    <p className="text-sm font-semibold text-gray-900">
+                      {formatSalary(job.salary_min, job.salary_max)}
+                    </p>
+                    <p className="text-[10px] text-gray-500">/Mois</p>
                   </div>
                   <button
                     onClick={(e) => {
