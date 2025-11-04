@@ -71,7 +71,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
 
     if (section === 'employability' && profile.user_type === 'athlete') {
       return [
-        { id: 'job-offers', label: 'Explorer', icon: BookOpen },
+        { id: 'job-offers', label: 'JobList', icon: BookOpen },
         { id: 'my-applications', label: 'Mes candidatures', icon: Briefcase },
         { id: 'cv-builder', label: 'Mon CV', icon: FileText },
         { id: 'formations', label: 'Formations', icon: GraduationCap },
