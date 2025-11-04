@@ -234,7 +234,7 @@ export default function JobsList() {
               </div>
 
               {/* Filter Button */}
-              <button className="px-8 py-3 bg-white rounded-xl flex items-center gap-2 text-gray-900 font-semibold hover:bg-gray-50 transition-all shadow-sm">
+              <button className="px-8 py-3 bg-white rounded-xl flex items-center gap-2 text-gray-900 font-semibold hover:bg-gray-50 transition-all shadow-sm border-0">
                 <Filter className="w-5 h-5" />
                 Filter
               </button>
