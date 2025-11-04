@@ -319,7 +319,7 @@ export default function CVBuilder() {
             <section>
               <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
                 <Award className="w-5 h-5 text-blue-600" />
-                Parcours sportif
+                Informations sportives
               </h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
