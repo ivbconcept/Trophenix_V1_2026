@@ -1026,7 +1026,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4 text-center">Notre Mission</h3>
               <p className="text-slate-600 leading-relaxed text-center">
-                Accompagner la gestion de carrière des sportifs pour optimiser leur réussite professionnelle.
+                Permettre à chaque sportif d'atteindre son plein potentiel en mobilisant autour de lui le meilleur écosystème et les outils de gestion les plus performants.
               </p>
             </div>
 
@@ -1036,7 +1036,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4 text-center">Notre Vision</h3>
               <p className="text-slate-600 leading-relaxed text-center">
-                Permettre à chaque sportif d'atteindre son plein potentiel en mobilisant autour de lui le meilleur écosystème et les outils de gestion les plus performants.
+                Accompagner chaque sportif afin qu'il puisse exprimer la meilleure version de lui-même à chaque étape de sa carrière : avant, pendant et après sa reconversion.
               </p>
             </div>
 
