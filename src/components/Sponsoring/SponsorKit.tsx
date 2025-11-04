@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react';
-import { FileText, Download, Edit2, Save, Plus, Image, BarChart, Users } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { FileText, Download, Edit2, Save, Plus, Image, BarChart, Users, MoreVertical, Upload } from 'lucide-react';
 
 export function SponsorKit() {
   const [isEditing, setIsEditing] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [kitData, setKitData] = useState({
     title: 'Mon Kit Sponsor',
     description: '',
@@ -20,8 +23,36 @@ export function SponsorKit() {
     }
   });
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setShowMenu(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   const handleSave = () => {
     setIsEditing(false);
+  };
+
+  const handleDownloadPDF = () => {
+    window.print();
+    setShowMenu(false);
+  };
+
+  const handleUploadPDF = () => {
+    fileInputRef.current?.click();
+    setShowMenu(false);
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      console.log('File uploaded:', file);
+    }
   };
 
   return (
@@ -42,10 +73,40 @@ export function SponsorKit() {
                   <Edit2 className="w-5 h-5" />
                   Modifier
                 </button>
-                <button className="flex items-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl transition-all font-medium">
-                  <Download className="w-5 h-5" />
-                  Télécharger PDF
-                </button>
+                <div className="relative" ref={menuRef}>
+                  <button
+                    onClick={() => setShowMenu(!showMenu)}
+                    className="flex items-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl transition-all font-medium"
+                  >
+                    <MoreVertical className="w-5 h-5" />
+                  </button>
+
+                  {showMenu && (
+                    <div className="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden z-50">
+                      <button
+                        onClick={handleDownloadPDF}
+                        className="w-full flex items-center gap-3 px-4 py-3 text-left text-slate-700 hover:bg-slate-50 transition-colors"
+                      >
+                        <Download className="w-5 h-5 text-blue-600" />
+                        <span className="font-medium">Télécharger PDF</span>
+                      </button>
+                      <button
+                        onClick={handleUploadPDF}
+                        className="w-full flex items-center gap-3 px-4 py-3 text-left text-slate-700 hover:bg-slate-50 transition-colors border-t border-slate-100"
+                      >
+                        <Upload className="w-5 h-5 text-blue-600" />
+                        <span className="font-medium">Uploader un PDF</span>
+                      </button>
+                    </div>
+                  )}
+                </div>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept=".pdf"
+                  onChange={handleFileChange}
+                  className="hidden"
+                />
               </>
             ) : (
               <button
