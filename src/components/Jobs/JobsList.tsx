@@ -76,14 +76,17 @@ export default function JobsList() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Offres d'Emploi</h1>
-        <p className="text-gray-600">Trouvez votre prochaine opportunité professionnelle</p>
+    <div className="flex flex-col h-full">
+      <div className="bg-white border-b border-gray-200 px-8 py-6">
+        <div className="max-w-7xl mx-auto">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Offres d'Emploi</h1>
+          <p className="text-gray-600">Trouvez votre prochaine opportunité professionnelle</p>
+        </div>
       </div>
 
-
-      {jobs.length === 0 ? (
+      <div className="flex-1 overflow-auto bg-slate-50">
+        <div className="max-w-7xl mx-auto px-8 py-8">
+          {jobs.length === 0 ? (
         <div className="text-center py-12">
           <Briefcase className="mx-auto h-12 w-12 text-gray-400 mb-4" />
           <h3 className="text-lg font-medium text-gray-900 mb-2">Aucune offre disponible</h3>
@@ -147,15 +150,17 @@ export default function JobsList() {
               </div>
             </div>
           ))}
-        </div>
-      )}
+          </div>
+        )}
 
-      {selectedJob && (
-        <JobDetailModal
-          job={selectedJob}
-          onClose={() => setSelectedJob(null)}
-        />
-      )}
+        {selectedJob && (
+          <JobDetailModal
+            job={selectedJob}
+            onClose={() => setSelectedJob(null)}
+          />
+        )}
+        </div>
+      </div>
     </div>
   );
 }
