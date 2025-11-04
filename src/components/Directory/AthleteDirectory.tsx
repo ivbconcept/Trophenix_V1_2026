@@ -156,12 +156,11 @@ export default function AthleteDirectory() {
             </div>
           </div>
 
-          <button className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-300 dark:border-zinc-600 bg-white dark:bg-zinc-900 text-slate-900 dark:text-white font-semibold text-base hover:border-slate-400 dark:hover:border-zinc-500 transition-all">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M7 7h10v10"></path>
-              <path d="M7 17 17 7"></path>
+          <button className="inline-flex items-center gap-2 px-8 py-3 rounded-full border-2 border-slate-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-slate-900 dark:text-white font-semibold text-base hover:bg-slate-50 dark:hover:bg-zinc-800 transition-all shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
             </svg>
-            Tout
+            Filter
           </button>
         </div>
 
