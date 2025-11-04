@@ -22,6 +22,7 @@ import CompanyDirectory from './components/Directory/CompanyDirectory';
 import { Navbar } from './components/Layout/Navbar';
 import { MessagesList } from './components/Messages/MessagesList';
 import { MessagingPage } from './components/Messages/MessagingPage';
+import { EnhancedMessagingPage } from './components/Messages/EnhancedMessagingPage';
 import { UserProfile } from './components/Profile/UserProfile';
 import { UserSettings } from './components/Settings/UserSettings';
 import { supabase } from './lib/supabase';
@@ -248,7 +249,7 @@ function AppContent() {
 
         {view === 'companies-directory' && <CompanyDirectory />}
 
-        {view === 'messages' && <MessagingPage />}
+        {view === 'messages' && <EnhancedMessagingPage />}
 
         {view === 'notifications' && (
           <div className="p-8">
