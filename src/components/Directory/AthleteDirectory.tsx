@@ -118,51 +118,53 @@ export default function AthleteDirectory() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-black">
       <div className="max-w-[1400px] mx-auto px-6 py-8">
-        <h1 className="text-3xl font-bold text-slate-700 dark:text-white mb-8">Explorer l'annuaire</h1>
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-slate-700 dark:text-white mb-6">Explorer l'annuaire</h1>
 
-        <div className="flex items-center justify-between gap-4 mb-8">
-          <div className="flex items-center gap-4 flex-1">
-            <div className="inline-flex items-center gap-0 bg-slate-100 dark:bg-zinc-800 rounded-2xl p-1 shadow-sm">
-          <button
-            onClick={() => setSportFilter('top')}
-            className={`px-6 py-1.5 rounded-xl font-semibold text-base transition-all ${
-              sportFilter === 'top'
-                ? 'bg-white dark:bg-black text-slate-900 dark:text-white shadow-md'
-                : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
-            }`}
-          >
-            Sportif
-          </button>
-          <button
-            onClick={() => setSportFilter('football')}
-            className={`px-6 py-1.5 rounded-xl font-semibold text-base transition-all ${
-              sportFilter === 'football'
-                ? 'bg-white dark:bg-black text-slate-900 dark:text-white shadow-md'
-                : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
-            }`}
-          >
-            Football
-          </button>
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-4 flex-1">
+              <div className="inline-flex items-center gap-0 bg-slate-100 dark:bg-zinc-800 rounded-2xl p-1 shadow-sm">
+            <button
+              onClick={() => setSportFilter('top')}
+              className={`px-6 py-1.5 rounded-xl font-semibold text-base transition-all ${
+                sportFilter === 'top'
+                  ? 'bg-white dark:bg-black text-slate-900 dark:text-white shadow-md'
+                  : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
+              }`}
+            >
+              Sportif
+            </button>
+            <button
+              onClick={() => setSportFilter('football')}
+              className={`px-6 py-1.5 rounded-xl font-semibold text-base transition-all ${
+                sportFilter === 'football'
+                  ? 'bg-white dark:bg-black text-slate-900 dark:text-white shadow-md'
+                  : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
+              }`}
+            >
+              Football
+            </button>
+              </div>
+
+              <div className="relative flex-1 max-w-lg">
+                <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-slate-400 dark:text-zinc-500" size={20} />
+                <input
+                  type="text"
+                  placeholder="Search"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-14 pr-6 py-2.5 rounded-2xl bg-white dark:bg-zinc-900 border-2 border-slate-200 dark:border-zinc-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 text-base focus:outline-none focus:border-slate-300 dark:focus:border-zinc-700 transition-all"
+                />
+              </div>
             </div>
 
-            <div className="relative flex-1 max-w-lg">
-              <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-slate-400 dark:text-zinc-500" size={20} />
-              <input
-                type="text"
-                placeholder="Search"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-14 pr-6 py-2.5 rounded-2xl bg-white dark:bg-zinc-900 border-2 border-slate-200 dark:border-zinc-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 text-base focus:outline-none focus:border-slate-300 dark:focus:border-zinc-700 transition-all"
-              />
-            </div>
+            <button className="inline-flex items-center gap-2 px-6 py-2 rounded-xl border-2 border-slate-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-slate-900 dark:text-white font-semibold text-base hover:bg-slate-50 dark:hover:bg-zinc-800 transition-all shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+              </svg>
+              Filter
+            </button>
           </div>
-
-          <button className="inline-flex items-center gap-2 px-6 py-2 rounded-xl border-2 border-slate-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-slate-900 dark:text-white font-semibold text-base hover:bg-slate-50 dark:hover:bg-zinc-800 transition-all shadow-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
-            </svg>
-            Filter
-          </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
