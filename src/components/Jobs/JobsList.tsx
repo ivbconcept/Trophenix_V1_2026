@@ -197,29 +197,29 @@ export default function JobsList() {
                     <Briefcase className="w-10 h-10 text-gray-600" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-1">
+                    <h3 className="text-base font-semibold text-gray-900 mb-1">
                       {job.title}
                     </h3>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-xs text-gray-500">
                       {job.location}
                     </p>
                   </div>
                 </div>
 
-                <p className="text-gray-500 text-sm mb-6 line-clamp-3 leading-relaxed">
+                <p className="text-gray-500 text-xs mb-6 line-clamp-3 leading-relaxed">
                   {job.description}
                 </p>
 
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1.5">
                     <div className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">
-                      <span className="text-gray-600 text-sm font-medium">$</span>
+                      <span className="text-gray-600 text-xs font-medium">$</span>
                     </div>
                     <div>
-                      <p className="text-lg font-semibold text-gray-900">
+                      <p className="text-sm font-semibold text-gray-900">
                         {formatSalary(job.salary_min, job.salary_max)}
                       </p>
-                      <p className="text-xs text-gray-500">/Mounth</p>
+                      <p className="text-[10px] text-gray-500">/Mounth</p>
                     </div>
                   </div>
                   <button
@@ -227,7 +227,7 @@ export default function JobsList() {
                       e.stopPropagation();
                       setSelectedJob(job);
                     }}
-                    className="px-6 py-2.5 bg-gray-100 text-gray-700 rounded-xl text-sm font-medium hover:bg-gray-200 transition-colors"
+                    className="px-5 py-2 bg-gray-100 text-gray-700 rounded-xl text-xs font-medium hover:bg-gray-200 transition-colors"
                   >
                     Apply
                   </button>
