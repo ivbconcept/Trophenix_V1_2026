@@ -273,7 +273,7 @@ export default function JobsList() {
                       {job.title}
                     </h3>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-3 h-3 bg-green-400 rounded-full flex-shrink-0"></div>
+                      <div className="w-4 h-4 bg-green-400 rounded-full flex-shrink-0"></div>
                       <p className="text-xs text-gray-500">
                         {job.company_name}
                       </p>
