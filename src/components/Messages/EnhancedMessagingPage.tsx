@@ -650,9 +650,6 @@ export function EnhancedMessagingPage() {
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
                   Messagerie Trophenix
                 </h3>
-                <p className="text-slate-500 dark:text-zinc-500 mb-6">
-                  Envoyez et recevez des messages sans garder votre téléphone connecté
-                </p>
               </div>
             </div>
 
