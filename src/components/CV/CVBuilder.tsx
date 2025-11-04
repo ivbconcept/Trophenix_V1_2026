@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { User, Trophy, Award, Briefcase, GraduationCap, MapPin, Mail, Download, Edit2, Save, X, CheckCircle } from 'lucide-react';
+import { User, Trophy, Award, Briefcase, GraduationCap, MapPin, Mail, Download, Edit2, Save, X, CheckCircle, MoreVertical } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase } from '../../lib/supabase';
 import CVForm from './CVForm';
@@ -34,6 +34,7 @@ export default function CVBuilder() {
   const [saving, setSaving] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showForm, setShowForm] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -307,9 +308,9 @@ export default function CVBuilder() {
                   )}
                 </div>
               </div>
-              <div className="flex gap-3 no-print">
+              <div className="relative no-print">
                 {isEditing ? (
-                  <>
+                  <div className="flex gap-3">
                     <button
                       onClick={handleCancel}
                       className="flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors font-medium"
@@ -325,32 +326,58 @@ export default function CVBuilder() {
                       <Save className="w-4 h-4" />
                       {saving ? 'Enregistrement...' : 'Enregistrer'}
                     </button>
-                  </>
+                  </div>
                 ) : (
                   <>
-                    {isCVEmpty && (
-                      <button
-                        onClick={() => setShowForm(true)}
-                        className="flex items-center gap-2 px-5 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium"
-                      >
-                        <Edit2 className="w-4 h-4" />
-                        Compléter mon CV
-                      </button>
+                    <button
+                      onClick={() => setShowMenu(!showMenu)}
+                      className="p-2.5 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors"
+                    >
+                      <MoreVertical className="w-5 h-5 text-slate-700" />
+                    </button>
+
+                    {showMenu && (
+                      <>
+                        <div
+                          className="fixed inset-0 z-10"
+                          onClick={() => setShowMenu(false)}
+                        />
+                        <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-lg shadow-lg border border-slate-200 py-1 z-20">
+                          {isCVEmpty && (
+                            <button
+                              onClick={() => {
+                                setShowForm(true);
+                                setShowMenu(false);
+                              }}
+                              className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-slate-50 transition-colors"
+                            >
+                              <Edit2 className="w-4 h-4 text-green-600" />
+                              <span className="font-medium text-slate-900">Compléter mon CV</span>
+                            </button>
+                          )}
+                          <button
+                            onClick={() => {
+                              setIsEditing(true);
+                              setShowMenu(false);
+                            }}
+                            className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-slate-50 transition-colors"
+                          >
+                            <Edit2 className="w-4 h-4 text-slate-600" />
+                            <span className="font-medium text-slate-900">Modifier</span>
+                          </button>
+                          <button
+                            onClick={() => {
+                              handleDownloadPDF();
+                              setShowMenu(false);
+                            }}
+                            className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-slate-50 transition-colors"
+                          >
+                            <Download className="w-4 h-4 text-blue-600" />
+                            <span className="font-medium text-slate-900">Télécharger PDF</span>
+                          </button>
+                        </div>
+                      </>
                     )}
-                    <button
-                      onClick={() => setIsEditing(true)}
-                      className="flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors font-medium"
-                    >
-                      <Edit2 className="w-4 h-4" />
-                      Modifier
-                    </button>
-                    <button
-                      onClick={handleDownloadPDF}
-                      className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-                    >
-                      <Download className="w-4 h-4" />
-                      Télécharger PDF
-                    </button>
                   </>
                 )}
               </div>
