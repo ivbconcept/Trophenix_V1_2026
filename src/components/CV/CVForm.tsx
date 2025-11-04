@@ -78,7 +78,7 @@ export default function CVForm({ initialData, onSave, onCancel }: CVFormProps) {
               Retour
             </button>
           )}
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">Créer mon CV</h1>
+          <h1 className="text-3xl font-bold text-slate-600 mb-2">Créer mon CV</h1>
           <p className="text-slate-600">Remplissez les informations pour générer votre CV professionnel</p>
         </div>
 
