@@ -113,7 +113,31 @@ export const advancedMessagingService = {
       muted: item.muted
     }));
 
-    return conversations.sort((a, b) =>
+    const enrichedConversations = await Promise.all(
+      conversations.map(async (conv) => {
+        if (conv.type === 'direct') {
+          const otherUserId = conv.participant1_id === userId ? conv.participant2_id : conv.participant1_id;
+
+          const { data: profile } = await supabase
+            .from('profiles')
+            .select('full_name, avatar_url')
+            .eq('id', otherUserId)
+            .single();
+
+          if (profile) {
+            return {
+              ...conv,
+              name: profile.full_name,
+              avatar_url: profile.avatar_url || conv.avatar_url,
+              other_user_id: otherUserId
+            };
+          }
+        }
+        return conv;
+      })
+    );
+
+    return enrichedConversations.sort((a, b) =>
       new Date(b.last_message_at).getTime() - new Date(a.last_message_at).getTime()
     );
   },
