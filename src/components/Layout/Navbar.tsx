@@ -197,7 +197,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
                 }`}
               >
                 <Settings className="h-5 w-5" />
-                <span>Settings</span>
+                <span>Paramètres</span>
               </button>
             </div>
           )}
@@ -216,7 +216,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
               </button>
               <button
                 onClick={() => onNavigate('settings')}
-                title="Settings"
+                title="Paramètres"
                 className={`w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                   currentView === 'settings'
                     ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg shadow-blue-500/30'
