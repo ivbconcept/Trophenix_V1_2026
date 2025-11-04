@@ -254,7 +254,7 @@ export default function CVBuilder() {
   const displayProfile = isEditing ? (editedProfile || athleteProfile) : athleteProfile;
 
   return (
-    <div className="min-h-screen bg-slate-50 py-8">
+    <div className="min-h-screen bg-white">
       <style>{`
         @media print {
           body * {
@@ -275,140 +275,128 @@ export default function CVBuilder() {
         }
       `}</style>
 
-      <div className="max-w-5xl mx-auto px-4">
+      <div className="max-w-4xl mx-auto">
         {showSuccessMessage && (
-          <div className="mb-4 bg-green-50 border border-green-200 rounded-lg p-4 flex items-center gap-3">
+          <div className="mb-4 bg-green-50 border border-green-200 rounded-lg p-4 flex items-center gap-3 no-print">
             <CheckCircle className="w-5 h-5 text-green-600" />
             <span className="text-green-800 font-medium">CV enregistré avec succès</span>
           </div>
         )}
 
-        <div className="mb-6 flex justify-between items-center no-print">
-          <h1 className="text-3xl font-bold text-slate-900">Mon CV</h1>
-          <div className="flex gap-3">
-            {isEditing ? (
-              <>
-                <button
-                  onClick={handleCancel}
-                  className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors"
-                >
-                  <X className="w-4 h-4" />
-                  Annuler
-                </button>
-                <button
-                  onClick={handleSave}
-                  disabled={saving}
-                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
-                >
-                  <Save className="w-4 h-4" />
-                  {saving ? 'Enregistrement...' : 'Enregistrer'}
-                </button>
-              </>
-            ) : (
-              <>
-                {isCVEmpty && (
-                  <button
-                    onClick={() => setShowForm(true)}
-                    className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-                  >
-                    <Edit2 className="w-4 h-4" />
-                    Compléter mon CV
-                  </button>
-                )}
-                <button
-                  onClick={() => setIsEditing(true)}
-                  className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors"
-                >
-                  <Edit2 className="w-4 h-4" />
-                  Modifier
-                </button>
-                <button
-                  onClick={handleDownloadPDF}
-                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                >
-                  <Download className="w-4 h-4" />
-                  Télécharger PDF
-                </button>
-              </>
-            )}
-          </div>
-        </div>
-
-        {isCVEmpty && !isEditing && (
-          <div className="mb-6 bg-blue-50 border border-blue-200 rounded-lg p-6 no-print">
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                <Trophy className="w-6 h-6 text-blue-600" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-lg font-semibold text-blue-900 mb-2">
-                  Votre CV est presque prêt !
-                </h3>
-                <p className="text-blue-700 mb-4">
-                  Complétez vos informations (palmarès, expériences, formations) pour créer un CV complet et attractif pour les recruteurs.
-                </p>
-                <button
-                  onClick={() => setShowForm(true)}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                >
-                  Compléter maintenant
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-
-        <div id="cv-content" className="bg-white rounded-lg shadow-sm overflow-hidden">
-          <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-12">
-            <div className="flex items-start gap-6">
-              <div className="w-32 h-32 rounded-full bg-white flex items-center justify-center overflow-hidden flex-shrink-0">
+        <div id="cv-content">
+          <div className="bg-white border-b border-slate-200 px-8 py-8 flex items-center justify-between">
+            <div className="flex items-center gap-6">
+              <div className="w-24 h-24 rounded-full bg-slate-200 flex items-center justify-center overflow-hidden flex-shrink-0">
                 {displayProfile.photo_url ? (
                   <img src={displayProfile.photo_url} alt="Profile" className="w-full h-full object-cover" />
                 ) : (
-                  <User className="w-16 h-16 text-slate-400" />
+                  <User className="w-12 h-12 text-slate-400" />
                 )}
               </div>
-              <div className="flex-1 text-white">
-                <h2 className="text-4xl font-bold mb-2">
+              <div>
+                <h1 className="text-3xl font-bold text-slate-900 mb-1">
                   {displayProfile.first_name || 'Prénom'} {displayProfile.last_name || 'Nom'}
-                </h2>
-                <p className="text-xl text-blue-100 mb-4">{displayProfile.sport || 'Votre sport'}</p>
-                <div className="flex flex-wrap gap-4 text-sm">
-                  {displayProfile.sport_level && (
-                    <div className="flex items-center gap-2">
-                      <Trophy className="w-4 h-4" />
-                      <span>{displayProfile.sport_level}</span>
-                    </div>
-                  )}
-                  {displayProfile.geographic_zone && (
-                    <div className="flex items-center gap-2">
-                      <MapPin className="w-4 h-4" />
-                      {isEditing ? (
-                        <input
-                          type="text"
-                          value={displayProfile.geographic_zone}
-                          onChange={(e) => handleFieldChange('geographic_zone', e.target.value)}
-                          className="bg-white/20 border border-white/30 rounded px-2 py-1 text-white placeholder-white/70"
-                        />
-                      ) : (
-                        <span>{displayProfile.geographic_zone}</span>
-                      )}
-                    </div>
-                  )}
-                  {profile?.email && (
-                    <div className="flex items-center gap-2">
-                      <Mail className="w-4 h-4" />
-                      <span>{profile.email}</span>
-                    </div>
-                  )}
-                </div>
+                </h1>
+                <p className="text-lg text-slate-600 mb-2">{displayProfile.sport || 'Votre sport'}</p>
+                {profile?.email && (
+                  <div className="flex items-center gap-2 text-slate-600">
+                    <Mail className="w-4 h-4" />
+                    <span className="text-sm">{profile.email}</span>
+                  </div>
+                )}
               </div>
+            </div>
+            <div className="flex gap-3 no-print">
+              {isEditing ? (
+                <>
+                  <button
+                    onClick={handleCancel}
+                    className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors"
+                  >
+                    <X className="w-4 h-4" />
+                    Annuler
+                  </button>
+                  <button
+                    onClick={handleSave}
+                    disabled={saving}
+                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  >
+                    <Save className="w-4 h-4" />
+                    {saving ? 'Enregistrement...' : 'Enregistrer'}
+                  </button>
+                </>
+              ) : (
+                <>
+                  {isCVEmpty && (
+                    <button
+                      onClick={() => setShowForm(true)}
+                      className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                    >
+                      <Edit2 className="w-4 h-4" />
+                      Compléter mon CV
+                    </button>
+                  )}
+                  <button
+                    onClick={() => setIsEditing(true)}
+                    className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors"
+                  >
+                    <Edit2 className="w-4 h-4" />
+                    Modifier
+                  </button>
+                  <button
+                    onClick={handleDownloadPDF}
+                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    <Download className="w-4 h-4" />
+                    Télécharger PDF
+                  </button>
+                </>
+              )}
             </div>
           </div>
 
-          <div className="p-8 space-y-8">
-            <section>
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+          {isCVEmpty && !isEditing && (
+            <div className="mx-8 mt-6 mb-6 bg-blue-50 border border-blue-200 rounded-xl p-5 no-print">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <Trophy className="w-6 h-6 text-blue-600" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-blue-900 mb-2">
+                    Votre CV est presque prêt !
+                  </h3>
+                  <p className="text-blue-700 mb-4">
+                    Complétez vos informations (palmarès, expériences, formations) pour créer un CV complet et attractif pour les recruteurs.
+                  </p>
+                  <button
+                    onClick={() => setShowForm(true)}
+                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    Compléter maintenant
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <div className="px-8 py-6">
+            <div className="flex gap-2 mb-8 border-b border-slate-200 pb-0">
+              <button className="px-4 py-2 text-sm font-medium text-slate-900 border-b-2 border-slate-900 -mb-px">
+                À propos
+              </button>
+              <button className="px-4 py-2 text-sm font-medium text-slate-500 hover:text-slate-900">
+                Travail
+              </button>
+              <button className="px-4 py-2 text-sm font-medium text-slate-500 hover:text-slate-900">
+                Expérience
+              </button>
+              <button className="px-4 py-2 text-sm font-medium text-slate-500 hover:text-slate-900">
+                Formation
+              </button>
+            </div>
+
+            <section className="mb-8">
+              <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
                 <User className="w-5 h-5 text-blue-600" />
                 Situation actuelle
               </h3>
@@ -421,14 +409,14 @@ export default function CVBuilder() {
                   placeholder="Décrivez votre situation actuelle..."
                 />
               ) : (
-                <p className="text-slate-700 leading-relaxed">
+                <p className="text-slate-600 leading-relaxed">
                   {displayProfile.situation || 'Non renseigné'}
                 </p>
               )}
             </section>
 
-            <section>
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <section className="mb-8">
+              <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
                 <Trophy className="w-5 h-5 text-blue-600" />
                 Palmarès sportif
               </h3>
@@ -437,31 +425,87 @@ export default function CVBuilder() {
                   value={displayProfile.achievements || ''}
                   onChange={(e) => handleFieldChange('achievements', e.target.value)}
                   className="w-full border border-slate-300 rounded-lg p-3 text-slate-700 leading-relaxed"
-                  rows={5}
+                  rows={4}
                   placeholder="Listez vos principaux résultats et titres..."
                 />
               ) : (
-                <p className="text-slate-700 leading-relaxed whitespace-pre-line">
+                <p className="text-slate-600 leading-relaxed whitespace-pre-line">
                   {displayProfile.achievements || 'Non renseigné'}
                 </p>
               )}
             </section>
 
-            <section className="grid md:grid-cols-2 gap-6">
+            <section className="mb-8">
+              <h3 className="text-lg font-bold text-slate-900 mb-4">Expérience professionnelle</h3>
+              {isEditing ? (
+                <textarea
+                  value={displayProfile.professional_history || ''}
+                  onChange={(e) => handleFieldChange('professional_history', e.target.value)}
+                  className="w-full border border-slate-300 rounded-lg p-3 text-slate-700 leading-relaxed"
+                  rows={4}
+                  placeholder="Décrivez vos expériences professionnelles..."
+                />
+              ) : displayProfile.professional_history ? (
+                <div className="space-y-6">
+                  {displayProfile.professional_history.split('\n\n').map((experience, idx) => (
+                    <div key={idx} className="flex gap-4">
+                      <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center flex-shrink-0">
+                        <Briefcase className="w-6 h-6 text-slate-400" />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-slate-600 whitespace-pre-line">{experience}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-slate-600">Non renseigné</p>
+              )}
+            </section>
+
+            <section className="mb-8">
+              <h3 className="text-lg font-bold text-slate-900 mb-4">Formation</h3>
+              {isEditing ? (
+                <textarea
+                  value={displayProfile.degrees || ''}
+                  onChange={(e) => handleFieldChange('degrees', e.target.value)}
+                  className="w-full border border-slate-300 rounded-lg p-3 text-slate-700 leading-relaxed"
+                  rows={3}
+                  placeholder="Listez vos diplômes et formations..."
+                />
+              ) : displayProfile.degrees ? (
+                <div className="space-y-6">
+                  {displayProfile.degrees.split('\n\n').map((degree, idx) => (
+                    <div key={idx} className="flex gap-4">
+                      <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center flex-shrink-0">
+                        <GraduationCap className="w-6 h-6 text-slate-400" />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-slate-600 whitespace-pre-line">{degree}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-slate-600">Non renseigné</p>
+              )}
+            </section>
+
+            <section className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
                   <Award className="w-5 h-5 text-blue-600" />
                   Informations sportives
                 </h3>
                 <div className="space-y-3">
                   <div>
-                    <span className="text-sm font-medium text-slate-500">Club formateur</span>
+                    <span className="text-sm font-medium text-slate-500 block mb-1">Club formateur</span>
                     {isEditing ? (
                       <input
                         type="text"
                         value={displayProfile.birth_club || ''}
                         onChange={(e) => handleFieldChange('birth_club', e.target.value)}
-                        className="w-full border border-slate-300 rounded-lg p-2 text-slate-900 mt-1"
+                        className="w-full border border-slate-300 rounded-lg p-2 text-slate-900"
                         placeholder="Nom du club..."
                       />
                     ) : (
@@ -469,13 +513,13 @@ export default function CVBuilder() {
                     )}
                   </div>
                   <div>
-                    <span className="text-sm font-medium text-slate-500">Centre de formation</span>
+                    <span className="text-sm font-medium text-slate-500 block mb-1">Centre de formation</span>
                     {isEditing ? (
                       <input
                         type="text"
                         value={displayProfile.training_center || ''}
                         onChange={(e) => handleFieldChange('training_center', e.target.value)}
-                        className="w-full border border-slate-300 rounded-lg p-2 text-slate-900 mt-1"
+                        className="w-full border border-slate-300 rounded-lg p-2 text-slate-900"
                         placeholder="Nom du centre..."
                       />
                     ) : (
@@ -483,13 +527,13 @@ export default function CVBuilder() {
                     )}
                   </div>
                   <div>
-                    <span className="text-sm font-medium text-slate-500">Liste ministérielle</span>
+                    <span className="text-sm font-medium text-slate-500 block mb-1">Liste ministérielle</span>
                     {isEditing ? (
                       <input
                         type="text"
                         value={displayProfile.ministerial_list || ''}
                         onChange={(e) => handleFieldChange('ministerial_list', e.target.value)}
-                        className="w-full border border-slate-300 rounded-lg p-2 text-slate-900 mt-1"
+                        className="w-full border border-slate-300 rounded-lg p-2 text-slate-900"
                         placeholder="Elite, Espoir, etc..."
                       />
                     ) : (
@@ -497,13 +541,13 @@ export default function CVBuilder() {
                     )}
                   </div>
                   <div>
-                    <span className="text-sm font-medium text-slate-500">Type d'athlète</span>
+                    <span className="text-sm font-medium text-slate-500 block mb-1">Type d'athlète</span>
                     {isEditing ? (
                       <input
                         type="text"
                         value={displayProfile.athlete_type || ''}
                         onChange={(e) => handleFieldChange('athlete_type', e.target.value)}
-                        className="w-full border border-slate-300 rounded-lg p-2 text-slate-900 mt-1"
+                        className="w-full border border-slate-300 rounded-lg p-2 text-slate-900"
                         placeholder="Handisport, Valide..."
                       />
                     ) : (
@@ -514,19 +558,19 @@ export default function CVBuilder() {
               </div>
 
               <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
                   <Briefcase className="w-5 h-5 text-blue-600" />
                   Projet professionnel
                 </h3>
                 <div className="space-y-3">
                   <div>
-                    <span className="text-sm font-medium text-slate-500">Domaine souhaité</span>
+                    <span className="text-sm font-medium text-slate-500 block mb-1">Domaine souhaité</span>
                     {isEditing ? (
                       <input
                         type="text"
                         value={displayProfile.desired_field || ''}
                         onChange={(e) => handleFieldChange('desired_field', e.target.value)}
-                        className="w-full border border-slate-300 rounded-lg p-2 text-slate-900 mt-1"
+                        className="w-full border border-slate-300 rounded-lg p-2 text-slate-900"
                         placeholder="Marketing, Commercial, etc..."
                       />
                     ) : (
@@ -534,13 +578,13 @@ export default function CVBuilder() {
                     )}
                   </div>
                   <div>
-                    <span className="text-sm font-medium text-slate-500">Type de poste</span>
+                    <span className="text-sm font-medium text-slate-500 block mb-1">Type de poste</span>
                     {isEditing ? (
                       <input
                         type="text"
                         value={displayProfile.position_type || ''}
                         onChange={(e) => handleFieldChange('position_type', e.target.value)}
-                        className="w-full border border-slate-300 rounded-lg p-2 text-slate-900 mt-1"
+                        className="w-full border border-slate-300 rounded-lg p-2 text-slate-900"
                         placeholder="CDI, CDD, Stage..."
                       />
                     ) : (
@@ -548,13 +592,13 @@ export default function CVBuilder() {
                     )}
                   </div>
                   <div>
-                    <span className="text-sm font-medium text-slate-500">Disponibilité</span>
+                    <span className="text-sm font-medium text-slate-500 block mb-1">Disponibilité</span>
                     {isEditing ? (
                       <input
                         type="text"
                         value={displayProfile.availability || ''}
                         onChange={(e) => handleFieldChange('availability', e.target.value)}
-                        className="w-full border border-slate-300 rounded-lg p-2 text-slate-900 mt-1"
+                        className="w-full border border-slate-300 rounded-lg p-2 text-slate-900"
                         placeholder="Immédiate, Dans 3 mois..."
                       />
                     ) : (
@@ -563,46 +607,6 @@ export default function CVBuilder() {
                   </div>
                 </div>
               </div>
-            </section>
-
-            <section>
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <Briefcase className="w-5 h-5 text-blue-600" />
-                Expérience professionnelle
-              </h3>
-              {isEditing ? (
-                <textarea
-                  value={displayProfile.professional_history || ''}
-                  onChange={(e) => handleFieldChange('professional_history', e.target.value)}
-                  className="w-full border border-slate-300 rounded-lg p-3 text-slate-700 leading-relaxed"
-                  rows={5}
-                  placeholder="Décrivez vos expériences professionnelles..."
-                />
-              ) : (
-                <p className="text-slate-700 leading-relaxed whitespace-pre-line">
-                  {displayProfile.professional_history || 'Non renseigné'}
-                </p>
-              )}
-            </section>
-
-            <section>
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <GraduationCap className="w-5 h-5 text-blue-600" />
-                Formation
-              </h3>
-              {isEditing ? (
-                <textarea
-                  value={displayProfile.degrees || ''}
-                  onChange={(e) => handleFieldChange('degrees', e.target.value)}
-                  className="w-full border border-slate-300 rounded-lg p-3 text-slate-700 leading-relaxed"
-                  rows={4}
-                  placeholder="Listez vos diplômes et formations..."
-                />
-              ) : (
-                <p className="text-slate-700 leading-relaxed whitespace-pre-line">
-                  {displayProfile.degrees || 'Non renseigné'}
-                </p>
-              )}
             </section>
           </div>
         </div>
