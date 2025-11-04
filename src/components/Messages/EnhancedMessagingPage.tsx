@@ -657,30 +657,37 @@ export function EnhancedMessagingPage() {
             </div>
 
             {/* Input zone - visible même sans conversation sélectionnée */}
-            <div className="px-4 py-3 bg-slate-100 dark:bg-zinc-950 border-t border-slate-200 dark:border-zinc-800">
-              <div className="flex items-center gap-2">
+            <div className="px-4 py-3 bg-white dark:bg-zinc-950 border-t border-slate-200 dark:border-zinc-800">
+              <div className="flex items-center gap-3">
                 <button
-                  className="p-2.5 hover:bg-slate-200 dark:hover:bg-zinc-900 rounded-full transition-colors flex-shrink-0"
+                  className="p-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-full transition-colors flex-shrink-0"
                   disabled
                 >
-                  <Plus className="w-5 h-5 text-slate-400 dark:text-zinc-600" />
+                  <Plus className="w-6 h-6 text-slate-500 dark:text-zinc-500" />
                 </button>
 
-                <div className="flex-1 relative bg-white dark:bg-zinc-900 rounded-lg opacity-50">
-                  <textarea
+                <button
+                  className="p-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-full transition-colors flex-shrink-0"
+                  disabled
+                >
+                  <Smile className="w-6 h-6 text-slate-500 dark:text-zinc-500" />
+                </button>
+
+                <div className="flex-1 relative">
+                  <input
+                    type="text"
                     value=""
-                    placeholder="Sélectionnez une conversation pour commencer"
+                    placeholder="Entrez un message"
                     disabled
-                    className="w-full px-4 py-2.5 bg-transparent focus:outline-none resize-none text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-600"
-                    rows={1}
+                    className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-900 rounded-lg focus:outline-none text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-zinc-600 border-0"
                   />
                 </div>
 
                 <button
-                  className="p-2.5 rounded-full transition-colors flex-shrink-0 bg-slate-200 dark:bg-zinc-800"
+                  className="p-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-full transition-colors flex-shrink-0"
                   disabled
                 >
-                  <Send className="w-5 h-5 text-slate-400 dark:text-zinc-600" />
+                  <Mic className="w-6 h-6 text-slate-500 dark:text-zinc-500" />
                 </button>
               </div>
             </div>
