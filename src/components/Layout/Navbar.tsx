@@ -199,6 +199,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
                 <Bot className="h-5 w-5" />
                 <span>Elea</span>
               </button>
+              <div className="border-t border-slate-200/50 dark:border-zinc-700 my-2"></div>
               <button
                 onClick={() => onNavigate('help')}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
@@ -247,6 +248,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
               >
                 <Bot className="h-5 w-5" />
               </button>
+              <div className="border-t border-slate-200/50 dark:border-zinc-700 my-2"></div>
               <button
                 onClick={() => onNavigate('help')}
                 title="Aide"
