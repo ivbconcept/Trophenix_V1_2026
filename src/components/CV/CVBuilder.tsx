@@ -257,44 +257,46 @@ export default function CVBuilder() {
                   )}
                 </div>
               </div>
-              <div className="relative no-print">
-                <button
-                  onClick={() => setShowMenu(!showMenu)}
-                  className="p-2.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg hover:bg-white/30 transition-colors"
-                >
-                  <MoreVertical className="w-5 h-5 text-white" />
-                </button>
+              <div className="flex items-center gap-3">
+                <div className="relative no-print">
+                  <button
+                    onClick={() => setShowMenu(!showMenu)}
+                    className="p-2.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg hover:bg-white/30 transition-colors"
+                  >
+                    <MoreVertical className="w-5 h-5 text-white" />
+                  </button>
 
-                {showMenu && (
-                  <>
-                    <div
-                      className="fixed inset-0 z-10"
-                      onClick={() => setShowMenu(false)}
-                    />
-                    <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-lg shadow-lg border border-slate-200 py-1 z-20">
-                      <button
-                        onClick={() => {
-                          setShowForm(true);
-                          setShowMenu(false);
-                        }}
-                        className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-slate-50 transition-colors"
-                      >
-                        <Edit2 className="w-4 h-4 text-green-600" />
-                        <span className="font-medium text-slate-900">Compléter mon CV</span>
-                      </button>
-                      <button
-                        onClick={() => {
-                          handleDownloadPDF();
-                          setShowMenu(false);
-                        }}
-                        className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-slate-50 transition-colors"
-                      >
-                        <Download className="w-4 h-4 text-blue-600" />
-                        <span className="font-medium text-slate-900">Télécharger PDF</span>
-                      </button>
-                    </div>
-                  </>
-                )}
+                  {showMenu && (
+                    <>
+                      <div
+                        className="fixed inset-0 z-10"
+                        onClick={() => setShowMenu(false)}
+                      />
+                      <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-lg shadow-lg border border-slate-200 py-1 z-20">
+                        <button
+                          onClick={() => {
+                            setShowForm(true);
+                            setShowMenu(false);
+                          }}
+                          className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-slate-50 transition-colors"
+                        >
+                          <Edit2 className="w-4 h-4 text-green-600" />
+                          <span className="font-medium text-slate-900">Modifier</span>
+                        </button>
+                        <button
+                          onClick={() => {
+                            handleDownloadPDF();
+                            setShowMenu(false);
+                          }}
+                          className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-slate-50 transition-colors"
+                        >
+                          <Download className="w-4 h-4 text-blue-600" />
+                          <span className="font-medium text-slate-900">Télécharger PDF</span>
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
           </div>
