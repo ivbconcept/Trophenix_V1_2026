@@ -437,7 +437,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
               <div className="relative rounded-3xl overflow-hidden shadow-lg h-[500px] group cursor-pointer">
                 <img
-                  src="/src/assets/images/gerson-repreza-tNQ2tmQiC6g-unsplash.jpg"
+                  src="/dist/assets/gerson-repreza-tNQ2tmQiC6g-unsplash-D6Ar3TQO.jpg"
                   alt="The Last Dance"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -460,7 +460,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 <div className="absolute top-6 right-6 w-[400px] h-[calc(100%-48px)] flex flex-col gap-6">
                   <div className="relative rounded-3xl overflow-hidden shadow-lg flex-1 group">
                     <img
-                      src="/src/assets/images/zachary-kadolph-CmwNM-XHM48-unsplash.jpg"
+                      src="https://images.pexels.com/photos/163403/box-sport-men-training-163403.jpeg"
                       alt="Formula 1: Drive to Survive"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
@@ -486,7 +486,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                   <div className="relative rounded-3xl overflow-hidden shadow-lg flex-1 group">
                     <img
-                      src="/src/assets/images/susan-flynn-h4d4m2IkBxA-unsplash.jpg"
+                      src="https://images.pexels.com/photos/3760856/pexels-photo-3760856.jpeg"
                       alt="All or Nothing"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
