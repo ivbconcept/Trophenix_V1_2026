@@ -4,6 +4,7 @@
  */
 
 export type ContractType = 'CDI' | 'CDD' | 'Stage' | 'Alternance' | 'Freelance';
+export type WorkTime = 'Temps plein' | 'Mi-temps' | 'Stage';
 export type ExperienceLevel = 'Junior' | 'Mid' | 'Senior' | 'Expert';
 export type JobStatus = 'draft' | 'published' | 'closed';
 export type ApplicationStatus = 'pending' | 'reviewed' | 'accepted' | 'rejected';
@@ -18,6 +19,7 @@ export interface JobOffer {
   title: string;
   description: string;
   contract_type: ContractType;
+  work_time: WorkTime;
   location: string;
   remote_possible: boolean;
   salary_min?: number;
@@ -99,6 +101,7 @@ export interface JobOfferFormData {
   title: string;
   description: string;
   contract_type: ContractType;
+  work_time: WorkTime;
   location: string;
   remote_possible: boolean;
   salary_min?: number;

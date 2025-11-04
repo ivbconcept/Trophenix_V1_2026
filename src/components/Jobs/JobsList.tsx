@@ -292,7 +292,7 @@ export default function JobsList() {
                         {job.contract_type}
                       </span>
                       <span className="px-2 py-0.5 bg-green-50 text-green-700 rounded text-[10px] font-medium">
-                        Temps plein
+                        {job.work_time || 'Temps plein'}
                       </span>
                     </div>
                   </div>

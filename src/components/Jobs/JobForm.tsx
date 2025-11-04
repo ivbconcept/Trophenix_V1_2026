@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import { JobService } from '../../services/jobService';
-import type { JobOffer, JobOfferFormData, ContractType, ExperienceLevel } from '../../types/jobs';
+import type { JobOffer, JobOfferFormData, ContractType, WorkTime, ExperienceLevel } from '../../types/jobs';
 
 interface JobFormProps {
   job?: JobOffer;
@@ -15,6 +15,7 @@ export default function JobForm({ job, companyId, onSuccess, onCancel }: JobForm
     title: '',
     description: '',
     contract_type: 'CDI',
+    work_time: 'Temps plein',
     location: '',
     remote_possible: false,
     salary_min: undefined,
@@ -33,6 +34,7 @@ export default function JobForm({ job, companyId, onSuccess, onCancel }: JobForm
         title: job.title,
         description: job.description,
         contract_type: job.contract_type,
+        work_time: job.work_time || 'Temps plein',
         location: job.location,
         remote_possible: job.remote_possible,
         salary_min: job.salary_min,
@@ -148,6 +150,24 @@ export default function JobForm({ job, companyId, onSuccess, onCancel }: JobForm
               </select>
             </div>
 
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Temps de travail *
+              </label>
+              <select
+                value={formData.work_time}
+                onChange={(e) => setFormData({ ...formData, work_time: e.target.value as WorkTime })}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                required
+              >
+                <option value="Temps plein">Temps plein</option>
+                <option value="Mi-temps">Mi-temps</option>
+                <option value="Stage">Stage</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Niveau d'expérience *
