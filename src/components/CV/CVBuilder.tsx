@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { User, Trophy, Award, Briefcase, GraduationCap, MapPin, Mail, Download, Edit2, Save, X, CheckCircle, MoreVertical, Pencil } from 'lucide-react';
+import { User, Trophy, Award, Briefcase, GraduationCap, MapPin, Mail, Download, Edit2, CheckCircle, MoreVertical } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase } from '../../lib/supabase';
 import CVForm from './CVForm';
@@ -28,10 +28,7 @@ interface AthleteProfile {
 export default function CVBuilder() {
   const { user, profile } = useAuth();
   const [athleteProfile, setAthleteProfile] = useState<AthleteProfile | null>(null);
-  const [editedProfile, setEditedProfile] = useState<AthleteProfile | null>(null);
   const [loading, setLoading] = useState(true);
-  const [isEditing, setIsEditing] = useState(false);
-  const [saving, setSaving] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
@@ -55,7 +52,6 @@ export default function CVBuilder() {
 
       if (data) {
         setAthleteProfile(data);
-        setEditedProfile(data);
       } else {
         const emptyProfile: AthleteProfile = {
           first_name: '',
@@ -78,7 +74,6 @@ export default function CVBuilder() {
           availability: null
         };
         setAthleteProfile(emptyProfile);
-        setEditedProfile(emptyProfile);
       }
     } catch (err) {
       console.error('Error loading athlete profile:', err);
@@ -103,67 +98,13 @@ export default function CVBuilder() {
         availability: null
       };
       setAthleteProfile(emptyProfile);
-      setEditedProfile(emptyProfile);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleSave = async () => {
-    if (!editedProfile || !user) return;
-
-    try {
-      setSaving(true);
-      const { error } = await supabase
-        .from('athlete_profiles')
-        .upsert({
-          user_id: user.id,
-          situation: editedProfile.situation,
-          achievements: editedProfile.achievements,
-          birth_club: editedProfile.birth_club,
-          training_center: editedProfile.training_center,
-          ministerial_list: editedProfile.ministerial_list,
-          athlete_type: editedProfile.athlete_type,
-          desired_field: editedProfile.desired_field,
-          position_type: editedProfile.position_type,
-          availability: editedProfile.availability,
-          professional_history: editedProfile.professional_history,
-          degrees: editedProfile.degrees,
-          geographic_zone: editedProfile.geographic_zone,
-          updated_at: new Date().toISOString()
-        }, {
-          onConflict: 'user_id'
-        });
-
-      if (error) throw error;
-
-      await loadAthleteProfile();
-      setIsEditing(false);
-      setShowSuccessMessage(true);
-      setTimeout(() => setShowSuccessMessage(false), 3000);
-    } catch (err) {
-      console.error('Error saving profile:', err);
-      alert('Erreur lors de la sauvegarde');
-    } finally {
-      setSaving(false);
-    }
-  };
-
-  const handleCancel = () => {
-    setEditedProfile(athleteProfile);
-    setIsEditing(false);
-  };
-
   const handleDownloadPDF = () => {
     window.print();
-  };
-
-  const handleFieldChange = (field: keyof AthleteProfile, value: string) => {
-    if (!editedProfile) return;
-    setEditedProfile({
-      ...editedProfile,
-      [field]: value
-    });
   };
 
   if (loading) {
@@ -252,7 +193,7 @@ export default function CVBuilder() {
     );
   }
 
-  const displayProfile = isEditing ? (editedProfile || athleteProfile) : athleteProfile;
+  const displayProfile = athleteProfile;
 
   return (
     <div className="min-h-screen bg-white">
@@ -309,75 +250,41 @@ export default function CVBuilder() {
                 </div>
               </div>
               <div className="relative no-print">
-                {isEditing ? (
-                  <div className="flex gap-3">
-                    <button
-                      onClick={handleCancel}
-                      className="flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors font-medium"
-                    >
-                      <X className="w-4 h-4" />
-                      Annuler
-                    </button>
-                    <button
-                      onClick={handleSave}
-                      disabled={saving}
-                      className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 font-medium"
-                    >
-                      <Save className="w-4 h-4" />
-                      {saving ? 'Enregistrement...' : 'Enregistrer'}
-                    </button>
-                  </div>
-                ) : (
-                  <>
-                    <button
-                      onClick={() => setShowMenu(!showMenu)}
-                      className="p-2.5 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors"
-                    >
-                      <MoreVertical className="w-5 h-5 text-slate-700" />
-                    </button>
+                <button
+                  onClick={() => setShowMenu(!showMenu)}
+                  className="p-2.5 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors"
+                >
+                  <MoreVertical className="w-5 h-5 text-slate-700" />
+                </button>
 
-                    {showMenu && (
-                      <>
-                        <div
-                          className="fixed inset-0 z-10"
-                          onClick={() => setShowMenu(false)}
-                        />
-                        <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-lg shadow-lg border border-slate-200 py-1 z-20">
-                          {isCVEmpty && (
-                            <button
-                              onClick={() => {
-                                setShowForm(true);
-                                setShowMenu(false);
-                              }}
-                              className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-slate-50 transition-colors"
-                            >
-                              <Edit2 className="w-4 h-4 text-green-600" />
-                              <span className="font-medium text-slate-900">Compléter mon CV</span>
-                            </button>
-                          )}
-                          <button
-                            onClick={() => {
-                              setIsEditing(true);
-                              setShowMenu(false);
-                            }}
-                            className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-slate-50 transition-colors"
-                          >
-                            <Edit2 className="w-4 h-4 text-slate-600" />
-                            <span className="font-medium text-slate-900">Modifier</span>
-                          </button>
-                          <button
-                            onClick={() => {
-                              handleDownloadPDF();
-                              setShowMenu(false);
-                            }}
-                            className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-slate-50 transition-colors"
-                          >
-                            <Download className="w-4 h-4 text-blue-600" />
-                            <span className="font-medium text-slate-900">Télécharger PDF</span>
-                          </button>
-                        </div>
-                      </>
-                    )}
+                {showMenu && (
+                  <>
+                    <div
+                      className="fixed inset-0 z-10"
+                      onClick={() => setShowMenu(false)}
+                    />
+                    <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-lg shadow-lg border border-slate-200 py-1 z-20">
+                      <button
+                        onClick={() => {
+                          setShowForm(true);
+                          setShowMenu(false);
+                        }}
+                        className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-slate-50 transition-colors"
+                      >
+                        <Edit2 className="w-4 h-4 text-green-600" />
+                        <span className="font-medium text-slate-900">Compléter mon CV</span>
+                      </button>
+                      <button
+                        onClick={() => {
+                          handleDownloadPDF();
+                          setShowMenu(false);
+                        }}
+                        className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-slate-50 transition-colors"
+                      >
+                        <Download className="w-4 h-4 text-blue-600" />
+                        <span className="font-medium text-slate-900">Télécharger PDF</span>
+                      </button>
+                    </div>
                   </>
                 )}
               </div>
@@ -402,82 +309,30 @@ export default function CVBuilder() {
             </div>
 
             <section className="mb-8">
-              <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2 group">
+              <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
                 <User className="w-5 h-5 text-blue-600" />
                 Situation actuelle
-                {!isEditing && (
-                  <button
-                    onClick={() => setIsEditing(true)}
-                    className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity p-1.5 hover:bg-slate-100 rounded"
-                  >
-                    <Pencil className="w-4 h-4 text-slate-400 hover:text-slate-600" />
-                  </button>
-                )}
               </h3>
-              {isEditing ? (
-                <textarea
-                  value={displayProfile.situation || ''}
-                  onChange={(e) => handleFieldChange('situation', e.target.value)}
-                  className="w-full border border-slate-300 rounded-lg p-3 text-slate-700 leading-relaxed"
-                  rows={3}
-                  placeholder="Décrivez votre situation actuelle..."
-                />
-              ) : (
-                <p className="text-slate-600 leading-relaxed">
-                  {displayProfile.situation || 'Non renseigné'}
-                </p>
-              )}
+              <p className="text-slate-600 leading-relaxed">
+                {displayProfile.situation || 'Non renseigné'}
+              </p>
             </section>
 
             <section className="mb-8">
-              <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2 group">
+              <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
                 <Trophy className="w-5 h-5 text-blue-600" />
                 Palmarès sportif
-                {!isEditing && (
-                  <button
-                    onClick={() => setIsEditing(true)}
-                    className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity p-1.5 hover:bg-slate-100 rounded"
-                  >
-                    <Pencil className="w-4 h-4 text-slate-400 hover:text-slate-600" />
-                  </button>
-                )}
               </h3>
-              {isEditing ? (
-                <textarea
-                  value={displayProfile.achievements || ''}
-                  onChange={(e) => handleFieldChange('achievements', e.target.value)}
-                  className="w-full border border-slate-300 rounded-lg p-3 text-slate-700 leading-relaxed"
-                  rows={4}
-                  placeholder="Listez vos principaux résultats et titres..."
-                />
-              ) : (
-                <p className="text-slate-600 leading-relaxed whitespace-pre-line">
-                  {displayProfile.achievements || 'Non renseigné'}
-                </p>
-              )}
+              <p className="text-slate-600 leading-relaxed whitespace-pre-line">
+                {displayProfile.achievements || 'Non renseigné'}
+              </p>
             </section>
 
             <section className="mb-8">
-              <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2 group">
+              <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
                 Expérience professionnelle
-                {!isEditing && (
-                  <button
-                    onClick={() => setIsEditing(true)}
-                    className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity p-1.5 hover:bg-slate-100 rounded"
-                  >
-                    <Pencil className="w-4 h-4 text-slate-400 hover:text-slate-600" />
-                  </button>
-                )}
               </h3>
-              {isEditing ? (
-                <textarea
-                  value={displayProfile.professional_history || ''}
-                  onChange={(e) => handleFieldChange('professional_history', e.target.value)}
-                  className="w-full border border-slate-300 rounded-lg p-3 text-slate-700 leading-relaxed"
-                  rows={4}
-                  placeholder="Décrivez vos expériences professionnelles..."
-                />
-              ) : displayProfile.professional_history ? (
+              {displayProfile.professional_history ? (
                 <div className="space-y-6">
                   {displayProfile.professional_history.split('\n\n').map((experience, idx) => (
                     <div key={idx} className="flex gap-4">
@@ -496,26 +351,10 @@ export default function CVBuilder() {
             </section>
 
             <section className="mb-8">
-              <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2 group">
+              <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
                 Formation
-                {!isEditing && (
-                  <button
-                    onClick={() => setIsEditing(true)}
-                    className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity p-1.5 hover:bg-slate-100 rounded"
-                  >
-                    <Pencil className="w-4 h-4 text-slate-400 hover:text-slate-600" />
-                  </button>
-                )}
               </h3>
-              {isEditing ? (
-                <textarea
-                  value={displayProfile.degrees || ''}
-                  onChange={(e) => handleFieldChange('degrees', e.target.value)}
-                  className="w-full border border-slate-300 rounded-lg p-3 text-slate-700 leading-relaxed"
-                  rows={3}
-                  placeholder="Listez vos diplômes et formations..."
-                />
-              ) : displayProfile.degrees ? (
+              {displayProfile.degrees ? (
                 <div className="space-y-6">
                   {displayProfile.degrees.split('\n\n').map((degree, idx) => (
                     <div key={idx} className="flex gap-4">
@@ -542,59 +381,19 @@ export default function CVBuilder() {
                 <div className="space-y-3">
                   <div>
                     <span className="text-sm font-medium text-slate-500 block mb-1">Club formateur</span>
-                    {isEditing ? (
-                      <input
-                        type="text"
-                        value={displayProfile.birth_club || ''}
-                        onChange={(e) => handleFieldChange('birth_club', e.target.value)}
-                        className="w-full border border-slate-300 rounded-lg p-2 text-slate-900"
-                        placeholder="Nom du club..."
-                      />
-                    ) : (
-                      <p className="text-slate-900">{displayProfile.birth_club || 'Non renseigné'}</p>
-                    )}
+                    <p className="text-slate-900">{displayProfile.birth_club || 'Non renseigné'}</p>
                   </div>
                   <div>
                     <span className="text-sm font-medium text-slate-500 block mb-1">Centre de formation</span>
-                    {isEditing ? (
-                      <input
-                        type="text"
-                        value={displayProfile.training_center || ''}
-                        onChange={(e) => handleFieldChange('training_center', e.target.value)}
-                        className="w-full border border-slate-300 rounded-lg p-2 text-slate-900"
-                        placeholder="Nom du centre..."
-                      />
-                    ) : (
-                      <p className="text-slate-900">{displayProfile.training_center || 'Non renseigné'}</p>
-                    )}
+                    <p className="text-slate-900">{displayProfile.training_center || 'Non renseigné'}</p>
                   </div>
                   <div>
                     <span className="text-sm font-medium text-slate-500 block mb-1">Liste ministérielle</span>
-                    {isEditing ? (
-                      <input
-                        type="text"
-                        value={displayProfile.ministerial_list || ''}
-                        onChange={(e) => handleFieldChange('ministerial_list', e.target.value)}
-                        className="w-full border border-slate-300 rounded-lg p-2 text-slate-900"
-                        placeholder="Elite, Espoir, etc..."
-                      />
-                    ) : (
-                      <p className="text-slate-900">{displayProfile.ministerial_list || 'Non renseigné'}</p>
-                    )}
+                    <p className="text-slate-900">{displayProfile.ministerial_list || 'Non renseigné'}</p>
                   </div>
                   <div>
                     <span className="text-sm font-medium text-slate-500 block mb-1">Type d'athlète</span>
-                    {isEditing ? (
-                      <input
-                        type="text"
-                        value={displayProfile.athlete_type || ''}
-                        onChange={(e) => handleFieldChange('athlete_type', e.target.value)}
-                        className="w-full border border-slate-300 rounded-lg p-2 text-slate-900"
-                        placeholder="Handisport, Valide..."
-                      />
-                    ) : (
-                      <p className="text-slate-900">{displayProfile.athlete_type || 'Non renseigné'}</p>
-                    )}
+                    <p className="text-slate-900">{displayProfile.athlete_type || 'Non renseigné'}</p>
                   </div>
                 </div>
               </div>
@@ -607,45 +406,15 @@ export default function CVBuilder() {
                 <div className="space-y-3">
                   <div>
                     <span className="text-sm font-medium text-slate-500 block mb-1">Domaine souhaité</span>
-                    {isEditing ? (
-                      <input
-                        type="text"
-                        value={displayProfile.desired_field || ''}
-                        onChange={(e) => handleFieldChange('desired_field', e.target.value)}
-                        className="w-full border border-slate-300 rounded-lg p-2 text-slate-900"
-                        placeholder="Marketing, Commercial, etc..."
-                      />
-                    ) : (
-                      <p className="text-slate-900">{displayProfile.desired_field || 'Non renseigné'}</p>
-                    )}
+                    <p className="text-slate-900">{displayProfile.desired_field || 'Non renseigné'}</p>
                   </div>
                   <div>
                     <span className="text-sm font-medium text-slate-500 block mb-1">Type de poste</span>
-                    {isEditing ? (
-                      <input
-                        type="text"
-                        value={displayProfile.position_type || ''}
-                        onChange={(e) => handleFieldChange('position_type', e.target.value)}
-                        className="w-full border border-slate-300 rounded-lg p-2 text-slate-900"
-                        placeholder="CDI, CDD, Stage..."
-                      />
-                    ) : (
-                      <p className="text-slate-900">{displayProfile.position_type || 'Non renseigné'}</p>
-                    )}
+                    <p className="text-slate-900">{displayProfile.position_type || 'Non renseigné'}</p>
                   </div>
                   <div>
                     <span className="text-sm font-medium text-slate-500 block mb-1">Disponibilité</span>
-                    {isEditing ? (
-                      <input
-                        type="text"
-                        value={displayProfile.availability || ''}
-                        onChange={(e) => handleFieldChange('availability', e.target.value)}
-                        className="w-full border border-slate-300 rounded-lg p-2 text-slate-900"
-                        placeholder="Immédiate, Dans 3 mois..."
-                      />
-                    ) : (
-                      <p className="text-slate-900">{displayProfile.availability || 'Non renseigné'}</p>
-                    )}
+                    <p className="text-slate-900">{displayProfile.availability || 'Non renseigné'}</p>
                   </div>
                 </div>
               </div>
