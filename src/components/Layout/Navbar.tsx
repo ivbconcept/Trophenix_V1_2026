@@ -1,4 +1,4 @@
-import { Bell, LogOut, Trophy, Search, Mail, LayoutDashboard, Award, Handshake as HandshakeIcon, UsersRound, Settings, BookOpen, Briefcase, FileText, GraduationCap, TrendingUp, Users, DollarSign, Image as ImageIcon, MessageSquare, Bot, HelpCircle } from 'lucide-react';
+import { Bell, LogOut, Trophy, Search, Mail, LayoutDashboard, Award, Handshake as HandshakeIcon, UsersRound, Settings, BookOpen, Briefcase, FileText, GraduationCap, TrendingUp, Users, DollarSign, Image as ImageIcon, MessageSquare, Bot, HelpCircle, Sparkles } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { ReactNode, useState, useEffect } from 'react';
 import { ProfileDropdown } from './ProfileDropdown';
@@ -196,7 +196,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
                     : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
-                <Bot className="h-5 w-5" />
+                <Sparkles className="h-5 w-5" />
                 <span>Elea</span>
               </button>
               <div className="border-t border-slate-200/50 dark:border-zinc-700 my-2"></div>
@@ -246,7 +246,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
                     : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
-                <Bot className="h-5 w-5" />
+                <Sparkles className="h-5 w-5" />
               </button>
               <div className="border-t border-slate-200/50 dark:border-zinc-700 my-2"></div>
               <button
