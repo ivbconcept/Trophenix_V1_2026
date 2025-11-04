@@ -323,7 +323,7 @@ Dans l'attente de votre retour, je vous prie d'agréer, Madame, Monsieur, l'expr
                   </p>
                   <button
                     onClick={handleCreateNew}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-slate-100 hover:bg-slate-200 rounded-2xl text-slate-900 hover:text-slate-700 transition-all font-medium"
                   >
                     <Plus className="w-5 h-5" />
                     Créer ma première lettre
