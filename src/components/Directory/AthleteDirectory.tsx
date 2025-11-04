@@ -119,29 +119,6 @@ export default function AthleteDirectory() {
     <div className="min-h-screen bg-slate-50 dark:bg-black">
       <div className="max-w-[1400px] mx-auto px-6 py-8">
         <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-0 bg-white dark:bg-zinc-900 rounded-full px-1.5 py-1.5 shadow-sm">
-            <button
-              onClick={() => setActiveTab('sportifs')}
-              className={`px-5 py-2 rounded-full font-semibold text-sm transition-all ${
-                activeTab === 'sportifs'
-                  ? 'bg-blue-600 text-white shadow-sm'
-                  : 'bg-transparent text-slate-500 dark:text-zinc-400'
-              }`}
-            >
-              Sportifs
-            </button>
-            <button
-              onClick={() => setActiveTab('experts')}
-              className={`px-5 py-2 rounded-full font-semibold text-sm transition-all ${
-                activeTab === 'experts'
-                  ? 'bg-blue-600 text-white shadow-sm'
-                  : 'bg-transparent text-slate-500 dark:text-zinc-400'
-              }`}
-            >
-              Experts
-            </button>
-          </div>
-
           <button
             onClick={() => setShowFilters(!showFilters)}
             className="p-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all shadow-lg"
