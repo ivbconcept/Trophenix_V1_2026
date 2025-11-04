@@ -46,7 +46,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
       case 'athlete':
         return [
           { id: 'dashboard', label: 'Accueil', icon: LayoutDashboard },
-          { id: 'employability', label: 'Job', icon: Award, hasSubmenu: true },
+          { id: 'employability', label: 'Emploi', icon: Award, hasSubmenu: true },
           { id: 'sponsoring', label: 'Sponsoring', icon: HandshakeIcon, hasSubmenu: true },
           { id: 'group', label: 'Annuaire', icon: UsersRound },
         ];
