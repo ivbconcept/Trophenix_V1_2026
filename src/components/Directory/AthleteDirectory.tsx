@@ -153,7 +153,7 @@ export default function AthleteDirectory() {
                   placeholder="Search"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-14 pr-6 py-2.5 rounded-2xl bg-white dark:bg-zinc-900 border-2 border-slate-200 dark:border-zinc-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 text-base focus:outline-none focus:border-slate-300 dark:focus:border-zinc-700 transition-all"
+                  className="w-full pl-14 pr-6 py-2.5 rounded-2xl bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 text-base focus:outline-none focus:border-slate-300 dark:focus:border-zinc-700 transition-all"
                 />
               </div>
             </div>
