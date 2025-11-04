@@ -227,16 +227,6 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
               </button>
             </div>
           )}
-          <button
-            onClick={onLogout}
-            title={showSecondarySidebar ? "Logout" : undefined}
-            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-red-400 dark:text-red-400 hover:bg-red-500/10 dark:hover:bg-red-500/20 hover:text-red-300 dark:hover:text-red-300 transition-all ${
-              showSecondarySidebar ? 'justify-center' : ''
-            }`}
-          >
-            <LogOut className="h-5 w-5" />
-            {!showSecondarySidebar && <span>Logout</span>}
-          </button>
         </div>
       </aside>
 
