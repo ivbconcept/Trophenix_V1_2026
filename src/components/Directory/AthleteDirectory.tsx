@@ -139,16 +139,6 @@ export default function AthleteDirectory() {
               Experts
             </button>
 
-            <div className="relative ml-2">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 h-4 w-4" />
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Rechercher un athlète..."
-                className="pl-10 pr-4 py-2.5 bg-transparent border-0 rounded-full text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none w-80"
-              />
-            </div>
           </div>
 
           <button
