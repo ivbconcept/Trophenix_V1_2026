@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Search, MapPin, Filter, GraduationCap, Target, Building2 } from 'lucide-react';
 
 type TabType = 'sportifs' | 'experts';
+type SportFilterType = 'top' | 'football' | 'basketball' | 'tennis';
 type StatusType = 'En Blessure' | 'En activité' | 'En reconversion' | 'En Réflexion';
 
 interface MockAthlete {
@@ -102,6 +103,7 @@ const statusConfig: Record<StatusType, { color: string; dotColor: string }> = {
 export default function AthleteDirectory() {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeTab, setActiveTab] = useState<TabType>('sportifs');
+  const [sportFilter, setSportFilter] = useState<SportFilterType>('top');
   const [showFilters, setShowFilters] = useState(false);
 
   const filteredAthletes = mockAthletes.filter((athlete) => {
@@ -116,29 +118,28 @@ export default function AthleteDirectory() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-black">
       <div className="max-w-[1400px] mx-auto px-6 py-8">
-        <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-0 bg-white dark:bg-zinc-900 rounded-full p-1 shadow-md">
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-0 bg-white dark:bg-zinc-900 rounded-full px-1.5 py-1.5 shadow-sm">
             <button
               onClick={() => setActiveTab('sportifs')}
-              className={`px-6 py-2.5 rounded-full font-semibold text-sm transition-all ${
+              className={`px-5 py-2 rounded-full font-semibold text-sm transition-all ${
                 activeTab === 'sportifs'
-                  ? 'bg-blue-600 text-white shadow-md'
-                  : 'bg-transparent text-slate-700 dark:text-zinc-300 hover:bg-slate-50 dark:hover:bg-zinc-800'
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'bg-transparent text-slate-500 dark:text-zinc-400'
               }`}
             >
               Sportifs
             </button>
             <button
               onClick={() => setActiveTab('experts')}
-              className={`px-6 py-2.5 rounded-full font-semibold text-sm transition-all ${
+              className={`px-5 py-2 rounded-full font-semibold text-sm transition-all ${
                 activeTab === 'experts'
-                  ? 'bg-blue-600 text-white shadow-md'
-                  : 'bg-transparent text-slate-700 dark:text-zinc-300 hover:bg-slate-50 dark:hover:bg-zinc-800'
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'bg-transparent text-slate-500 dark:text-zinc-400'
               }`}
             >
               Experts
             </button>
-
           </div>
 
           <button
@@ -146,6 +147,49 @@ export default function AthleteDirectory() {
             className="p-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all shadow-lg"
           >
             <Filter className="h-6 w-6" />
+          </button>
+        </div>
+
+        <div className="flex items-center gap-3 mb-8">
+          <button
+            onClick={() => setSportFilter('top')}
+            className={`px-6 py-2.5 rounded-full font-semibold text-base transition-all ${
+              sportFilter === 'top'
+                ? 'bg-white dark:bg-zinc-900 text-slate-900 dark:text-white shadow-md'
+                : 'bg-transparent text-slate-500 dark:text-zinc-500 hover:text-slate-700 dark:hover:text-zinc-300'
+            }`}
+          >
+            Top
+          </button>
+          <button
+            onClick={() => setSportFilter('football')}
+            className={`px-6 py-2.5 rounded-full font-semibold text-base transition-all ${
+              sportFilter === 'football'
+                ? 'bg-white dark:bg-zinc-900 text-slate-900 dark:text-white shadow-md'
+                : 'bg-transparent text-slate-500 dark:text-zinc-500 hover:text-slate-700 dark:hover:text-zinc-300'
+            }`}
+          >
+            Football
+          </button>
+          <button
+            onClick={() => setSportFilter('basketball')}
+            className={`px-6 py-2.5 rounded-full font-semibold text-base transition-all ${
+              sportFilter === 'basketball'
+                ? 'bg-white dark:bg-zinc-900 text-slate-900 dark:text-white shadow-md'
+                : 'bg-transparent text-slate-500 dark:text-zinc-500 hover:text-slate-700 dark:hover:text-zinc-300'
+            }`}
+          >
+            Basketball
+          </button>
+          <button
+            onClick={() => setSportFilter('tennis')}
+            className={`px-6 py-2.5 rounded-full font-semibold text-base transition-all ${
+              sportFilter === 'tennis'
+                ? 'bg-white dark:bg-zinc-900 text-slate-900 dark:text-white shadow-md'
+                : 'bg-transparent text-slate-500 dark:text-zinc-500 hover:text-slate-700 dark:hover:text-zinc-300'
+            }`}
+          >
+            Tennis
           </button>
         </div>
 
