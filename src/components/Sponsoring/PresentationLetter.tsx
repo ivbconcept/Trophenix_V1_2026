@@ -307,7 +307,7 @@ export function PresentationLetter() {
 
       <div className="flex-1 overflow-hidden">
         <div className="grid grid-cols-12 h-full">
-          <div className="col-span-3 border-r border-slate-200 bg-white overflow-y-auto">
+          <div className="col-span-4 border-r border-slate-200 bg-white overflow-y-auto">
             <div className="p-6">
               <div className="flex gap-2 mb-4">
                 <button
@@ -453,7 +453,7 @@ export function PresentationLetter() {
             </div>
           </div>
 
-          <div className="col-span-9 overflow-y-auto bg-slate-50">
+          <div className="col-span-8 overflow-y-auto bg-slate-50">
             <div className="max-w-4xl mx-auto p-8">
               {activeTab === 'uploaded' ? (
                 <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8 text-center">

@@ -58,16 +58,16 @@ const SPORTS = [
   'Rafting', 'Canyoning', 'Plongée sous-marine', 'Apnée', 'Nage en eau libre',
   'Sauvetage côtier', 'Dragon boat', 'Aviron de mer', 'Autre'
 ];
-import augustPhlieger from '../assets/images/august-phlieger-CREqtqgBFcU-unsplash.jpg';
-import davideAracri from '../assets/images/davide-aracri-Q2mL8cqqI7E-unsplash.jpg';
-import jacekDylag from '../assets/images/jacek-dylag-fZglO1JkwoM-unsplash.jpg';
-import jadonJohnson from '../assets/images/jadon-johnson-1wS1AHSvqeg-unsplash.jpg';
-import matthieuPetiard from '../assets/images/matthieu-petiard-Pf6e3o0GL4M-unsplash.jpg';
+import augustPhlieger from '../assets/images/gerson-repreza-tNQ2tmQiC6g-unsplash.jpg';
+import davideAracri from '../assets/images/launde-morel-jcc_mL07QpA-unsplash.jpg';
+import jacekDylag from '../assets/images/mos-sukjaroenkraisri-vO2XxMeYmnY-unsplash.jpg';
+import jadonJohnson from '../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
+import matthieuPetiard from '../assets/images/venti-views-cHRDevKFDBw-unsplash.jpg';
 import gersonRepreza from '../assets/images/gerson-repreza-tNQ2tmQiC6g-unsplash copy.jpg';
 import gersonReprezaTwo from '../assets/images/gerson-repreza-tNQ2tmQiC6g-unsplash copy copy.jpg';
-import franceTravailLogo from '../assets/images/logo france travaiil.webp';
-import wexecutiveLogo from '../assets/images/logo w executivve.png';
-import diversidaysLogo from '../assets/images/Diversidays_Logo.png';
+import franceTravailLogo from '../assets/images/1196px-Accor_Logo.png';
+import wexecutiveLogo from '../assets/images/logo_nike-removebg-preview.png';
+import diversidaysLogo from '../assets/images/1196px-Accor_Logo.png';
 
 const SupportersCarousel = () => {
   const [offset, setOffset] = useState(0);
