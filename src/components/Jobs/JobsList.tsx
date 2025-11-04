@@ -177,7 +177,7 @@ export default function JobsList() {
 
   return (
     <div className="flex flex-col h-full">
-      <div className="bg-white border-b border-gray-200 px-8 py-6">
+      <div className="bg-white px-8 py-6">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-3xl font-bold text-slate-700 mb-6">Offres d'Emploi</h1>
 
