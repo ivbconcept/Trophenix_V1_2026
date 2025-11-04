@@ -64,8 +64,7 @@ export function MyProjects() {
               <Plus className="w-6 h-6 text-white" />
             </div>
             <div className="text-left">
-              <div className="text-lg font-bold text-slate-900">Nouveau</div>
-              <div className="text-lg font-bold text-slate-900">projet</div>
+              <div className="text-lg font-bold text-slate-900">Nouveau projet</div>
             </div>
           </button>
         </div>
@@ -84,8 +83,7 @@ export function MyProjects() {
                   <Plus className="w-6 h-6 text-slate-900" />
                 </div>
                 <div className="text-left">
-                  <div className="text-lg font-bold text-slate-900">Nouveau</div>
-                  <div className="text-lg font-bold text-slate-900">projet</div>
+                  <div className="text-lg font-bold text-slate-900">Nouveau projet</div>
                 </div>
               </button>
             </div>
