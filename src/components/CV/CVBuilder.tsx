@@ -226,23 +226,23 @@ export default function CVBuilder() {
         )}
 
         <div id="cv-content">
-          <div className="bg-white px-8 py-10">
+          <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 px-8 py-10">
             <div className="flex items-start justify-between">
               <div className="flex items-start gap-6">
-                <div className="w-28 h-28 rounded-full bg-slate-200 flex items-center justify-center overflow-hidden flex-shrink-0">
+                <div className="w-28 h-28 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center overflow-hidden flex-shrink-0 border-4 border-white/30">
                   {displayProfile.photo_url ? (
                     <img src={displayProfile.photo_url} alt="Profile" className="w-full h-full object-cover" />
                   ) : (
-                    <User className="w-14 h-14 text-slate-400" />
+                    <User className="w-14 h-14 text-white/70" />
                   )}
                 </div>
                 <div className="pt-2">
-                  <h1 className="text-4xl font-bold text-slate-900 mb-2">
+                  <h1 className="text-4xl font-bold text-white mb-2 drop-shadow-sm">
                     {displayProfile.first_name || 'Prénom'} {displayProfile.last_name || 'Nom'}
                   </h1>
-                  <p className="text-lg text-slate-600 mb-3">{displayProfile.sport || 'Votre sport'}</p>
+                  <p className="text-lg text-white/90 mb-3 drop-shadow-sm">{displayProfile.sport || 'Votre sport'}</p>
                   {profile?.email && (
-                    <div className="flex items-center gap-2 text-slate-600">
+                    <div className="flex items-center gap-2 text-white/80">
                       <Mail className="w-4 h-4" />
                       <span className="text-sm">{profile.email}</span>
                     </div>
@@ -252,9 +252,9 @@ export default function CVBuilder() {
               <div className="relative no-print">
                 <button
                   onClick={() => setShowMenu(!showMenu)}
-                  className="p-2.5 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors"
+                  className="p-2.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg hover:bg-white/30 transition-colors"
                 >
-                  <MoreVertical className="w-5 h-5 text-slate-700" />
+                  <MoreVertical className="w-5 h-5 text-white" />
                 </button>
 
                 {showMenu && (
@@ -292,7 +292,7 @@ export default function CVBuilder() {
           </div>
 
 
-          <div className="px-8 py-10 space-y-8">
+          <div className="px-8 py-10 space-y-8 bg-gradient-to-br from-slate-50 via-white to-slate-50">
             <section>
               <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
                 <User className="w-5 h-5 text-blue-600" />
