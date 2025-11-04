@@ -297,8 +297,8 @@ export default function CVBuilder() {
 
           <div className="px-8 py-10 space-y-8 bg-gradient-to-br from-slate-50 via-white to-slate-50">
             <section>
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <User className="w-5 h-5 text-blue-600" />
+              <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-3 rounded-lg shadow-sm">
+                <User className="w-5 h-5 text-white" />
                 Situation actuelle
               </h3>
               <p className="text-slate-700 leading-relaxed">
@@ -307,8 +307,8 @@ export default function CVBuilder() {
             </section>
 
             <section>
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <Trophy className="w-5 h-5 text-blue-600" />
+              <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-3 rounded-lg shadow-sm">
+                <Trophy className="w-5 h-5 text-white" />
                 Palmarès sportif
               </h3>
               <p className="text-slate-700 leading-relaxed whitespace-pre-line">
@@ -317,8 +317,8 @@ export default function CVBuilder() {
             </section>
 
             <section>
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <Award className="w-5 h-5 text-blue-600" />
+              <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-3 rounded-lg shadow-sm">
+                <Award className="w-5 h-5 text-white" />
                 Informations sportives
               </h3>
               <div className="grid md:grid-cols-2 gap-6">
@@ -342,8 +342,8 @@ export default function CVBuilder() {
             </section>
 
             <section>
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <Briefcase className="w-5 h-5 text-blue-600" />
+              <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-3 rounded-lg shadow-sm">
+                <Briefcase className="w-5 h-5 text-white" />
                 Projet professionnel
               </h3>
               <div className="grid md:grid-cols-2 gap-6">
@@ -367,8 +367,8 @@ export default function CVBuilder() {
             </section>
 
             <section>
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <GraduationCap className="w-5 h-5 text-blue-600" />
+              <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-3 rounded-lg shadow-sm">
+                <GraduationCap className="w-5 h-5 text-white" />
                 Formation
               </h3>
               <p className="text-slate-700 leading-relaxed whitespace-pre-line">
@@ -377,8 +377,8 @@ export default function CVBuilder() {
             </section>
 
             <section>
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <Briefcase className="w-5 h-5 text-blue-600" />
+              <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-3 rounded-lg shadow-sm">
+                <Briefcase className="w-5 h-5 text-white" />
                 Expérience professionnelle
               </h3>
               <p className="text-slate-700 leading-relaxed whitespace-pre-line">
