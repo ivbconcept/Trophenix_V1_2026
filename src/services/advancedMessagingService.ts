@@ -84,7 +84,20 @@ export const advancedMessagingService = {
         conversation_id,
         unread_count,
         muted,
-        conversations!inner(*)
+        conversations!inner(
+          id,
+          participant1_id,
+          participant2_id,
+          last_message_at,
+          last_message_preview,
+          created_at,
+          type,
+          name,
+          description,
+          avatar_url,
+          created_by,
+          is_private
+        )
       `)
       .eq('user_id', userId)
       .order('conversations(last_message_at)', { ascending: false });
@@ -94,11 +107,15 @@ export const advancedMessagingService = {
       return [];
     }
 
-    return (data || []).map((item: any) => ({
+    const conversations = (data || []).map((item: any) => ({
       ...item.conversations,
       unread_count: item.unread_count,
       muted: item.muted
     }));
+
+    return conversations.sort((a, b) =>
+      new Date(b.last_message_at).getTime() - new Date(a.last_message_at).getTime()
+    );
   },
 
   async getConversationMembers(conversationId: string): Promise<ConversationMember[]> {
