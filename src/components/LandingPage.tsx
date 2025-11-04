@@ -1469,52 +1469,6 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
               </div>
             </div>
           </div>
-
-          <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl p-8 shadow-2xl">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="text-white">
-                <h3 className="text-3xl font-bold mb-4">Performances en Direct</h3>
-                <p className="text-lg mb-6 leading-relaxed text-blue-50">
-                  Suivez les résultats en temps réel de vos sports et athlètes préférés
-                </p>
-                <div className="space-y-4">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-semibold">Rugby - Top 14</span>
-                      <span className="text-sm bg-green-500 px-2 py-1 rounded">EN DIRECT</span>
-                    </div>
-                    <div className="flex items-center justify-between text-sm text-blue-100">
-                      <span>Toulouse vs Bordeaux</span>
-                      <span className="font-bold text-white">24 - 17</span>
-                    </div>
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-semibold">Tennis - Roland Garros</span>
-                      <span className="text-sm bg-red-500 px-2 py-1 rounded">TERMINÉ</span>
-                    </div>
-                    <div className="flex items-center justify-between text-sm text-blue-100">
-                      <span>Finale Messieurs</span>
-                      <span className="font-bold text-white">3 - 2</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="relative h-72 rounded-xl overflow-hidden shadow-2xl">
-                <img
-                  src="https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="Sport en direct"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                <div className="absolute bottom-6 left-6 right-6">
-                  <p className="text-white text-lg font-semibold">
-                    Restez connecté avec le sport que vous aimez
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
