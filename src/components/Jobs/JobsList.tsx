@@ -273,7 +273,13 @@ export default function JobsList() {
                       {job.title}
                     </h3>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-7 h-7 bg-green-400 rounded-full flex-shrink-0"></div>
+                      <div className="w-7 h-7 rounded-full flex-shrink-0 overflow-hidden">
+                        {job.company_logo ? (
+                          <img src={job.company_logo} alt={job.company_name} className="w-full h-full object-cover" />
+                        ) : (
+                          <div className="w-full h-full bg-green-400 rounded-full"></div>
+                        )}
+                      </div>
                       <p className="text-xs text-gray-500">
                         {job.company_name}
                       </p>
