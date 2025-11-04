@@ -95,6 +95,7 @@ export function EnhancedMessagingPage() {
     if (!user?.id) return;
     setLoading(true);
     const data = await advancedMessagingService.getConversations(user.id);
+    console.log('Conversations chargées:', data);
     setConversations(data);
     setLoading(false);
   };
