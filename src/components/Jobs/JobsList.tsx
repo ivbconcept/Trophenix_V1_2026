@@ -22,8 +22,99 @@ export default function JobsList() {
   const loadJobs = async () => {
     try {
       setLoading(true);
-      const data = await JobService.getPublishedJobs(filters);
-      setJobs(data);
+      const mockJobs: JobOffer[] = [
+        {
+          id: '1',
+          company_id: '9b78d93c-7fc2-413b-b7d6-7e1040862ab9',
+          title: 'Junior UI.UX Designer',
+          description: 'If you are looking for a highly paid job where the environment will allow you to develop, then this vacancy is for you, send us your resume.',
+          location: 'Tbili, Georgia',
+          contract_type: 'full_time',
+          salary_min: 2500,
+          salary_max: 3200,
+          required_skills: ['UI Design', 'UX Design', 'Figma', 'Adobe XD'],
+          job_sector: 'Design',
+          is_active: true,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        },
+        {
+          id: '2',
+          company_id: '9b78d93c-7fc2-413b-b7d6-7e1040862ab9',
+          title: 'Junior Account Manager',
+          description: 'If you are looking for a highly paid job where the environment will allow you to develop, then this vacancy is for you, send us your resume.',
+          location: 'Tbili, Georgia',
+          contract_type: 'full_time',
+          salary_min: 4500,
+          salary_max: 5000,
+          required_skills: ['Account Management', 'Communication', 'Sales', 'CRM'],
+          job_sector: 'Sales',
+          is_active: true,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        },
+        {
+          id: '3',
+          company_id: '9b78d93c-7fc2-413b-b7d6-7e1040862ab9',
+          title: 'Real estate agent',
+          description: 'If you are looking for a highly paid job where the environment will allow you to develop, then this vacancy is for you, send us your resume.',
+          location: 'Tbili, Georgia',
+          contract_type: 'contract',
+          salary_min: 1500,
+          salary_max: 2500,
+          required_skills: ['Real Estate', 'Negotiation', 'Sales', 'Customer Service'],
+          job_sector: 'Real Estate',
+          is_active: true,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        },
+        {
+          id: '4',
+          company_id: '9b78d93c-7fc2-413b-b7d6-7e1040862ab9',
+          title: 'Tester',
+          description: 'If you are looking for a highly paid job where the environment will allow you to develop, then this vacancy is for you, send us your resume.',
+          location: 'Tbili, Georgia',
+          contract_type: 'contract',
+          salary_min: 2500,
+          salary_max: 2900,
+          required_skills: ['QA Testing', 'Manual Testing', 'Bug Tracking', 'Jira'],
+          job_sector: 'Technology',
+          is_active: true,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        },
+        {
+          id: '5',
+          company_id: '9b78d93c-7fc2-413b-b7d6-7e1040862ab9',
+          title: 'Junior Account Manager',
+          description: 'If you are looking for a highly paid job where the environment will allow you to develop, then this vacancy is for you, send us your resume.',
+          location: 'Tbili, Georgia',
+          contract_type: 'full_time',
+          salary_min: 1200,
+          salary_max: 1900,
+          required_skills: ['Account Management', 'Client Relations', 'Communication'],
+          job_sector: 'Sales',
+          is_active: true,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        },
+        {
+          id: '6',
+          company_id: '9b78d93c-7fc2-413b-b7d6-7e1040862ab9',
+          title: 'Registrar',
+          description: 'If you are looking for a highly paid job where the environment will allow you to develop, then this vacancy is for you, send us your resume.',
+          location: 'Tbili, Georgia',
+          contract_type: 'full_time',
+          salary_min: 3500,
+          salary_max: 3900,
+          required_skills: ['Data Entry', 'Organization', 'Administration', 'Documentation'],
+          job_sector: 'Administration',
+          is_active: true,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        }
+      ];
+      setJobs(mockJobs);
     } catch (error) {
       console.error('Error loading jobs:', error);
     } finally {
