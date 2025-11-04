@@ -144,7 +144,7 @@ export default function AthleteDirectory() {
           </button>
             </div>
 
-            <div className="relative flex-1 max-w-2xl">
+            <div className="relative flex-1 max-w-lg">
               <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-slate-400 dark:text-zinc-500" size={20} />
               <input
                 type="text"
