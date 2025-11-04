@@ -1026,7 +1026,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4 text-center">Notre Mission</h3>
               <p className="text-slate-600 leading-relaxed text-center">
-                Accompagner les sportifs dans leur reconversion professionnelle en créant des ponts entre le monde du sport et celui de l'entreprise. Nous facilitons l'accès aux opportunités d'emploi et de sponsoring adaptées à chaque profil sportif.
+                Accompagner la gestion de carrière des sportifs pour optimiser leur réussite professionnelle.
               </p>
             </div>
 
@@ -1036,7 +1036,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4 text-center">Notre Vision</h3>
               <p className="text-slate-600 leading-relaxed text-center">
-                Devenir la plateforme de référence pour valoriser les compétences des sportifs et connecter talents sportifs, entreprises et sponsors. Nous croyons que les valeurs du sport sont des atouts majeurs dans le monde professionnel.
+                Permettre à chaque sportif d'atteindre son plein potentiel avec les meilleurs outils.
               </p>
             </div>
 
@@ -1046,7 +1046,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4 text-center">Notre Innovation</h3>
               <p className="text-slate-600 leading-relaxed text-center">
-                Une plateforme intelligente propulsée par l'IA avec ELEA, notre assistante virtuelle qui identifie automatiquement les aides, subventions et opportunités personnalisées pour chaque sportif. L'avenir de la reconversion sportive.
+                ELEA, notre assistante IA, identifie automatiquement les opportunités personnalisées pour chaque sportif.
               </p>
             </div>
           </div>
