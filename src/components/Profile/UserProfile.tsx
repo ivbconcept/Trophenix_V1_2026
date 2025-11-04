@@ -242,12 +242,6 @@ export function UserProfile() {
                       ? `${sponsorData.description.substring(0, 150)}...`
                       : sponsorData.description
                     : 'Ajoutez une description pour présenter votre profil.'}
-                  {' '}
-                  {!editMode && (
-                    <button className="text-blue-600 hover:underline font-medium text-sm">
-                      plus
-                    </button>
-                  )}
                 </p>
 
                 {profile?.user_type === 'athlete' && athleteData && (
