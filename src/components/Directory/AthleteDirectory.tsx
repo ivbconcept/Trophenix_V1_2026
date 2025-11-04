@@ -124,7 +124,7 @@ export default function AthleteDirectory() {
             <div className="inline-flex items-center gap-0 bg-slate-100 dark:bg-zinc-800 rounded-full p-1.5 shadow-sm">
           <button
             onClick={() => setSportFilter('top')}
-            className={`px-8 py-3 rounded-2xl font-semibold text-base transition-all ${
+            className={`px-8 py-3 rounded-xl font-semibold text-base transition-all ${
               sportFilter === 'top'
                 ? 'bg-white dark:bg-black text-slate-900 dark:text-white shadow-md'
                 : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
@@ -134,7 +134,7 @@ export default function AthleteDirectory() {
           </button>
           <button
             onClick={() => setSportFilter('football')}
-            className={`px-8 py-3 rounded-2xl font-semibold text-base transition-all ${
+            className={`px-8 py-3 rounded-xl font-semibold text-base transition-all ${
               sportFilter === 'football'
                 ? 'bg-white dark:bg-black text-slate-900 dark:text-white shadow-md'
                 : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
@@ -151,7 +151,7 @@ export default function AthleteDirectory() {
                 placeholder="Search"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-16 pr-6 py-4 rounded-full bg-white dark:bg-zinc-900 border-2 border-slate-200 dark:border-zinc-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 text-lg focus:outline-none focus:border-slate-300 dark:focus:border-zinc-700 transition-all"
+                className="w-full pl-16 pr-6 py-4 rounded-2xl bg-white dark:bg-zinc-900 border-2 border-slate-200 dark:border-zinc-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 text-lg focus:outline-none focus:border-slate-300 dark:focus:border-zinc-700 transition-all"
               />
             </div>
           </div>
