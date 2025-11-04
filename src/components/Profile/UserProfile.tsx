@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { User, Mail, Phone, MapPin, Briefcase, Trophy, Award, Calendar, Save, X, Eye, Lock } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase } from '../../lib/supabase';
+import { ProfileStats } from './ProfileStats';
 
 interface AthleteProfileData {
   first_name: string;
@@ -143,14 +144,18 @@ export function UserProfile() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 p-4 md:p-8">
+    <div className="min-h-screen bg-slate-50 dark:bg-black p-4 md:p-8 transition-colors">
       <div className="max-w-6xl mx-auto">
-        <div className="bg-white rounded-3xl shadow-lg overflow-hidden">
-          <div className="px-6 md:px-8 py-8">
+        <ProfileStats views={1247} likes={342} messages={89} connections={156} />
+        <div className="bg-white dark:bg-zinc-950 rounded-3xl shadow-lg border border-slate-200 dark:border-zinc-800 overflow-hidden">
+          <div className="h-48 bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-500 relative">
+            <div className="absolute inset-0 bg-black/10"></div>
+          </div>
+          <div className="px-6 md:px-8 -mt-20 pb-8">
             <div className="flex flex-col md:flex-row gap-6 md:gap-8">
               <div className="flex-shrink-0">
                 <div className="relative">
-                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-4xl font-bold shadow-lg">
+                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-4xl font-bold shadow-xl ring-4 ring-white dark:ring-zinc-950">
                     {profile?.user_type === 'athlete' && athleteData
                       ? `${athleteData.first_name?.[0] || 'A'}${athleteData.last_name?.[0] || 'A'}`
                       : profile?.user_type === 'company' && companyData
@@ -315,14 +320,14 @@ export function UserProfile() {
             </div>
           </div>
 
-          <div className="border-t border-slate-200">
+          <div className="border-t border-slate-200 dark:border-zinc-800">
             <div className="flex gap-8 px-6 md:px-8 overflow-x-auto">
               <button
                 onClick={() => setActiveTab('personal')}
                 className={`py-4 font-medium transition-all border-b-2 whitespace-nowrap ${
                   activeTab === 'personal'
-                    ? 'border-blue-600 text-blue-600'
-                    : 'border-transparent text-slate-500 hover:text-slate-700'
+                    ? 'border-blue-600 text-blue-600 dark:text-blue-400'
+                    : 'border-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
                 }`}
               >
                 Informations
@@ -331,8 +336,8 @@ export function UserProfile() {
                 onClick={() => setActiveTab('public')}
                 className={`py-4 font-medium transition-all border-b-2 whitespace-nowrap ${
                   activeTab === 'public'
-                    ? 'border-blue-600 text-blue-600'
-                    : 'border-transparent text-slate-500 hover:text-slate-700'
+                    ? 'border-blue-600 text-blue-600 dark:text-blue-400'
+                    : 'border-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
                 }`}
               >
                 Profil Public
@@ -344,26 +349,26 @@ export function UserProfile() {
             {activeTab === 'personal' ? (
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-semibold text-slate-900">Informations personnelles</h2>
-                  <div className="flex items-center gap-2 text-sm text-slate-500">
+                  <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Informations personnelles</h2>
+                  <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-zinc-400">
                     <Lock className="w-4 h-4" />
                     <span>Privé</span>
                   </div>
                 </div>
 
-                <div className="mb-6 pb-6 border-b border-slate-200 space-y-4">
+                <div className="mb-6 pb-6 border-b border-slate-200 dark:border-zinc-800 space-y-4">
                   <div className="flex items-center space-x-3">
-                    <Mail className="h-5 w-5 text-slate-400" />
+                    <Mail className="h-5 w-5 text-slate-400 dark:text-zinc-500" />
                     <div>
-                      <p className="text-sm text-slate-500">Email</p>
-                      <p className="font-medium text-slate-900">{user?.email}</p>
+                      <p className="text-sm text-slate-500 dark:text-zinc-400">Email</p>
+                      <p className="font-medium text-slate-900 dark:text-white">{user?.email}</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <Award className="h-5 w-5 text-slate-400" />
+                    <Award className="h-5 w-5 text-slate-400 dark:text-zinc-500" />
                     <div>
-                      <p className="text-sm text-slate-500">Type de compte</p>
-                      <p className="font-medium text-slate-900 capitalize">{profile?.user_type}</p>
+                      <p className="text-sm text-slate-500 dark:text-zinc-400">Type de compte</p>
+                      <p className="font-medium text-slate-900 dark:text-white capitalize">{profile?.user_type}</p>
                     </div>
                   </div>
                 </div>
@@ -372,35 +377,35 @@ export function UserProfile() {
                   <div className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-2">Téléphone</label>
+                        <label className="block text-sm font-medium text-slate-700 dark:text-zinc-300 mb-2">Téléphone</label>
                         <input
                           type="tel"
                           value={athleteData.phone || ''}
                           onChange={(e) => setAthleteData({ ...athleteData, phone: e.target.value })}
                           disabled={!editMode}
-                          className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50"
+                          className="w-full px-4 py-2 border border-slate-300 dark:border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50 dark:disabled:bg-zinc-900 bg-white dark:bg-zinc-900 text-slate-900 dark:text-white"
                           placeholder="+33 6 12 34 56 78"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-2">Date de naissance</label>
+                        <label className="block text-sm font-medium text-slate-700 dark:text-zinc-300 mb-2">Date de naissance</label>
                         <input
                           type="date"
                           value={athleteData.birth_date || ''}
                           onChange={(e) => setAthleteData({ ...athleteData, birth_date: e.target.value })}
                           disabled={!editMode}
-                          className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50"
+                          className="w-full px-4 py-2 border border-slate-300 dark:border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50 dark:disabled:bg-zinc-900 bg-white dark:bg-zinc-900 text-slate-900 dark:text-white"
                         />
                       </div>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">Localisation</label>
+                      <label className="block text-sm font-medium text-slate-700 dark:text-zinc-300 mb-2">Localisation</label>
                       <input
                         type="text"
                         value={athleteData.location || ''}
                         onChange={(e) => setAthleteData({ ...athleteData, location: e.target.value })}
                         disabled={!editMode}
-                        className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50"
+                        className="w-full px-4 py-2 border border-slate-300 dark:border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50 dark:disabled:bg-zinc-900 bg-white dark:bg-zinc-900 text-slate-900 dark:text-white"
                         placeholder="Paris, France"
                       />
                     </div>

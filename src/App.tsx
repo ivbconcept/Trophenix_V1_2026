@@ -22,6 +22,7 @@ import CompanyDirectory from './components/Directory/CompanyDirectory';
 import { Navbar } from './components/Layout/Navbar';
 import { MessagesList } from './components/Messages/MessagesList';
 import { UserProfile } from './components/Profile/UserProfile';
+import { UserSettings } from './components/Settings/UserSettings';
 import { supabase } from './lib/supabase';
 import InvestorsPage from './components/InvestorsPage';
 import CVBuilder from './components/CV/CVBuilder';
@@ -49,6 +50,7 @@ type View =
   | 'messages'
   | 'notifications'
   | 'profile'
+  | 'settings'
   | 'athletes-list'
   | 'athlete-detail';
 
@@ -257,6 +259,8 @@ function AppContent() {
         )}
 
         {view === 'profile' && <UserProfile />}
+
+        {view === 'settings' && <UserSettings />}
 
         {view === 'athletes-list' && (
           <AthletesList onViewProfile={handleViewAthleteProfile} />
