@@ -58,10 +58,15 @@ export function MyProjects() {
           </div>
           <button
             onClick={() => setShowCreateModal(true)}
-            className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+            className="flex items-center gap-4 px-6 py-4 bg-slate-100 hover:bg-slate-200 rounded-2xl transition-all"
           >
-            <Plus className="w-5 h-5" />
-            Nouveau projet
+            <div className="flex-shrink-0 w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center">
+              <Plus className="w-6 h-6 text-white" />
+            </div>
+            <div className="text-left">
+              <div className="text-lg font-bold text-slate-900">Nouveau</div>
+              <div className="text-lg font-bold text-slate-900">projet</div>
+            </div>
           </button>
         </div>
 
@@ -73,10 +78,15 @@ export function MyProjects() {
               <p className="text-slate-600 mb-6">Créez votre premier projet de sponsoring pour attirer des sponsors</p>
               <button
                 onClick={() => setShowCreateModal(true)}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                className="inline-flex items-center gap-4 px-6 py-4 bg-slate-100 hover:bg-slate-200 rounded-2xl transition-all"
               >
-                <Plus className="w-5 h-5" />
-                Créer mon premier projet
+                <div className="flex-shrink-0 w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center">
+                  <Plus className="w-6 h-6 text-white" />
+                </div>
+                <div className="text-left">
+                  <div className="text-lg font-bold text-slate-900">Nouveau</div>
+                  <div className="text-lg font-bold text-slate-900">projet</div>
+                </div>
               </button>
             </div>
           ) : (
