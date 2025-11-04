@@ -121,17 +121,17 @@ export const advancedMessagingService = {
         if (conv.type === 'direct') {
           const otherUserId = conv.participant1_id === userId ? conv.participant2_id : conv.participant1_id;
 
-          const { data: profile } = await supabase
-            .from('profiles')
-            .select('full_name, avatar_url')
-            .eq('id', otherUserId)
-            .maybeSingle();
+          const { data: userData } = await supabase.auth.admin.getUserById(otherUserId);
 
-          if (profile) {
+          if (userData?.user) {
+            const metadata = userData.user.user_metadata || {};
+            const profileData = metadata.profile_data || {};
+            const fullName = `${profileData.first_name || ''} ${profileData.last_name || ''}`.trim() || metadata.full_name || 'Utilisateur';
+
             return {
               ...conv,
-              name: profile.full_name,
-              avatar_url: profile.avatar_url || conv.avatar_url,
+              name: fullName,
+              avatar_url: metadata.avatar_url || conv.avatar_url,
               other_user_id: otherUserId
             };
           }
