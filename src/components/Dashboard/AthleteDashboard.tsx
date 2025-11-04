@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import arenaImage from '../../assets/images/venti-views-cHRDevKFDBw-new.jpg';
 import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
 import financeImage from '../../assets/images/cycling-road-unsplash.jpg';
-import rugbyImage from '../../assets/images/the-uplifting-times-a34aBWYwnKY-unsplash.jpg';
+import rugbyImage from '../../assets/images/stadium-rugby-unsplash.jpg';
 import accorLogo from '../../assets/images/1196px-Accor_Logo.png';
 import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
 
