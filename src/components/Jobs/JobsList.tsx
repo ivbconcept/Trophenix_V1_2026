@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Briefcase, MapPin, Clock, Bookmark, BookmarkCheck, Search, Filter } from 'lucide-react';
 import { JobService } from '../../services/jobService';
-import type { JobOffer, JobSearchFilters } from '../../types/jobs';
+import type { JobOfferWithCompany, JobSearchFilters } from '../../types/jobs';
 import { useAuth } from '../../contexts/AuthContext';
 
 export default function JobsList() {
   const { user, profile } = useAuth();
-  const [jobs, setJobs] = useState<JobOffer[]>([]);
+  const [jobs, setJobs] = useState<JobOfferWithCompany[]>([]);
   const [savedJobs, setSavedJobs] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState<JobSearchFilters>({});
-  const [selectedJob, setSelectedJob] = useState<JobOffer | null>(null);
+  const [selectedJob, setSelectedJob] = useState<JobOfferWithCompany | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [locationQuery, setLocationQuery] = useState('');
   const [activeTab, setActiveTab] = useState<'sportif' | 'entreprise'>('sportif');
@@ -25,100 +25,124 @@ export default function JobsList() {
   const loadJobs = async () => {
     try {
       setLoading(true);
-      const mockJobs: JobOffer[] = [
+      const mockJobs: JobOfferWithCompany[] = [
         {
           id: '1',
           company_id: '9b78d93c-7fc2-413b-b7d6-7e1040862ab9',
+          company_name: 'Paris Saint-Germain',
+          company_logo: '/src/assets/images/stadium-rugby-unsplash.jpg',
+          company_sector: 'Sport Professionnel',
           title: 'Entraîneur de Football',
           description: 'Club de football professionnel recherche un entraîneur passionné pour développer les talents de notre équipe. Excellente opportunité de carrière dans un environnement sportif dynamique.',
           location: 'Paris, France',
-          contract_type: 'full_time',
+          contract_type: 'CDI',
           salary_min: 3500,
           salary_max: 4500,
           required_skills: ['Coaching', 'Tactique', 'Management', 'Formation'],
+          experience_level: 'Senior',
           job_sector: 'Sport',
+          status: 'published',
           image_url: '/src/assets/images/stadium-rugby-unsplash.jpg',
-          is_active: true,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         },
         {
           id: '2',
           company_id: '9b78d93c-7fc2-413b-b7d6-7e1040862ab9',
+          company_name: 'INSEP',
+          company_logo: '/src/assets/images/zachary-kadolph-CmwNM-XHM48-unsplash.jpg',
+          company_sector: 'Formation Sportive',
           title: 'Préparateur Physique',
           description: 'Rejoignez notre centre sportif de haut niveau. Accompagnez des athlètes professionnels dans leur préparation physique et optimisez leurs performances.',
           location: 'Lyon, France',
-          contract_type: 'full_time',
+          contract_type: 'CDI',
           salary_min: 2800,
           salary_max: 3500,
           required_skills: ['Préparation physique', 'Nutrition sportive', 'Suivi athlètes'],
+          experience_level: 'Mid',
           job_sector: 'Sport',
+          status: 'published',
           image_url: '/src/assets/images/zachary-kadolph-CmwNM-XHM48-unsplash.jpg',
-          is_active: true,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         },
         {
           id: '3',
           company_id: '9b78d93c-7fc2-413b-b7d6-7e1040862ab9',
+          company_name: 'Nike France',
+          company_logo: '/src/assets/images/logo_nike-removebg-preview.png',
+          company_sector: 'Équipementier Sportif',
           title: 'Responsable Marketing Sportif',
           description: 'Marque sportive internationale cherche un expert marketing pour développer sa visibilité et ses partenariats. Travaillez avec des athlètes de renommée mondiale.',
           location: 'Marseille, France',
-          contract_type: 'full_time',
+          contract_type: 'CDI',
           salary_min: 3200,
           salary_max: 4000,
           required_skills: ['Marketing digital', 'Sponsoring', 'Communication', 'Réseaux sociaux'],
+          experience_level: 'Senior',
           job_sector: 'Sport',
+          status: 'published',
           image_url: '/src/assets/images/venti-views-cHRDevKFDBw-unsplash.jpg',
-          is_active: true,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         },
         {
           id: '4',
           company_id: '9b78d93c-7fc2-413b-b7d6-7e1040862ab9',
+          company_name: 'Centre Médico-Sportif',
+          company_logo: '/src/assets/images/susan-flynn-h4d4m2IkBxA-unsplash.jpg',
+          company_sector: 'Santé Sportive',
           title: 'Kinésithérapeute Sportif',
           description: 'Centre de rééducation sportive recherche un kinésithérapeute spécialisé. Accompagnez des athlètes professionnels dans leur récupération et prévention des blessures.',
           location: 'Bordeaux, France',
-          contract_type: 'contract',
+          contract_type: 'CDD',
           salary_min: 2500,
           salary_max: 3200,
           required_skills: ['Kinésithérapie', 'Sport santé', 'Rééducation', 'Prévention'],
+          experience_level: 'Mid',
           job_sector: 'Sport',
+          status: 'published',
           image_url: '/src/assets/images/susan-flynn-h4d4m2IkBxA-unsplash.jpg',
-          is_active: true,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         },
         {
           id: '5',
           company_id: '9b78d93c-7fc2-413b-b7d6-7e1040862ab9',
+          company_name: 'Toulouse FC',
+          company_logo: '/src/assets/images/cycling-road-unsplash.jpg',
+          company_sector: 'Club Professionnel',
           title: 'Analyste Performance Sportive',
           description: 'Utilisez les données pour améliorer les performances de nos équipes. Poste stratégique au sein d\'un club professionnel ambitieux.',
           location: 'Toulouse, France',
-          contract_type: 'full_time',
+          contract_type: 'CDI',
           salary_min: 3000,
           salary_max: 3800,
           required_skills: ['Analyse de données', 'Statistiques', 'Video analyse', 'Reporting'],
+          experience_level: 'Mid',
           job_sector: 'Sport',
+          status: 'published',
           image_url: '/src/assets/images/cycling-road-unsplash.jpg',
-          is_active: true,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         },
         {
           id: '6',
           company_id: '9b78d93c-7fc2-413b-b7d6-7e1040862ab9',
+          company_name: 'Nice Sport Complex',
+          company_logo: '/src/assets/images/mariah-hewines-2JMd-1IlIZI-unsplash.jpg',
+          company_sector: 'Infrastructure Sportive',
           title: 'Directeur de Centre Sportif',
           description: 'Management d\'un complexe sportif moderne. Développez les activités, gérez les équipes et créez des partenariats stratégiques pour notre centre d\'excellence.',
           location: 'Nice, France',
-          contract_type: 'full_time',
+          contract_type: 'CDI',
           salary_min: 4000,
           salary_max: 5000,
           required_skills: ['Management', 'Gestion', 'Développement commercial', 'Leadership'],
+          experience_level: 'Senior',
           job_sector: 'Sport',
+          status: 'published',
           image_url: '/src/assets/images/mariah-hewines-2JMd-1IlIZI-unsplash.jpg',
-          is_active: true,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         }
@@ -238,8 +262,8 @@ export default function JobsList() {
               <div className="p-6">
                 <div className="flex items-start gap-4 mb-4">
                   <div className="w-20 h-20 bg-gray-100 rounded-2xl flex items-center justify-center flex-shrink-0 overflow-hidden">
-                    {job.image_url ? (
-                      <img src={job.image_url} alt={job.title} className="w-full h-full object-cover" />
+                    {job.company_logo ? (
+                      <img src={job.company_logo} alt={job.company_name} className="w-full h-full object-cover" />
                     ) : (
                       <Briefcase className="w-10 h-10 text-gray-600" />
                     )}
@@ -248,7 +272,10 @@ export default function JobsList() {
                     <h3 className="text-base font-semibold text-gray-900 mb-1">
                       {job.title}
                     </h3>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-gray-500 mb-1">
+                      {job.company_name}
+                    </p>
+                    <p className="text-xs text-gray-400">
                       {job.location}
                     </p>
                   </div>
@@ -311,7 +338,7 @@ export default function JobsList() {
   );
 }
 
-function JobDetailModal({ job, onClose }: { job: JobOffer; onClose: () => void }) {
+function JobDetailModal({ job, onClose }: { job: JobOfferWithCompany; onClose: () => void }) {
   const { user, profile } = useAuth();
   const [applying, setApplying] = useState(false);
   const [applied, setApplied] = useState(false);
@@ -349,17 +376,27 @@ function JobDetailModal({ job, onClose }: { job: JobOffer; onClose: () => void }
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
         <div className="p-6 border-b border-gray-200">
-          <div className="flex items-start justify-between">
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">{job.title}</h2>
-              <div className="flex items-center gap-4 text-gray-600">
-                <span className="flex items-center gap-1">
-                  <MapPin className="h-4 w-4" />
-                  {job.location}
-                </span>
-                {job.remote_possible && (
-                  <span className="text-green-600">Télétravail possible</span>
+          <div className="flex items-start justify-between mb-4">
+            <div className="flex items-start gap-4">
+              <div className="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0 overflow-hidden">
+                {job.company_logo ? (
+                  <img src={job.company_logo} alt={job.company_name} className="w-full h-full object-cover" />
+                ) : (
+                  <Briefcase className="w-8 h-8 text-gray-600" />
                 )}
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-1">{job.title}</h2>
+                <p className="text-base font-medium text-gray-700 mb-2">{job.company_name}</p>
+                <div className="flex items-center gap-4 text-gray-600 text-sm">
+                  <span className="flex items-center gap-1">
+                    <MapPin className="h-4 w-4" />
+                    {job.location}
+                  </span>
+                  {job.remote_possible && (
+                    <span className="text-green-600">Télétravail possible</span>
+                  )}
+                </div>
               </div>
             </div>
             <button
