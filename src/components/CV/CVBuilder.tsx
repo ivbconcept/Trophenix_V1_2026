@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { User, Trophy, Award, Briefcase, GraduationCap, MapPin, Mail, Download, Edit2, CheckCircle, MoreVertical, Camera } from 'lucide-react';
+import { User, Trophy, Award, Briefcase, GraduationCap, MapPin, Mail, Download, Edit2, CheckCircle, MoreVertical, Camera, Upload, FileText, Trash2, X } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase } from '../../lib/supabase';
 import CVForm from './CVForm';
@@ -25,6 +25,15 @@ interface AthleteProfile {
   athlete_type: string | null;
 }
 
+interface CVFile {
+  id: string;
+  file_name: string;
+  file_path: string;
+  file_size: number;
+  file_type: string;
+  uploaded_at: string;
+}
+
 export default function CVBuilder() {
   const { user, profile } = useAuth();
   const [athleteProfile, setAthleteProfile] = useState<AthleteProfile | null>(null);
@@ -32,10 +41,14 @@ export default function CVBuilder() {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const [cvFiles, setCvFiles] = useState<CVFile[]>([]);
+  const [uploading, setUploading] = useState(false);
+  const [uploadMessage, setUploadMessage] = useState('');
 
   useEffect(() => {
     if (user) {
       loadAthleteProfile();
+      loadCVFiles();
     }
   }, [user]);
 
@@ -100,6 +113,110 @@ export default function CVBuilder() {
       setAthleteProfile(emptyProfile);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const loadCVFiles = async () => {
+    if (!user) return;
+    try {
+      const { data, error } = await supabase
+        .from('cv_files')
+        .select('*')
+        .eq('user_id', user.id)
+        .order('uploaded_at', { ascending: false });
+
+      if (error) throw error;
+      setCvFiles(data || []);
+    } catch (error) {
+      console.error('Error loading CV files:', error);
+    }
+  };
+
+  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (!files || files.length === 0 || !user) return;
+
+    setUploading(true);
+    setUploadMessage('');
+
+    try {
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const fileExt = file.name.split('.').pop();
+        const fileName = `${user.id}/${Date.now()}_${file.name}`;
+
+        const { error: uploadError } = await supabase.storage
+          .from('cv-files')
+          .upload(fileName, file);
+
+        if (uploadError) throw uploadError;
+
+        const { error: dbError } = await supabase
+          .from('cv_files')
+          .insert({
+            user_id: user.id,
+            file_name: file.name,
+            file_path: fileName,
+            file_size: file.size,
+            file_type: file.type
+          });
+
+        if (dbError) throw dbError;
+      }
+
+      await loadCVFiles();
+      setUploadMessage('Fichier(s) téléchargé(s) avec succès');
+      setTimeout(() => setUploadMessage(''), 3000);
+    } catch (error) {
+      console.error('Error uploading file:', error);
+      setUploadMessage('Erreur lors du téléchargement');
+    } finally {
+      setUploading(false);
+      event.target.value = '';
+    }
+  };
+
+  const handleFileDelete = async (file: CVFile) => {
+    if (!confirm(`Supprimer ${file.file_name} ?`)) return;
+
+    try {
+      const { error: storageError } = await supabase.storage
+        .from('cv-files')
+        .remove([file.file_path]);
+
+      if (storageError) throw storageError;
+
+      const { error: dbError } = await supabase
+        .from('cv_files')
+        .delete()
+        .eq('id', file.id);
+
+      if (dbError) throw dbError;
+
+      await loadCVFiles();
+    } catch (error) {
+      console.error('Error deleting file:', error);
+    }
+  };
+
+  const handleFileDownload = async (file: CVFile) => {
+    try {
+      const { data, error } = await supabase.storage
+        .from('cv-files')
+        .download(file.file_path);
+
+      if (error) throw error;
+
+      const url = URL.createObjectURL(data);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = file.file_name;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error downloading file:', error);
     }
   };
 
@@ -225,6 +342,20 @@ export default function CVBuilder() {
           </div>
         )}
 
+        {uploadMessage && (
+          <div className={`mb-4 ${uploadMessage.includes('Erreur') ? 'bg-red-50 border-red-200' : 'bg-green-50 border-green-200'} border rounded-lg p-4 flex items-center gap-3 no-print`}>
+            <CheckCircle className={`w-5 h-5 ${uploadMessage.includes('Erreur') ? 'text-red-600' : 'text-green-600'}`} />
+            <span className={`${uploadMessage.includes('Erreur') ? 'text-red-800' : 'text-green-800'} font-medium`}>{uploadMessage}</span>
+          </div>
+        )}
+
+        {uploading && (
+          <div className="mb-4 bg-blue-50 border border-blue-200 rounded-lg p-4 flex items-center gap-3 no-print">
+            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
+            <span className="text-blue-800 font-medium">Téléchargement en cours...</span>
+          </div>
+        )}
+
         <div id="cv-content">
           <section className="sticky top-0 px-8 py-8 bg-white border-b border-slate-200 z-40">
             <h3 className="text-2xl font-bold text-slate-900 mb-3">Mon CV</h3>
@@ -283,6 +414,17 @@ export default function CVBuilder() {
                           <Edit2 className="w-4 h-4 text-green-600" />
                           <span className="font-medium text-slate-900">Modifier</span>
                         </button>
+                        <label className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-slate-50 transition-colors cursor-pointer">
+                          <Upload className="w-4 h-4 text-purple-600" />
+                          <span className="font-medium text-slate-900">Ajouter fichier(s)</span>
+                          <input
+                            type="file"
+                            multiple
+                            onChange={handleFileUpload}
+                            className="hidden"
+                            accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+                          />
+                        </label>
                         <button
                           onClick={() => {
                             handleDownloadPDF();
@@ -390,6 +532,67 @@ export default function CVBuilder() {
               <p className="text-slate-700 leading-relaxed whitespace-pre-line">
                 {displayProfile.professional_history || 'Non renseigné'}
               </p>
+            </section>
+
+            <section className="no-print">
+              <h3 className="text-xl font-bold text-slate-700 mb-4 flex items-center gap-2 bg-gradient-to-r from-slate-100 to-purple-50 px-4 py-3 rounded-lg shadow-sm border border-slate-200">
+                <FileText className="w-5 h-5 text-purple-600" />
+                Ressources
+              </h3>
+              {cvFiles.length === 0 ? (
+                <div className="text-center py-8 bg-slate-50 rounded-lg border-2 border-dashed border-slate-300">
+                  <FileText className="w-12 h-12 text-slate-400 mx-auto mb-3" />
+                  <p className="text-slate-600 mb-4">Aucun fichier téléchargé</p>
+                  <label className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors cursor-pointer">
+                    <Upload className="w-4 h-4" />
+                    Ajouter des fichiers
+                    <input
+                      type="file"
+                      multiple
+                      onChange={handleFileUpload}
+                      className="hidden"
+                      accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+                    />
+                  </label>
+                </div>
+              ) : (
+                <div className="grid gap-3">
+                  {cvFiles.map((file) => (
+                    <div
+                      key={file.id}
+                      className="flex items-center justify-between p-4 bg-white border border-slate-200 rounded-lg hover:shadow-md transition-shadow"
+                    >
+                      <div className="flex items-center gap-3 flex-1 min-w-0">
+                        <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <FileText className="w-5 h-5 text-purple-600" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="font-medium text-slate-900 truncate">{file.file_name}</p>
+                          <p className="text-xs text-slate-500">
+                            {(file.file_size / 1024).toFixed(0)} Ko • {new Date(file.uploaded_at).toLocaleDateString('fr-FR')}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => handleFileDownload(file)}
+                          className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                          title="Télécharger"
+                        >
+                          <Download className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => handleFileDelete(file)}
+                          className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                          title="Supprimer"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </section>
           </div>
         </div>
