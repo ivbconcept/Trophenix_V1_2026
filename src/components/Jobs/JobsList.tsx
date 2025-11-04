@@ -159,9 +159,9 @@ export default function JobsList() {
 
   const formatSalary = (min?: number, max?: number) => {
     if (!min && !max) return 'Non spécifié';
-    if (min && max) return `${min}k - ${max}k €`;
-    if (min) return `À partir de ${min}k €`;
-    return `Jusqu'à ${max}k €`;
+    if (min && max) return `${min} - ${max} €`;
+    if (min) return `À partir de ${min} €`;
+    return `Jusqu'à ${max} €`;
   };
 
   if (loading) {
