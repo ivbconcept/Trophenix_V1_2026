@@ -178,42 +178,73 @@ function KanbanColumn({ title, count, applications, config, onApplicationClick }
 
       <div className="flex-1 overflow-y-auto p-4 space-y-3">
         {applications.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-8 text-gray-400">
-            <StatusIcon className="h-8 w-8 mb-2" />
-            <p className="text-sm">Aucune candidature</p>
+          <div className="flex flex-col items-center justify-center py-12">
+            <div className={`w-16 h-16 rounded-full ${config.bgColor} flex items-center justify-center mb-3`}>
+              <StatusIcon className={`h-8 w-8 ${config.color}`} />
+            </div>
+            <p className="text-sm font-medium text-gray-900 mb-1">Aucune candidature</p>
+            <p className="text-xs text-gray-500">Les candidatures apparaîtront ici</p>
           </div>
         ) : (
           applications.map((application) => (
             <div
               key={application.id}
-              className="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition-all cursor-pointer"
+              className={`bg-white rounded-lg border-2 ${config.borderColor} p-4 hover:shadow-lg hover:scale-[1.02] transition-all cursor-pointer group`}
               onClick={() => onApplicationClick(application)}
             >
-              <h4 className="font-semibold text-gray-900 mb-2 text-sm">
-                {application.job.title}
-              </h4>
-              <div className="text-xs text-gray-600 space-y-1 mb-3">
-                <p>{application.job.location}</p>
-                <p>{application.job.contract_type}</p>
+              <div className="flex items-start justify-between mb-3">
+                <h4 className="font-semibold text-gray-900 text-sm flex-1 pr-2 group-hover:text-blue-600 transition-colors">
+                  {application.job.title}
+                </h4>
+                <div className={`${config.bgColor} rounded-full p-1.5`}>
+                  <StatusIcon className={`h-4 w-4 ${config.color}`} />
+                </div>
               </div>
-              <p className="text-xs text-gray-500 line-clamp-2 mb-3">
+
+              <div className="text-xs text-gray-600 space-y-1.5 mb-3">
+                <div className="flex items-center gap-1.5">
+                  <svg className="w-3.5 h-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span className="font-medium">{application.job.location}</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <svg className="w-3.5 h-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <span>{application.job.contract_type}</span>
+                </div>
+              </div>
+
+              <p className="text-xs text-gray-500 line-clamp-2 mb-3 leading-relaxed">
                 {application.job.description}
               </p>
-              <div className="flex items-center justify-between text-xs text-gray-400">
-                <span>
+
+              <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+                <span className="text-xs text-gray-400 flex items-center gap-1">
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
                   {new Date(application.applied_at).toLocaleDateString('fr-FR', {
                     day: 'numeric',
                     month: 'short',
                   })}
                 </span>
                 {application.reviewed_at && (
-                  <span className="text-blue-600">Mise à jour</span>
+                  <span className="text-xs text-blue-600 font-medium flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 bg-blue-600 rounded-full"></span>
+                    Mise à jour
+                  </span>
                 )}
               </div>
 
               {application.status === 'accepted' && (
-                <div className="mt-3 bg-green-50 border border-green-200 rounded p-2">
-                  <p className="text-green-800 text-xs font-medium">Candidature acceptée !</p>
+                <div className="mt-3 bg-green-50 border border-green-200 rounded-lg p-2.5">
+                  <p className="text-green-800 text-xs font-semibold flex items-center gap-1.5">
+                    <CheckCircle className="w-3.5 h-3.5" />
+                    Félicitations ! Candidature acceptée
+                  </p>
                 </div>
               )}
             </div>
