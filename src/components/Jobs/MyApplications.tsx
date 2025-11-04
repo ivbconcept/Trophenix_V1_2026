@@ -93,152 +93,50 @@ export default function MyApplications() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Mes Candidatures</h1>
-        <p className="text-gray-600">Suivez l'état de vos candidatures</p>
+    <div className="flex flex-col h-screen">
+      <div className="bg-white border-b border-gray-200 sticky top-0 z-10 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 py-6">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Mes Candidatures</h1>
+          <p className="text-gray-600">Suivez l'état de vos candidatures</p>
+        </div>
       </div>
 
-      <div className="flex gap-2 mb-6">
-        <button
-          onClick={() => setFilter('all')}
-          className={`px-4 py-2 rounded-lg font-medium ${
-            filter === 'all'
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-          }`}
-        >
-          Toutes ({applications.length})
-        </button>
-        <button
-          onClick={() => setFilter('pending')}
-          className={`px-4 py-2 rounded-lg font-medium ${
-            filter === 'pending'
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-          }`}
-        >
-          En attente ({applications.filter(a => a.status === 'pending').length})
-        </button>
-        <button
-          onClick={() => setFilter('reviewed')}
-          className={`px-4 py-2 rounded-lg font-medium ${
-            filter === 'reviewed'
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-          }`}
-        >
-          Examinées ({applications.filter(a => a.status === 'reviewed').length})
-        </button>
-        <button
-          onClick={() => setFilter('accepted')}
-          className={`px-4 py-2 rounded-lg font-medium ${
-            filter === 'accepted'
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-          }`}
-        >
-          Acceptées ({applications.filter(a => a.status === 'accepted').length})
-        </button>
-        <button
-          onClick={() => setFilter('rejected')}
-          className={`px-4 py-2 rounded-lg font-medium ${
-            filter === 'rejected'
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-          }`}
-        >
-          Refusées ({applications.filter(a => a.status === 'rejected').length})
-        </button>
+      <div className="flex-1 overflow-hidden">
+        <div className="h-full overflow-x-auto">
+          <div className="min-w-max h-full p-6">
+            <div className="flex gap-4 h-full">
+              <KanbanColumn
+                title="En attente"
+                count={applications.filter(a => a.status === 'pending').length}
+                applications={applications.filter(a => a.status === 'pending')}
+                config={statusConfig.pending}
+                onApplicationClick={setSelectedApplication}
+              />
+              <KanbanColumn
+                title="Examinées"
+                count={applications.filter(a => a.status === 'reviewed').length}
+                applications={applications.filter(a => a.status === 'reviewed')}
+                config={statusConfig.reviewed}
+                onApplicationClick={setSelectedApplication}
+              />
+              <KanbanColumn
+                title="Acceptées"
+                count={applications.filter(a => a.status === 'accepted').length}
+                applications={applications.filter(a => a.status === 'accepted')}
+                config={statusConfig.accepted}
+                onApplicationClick={setSelectedApplication}
+              />
+              <KanbanColumn
+                title="Refusées"
+                count={applications.filter(a => a.status === 'rejected').length}
+                applications={applications.filter(a => a.status === 'rejected')}
+                config={statusConfig.rejected}
+                onApplicationClick={setSelectedApplication}
+              />
+            </div>
+          </div>
+        </div>
       </div>
-
-      {filteredApplications.length === 0 ? (
-        <div className="text-center py-12 bg-gray-50 rounded-lg">
-          <FileText className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-          <h3 className="text-lg font-medium text-gray-900 mb-2">
-            {filter === 'all' ? 'Aucune candidature' : `Aucune candidature ${statusConfig[filter].label.toLowerCase()}`}
-          </h3>
-          <p className="text-gray-600">
-            {filter === 'all'
-              ? 'Vous n\'avez pas encore postulé à d\'offres'
-              : 'Aucune candidature dans cette catégorie'}
-          </p>
-        </div>
-      ) : (
-        <div className="space-y-4">
-          {filteredApplications.map((application) => {
-            const config = statusConfig[application.status];
-            const StatusIcon = config.icon;
-
-            return (
-              <div
-                key={application.id}
-                className={`bg-white rounded-lg border-2 ${config.borderColor} p-6 hover:shadow-md transition-shadow cursor-pointer`}
-                onClick={() => setSelectedApplication(application)}
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-xl font-semibold text-gray-900">
-                        {application.job.title}
-                      </h3>
-                      <span className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium ${config.bgColor} ${config.color}`}>
-                        <StatusIcon className="h-3.5 w-3.5" />
-                        {config.label}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
-                      <span>{application.job.contract_type}</span>
-                      <span>•</span>
-                      <span>{application.job.location}</span>
-                      <span>•</span>
-                      <span>{application.job.experience_level}</span>
-                    </div>
-                    <p className="text-gray-600 line-clamp-2 mb-3">
-                      {application.job.description}
-                    </p>
-                    <div className="text-sm text-gray-500">
-                      Postulé le {new Date(application.applied_at).toLocaleDateString('fr-FR', {
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric',
-                      })}
-                      {application.reviewed_at && (
-                        <span className="ml-3">
-                          • Mise à jour le {new Date(application.reviewed_at).toLocaleDateString('fr-FR', {
-                            day: 'numeric',
-                            month: 'long',
-                            year: 'numeric',
-                          })}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                {application.status === 'accepted' && (
-                  <div className="bg-green-50 border border-green-200 rounded-lg p-4 mt-4">
-                    <p className="text-green-800 font-medium">
-                      Félicitations ! Votre candidature a été acceptée.
-                    </p>
-                    <p className="text-green-700 text-sm mt-1">
-                      L'entreprise devrait vous contacter prochainement.
-                    </p>
-                  </div>
-                )}
-
-                {application.status === 'rejected' && (
-                  <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mt-4">
-                    <p className="text-gray-700">
-                      Votre candidature n'a pas été retenue pour ce poste.
-                    </p>
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      )}
 
       {selectedApplication && (
         <ApplicationDetailModal
@@ -246,6 +144,82 @@ export default function MyApplications() {
           onClose={() => setSelectedApplication(null)}
         />
       )}
+    </div>
+  );
+}
+
+interface KanbanColumnProps {
+  title: string;
+  count: number;
+  applications: ApplicationWithJob[];
+  config: {
+    icon: any;
+    label: string;
+    color: string;
+    bgColor: string;
+    borderColor: string;
+  };
+  onApplicationClick: (application: ApplicationWithJob) => void;
+}
+
+function KanbanColumn({ title, count, applications, config, onApplicationClick }: KanbanColumnProps) {
+  const StatusIcon = config.icon;
+
+  return (
+    <div className="flex flex-col w-80 bg-gray-50 rounded-xl">
+      <div className="p-4 border-b border-gray-200 bg-white rounded-t-xl">
+        <div className="flex items-center justify-between">
+          <h3 className="font-semibold text-gray-900">{title}</h3>
+          <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${config.bgColor} ${config.color}`}>
+            {count}
+          </span>
+        </div>
+      </div>
+
+      <div className="flex-1 overflow-y-auto p-4 space-y-3">
+        {applications.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-8 text-gray-400">
+            <StatusIcon className="h-8 w-8 mb-2" />
+            <p className="text-sm">Aucune candidature</p>
+          </div>
+        ) : (
+          applications.map((application) => (
+            <div
+              key={application.id}
+              className="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition-all cursor-pointer"
+              onClick={() => onApplicationClick(application)}
+            >
+              <h4 className="font-semibold text-gray-900 mb-2 text-sm">
+                {application.job.title}
+              </h4>
+              <div className="text-xs text-gray-600 space-y-1 mb-3">
+                <p>{application.job.location}</p>
+                <p>{application.job.contract_type}</p>
+              </div>
+              <p className="text-xs text-gray-500 line-clamp-2 mb-3">
+                {application.job.description}
+              </p>
+              <div className="flex items-center justify-between text-xs text-gray-400">
+                <span>
+                  {new Date(application.applied_at).toLocaleDateString('fr-FR', {
+                    day: 'numeric',
+                    month: 'short',
+                  })}
+                </span>
+                {application.reviewed_at && (
+                  <span className="text-blue-600">Mise à jour</span>
+                )}
+              </div>
+
+              {application.status === 'accepted' && (
+                <div className="mt-3 bg-green-50 border border-green-200 rounded p-2">
+                  <p className="text-green-800 text-xs font-medium">Candidature acceptée !</p>
+                </div>
+              )}
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 }
