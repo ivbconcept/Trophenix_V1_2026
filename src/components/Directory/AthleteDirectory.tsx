@@ -118,14 +118,6 @@ export default function AthleteDirectory() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-black">
       <div className="max-w-[1400px] mx-auto px-6 py-8">
-        <div className="flex items-center justify-between mb-6">
-          <button
-            onClick={() => setShowFilters(!showFilters)}
-            className="p-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all shadow-lg"
-          >
-            <Filter className="h-6 w-6" />
-          </button>
-        </div>
 
         <div className="flex items-center gap-3 mb-8">
           <button
