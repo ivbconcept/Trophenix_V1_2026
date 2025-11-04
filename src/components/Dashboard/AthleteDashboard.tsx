@@ -64,11 +64,6 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 )}
               </button>
 
-              <button className="relative p-2 md:p-2.5 bg-slate-50 dark:bg-zinc-900 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-xl transition-all hover:shadow-sm group">
-                <MessageSquareText className="w-5 h-5 md:w-6 md:h-6 text-slate-600 dark:text-zinc-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" strokeWidth={1.5} />
-                <span className="absolute top-1 right-1 md:top-1.5 md:right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
-              </button>
-
               <NotificationsDropdown />
 
               <ProfileDropdown

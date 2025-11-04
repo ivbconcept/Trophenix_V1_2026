@@ -1,4 +1,4 @@
-import { Bell, LogOut, Trophy, Search, Mail, LayoutDashboard, Award, Handshake as HandshakeIcon, UsersRound, Settings, BookOpen, Briefcase, FileText, GraduationCap, TrendingUp, Users, DollarSign, Image as ImageIcon } from 'lucide-react';
+import { Bell, LogOut, Trophy, Search, Mail, LayoutDashboard, Award, Handshake as HandshakeIcon, UsersRound, Settings, BookOpen, Briefcase, FileText, GraduationCap, TrendingUp, Users, DollarSign, Image as ImageIcon, MessageSquare } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { ReactNode, useState, useEffect } from 'react';
 import { ProfileDropdown } from './ProfileDropdown';
@@ -177,7 +177,25 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
         <div className={`p-4 border-t border-slate-200/50 dark:border-zinc-800 ${showSecondarySidebar ? 'px-2' : 'px-4'}`}>
           {!showSecondarySidebar && (
             <div className="mb-4 space-y-2">
-              <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white transition-all">
+              <button
+                onClick={() => onNavigate('messages')}
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                  currentView === 'messages'
+                    ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg shadow-blue-500/30'
+                    : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <MessageSquare className="h-5 w-5" />
+                <span>Messagerie</span>
+              </button>
+              <button
+                onClick={() => onNavigate('settings')}
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                  currentView === 'settings'
+                    ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg shadow-blue-500/30'
+                    : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
                 <Settings className="h-5 w-5" />
                 <span>Settings</span>
               </button>
@@ -186,8 +204,24 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
           {showSecondarySidebar && (
             <div className="mb-2 space-y-2">
               <button
+                onClick={() => onNavigate('messages')}
+                title="Messagerie"
+                className={`w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                  currentView === 'messages'
+                    ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg shadow-blue-500/30'
+                    : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <MessageSquare className="h-5 w-5" />
+              </button>
+              <button
+                onClick={() => onNavigate('settings')}
                 title="Settings"
-                className="w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white transition-all"
+                className={`w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                  currentView === 'settings'
+                    ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg shadow-blue-500/30'
+                    : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
+                }`}
               >
                 <Settings className="h-5 w-5" />
               </button>

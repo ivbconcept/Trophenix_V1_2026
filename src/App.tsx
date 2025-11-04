@@ -21,6 +21,7 @@ import AthleteDirectory from './components/Directory/AthleteDirectory';
 import CompanyDirectory from './components/Directory/CompanyDirectory';
 import { Navbar } from './components/Layout/Navbar';
 import { MessagesList } from './components/Messages/MessagesList';
+import { MessagingPage } from './components/Messages/MessagingPage';
 import { UserProfile } from './components/Profile/UserProfile';
 import { UserSettings } from './components/Settings/UserSettings';
 import { supabase } from './lib/supabase';
@@ -247,7 +248,7 @@ function AppContent() {
 
         {view === 'companies-directory' && <CompanyDirectory />}
 
-        {view === 'messages' && <MessagesList />}
+        {view === 'messages' && <MessagingPage />}
 
         {view === 'notifications' && (
           <div className="p-8">
