@@ -183,29 +183,6 @@ export default function JobsList() {
           {/* Search and Filter Section */}
           <div className="mt-8">
             <div className="flex items-center gap-4">
-              {/* Tab Buttons */}
-              <div className="flex gap-3">
-                <button
-                  onClick={() => setActiveTab('sportif')}
-                  className={`px-8 py-3 rounded-full text-base font-semibold transition-all ${
-                    activeTab === 'sportif'
-                      ? 'bg-gray-900 text-white'
-                      : 'bg-white text-gray-600 hover:bg-gray-50'
-                  }`}
-                >
-                  Sportif
-                </button>
-                <button
-                  onClick={() => setActiveTab('entreprise')}
-                  className={`px-8 py-3 rounded-full text-base font-semibold transition-all ${
-                    activeTab === 'entreprise'
-                      ? 'bg-gray-900 text-white'
-                      : 'bg-white text-gray-600 hover:bg-gray-50'
-                  }`}
-                >
-                  Entreprise
-                </button>
-              </div>
 
               {/* Search Bar */}
               <div className="flex-1 relative">
