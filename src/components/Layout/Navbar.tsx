@@ -253,38 +253,6 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
       )}
 
       <div className="flex-1 flex flex-col overflow-hidden">
-        <header className="sticky top-0 z-50 bg-white dark:bg-zinc-950 shadow-sm dark:shadow-zinc-900 border-b border-slate-200 dark:border-zinc-800">
-          <div className="max-w-[1400px] mx-auto px-4 md:px-8 py-3 md:py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <h1 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white">
-                  {currentView === 'athlete-dashboard' && 'Tableau de bord'}
-                  {currentView === 'company-dashboard' && 'Tableau de bord'}
-                  {currentView === 'job-offers' && 'Offres d\'emploi'}
-                  {currentView === 'my-applications' && 'Mes candidatures'}
-                  {currentView === 'cv-builder' && 'Mon CV'}
-                  {currentView === 'manage-offers' && 'Gérer mes offres'}
-                  {currentView === 'received-applications' && 'Candidatures reçues'}
-                  {currentView === 'athletes-directory' && 'Annuaire des athlètes'}
-                  {currentView === 'companies-directory' && 'Annuaire des entreprises'}
-                  {currentView === 'profile' && 'Mon Profil'}
-                  {currentView === 'settings' && 'Paramètres'}
-                </h1>
-              </div>
-              <div className="flex items-center gap-3">
-                <button className="relative p-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-full transition-colors">
-                  <Bell className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
-                  <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-                </button>
-                <ProfileDropdown
-                  onNavigateToProfile={() => onNavigate('profile')}
-                  onNavigateToSettings={() => onNavigate('settings')}
-                  onLogout={onLogout}
-                />
-              </div>
-            </div>
-          </div>
-        </header>
         <main className="flex-1 overflow-auto bg-slate-50 dark:bg-black">
           {children}
         </main>

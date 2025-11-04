@@ -2,6 +2,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { useTheme } from '../../contexts/ThemeContext';
 import { Briefcase, FileText, MessagesSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper, Mail, Bell, Search, MessageSquareText, Moon, Sun } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { ProfileDropdown } from '../Layout/ProfileDropdown';
 import arenaImage from '../../assets/images/venti-views-cHRDevKFDBw-new.jpg';
 import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
 import financeImage from '../../assets/images/cycling-road-unsplash.jpg';
@@ -20,7 +21,7 @@ const backgroundImages = [
 ];
 
 export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
-  const { profile } = useAuth();
+  const { profile, signOut } = useAuth();
   const { isDarkMode, toggleDarkMode } = useTheme();
   const [activeTab, setActiveTab] = useState<'all' | 'jobs' | 'sponsoring'>('all');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -72,16 +73,11 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 <span className="absolute top-1 right-1 md:top-1.5 md:right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
               </button>
 
-              <button className="flex items-center gap-2 md:gap-3 pl-2 md:pl-3 pr-3 md:pr-4 py-1.5 md:py-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-full transition-colors">
-                <img
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=faces"
-                  alt="Profile"
-                  className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover ring-2 ring-slate-300"
-                />
-                <span className="text-slate-900 dark:text-white font-medium text-sm md:text-base hidden sm:inline">
-                  {profile?.first_name || 'Jayson'}
-                </span>
-              </button>
+              <ProfileDropdown
+                onNavigateToProfile={() => onNavigate('profile')}
+                onNavigateToSettings={() => onNavigate('settings')}
+                onLogout={signOut}
+              />
             </div>
           </div>
         </div>
