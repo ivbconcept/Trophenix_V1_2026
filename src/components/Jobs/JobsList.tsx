@@ -179,10 +179,10 @@ export default function JobsList() {
     <div className="flex flex-col h-full">
       <div className="bg-white border-b border-gray-200 px-8 py-6">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-3xl font-bold text-slate-700 mb-2">Offres d'Emploi</h1>
+          <h1 className="text-3xl font-bold text-slate-700 mb-6">Offres d'Emploi</h1>
 
           {/* Search and Filter Section */}
-          <div className="mt-8">
+          <div className="mt-0">
             <div className="flex items-center gap-4">
 
               {/* Search Bar */}
