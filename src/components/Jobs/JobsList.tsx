@@ -179,7 +179,6 @@ export default function JobsList() {
       <div className="bg-white border-b border-gray-200 px-8 py-6">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Offres d'Emploi</h1>
-          <p className="text-gray-600">Trouvez votre prochaine opportunité professionnelle</p>
 
           {/* Search and Filter Section */}
           <div className="mt-8">
