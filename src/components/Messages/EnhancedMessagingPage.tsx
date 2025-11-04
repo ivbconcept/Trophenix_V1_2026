@@ -3,7 +3,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { advancedMessagingService, Conversation, Message } from '../../services/advancedMessagingService';
 import {
   Send, Search, MoreVertical, Phone, Video, Paperclip, Smile, ArrowLeft, Circle,
-  Edit2, Trash2, Reply, Users, Hash, Lock, Bell, BellOff, X, Plus, AtSign, Image as ImageIcon, File
+  Edit2, Trash2, Reply, Users, Hash, Lock, X, Plus, Image as ImageIcon, File, Mic
 } from 'lucide-react';
 
 const EMOJI_QUICK_REACTIONS = ['👍', '❤️', '😂', '😮', '😢', '🎉', '🔥', '👏'];
@@ -18,35 +18,51 @@ export function EnhancedMessagingPage() {
   const [loading, setLoading] = useState(true);
   const [editingMessage, setEditingMessage] = useState<Message | null>(null);
   const [replyingTo, setReplyingTo] = useState<Message | null>(null);
-  const [showCreateGroup, setShowCreateGroup] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [hoveredMessageId, setHoveredMessageId] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     if (user?.id) {
       loadConversations();
       advancedMessagingService.updatePresence(user.id, 'online');
 
+      return () => {
+        advancedMessagingService.updatePresence(user.id, 'offline');
+      };
+    }
+  }, [user?.id]);
+
+  useEffect(() => {
+    if (selectedConversation) {
+      loadMessages(selectedConversation.id);
+
       const channel = advancedMessagingService.subscribeToConversation(
-        selectedConversation?.id || '',
+        selectedConversation.id,
         () => {
+          loadMessages(selectedConversation.id);
           loadConversations();
-          if (selectedConversation) loadMessages(selectedConversation.id);
         }
       );
 
       return () => {
-        advancedMessagingService.updatePresence(user.id, 'offline');
         channel.unsubscribe();
       };
     }
-  }, [user?.id, selectedConversation?.id]);
+  }, [selectedConversation?.id]);
 
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = Math.min(textareaRef.current.scrollHeight, 120) + 'px';
+    }
+  }, [newMessage]);
 
   const loadConversations = async () => {
     if (!user?.id) return;
@@ -66,8 +82,8 @@ export function EnhancedMessagingPage() {
     }
   };
 
-  const handleSendMessage = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSendMessage = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     if ((!newMessage.trim() && selectedFiles.length === 0) || !selectedConversation || !user?.id) return;
 
     const mentions = extractMentions(newMessage);
@@ -92,26 +108,6 @@ export function EnhancedMessagingPage() {
       setReplyingTo(null);
       await loadMessages(selectedConversation.id);
       await loadConversations();
-    }
-  };
-
-  const handleEditMessage = async () => {
-    if (!editingMessage || !newMessage.trim()) return;
-
-    const success = await advancedMessagingService.editMessage(editingMessage.id, newMessage.trim());
-    if (success && selectedConversation) {
-      setNewMessage('');
-      setEditingMessage(null);
-      await loadMessages(selectedConversation.id);
-    }
-  };
-
-  const handleDeleteMessage = async (messageId: string) => {
-    if (!confirm('Êtes-vous sûr de vouloir supprimer ce message ?')) return;
-
-    const success = await advancedMessagingService.deleteMessage(messageId);
-    if (success && selectedConversation) {
-      await loadMessages(selectedConversation.id);
     }
   };
 
@@ -145,18 +141,7 @@ export function EnhancedMessagingPage() {
 
   const formatTime = (timestamp: string) => {
     const date = new Date(timestamp);
-    const now = new Date();
-    const diffMs = now.getTime() - date.getTime();
-    const diffMins = Math.floor(diffMs / 60000);
-    const diffHours = Math.floor(diffMins / 60);
-    const diffDays = Math.floor(diffHours / 24);
-
-    if (diffMins < 1) return 'À l\'instant';
-    if (diffMins < 60) return `${diffMins} min`;
-    if (diffHours < 24) return date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
-    if (diffDays === 1) return 'Hier';
-    if (diffDays < 7) return `Il y a ${diffDays}j`;
-    return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+    return date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
   };
 
   const getConversationTitle = (conv: Conversation) => {
@@ -178,16 +163,14 @@ export function EnhancedMessagingPage() {
   );
 
   return (
-    <div className="h-screen flex bg-slate-50 dark:bg-black">
-      {/* Sidebar - Liste des conversations */}
+    <div className="h-screen flex bg-slate-50 dark:bg-black overflow-hidden">
       <div className={`${selectedConversation ? 'hidden md:flex' : 'flex'} w-full md:w-96 flex-col bg-white dark:bg-zinc-950 border-r border-slate-200 dark:border-zinc-800`}>
-        <div className="p-4 border-b border-slate-200 dark:border-zinc-800">
+        <div className="p-4 border-b border-slate-200 dark:border-zinc-800 flex-shrink-0">
           <div className="flex items-center justify-between mb-4">
             <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Messages</h1>
             <button
-              onClick={() => setShowCreateGroup(true)}
               className="p-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-lg transition-colors"
-              title="Créer un groupe ou channel"
+              title="Nouvelle conversation"
             >
               <Plus className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
             </button>
@@ -199,7 +182,7 @@ export function EnhancedMessagingPage() {
               placeholder="Rechercher..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-zinc-900 rounded-xl border border-slate-200 dark:border-zinc-800 focus:outline-none focus:border-slate-300 dark:focus:border-zinc-700 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500"
+              className="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-zinc-900 rounded-xl border border-slate-200 dark:border-zinc-800 focus:outline-none focus:border-blue-500 dark:focus:border-blue-500 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500"
             />
           </div>
         </div>
@@ -218,45 +201,37 @@ export function EnhancedMessagingPage() {
               <button
                 key={conv.id}
                 onClick={() => setSelectedConversation(conv)}
-                className={`w-full p-4 flex items-start gap-3 hover:bg-slate-50 dark:hover:bg-zinc-900 transition-colors ${
-                  selectedConversation?.id === conv.id ? 'bg-slate-50 dark:bg-zinc-900' : ''
+                className={`w-full p-4 flex items-start gap-3 hover:bg-slate-50 dark:hover:bg-zinc-900 transition-colors border-b border-slate-100 dark:border-zinc-900 ${
+                  selectedConversation?.id === conv.id ? 'bg-slate-100 dark:bg-zinc-900' : ''
                 }`}
               >
-                <div className="relative">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                <div className="relative flex-shrink-0">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
                     {getConversationIcon(conv) || getConversationTitle(conv)[0]}
                   </div>
                   {conv.unread_count && conv.unread_count > 0 && (
-                    <Circle className="absolute -top-1 -right-1 w-4 h-4 text-blue-600 fill-blue-600" />
+                    <div className="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xs font-bold">{conv.unread_count}</span>
+                    </div>
                   )}
                 </div>
 
                 <div className="flex-1 min-w-0 text-left">
-                  <div className="flex items-center gap-2 mb-1">
-                    {conv.type === 'channel' && <Hash className="w-3.5 h-3.5 text-slate-500 flex-shrink-0" />}
-                    {conv.type === 'group' && <Users className="w-3.5 h-3.5 text-slate-500 flex-shrink-0" />}
-                    {conv.is_private && <Lock className="w-3.5 h-3.5 text-slate-500 flex-shrink-0" />}
-                    <h3 className="font-semibold text-slate-900 dark:text-white truncate flex-1">
+                  <div className="flex items-center justify-between mb-1">
+                    <h3 className="font-semibold text-slate-900 dark:text-white truncate">
                       {getConversationTitle(conv)}
                     </h3>
-                    <span className="text-xs text-slate-500 dark:text-zinc-500 flex-shrink-0">
+                    <span className="text-xs text-slate-500 dark:text-zinc-500 flex-shrink-0 ml-2">
                       {formatTime(conv.last_message_at)}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <p className={`text-sm truncate ${
-                      conv.unread_count && conv.unread_count > 0
-                        ? 'text-slate-900 dark:text-white font-medium'
-                        : 'text-slate-600 dark:text-zinc-400'
-                    }`}>
-                      {conv.last_message_preview || 'Aucun message'}
-                    </p>
-                    {conv.unread_count && conv.unread_count > 0 && (
-                      <span className="ml-2 flex-shrink-0 bg-blue-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                        {conv.unread_count}
-                      </span>
-                    )}
-                  </div>
+                  <p className={`text-sm truncate ${
+                    conv.unread_count && conv.unread_count > 0
+                      ? 'text-slate-900 dark:text-white font-medium'
+                      : 'text-slate-600 dark:text-zinc-400'
+                  }`}>
+                    {conv.last_message_preview || 'Aucun message'}
+                  </p>
                 </div>
               </button>
             ))
@@ -264,16 +239,14 @@ export function EnhancedMessagingPage() {
         </div>
       </div>
 
-      {/* Zone de conversation */}
       <div className={`${selectedConversation ? 'flex' : 'hidden md:flex'} flex-1 flex-col bg-white dark:bg-zinc-950`}>
         {selectedConversation ? (
           <>
-            {/* Header */}
-            <div className="p-4 border-b border-slate-200 dark:border-zinc-800 flex items-center justify-between">
+            <div className="p-4 border-b border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900 flex items-center justify-between flex-shrink-0">
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => setSelectedConversation(null)}
-                  className="md:hidden p-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-lg transition-colors"
+                  className="md:hidden p-2 hover:bg-slate-200 dark:hover:bg-zinc-800 rounded-lg transition-colors"
                 >
                   <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
                 </button>
@@ -296,20 +269,30 @@ export function EnhancedMessagingPage() {
               </div>
 
               <div className="flex items-center gap-2">
-                <button className="p-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-lg transition-colors">
-                  <Phone className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
-                </button>
-                <button className="p-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-lg transition-colors">
+                <button className="p-2 hover:bg-slate-200 dark:hover:bg-zinc-800 rounded-lg transition-colors">
                   <Video className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
                 </button>
-                <button className="p-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-lg transition-colors">
+                <button className="p-2 hover:bg-slate-200 dark:hover:bg-zinc-800 rounded-lg transition-colors">
+                  <Phone className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
+                </button>
+                <button className="p-2 hover:bg-slate-200 dark:hover:bg-zinc-800 rounded-lg transition-colors">
                   <MoreVertical className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
                 </button>
               </div>
             </div>
 
-            {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            <div
+              className="flex-1 overflow-y-auto p-4 space-y-3"
+              style={{
+                backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23e2e8f0\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'
+              }}
+            >
+              <div className="text-center my-4">
+                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-xs rounded-full">
+                  Aujourd'hui
+                </span>
+              </div>
+
               {messages.map((message) => {
                 const isOwn = message.sender_id === user?.id;
                 const reactions = message.reactions || [];
@@ -322,34 +305,26 @@ export function EnhancedMessagingPage() {
                     onMouseEnter={() => setHoveredMessageId(message.id)}
                     onMouseLeave={() => setHoveredMessageId(null)}
                   >
-                    <div className="max-w-[70%] space-y-1">
-                      {message.parent_message_id && (
-                        <div className="text-xs text-slate-500 dark:text-zinc-500 flex items-center gap-1 mb-1">
-                          <Reply className="w-3 h-3" />
-                          Réponse à un message
-                        </div>
-                      )}
-
+                    <div className="max-w-[75%] md:max-w-[60%]">
                       <div className="relative">
                         <div
-                          className={`rounded-2xl px-4 py-2 ${
+                          className={`rounded-lg px-3 py-2 shadow-sm ${
                             isOwn
-                              ? 'bg-blue-600 text-white'
-                              : 'bg-slate-100 dark:bg-zinc-900 text-slate-900 dark:text-white'
+                              ? 'bg-blue-600 text-white rounded-br-none'
+                              : 'bg-white dark:bg-zinc-800 text-slate-900 dark:text-white rounded-bl-none border border-slate-200 dark:border-zinc-700'
                           }`}
                         >
-                          <p className="text-sm whitespace-pre-wrap break-words">{message.content}</p>
-
-                          {/* Attachments */}
                           {attachments.length > 0 && (
-                            <div className="mt-2 space-y-2">
+                            <div className="mb-2 space-y-2">
                               {attachments.map((att) => (
                                 <a
                                   key={att.id}
                                   href={att.file_url}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="flex items-center gap-2 p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
+                                  className={`flex items-center gap-2 p-2 rounded ${
+                                    isOwn ? 'bg-blue-700' : 'bg-slate-100 dark:bg-zinc-700'
+                                  }`}
                                 >
                                   {att.file_type.startsWith('image/') ? (
                                     <ImageIcon className="w-4 h-4" />
@@ -362,60 +337,37 @@ export function EnhancedMessagingPage() {
                             </div>
                           )}
 
-                          <div className="flex items-center gap-2 mt-1">
-                            <p className={`text-xs ${
-                              isOwn ? 'text-blue-100' : 'text-slate-500 dark:text-zinc-500'
-                            }`}>
-                              {formatTime(message.created_at)}
-                            </p>
-                            {message.edited_at && (
-                              <span className={`text-xs ${
-                                isOwn ? 'text-blue-100' : 'text-slate-500 dark:text-zinc-500'
-                              }`}>
-                                (modifié)
-                              </span>
+                          <p className="text-sm whitespace-pre-wrap break-words">{message.content}</p>
+
+                          <div className={`flex items-center justify-end gap-1 mt-1 ${
+                            isOwn ? 'text-blue-100' : 'text-slate-500 dark:text-zinc-500'
+                          }`}>
+                            <span className="text-xs">{formatTime(message.created_at)}</span>
+                            {isOwn && message.read && (
+                              <svg className="w-4 h-4 text-blue-200" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                              </svg>
                             )}
                           </div>
                         </div>
 
-                        {/* Quick reactions on hover */}
                         {hoveredMessageId === message.id && (
-                          <div className={`absolute -top-3 ${isOwn ? 'right-0' : 'left-0'} flex gap-1 bg-white dark:bg-zinc-800 rounded-full px-2 py-1 shadow-lg border border-slate-200 dark:border-zinc-700`}>
-                            {EMOJI_QUICK_REACTIONS.map((emoji) => (
+                          <div className={`absolute -top-8 ${isOwn ? 'right-0' : 'left-0'} flex gap-1 bg-white dark:bg-zinc-800 rounded-full px-2 py-1 shadow-lg border border-slate-200 dark:border-zinc-700 opacity-0 group-hover:opacity-100 transition-opacity`}>
+                            {EMOJI_QUICK_REACTIONS.slice(0, 5).map((emoji) => (
                               <button
                                 key={emoji}
                                 onClick={() => handleReaction(message.id, emoji)}
-                                className="hover:scale-125 transition-transform"
+                                className="hover:scale-125 transition-transform text-base"
                               >
                                 {emoji}
                               </button>
                             ))}
-                            {isOwn && (
-                              <>
-                                <button
-                                  onClick={() => {
-                                    setEditingMessage(message);
-                                    setNewMessage(message.content);
-                                  }}
-                                  className="p-1 hover:bg-slate-100 dark:hover:bg-zinc-700 rounded"
-                                >
-                                  <Edit2 className="w-3 h-3 text-slate-600 dark:text-zinc-400" />
-                                </button>
-                                <button
-                                  onClick={() => handleDeleteMessage(message.id)}
-                                  className="p-1 hover:bg-red-100 dark:hover:bg-red-900/20 rounded"
-                                >
-                                  <Trash2 className="w-3 h-3 text-red-600 dark:text-red-400" />
-                                </button>
-                              </>
-                            )}
                           </div>
                         )}
                       </div>
 
-                      {/* Reactions display */}
                       {reactions.length > 0 && (
-                        <div className="flex flex-wrap gap-1">
+                        <div className="flex flex-wrap gap-1 mt-1 px-2">
                           {Object.entries(
                             reactions.reduce((acc: any, r) => {
                               acc[r.emoji] = (acc[r.emoji] || 0) + 1;
@@ -425,7 +377,7 @@ export function EnhancedMessagingPage() {
                             <button
                               key={emoji}
                               onClick={() => handleReaction(message.id, emoji)}
-                              className="flex items-center gap-1 px-2 py-0.5 bg-slate-100 dark:bg-zinc-800 rounded-full text-xs hover:bg-slate-200 dark:hover:bg-zinc-700 transition-colors"
+                              className="flex items-center gap-1 px-2 py-0.5 bg-slate-100 dark:bg-zinc-800 rounded-full text-xs hover:bg-slate-200 dark:hover:bg-zinc-700 transition-colors border border-slate-200 dark:border-zinc-700"
                             >
                               <span>{emoji}</span>
                               <span className="text-slate-600 dark:text-zinc-400">{count as number}</span>
@@ -440,27 +392,14 @@ export function EnhancedMessagingPage() {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input area */}
-            <div className="p-4 border-t border-slate-200 dark:border-zinc-800">
+            <div className="p-3 bg-slate-50 dark:bg-zinc-900 border-t border-slate-200 dark:border-zinc-800 flex-shrink-0">
               {replyingTo && (
-                <div className="mb-2 p-2 bg-slate-50 dark:bg-zinc-900 rounded-lg flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-zinc-400">
-                    <Reply className="w-4 h-4" />
-                    <span>Réponse à: {replyingTo.content.substring(0, 50)}...</span>
-                  </div>
-                  <button onClick={() => setReplyingTo(null)} className="p-1 hover:bg-slate-200 dark:hover:bg-zinc-800 rounded">
-                    <X className="w-4 h-4" />
-                  </button>
-                </div>
-              )}
-
-              {editingMessage && (
                 <div className="mb-2 p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg flex items-center justify-between">
                   <div className="flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400">
-                    <Edit2 className="w-4 h-4" />
-                    <span>Modification en cours</span>
+                    <Reply className="w-4 h-4" />
+                    <span className="truncate">Réponse à: {replyingTo.content.substring(0, 50)}...</span>
                   </div>
-                  <button onClick={() => { setEditingMessage(null); setNewMessage(''); }} className="p-1 hover:bg-blue-100 dark:hover:bg-blue-900/40 rounded">
+                  <button onClick={() => setReplyingTo(null)} className="p-1 hover:bg-blue-100 dark:hover:bg-blue-900/40 rounded">
                     <X className="w-4 h-4" />
                   </button>
                 </div>
@@ -469,18 +408,18 @@ export function EnhancedMessagingPage() {
               {selectedFiles.length > 0 && (
                 <div className="mb-2 flex flex-wrap gap-2">
                   {selectedFiles.map((file, index) => (
-                    <div key={index} className="flex items-center gap-2 px-3 py-2 bg-slate-100 dark:bg-zinc-900 rounded-lg">
+                    <div key={index} className="flex items-center gap-2 px-3 py-2 bg-white dark:bg-zinc-800 rounded-lg border border-slate-200 dark:border-zinc-700">
                       <File className="w-4 h-4 text-slate-600 dark:text-zinc-400" />
                       <span className="text-sm text-slate-900 dark:text-white truncate max-w-[150px]">{file.name}</span>
-                      <button onClick={() => setSelectedFiles(selectedFiles.filter((_, i) => i !== index))} className="p-0.5 hover:bg-slate-200 dark:hover:bg-zinc-800 rounded">
-                        <X className="w-3 h-3" />
+                      <button onClick={() => setSelectedFiles(selectedFiles.filter((_, i) => i !== index))}>
+                        <X className="w-4 h-4 text-slate-500" />
                       </button>
                     </div>
                   ))}
                 </div>
               )}
 
-              <form onSubmit={editingMessage ? handleEditMessage : handleSendMessage} className="flex items-end gap-2">
+              <div className="flex items-end gap-2">
                 <input
                   type="file"
                   ref={fileInputRef}
@@ -488,63 +427,76 @@ export function EnhancedMessagingPage() {
                   className="hidden"
                   multiple
                 />
+
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
-                  className="p-2.5 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-lg transition-colors flex-shrink-0"
+                  className="p-2.5 hover:bg-slate-200 dark:hover:bg-zinc-800 rounded-full transition-colors flex-shrink-0"
+                  title="Joindre un fichier"
                 >
                   <Paperclip className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
                 </button>
 
-                <div className="flex-1 relative">
+                <div className="flex-1 relative bg-white dark:bg-zinc-800 rounded-full border border-slate-200 dark:border-zinc-700 focus-within:border-blue-500 dark:focus-within:border-blue-500 transition-colors">
                   <textarea
+                    ref={textareaRef}
                     value={newMessage}
                     onChange={(e) => setNewMessage(e.target.value)}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' && !e.shiftKey) {
                         e.preventDefault();
-                        editingMessage ? handleEditMessage() : handleSendMessage(e);
+                        handleSendMessage();
                       }
                     }}
-                    placeholder="Écrivez votre message... (@mention, #hashtag)"
-                    className="w-full px-4 py-3 pr-12 bg-slate-50 dark:bg-zinc-900 rounded-xl border border-slate-200 dark:border-zinc-800 focus:outline-none focus:border-slate-300 dark:focus:border-zinc-700 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 resize-none max-h-32"
+                    placeholder="Tapez un message..."
+                    className="w-full px-4 py-3 pr-12 bg-transparent focus:outline-none text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 resize-none"
                     rows={1}
+                    style={{ maxHeight: '120px' }}
                   />
                   <button
                     type="button"
-                    className="absolute right-3 bottom-3 p-1 hover:bg-slate-200 dark:hover:bg-zinc-800 rounded transition-colors"
+                    className="absolute right-3 bottom-3 p-1 hover:bg-slate-100 dark:hover:bg-zinc-700 rounded-full transition-colors"
                   >
-                    <Smile className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
+                    <Smile className="w-5 h-5 text-slate-500 dark:text-zinc-400" />
                   </button>
                 </div>
 
                 <button
-                  type="submit"
+                  onClick={() => handleSendMessage()}
                   disabled={!newMessage.trim() && selectedFiles.length === 0}
-                  className="p-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 dark:disabled:bg-zinc-800 disabled:cursor-not-allowed rounded-xl transition-colors flex-shrink-0"
+                  className={`p-3 rounded-full transition-colors flex-shrink-0 ${
+                    newMessage.trim() || selectedFiles.length > 0
+                      ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                      : 'bg-slate-200 dark:bg-zinc-800 text-slate-400 dark:text-zinc-600 cursor-not-allowed'
+                  }`}
+                  title="Envoyer"
                 >
-                  <Send className="w-5 h-5 text-white" />
+                  {newMessage.trim() || selectedFiles.length > 0 ? (
+                    <Send className="w-5 h-5" />
+                  ) : (
+                    <Mic className="w-5 h-5" />
+                  )}
                 </button>
-              </form>
+              </div>
             </div>
           </>
         ) : (
-          <div className="flex-1 flex items-center justify-center">
-            <div className="text-center">
-              <div className="w-24 h-24 bg-slate-100 dark:bg-zinc-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Send className="w-12 h-12 text-slate-400 dark:text-zinc-500" />
+          <div className="flex-1 flex items-center justify-center bg-slate-50 dark:bg-zinc-950">
+            <div className="text-center max-w-md px-8">
+              <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl">
+                <Send className="w-16 h-16 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
-                Sélectionnez une conversation
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
+                Bienvenue dans votre messagerie
               </h3>
-              <p className="text-slate-600 dark:text-zinc-400 mb-4">
-                Choisissez une conversation pour commencer à échanger
+              <p className="text-slate-600 dark:text-zinc-400 mb-6">
+                Sélectionnez une conversation pour commencer à échanger avec vos contacts
               </p>
               <button
-                onClick={() => setShowCreateGroup(true)}
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition-colors shadow-lg hover:shadow-xl inline-flex items-center gap-2"
               >
-                Créer un groupe ou channel
+                <Plus className="w-5 h-5" />
+                Nouvelle conversation
               </button>
             </div>
           </div>
