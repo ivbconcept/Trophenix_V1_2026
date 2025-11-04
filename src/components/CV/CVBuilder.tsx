@@ -226,8 +226,7 @@ export default function CVBuilder() {
         )}
 
         <div id="cv-content">
-          <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 px-8 py-10 relative">
-            <div className="absolute -top-1 left-8 w-2 h-2 bg-blue-800 rotate-45"></div>
+          <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 px-8 py-10">
             <div className="flex items-start justify-between">
               <div className="flex items-start gap-6">
                 <div className="relative w-28 h-28 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center overflow-hidden flex-shrink-0 border-4 border-white/30 group cursor-pointer hover:border-white/50 transition-all">
