@@ -249,7 +249,7 @@ export default function JobsList() {
                         e.stopPropagation();
                         setSelectedJob(job);
                       }}
-                      className="px-5 py-2 bg-green-500 text-white rounded-xl text-xs font-medium hover:bg-green-600 transition-colors"
+                      className="px-5 py-2 bg-green-400 text-white rounded-xl text-xs font-medium hover:bg-green-500 transition-colors"
                     >
                       Postuler
                     </button>
