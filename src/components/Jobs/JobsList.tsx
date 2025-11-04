@@ -82,52 +82,6 @@ export default function JobsList() {
         <p className="text-gray-600">Trouvez votre prochaine opportunité professionnelle</p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Type de contrat
-          </label>
-          <select
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-            onChange={(e) => setFilters({ ...filters, contract_type: e.target.value ? [e.target.value as any] : undefined })}
-          >
-            <option value="">Tous</option>
-            <option value="CDI">CDI</option>
-            <option value="CDD">CDD</option>
-            <option value="Stage">Stage</option>
-            <option value="Alternance">Alternance</option>
-            <option value="Freelance">Freelance</option>
-          </select>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Niveau d'expérience
-          </label>
-          <select
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-            onChange={(e) => setFilters({ ...filters, experience_level: e.target.value ? [e.target.value as any] : undefined })}
-          >
-            <option value="">Tous</option>
-            <option value="Junior">Junior</option>
-            <option value="Mid">Intermédiaire</option>
-            <option value="Senior">Senior</option>
-            <option value="Expert">Expert</option>
-          </select>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Localisation
-          </label>
-          <input
-            type="text"
-            placeholder="Ville, région..."
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-            onChange={(e) => setFilters({ ...filters, location: e.target.value || undefined })}
-          />
-        </div>
-      </div>
 
       {jobs.length === 0 ? (
         <div className="text-center py-12">
