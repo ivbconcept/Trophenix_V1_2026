@@ -12,6 +12,7 @@ export default function JobsList() {
   const [filters, setFilters] = useState<JobSearchFilters>({});
   const [selectedJob, setSelectedJob] = useState<JobOffer | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [locationQuery, setLocationQuery] = useState('');
   const [activeTab, setActiveTab] = useState<'sportif' | 'entreprise'>('sportif');
 
   useEffect(() => {
@@ -202,8 +203,8 @@ export default function JobsList() {
                 <input
                   type="text"
                   placeholder="Lieu"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  value={locationQuery}
+                  onChange={(e) => setLocationQuery(e.target.value)}
                   className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
                 />
               </div>
