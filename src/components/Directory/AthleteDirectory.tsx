@@ -142,7 +142,7 @@ export default function AthleteDirectory() {
                   : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
               }`}
             >
-              Football
+              Entreprise
             </button>
               </div>
 
