@@ -120,7 +120,8 @@ export default function AthleteDirectory() {
       <div className="max-w-[1400px] mx-auto px-6 py-8">
 
         <div className="flex items-center justify-between gap-4 mb-8">
-          <div className="inline-flex items-center gap-0 bg-slate-100 dark:bg-zinc-800 rounded-full p-1.5 shadow-sm">
+          <div className="flex items-center gap-4 flex-1">
+            <div className="inline-flex items-center gap-0 bg-slate-100 dark:bg-zinc-800 rounded-full p-1.5 shadow-sm">
           <button
             onClick={() => setSportFilter('top')}
             className={`px-8 py-3 rounded-2xl font-semibold text-base transition-all ${
@@ -141,6 +142,18 @@ export default function AthleteDirectory() {
           >
             Football
           </button>
+            </div>
+
+            <div className="relative flex-1 max-w-2xl">
+              <Search className="absolute left-6 top-1/2 transform -translate-y-1/2 text-slate-400 dark:text-zinc-500" size={24} />
+              <input
+                type="text"
+                placeholder="Search"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-16 pr-6 py-4 rounded-full bg-white dark:bg-zinc-900 border-2 border-slate-200 dark:border-zinc-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-zinc-500 text-lg focus:outline-none focus:border-slate-300 dark:focus:border-zinc-700 transition-all"
+              />
+            </div>
           </div>
 
           <button className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-300 dark:border-zinc-600 bg-white dark:bg-zinc-900 text-slate-900 dark:text-white font-semibold text-base hover:border-slate-400 dark:hover:border-zinc-500 transition-all">
