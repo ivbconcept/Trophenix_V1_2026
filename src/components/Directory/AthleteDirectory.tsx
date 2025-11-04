@@ -159,7 +159,7 @@ export default function AthleteDirectory() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredAthletes.map((athlete) => {
             const statusStyle = statusConfig[athlete.status];
 
