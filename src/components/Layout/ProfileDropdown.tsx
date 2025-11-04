@@ -85,7 +85,6 @@ export function ProfileDropdown({ onNavigateToProfile, onNavigateToSettings, onL
             {getUserTypeLabel()}
           </span>
         </div>
-        <ChevronDown className={`w-4 h-4 text-slate-500 dark:text-zinc-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
       {isOpen && (
