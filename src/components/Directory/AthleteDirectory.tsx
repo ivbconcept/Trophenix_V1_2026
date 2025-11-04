@@ -122,7 +122,7 @@ export default function AthleteDirectory() {
         <div className="inline-flex items-center gap-0 mb-8 bg-slate-100 dark:bg-zinc-800 rounded-full p-1.5 shadow-sm">
           <button
             onClick={() => setSportFilter('top')}
-            className={`px-8 py-3 rounded-full font-semibold text-base transition-all ${
+            className={`px-8 py-3 rounded-2xl font-semibold text-base transition-all ${
               sportFilter === 'top'
                 ? 'bg-white dark:bg-black text-slate-900 dark:text-white shadow-md'
                 : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
@@ -132,7 +132,7 @@ export default function AthleteDirectory() {
           </button>
           <button
             onClick={() => setSportFilter('football')}
-            className={`px-8 py-3 rounded-full font-semibold text-base transition-all ${
+            className={`px-8 py-3 rounded-2xl font-semibold text-base transition-all ${
               sportFilter === 'football'
                 ? 'bg-white dark:bg-black text-slate-900 dark:text-white shadow-md'
                 : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
@@ -142,7 +142,7 @@ export default function AthleteDirectory() {
           </button>
           <button
             onClick={() => setSportFilter('basketball')}
-            className={`px-8 py-3 rounded-full font-semibold text-base transition-all ${
+            className={`px-8 py-3 rounded-2xl font-semibold text-base transition-all ${
               sportFilter === 'basketball'
                 ? 'bg-white dark:bg-black text-slate-900 dark:text-white shadow-md'
                 : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
@@ -152,7 +152,7 @@ export default function AthleteDirectory() {
           </button>
           <button
             onClick={() => setSportFilter('tennis')}
-            className={`px-8 py-3 rounded-full font-semibold text-base transition-all ${
+            className={`px-8 py-3 rounded-2xl font-semibold text-base transition-all ${
               sportFilter === 'tennis'
                 ? 'bg-white dark:bg-black text-slate-900 dark:text-white shadow-md'
                 : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
