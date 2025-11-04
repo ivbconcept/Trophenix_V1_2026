@@ -118,7 +118,7 @@ export default function AthleteDirectory() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-black">
       <div className="max-w-[1400px] mx-auto px-6 py-8">
-        <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-8">Explorer l'annuaire</h1>
+        <h1 className="text-3xl font-bold text-slate-700 dark:text-white mb-8">Explorer l'annuaire</h1>
 
         <div className="flex items-center justify-between gap-4 mb-8">
           <div className="flex items-center gap-4 flex-1">
