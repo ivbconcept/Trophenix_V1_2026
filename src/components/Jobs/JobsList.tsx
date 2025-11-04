@@ -227,15 +227,33 @@ export default function JobsList() {
                     </p>
                     <p className="text-[10px] text-gray-500">/Mois</p>
                   </div>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setSelectedJob(job);
-                    }}
-                    className="px-5 py-2 bg-green-500 text-white rounded-xl text-xs font-medium hover:bg-green-600 transition-colors"
-                  >
-                    Postuler
-                  </button>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (profile?.user_type === 'athlete') {
+                          toggleSaveJob(job.id);
+                        }
+                      }}
+                      className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                      disabled={profile?.user_type !== 'athlete'}
+                    >
+                      {savedJobs.has(job.id) ? (
+                        <BookmarkCheck className="w-5 h-5 text-green-500" />
+                      ) : (
+                        <Bookmark className="w-5 h-5 text-gray-400" />
+                      )}
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedJob(job);
+                      }}
+                      className="px-5 py-2 bg-green-500 text-white rounded-xl text-xs font-medium hover:bg-green-600 transition-colors"
+                    >
+                      Postuler
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
