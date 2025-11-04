@@ -384,29 +384,6 @@ export default function CVBuilder() {
             </div>
           </div>
 
-          {isCVEmpty && !isEditing && (
-            <div className="mx-8 mb-6 bg-blue-50 border border-blue-200 rounded-xl p-6 no-print">
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <Trophy className="w-6 h-6 text-blue-600" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-bold text-blue-900 mb-2">
-                    Votre CV est presque prêt !
-                  </h3>
-                  <p className="text-blue-700 mb-4">
-                    Complétez vos informations (palmarès, expériences, formations) pour créer un CV complet et attractif pour les recruteurs.
-                  </p>
-                  <button
-                    onClick={() => setShowForm(true)}
-                    className="px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-                  >
-                    Compléter maintenant
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
 
           <div className="px-8 py-6">
             <div className="flex gap-2 mb-8 border-b border-slate-200 pb-0">
