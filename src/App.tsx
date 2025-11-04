@@ -52,6 +52,7 @@ type View =
   | 'companies-directory'
   | 'messages'
   | 'elea'
+  | 'help'
   | 'notifications'
   | 'profile'
   | 'settings'
@@ -255,6 +256,15 @@ function AppContent() {
 
         {view === 'elea' && <EleaPage />}
 
+        {view === 'help' && (
+          <div className="p-8">
+            <div className="max-w-7xl mx-auto">
+              <h1 className="text-3xl font-bold text-slate-900 mb-4">Centre d'Aide</h1>
+              <p className="text-slate-600">Cette fonctionnalité sera bientôt disponible</p>
+            </div>
+          </div>
+        )}
+
         {view === 'notifications' && (
           <div className="p-8">
             <div className="max-w-7xl mx-auto">
@@ -279,7 +289,7 @@ function AppContent() {
           />
         )}
 
-        {isAuthenticated && view !== 'messages' && view !== 'elea' && <AgentElea />}
+        {isAuthenticated && view !== 'messages' && view !== 'elea' && view !== 'help' && <AgentElea />}
       </Navbar>
     );
   }

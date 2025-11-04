@@ -1,4 +1,4 @@
-import { Bell, LogOut, Trophy, Search, Mail, LayoutDashboard, Award, Handshake as HandshakeIcon, UsersRound, Settings, BookOpen, Briefcase, FileText, GraduationCap, TrendingUp, Users, DollarSign, Image as ImageIcon, MessageSquare, Bot } from 'lucide-react';
+import { Bell, LogOut, Trophy, Search, Mail, LayoutDashboard, Award, Handshake as HandshakeIcon, UsersRound, Settings, BookOpen, Briefcase, FileText, GraduationCap, TrendingUp, Users, DollarSign, Image as ImageIcon, MessageSquare, Bot, HelpCircle } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { ReactNode, useState, useEffect } from 'react';
 import { ProfileDropdown } from './ProfileDropdown';
@@ -200,6 +200,17 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
                 <span>Elea</span>
               </button>
               <button
+                onClick={() => onNavigate('help')}
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                  currentView === 'help'
+                    ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg shadow-blue-500/30'
+                    : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <HelpCircle className="h-5 w-5" />
+                <span>Aide</span>
+              </button>
+              <button
                 onClick={() => onNavigate('settings')}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                   currentView === 'settings'
@@ -235,6 +246,17 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
                 }`}
               >
                 <Bot className="h-5 w-5" />
+              </button>
+              <button
+                onClick={() => onNavigate('help')}
+                title="Aide"
+                className={`w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                  currentView === 'help'
+                    ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg shadow-blue-500/30'
+                    : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <HelpCircle className="h-5 w-5" />
               </button>
               <button
                 onClick={() => onNavigate('settings')}
