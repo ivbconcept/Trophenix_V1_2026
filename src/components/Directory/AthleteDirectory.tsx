@@ -119,43 +119,43 @@ export default function AthleteDirectory() {
     <div className="min-h-screen bg-slate-50 dark:bg-black">
       <div className="max-w-[1400px] mx-auto px-6 py-8">
 
-        <div className="flex items-center gap-3 mb-8">
+        <div className="inline-flex items-center gap-0 mb-8 bg-slate-100 dark:bg-zinc-800 rounded-full p-1.5 shadow-sm">
           <button
             onClick={() => setSportFilter('top')}
-            className={`px-6 py-2.5 rounded-full font-semibold text-base transition-all ${
+            className={`px-8 py-3 rounded-full font-semibold text-base transition-all ${
               sportFilter === 'top'
-                ? 'bg-white dark:bg-zinc-900 text-slate-900 dark:text-white shadow-md'
-                : 'bg-transparent text-slate-500 dark:text-zinc-500 hover:text-slate-700 dark:hover:text-zinc-300'
+                ? 'bg-white dark:bg-black text-slate-900 dark:text-white shadow-md'
+                : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
             }`}
           >
             Top
           </button>
           <button
             onClick={() => setSportFilter('football')}
-            className={`px-6 py-2.5 rounded-full font-semibold text-base transition-all ${
+            className={`px-8 py-3 rounded-full font-semibold text-base transition-all ${
               sportFilter === 'football'
-                ? 'bg-white dark:bg-zinc-900 text-slate-900 dark:text-white shadow-md'
-                : 'bg-transparent text-slate-500 dark:text-zinc-500 hover:text-slate-700 dark:hover:text-zinc-300'
+                ? 'bg-white dark:bg-black text-slate-900 dark:text-white shadow-md'
+                : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
             }`}
           >
             Football
           </button>
           <button
             onClick={() => setSportFilter('basketball')}
-            className={`px-6 py-2.5 rounded-full font-semibold text-base transition-all ${
+            className={`px-8 py-3 rounded-full font-semibold text-base transition-all ${
               sportFilter === 'basketball'
-                ? 'bg-white dark:bg-zinc-900 text-slate-900 dark:text-white shadow-md'
-                : 'bg-transparent text-slate-500 dark:text-zinc-500 hover:text-slate-700 dark:hover:text-zinc-300'
+                ? 'bg-white dark:bg-black text-slate-900 dark:text-white shadow-md'
+                : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
             }`}
           >
             Basketball
           </button>
           <button
             onClick={() => setSportFilter('tennis')}
-            className={`px-6 py-2.5 rounded-full font-semibold text-base transition-all ${
+            className={`px-8 py-3 rounded-full font-semibold text-base transition-all ${
               sportFilter === 'tennis'
-                ? 'bg-white dark:bg-zinc-900 text-slate-900 dark:text-white shadow-md'
-                : 'bg-transparent text-slate-500 dark:text-zinc-500 hover:text-slate-700 dark:hover:text-zinc-300'
+                ? 'bg-white dark:bg-black text-slate-900 dark:text-white shadow-md'
+                : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
             }`}
           >
             Tennis
