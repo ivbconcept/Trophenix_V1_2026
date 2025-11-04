@@ -31,6 +31,11 @@ import { supabase } from './lib/supabase';
 import InvestorsPage from './components/InvestorsPage';
 import CVBuilder from './components/CV/CVBuilder';
 import CoverLetterBuilder from './components/CV/CoverLetterBuilder';
+import { SponsoringOffers } from './components/Sponsoring/SponsoringOffers';
+import { MySponsoringRequests } from './components/Sponsoring/MySponsoringRequests';
+import { SponsorKit } from './components/Sponsoring/SponsorKit';
+import { PresentationLetter } from './components/Sponsoring/PresentationLetter';
+import { MyProjects } from './components/Sponsoring/MyProjects';
 
 type View =
   | 'landing'
@@ -60,7 +65,12 @@ type View =
   | 'profile'
   | 'settings'
   | 'athletes-list'
-  | 'athlete-detail';
+  | 'athlete-detail'
+  | 'sponsoring-offers'
+  | 'my-sponsoring-requests'
+  | 'sponsor-kit'
+  | 'presentation-letter'
+  | 'my-projects';
 
 function AppContent() {
   const { user, profile, loading, isAdmin, refreshProfile, signIn } = useAuth();
@@ -246,6 +256,16 @@ function AppContent() {
         {view === 'cv-builder' && <CVBuilder />}
 
         {view === 'cover-letter-builder' && <CoverLetterBuilder />}
+
+        {view === 'sponsoring-offers' && <SponsoringOffers />}
+
+        {view === 'my-sponsoring-requests' && <MySponsoringRequests />}
+
+        {view === 'sponsor-kit' && <SponsorKit />}
+
+        {view === 'presentation-letter' && <PresentationLetter />}
+
+        {view === 'my-projects' && <MyProjects />}
 
         {view === 'manage-offers' && <ManageJobOffers />}
 

@@ -36,6 +36,8 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
       setActiveSection('group');
     } else if (currentView === 'manage-offers' || currentView === 'received-applications') {
       setActiveSection('employability');
+    } else if (['sponsoring-offers', 'my-sponsoring-requests', 'sponsor-kit', 'presentation-letter', 'my-projects'].includes(currentView)) {
+      setActiveSection('sponsoring');
     }
   }, [currentView]);
 
@@ -87,11 +89,11 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
 
     if (section === 'sponsoring') {
       return [
-        { id: 'explore-sponsors', label: 'Explorer', icon: Search },
-        { id: 'my-partnerships', label: 'Mes partenariats', icon: HandshakeIcon },
-        { id: 'sponsoring-requests', label: 'Demandes', icon: TrendingUp },
-        { id: 'media-kit', label: 'Média Kit', icon: ImageIcon },
-        { id: 'revenues', label: 'Revenus', icon: DollarSign },
+        { id: 'sponsoring-offers', label: 'Offres de sponsoring', icon: BookOpen },
+        { id: 'my-sponsoring-requests', label: 'Mes demandes', icon: Briefcase },
+        { id: 'sponsor-kit', label: 'Mon kit sponsor', icon: FileText },
+        { id: 'presentation-letter', label: 'Lettre de présentation', icon: GraduationCap },
+        { id: 'my-projects', label: 'Mes projets', icon: TrendingUp },
       ];
     }
 
