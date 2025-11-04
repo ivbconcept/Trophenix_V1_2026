@@ -121,7 +121,7 @@ export default function AthleteDirectory() {
 
         <div className="flex items-center justify-between gap-4 mb-8">
           <div className="flex items-center gap-4 flex-1">
-            <div className="inline-flex items-center gap-0 bg-slate-100 dark:bg-zinc-800 rounded-full p-1.5 shadow-sm">
+            <div className="inline-flex items-center gap-0 bg-slate-100 dark:bg-zinc-800 rounded-2xl p-1.5 shadow-sm">
           <button
             onClick={() => setSportFilter('top')}
             className={`px-8 py-3 rounded-xl font-semibold text-base transition-all ${
