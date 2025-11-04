@@ -26,6 +26,7 @@ import { MessagingPage } from './components/Messages/MessagingPage';
 import { EnhancedMessagingPage } from './components/Messages/EnhancedMessagingPage';
 import { UserProfile } from './components/Profile/UserProfile';
 import { UserSettings } from './components/Settings/UserSettings';
+import { HelpPage } from './components/Help/HelpPage';
 import { supabase } from './lib/supabase';
 import InvestorsPage from './components/InvestorsPage';
 import CVBuilder from './components/CV/CVBuilder';
@@ -256,14 +257,7 @@ function AppContent() {
 
         {view === 'elea' && <EleaPage />}
 
-        {view === 'help' && (
-          <div className="p-8">
-            <div className="max-w-7xl mx-auto">
-              <h1 className="text-3xl font-bold text-slate-900 mb-4">Centre d'Aide</h1>
-              <p className="text-slate-600">Cette fonctionnalité sera bientôt disponible</p>
-            </div>
-          </div>
-        )}
+        {view === 'help' && <HelpPage />}
 
         {view === 'notifications' && (
           <div className="p-8">
