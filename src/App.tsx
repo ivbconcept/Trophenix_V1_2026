@@ -275,7 +275,7 @@ function AppContent() {
           />
         )}
 
-        {isAuthenticated && <AgentElea />}
+        {isAuthenticated && view !== 'messages' && <AgentElea />}
       </Navbar>
     );
   }
