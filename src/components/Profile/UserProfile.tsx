@@ -146,7 +146,6 @@ export function UserProfile() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-black p-4 md:p-8 transition-colors">
       <div className="max-w-6xl mx-auto">
-        <ProfileStats views={1247} likes={342} messages={89} connections={156} />
         <div className="bg-white dark:bg-zinc-950 rounded-3xl shadow-lg border border-slate-200 dark:border-zinc-800 overflow-hidden">
           <div className="h-48 bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-500 relative">
             <div className="absolute inset-0 bg-black/10"></div>
