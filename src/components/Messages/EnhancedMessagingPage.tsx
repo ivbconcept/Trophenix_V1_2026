@@ -275,7 +275,7 @@ export function EnhancedMessagingPage() {
               onClick={() => setActiveFilter('all')}
               className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 activeFilter === 'all'
-                  ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300'
+                  ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300'
                   : 'bg-slate-100 dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-200 dark:hover:bg-zinc-800'
               }`}
             >
@@ -285,7 +285,7 @@ export function EnhancedMessagingPage() {
               onClick={() => setActiveFilter('unread')}
               className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 activeFilter === 'unread'
-                  ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300'
+                  ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300'
                   : 'bg-slate-100 dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-200 dark:hover:bg-zinc-800'
               }`}
             >
@@ -300,7 +300,7 @@ export function EnhancedMessagingPage() {
               }}
               className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 activeFilter === 'contacts'
-                  ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300'
+                  ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300'
                   : 'bg-slate-100 dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-200 dark:hover:bg-zinc-800'
               }`}
             >
@@ -310,7 +310,7 @@ export function EnhancedMessagingPage() {
               onClick={() => setActiveFilter('groups')}
               className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 activeFilter === 'groups'
-                  ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300'
+                  ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300'
                   : 'bg-slate-100 dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-200 dark:hover:bg-zinc-800'
               }`}
             >
