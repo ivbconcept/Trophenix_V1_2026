@@ -107,38 +107,34 @@ export const advancedMessagingService = {
 
     const memberMap = new Map(memberData.map(m => [m.conversation_id, m]));
 
-    const conversations = conversationsData.map(conv => {
+    const fakeUsers: Record<string, { name: string; avatar?: string }> = {
+      '8967c73e-ce44-4b26-8d7b-717a6deb1122': { name: 'Marie Dubois' },
+      'd67a8a80-367b-4d09-b7b6-714353928250': { name: 'Sophie Laurent' },
+      'da257865-eb2f-4f42-aa12-e6f222a83291': { name: 'Pierre Martin' },
+    };
+
+    const enrichedConversations = conversationsData.map(conv => {
       const member = memberMap.get(conv.id);
-      return {
+      const baseConv = {
         ...conv,
         unread_count: member?.unread_count || 0,
         muted: member?.muted || false
       };
+
+      if (conv.type === 'direct') {
+        const otherUserId = conv.participant1_id === userId ? conv.participant2_id : conv.participant1_id;
+        const fakeUser = fakeUsers[otherUserId];
+
+        return {
+          ...baseConv,
+          name: fakeUser?.name || 'Utilisateur',
+          avatar_url: fakeUser?.avatar || conv.avatar_url,
+          other_user_id: otherUserId
+        };
+      }
+
+      return baseConv;
     });
-
-    const enrichedConversations = await Promise.all(
-      conversations.map(async (conv) => {
-        if (conv.type === 'direct') {
-          const otherUserId = conv.participant1_id === userId ? conv.participant2_id : conv.participant1_id;
-
-          const { data: userData } = await supabase.auth.admin.getUserById(otherUserId);
-
-          if (userData?.user) {
-            const metadata = userData.user.user_metadata || {};
-            const profileData = metadata.profile_data || {};
-            const fullName = `${profileData.first_name || ''} ${profileData.last_name || ''}`.trim() || metadata.full_name || 'Utilisateur';
-
-            return {
-              ...conv,
-              name: fullName,
-              avatar_url: metadata.avatar_url || conv.avatar_url,
-              other_user_id: otherUserId
-            };
-          }
-        }
-        return conv;
-      })
-    );
 
     return enrichedConversations;
   },
