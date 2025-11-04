@@ -76,7 +76,7 @@ export function SponsorKit() {
                 <div className="relative" ref={menuRef}>
                   <button
                     onClick={() => setShowMenu(!showMenu)}
-                    className="flex items-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl transition-all font-medium"
+                    className="flex items-center gap-2 px-5 py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 rounded-2xl transition-all font-medium"
                   >
                     <MoreVertical className="w-5 h-5" />
                   </button>
