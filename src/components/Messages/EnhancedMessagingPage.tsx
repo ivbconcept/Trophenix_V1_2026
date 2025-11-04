@@ -292,16 +292,6 @@ export function EnhancedMessagingPage() {
               Non lues
             </button>
             <button
-              onClick={() => setActiveFilter('groups')}
-              className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
-                activeFilter === 'groups'
-                  ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300'
-                  : 'bg-slate-100 dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-200 dark:hover:bg-zinc-800'
-              }`}
-            >
-              Groupes
-            </button>
-            <button
               onClick={() => {
                 setActiveFilter('contacts');
                 if (contacts.length === 0) {
@@ -314,7 +304,7 @@ export function EnhancedMessagingPage() {
                   : 'bg-slate-100 dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 hover:bg-slate-200 dark:hover:bg-zinc-800'
               }`}
             >
-              Contacts
+              Favoris
             </button>
           </div>
         </div>
