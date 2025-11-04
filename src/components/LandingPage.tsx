@@ -1,4 +1,4 @@
-import { Trophy, Users, Briefcase, CheckCircle, ArrowRight, Award, ChevronDown, ChevronLeft, ChevronRight, Heart, MessageCircle, Eye } from 'lucide-react';
+import { Trophy, Users, Briefcase, CheckCircle, ArrowRight, Award, ChevronDown, ChevronLeft, ChevronRight, Heart, MessageCircle, Eye, Target, Lightbulb, Rocket } from 'lucide-react';
 import { AgentElea } from './AI/AgentElea';
 import { FEATURES } from '../config/features';
 import { useState, useEffect } from 'react';
@@ -1015,87 +1015,39 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
         <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-cyan-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Performances & Actualités Sportives</h2>
-            <p className="text-xl text-slate-600 leading-relaxed">Suivez les dernières actualités du monde du sport</p>
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Qui sommes-nous ?</h2>
+            <p className="text-xl text-slate-600 leading-relaxed">L'infrastructure complète pour la gestion de carrière sportive</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
-              <div className="relative h-56 overflow-hidden">
-                <img
-                  src="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="Athlétisme"
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <span className="inline-block px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full mb-2">
-                    Athlétisme
-                  </span>
-                  <h3 className="text-xl font-bold text-white">Championnats d'Europe 2025</h3>
-                </div>
+            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all">
+              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                <Target className="h-8 w-8 text-blue-600" />
               </div>
-              <div className="p-6">
-                <p className="text-slate-600 mb-4 leading-relaxed">
-                  Découvrez les performances exceptionnelles des athlètes français lors des derniers championnats européens.
-                </p>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-slate-500">3 nov 2025</span>
-                  <span className="text-blue-600 font-semibold">5 min de lecture</span>
-                </div>
-              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4 text-center">Notre Mission</h3>
+              <p className="text-slate-600 leading-relaxed text-center">
+                Accompagner les sportifs dans leur reconversion professionnelle en créant des ponts entre le monde du sport et celui de l'entreprise. Nous facilitons l'accès aux opportunités d'emploi et de sponsoring adaptées à chaque profil sportif.
+              </p>
             </div>
 
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
-              <div className="relative h-56 overflow-hidden">
-                <img
-                  src="https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="Football"
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <span className="inline-block px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full mb-2">
-                    Football
-                  </span>
-                  <h3 className="text-xl font-bold text-white">Ligue des Champions</h3>
-                </div>
+            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all">
+              <div className="w-16 h-16 bg-cyan-100 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                <Lightbulb className="h-8 w-8 text-cyan-600" />
               </div>
-              <div className="p-6">
-                <p className="text-slate-600 mb-4 leading-relaxed">
-                  Les clubs français brillent sur la scène européenne avec des performances remarquables cette saison.
-                </p>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-slate-500">2 nov 2025</span>
-                  <span className="text-blue-600 font-semibold">4 min de lecture</span>
-                </div>
-              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4 text-center">Notre Vision</h3>
+              <p className="text-slate-600 leading-relaxed text-center">
+                Devenir la plateforme de référence pour valoriser les compétences des sportifs et connecter talents sportifs, entreprises et sponsors. Nous croyons que les valeurs du sport sont des atouts majeurs dans le monde professionnel.
+              </p>
             </div>
 
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all">
-              <div className="relative h-56 overflow-hidden">
-                <img
-                  src="https://images.pexels.com/photos/863988/pexels-photo-863988.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="Basketball"
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <span className="inline-block px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full mb-2">
-                    Basketball
-                  </span>
-                  <h3 className="text-xl font-bold text-white">EuroLeague 2025</h3>
-                </div>
+            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all">
+              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                <Rocket className="h-8 w-8 text-blue-600" />
               </div>
-              <div className="p-6">
-                <p className="text-slate-600 mb-4 leading-relaxed">
-                  Les équipes françaises s'imposent comme des favorites avec des victoires impressionnantes en EuroLeague.
-                </p>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-slate-500">1 nov 2025</span>
-                  <span className="text-blue-600 font-semibold">6 min de lecture</span>
-                </div>
-              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4 text-center">Notre Innovation</h3>
+              <p className="text-slate-600 leading-relaxed text-center">
+                Une plateforme intelligente propulsée par l'IA avec ELEA, notre assistante virtuelle qui identifie automatiquement les aides, subventions et opportunités personnalisées pour chaque sportif. L'avenir de la reconversion sportive.
+              </p>
             </div>
           </div>
         </div>
