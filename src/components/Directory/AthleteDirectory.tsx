@@ -141,16 +141,6 @@ export default function AthleteDirectory() {
             Football
           </button>
           <button
-            onClick={() => setSportFilter('basketball')}
-            className={`px-8 py-3 rounded-2xl font-semibold text-base transition-all ${
-              sportFilter === 'basketball'
-                ? 'bg-white dark:bg-black text-slate-900 dark:text-white shadow-md'
-                : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
-            }`}
-          >
-            Basketball
-          </button>
-          <button
             onClick={() => setSportFilter('tennis')}
             className={`px-8 py-3 rounded-2xl font-semibold text-base transition-all ${
               sportFilter === 'tennis'
