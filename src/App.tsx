@@ -30,6 +30,7 @@ import { HelpPage } from './components/Help/HelpPage';
 import { supabase } from './lib/supabase';
 import InvestorsPage from './components/InvestorsPage';
 import CVBuilder from './components/CV/CVBuilder';
+import CoverLetterBuilder from './components/CV/CoverLetterBuilder';
 
 type View =
   | 'landing'
@@ -46,6 +47,7 @@ type View =
   | 'job-offers'
   | 'my-applications'
   | 'cv-builder'
+  | 'cover-letter-builder'
   | 'manage-offers'
   | 'create-offer'
   | 'received-applications'
@@ -242,6 +244,8 @@ function AppContent() {
         {view === 'my-applications' && <MyApplications />}
 
         {view === 'cv-builder' && <CVBuilder />}
+
+        {view === 'cover-letter-builder' && <CoverLetterBuilder />}
 
         {view === 'manage-offers' && <ManageJobOffers />}
 

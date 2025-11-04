@@ -30,7 +30,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
   useEffect(() => {
     if (currentView === 'athlete-dashboard' || currentView === 'company-dashboard') {
       setActiveSection('dashboard');
-    } else if (['job-offers', 'my-applications'].includes(currentView)) {
+    } else if (['job-offers', 'my-applications', 'cv-builder', 'cover-letter-builder'].includes(currentView)) {
       setActiveSection('employability');
     } else if (currentView === 'athletes-directory') {
       setActiveSection('group');
@@ -74,6 +74,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
         { id: 'job-offers', label: "Offres d'emploi", icon: BookOpen },
         { id: 'my-applications', label: 'Mes candidatures', icon: Briefcase },
         { id: 'cv-builder', label: 'Mon CV', icon: FileText },
+        { id: 'cover-letter-builder', label: 'Lettre de Motivation', icon: GraduationCap },
       ];
     }
 
