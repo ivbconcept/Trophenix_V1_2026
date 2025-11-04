@@ -293,20 +293,6 @@ export default function CVBuilder() {
 
 
           <div className="px-8 py-6">
-            <div className="flex gap-2 mb-8 border-b border-slate-200 pb-0">
-              <button className="px-4 py-2 text-sm font-medium text-slate-900 border-b-2 border-slate-900 -mb-px">
-                À propos
-              </button>
-              <button className="px-4 py-2 text-sm font-medium text-slate-500 hover:text-slate-900">
-                Travail
-              </button>
-              <button className="px-4 py-2 text-sm font-medium text-slate-500 hover:text-slate-900">
-                Expérience
-              </button>
-              <button className="px-4 py-2 text-sm font-medium text-slate-500 hover:text-slate-900">
-                Formation
-              </button>
-            </div>
 
             <section className="mb-8">
               <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
