@@ -1036,7 +1036,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4 text-center">Notre Vision</h3>
               <p className="text-slate-600 leading-relaxed text-center">
-                Permettre à chaque sportif d'atteindre son plein potentiel avec les meilleurs outils.
+                Permettre à chaque sportif d'atteindre son plein potentiel en mobilisant autour de lui le meilleur écosystème et les outils de gestion les plus performants.
               </p>
             </div>
 
