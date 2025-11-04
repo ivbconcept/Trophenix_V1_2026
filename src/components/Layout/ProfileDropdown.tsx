@@ -71,8 +71,8 @@ export function ProfileDropdown({ onNavigateToProfile, onNavigateToSettings, onL
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 md:gap-3 pl-2 md:pl-3 pr-3 md:pr-4 py-1.5 md:py-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-full transition-colors"
       >
-        <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base shadow-lg">
-          {getInitials()}
+        <div className="w-8 h-8 md:w-10 md:h-10 bg-slate-200 dark:bg-zinc-800 rounded-full flex items-center justify-center overflow-hidden shadow-lg">
+          <User className="w-5 h-5 md:w-6 md:h-6 text-slate-600 dark:text-zinc-400" />
         </div>
         <div className="hidden md:flex flex-col items-start">
           <span className="text-sm font-semibold text-slate-900 dark:text-white">
