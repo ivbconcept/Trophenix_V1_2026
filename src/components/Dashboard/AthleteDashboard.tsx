@@ -3,6 +3,7 @@ import { useTheme } from '../../contexts/ThemeContext';
 import { Briefcase, FileText, MessagesSquare, Star, TrendingUp, Award, Heart, ChevronRight, MoreVertical, Play, Newspaper, Mail, Bell, Search, MessageSquareText, Moon, Sun } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { ProfileDropdown } from '../Layout/ProfileDropdown';
+import { NotificationsDropdown } from '../Layout/NotificationsDropdown';
 import arenaImage from '../../assets/images/venti-views-cHRDevKFDBw-new.jpg';
 import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
 import financeImage from '../../assets/images/cycling-road-unsplash.jpg';
@@ -68,10 +69,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 <span className="absolute top-1 right-1 md:top-1.5 md:right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
               </button>
 
-              <button className="relative p-2 md:p-2.5 bg-slate-50 dark:bg-zinc-900 hover:bg-slate-100 dark:hover:bg-zinc-800 rounded-xl transition-all hover:shadow-sm group">
-                <Bell className="w-5 h-5 md:w-6 md:h-6 text-slate-600 dark:text-zinc-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" strokeWidth={1.5} />
-                <span className="absolute top-1 right-1 md:top-1.5 md:right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
-              </button>
+              <NotificationsDropdown />
 
               <ProfileDropdown
                 onNavigateToProfile={() => onNavigate('profile')}
