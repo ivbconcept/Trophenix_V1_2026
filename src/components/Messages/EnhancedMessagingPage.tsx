@@ -3,12 +3,20 @@ import { useAuth } from '../../contexts/AuthContext';
 import { advancedMessagingService, Conversation, Message } from '../../services/advancedMessagingService';
 import {
   Send, Search, MoreVertical, Phone, Video, Paperclip, Smile, Circle, X, Plus,
-  Image as ImageIcon, File, Mic, Star, Users, Settings, MessageSquare, Bell, Menu
+  Image as ImageIcon, File, Mic, Star, Users, Settings, MessageSquare, Bell, Menu, UserCircle
 } from 'lucide-react';
 
 const EMOJI_QUICK_REACTIONS = ['👍', '❤️', '😂', '😮', '😢', '🎉'];
 
 type FilterType = 'all' | 'unread' | 'favorites' | 'groups';
+
+interface Contact {
+  id: string;
+  full_name: string;
+  email: string;
+  user_type: string;
+  avatar_url?: string;
+}
 
 export function EnhancedMessagingPage() {
   const { user } = useAuth();
@@ -22,15 +30,23 @@ export function EnhancedMessagingPage() {
   const [hoveredMessageId, setHoveredMessageId] = useState<string | null>(null);
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
   const [showMenu, setShowMenu] = useState(false);
+  const [showContacts, setShowContacts] = useState(false);
+  const [contacts, setContacts] = useState<Contact[]>([]);
+  const [contactsSearch, setContactsSearch] = useState('');
+  const [loadingContacts, setLoadingContacts] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+  const contactsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setShowMenu(false);
+      }
+      if (contactsRef.current && !contactsRef.current.contains(event.target as Node)) {
+        setShowContacts(false);
       }
     };
 
@@ -85,6 +101,54 @@ export function EnhancedMessagingPage() {
     setConversations(data);
     setLoading(false);
   };
+
+  const loadContacts = async () => {
+    if (!user?.id) return;
+    setLoadingContacts(true);
+    try {
+      const { data, error } = await advancedMessagingService['supabase']
+        .from('profiles')
+        .select('id, full_name, email, user_type, avatar_url')
+        .neq('id', user.id)
+        .order('full_name');
+
+      if (!error && data) {
+        setContacts(data);
+      }
+    } catch (err) {
+      console.error('Error loading contacts:', err);
+    }
+    setLoadingContacts(false);
+  };
+
+  const handleContactClick = async (contact: Contact) => {
+    if (!user?.id) return;
+
+    const existingConv = conversations.find(c =>
+      c.type === 'direct' && c.participant_ids?.includes(contact.id)
+    );
+
+    if (existingConv) {
+      setSelectedConversation(existingConv);
+    } else {
+      const newConv = await advancedMessagingService.createConversation(
+        user.id,
+        'direct',
+        [contact.id],
+        `Chat avec ${contact.full_name}`
+      );
+      if (newConv) {
+        await loadConversations();
+        setSelectedConversation(newConv);
+      }
+    }
+    setShowContacts(false);
+  };
+
+  const filteredContacts = contacts.filter(contact =>
+    contact.full_name?.toLowerCase().includes(contactsSearch.toLowerCase()) ||
+    contact.email?.toLowerCase().includes(contactsSearch.toLowerCase())
+  );
 
   const loadMessages = async (conversationId: string) => {
     const data = await advancedMessagingService.getMessages(conversationId);
@@ -177,6 +241,72 @@ export function EnhancedMessagingPage() {
           <div className="flex items-center justify-between mb-4">
             <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Messages</h1>
             <div className="flex items-center gap-2">
+              <div className="relative" ref={contactsRef}>
+                <button
+                  onClick={() => {
+                    setShowContacts(!showContacts);
+                    if (!showContacts && contacts.length === 0) {
+                      loadContacts();
+                    }
+                  }}
+                  className="p-2 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-lg transition-colors"
+                >
+                  <UserCircle className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
+                </button>
+
+                {showContacts && (
+                  <div className="absolute left-0 top-12 w-80 bg-white dark:bg-zinc-900 rounded-xl shadow-2xl border border-slate-200 dark:border-zinc-800 z-50 max-h-[500px] flex flex-col">
+                    <div className="p-3 border-b border-slate-200 dark:border-zinc-800">
+                      <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Contacts</h3>
+                      <div className="relative">
+                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                        <input
+                          type="text"
+                          placeholder="Rechercher un contact..."
+                          value={contactsSearch}
+                          onChange={(e) => setContactsSearch(e.target.value)}
+                          className="w-full pl-9 pr-3 py-2 bg-slate-100 dark:bg-zinc-800 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="flex-1 overflow-y-auto">
+                      {loadingContacts ? (
+                        <div className="flex items-center justify-center py-8">
+                          <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
+                        </div>
+                      ) : filteredContacts.length === 0 ? (
+                        <div className="p-8 text-center">
+                          <p className="text-slate-500 dark:text-zinc-500 text-sm">
+                            {contactsSearch ? 'Aucun contact trouvé' : 'Aucun contact disponible'}
+                          </p>
+                        </div>
+                      ) : (
+                        filteredContacts.map((contact) => (
+                          <button
+                            key={contact.id}
+                            onClick={() => handleContactClick(contact)}
+                            className="w-full p-3 flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-zinc-800 transition-colors text-left"
+                          >
+                            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white font-semibold flex-shrink-0">
+                              {contact.full_name?.[0]?.toUpperCase() || 'U'}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="font-medium text-slate-900 dark:text-white truncate">
+                                {contact.full_name || 'Sans nom'}
+                              </div>
+                              <div className="text-xs text-slate-500 dark:text-zinc-500 truncate">
+                                {contact.user_type || 'Utilisateur'}
+                              </div>
+                            </div>
+                          </button>
+                        ))
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+
               <div className="relative" ref={menuRef}>
                 <button
                   onClick={() => setShowMenu(!showMenu)}
