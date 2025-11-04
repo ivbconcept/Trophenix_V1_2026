@@ -1267,8 +1267,6 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
           </div>
         </section>
 
-        <SupportersCarousel />
-
       </main>
 
       <section className="py-20 bg-white">
