@@ -78,40 +78,43 @@ export interface UserPresence {
 
 export const advancedMessagingService = {
   async getConversations(userId: string): Promise<Conversation[]> {
-    const { data, error } = await supabase
+    const { data: memberData, error: memberError } = await supabase
       .from('conversation_members')
-      .select(`
-        conversation_id,
-        unread_count,
-        muted,
-        conversations!inner(
-          id,
-          participant1_id,
-          participant2_id,
-          last_message_at,
-          last_message_preview,
-          created_at,
-          type,
-          name,
-          description,
-          avatar_url,
-          created_by,
-          is_private
-        )
-      `)
-      .eq('user_id', userId)
-      .order('conversations(last_message_at)', { ascending: false });
+      .select('conversation_id, unread_count, muted')
+      .eq('user_id', userId);
 
-    if (error) {
-      console.error('Error fetching conversations:', error);
+    if (memberError) {
+      console.error('Error fetching conversation members:', memberError);
       return [];
     }
 
-    const conversations = (data || []).map((item: any) => ({
-      ...item.conversations,
-      unread_count: item.unread_count,
-      muted: item.muted
-    }));
+    if (!memberData || memberData.length === 0) {
+      return [];
+    }
+
+    const conversationIds = memberData.map(m => m.conversation_id);
+
+    const { data: conversationsData, error: conversationsError } = await supabase
+      .from('conversations')
+      .select('*')
+      .in('id', conversationIds)
+      .order('last_message_at', { ascending: false });
+
+    if (conversationsError) {
+      console.error('Error fetching conversations:', conversationsError);
+      return [];
+    }
+
+    const memberMap = new Map(memberData.map(m => [m.conversation_id, m]));
+
+    const conversations = conversationsData.map(conv => {
+      const member = memberMap.get(conv.id);
+      return {
+        ...conv,
+        unread_count: member?.unread_count || 0,
+        muted: member?.muted || false
+      };
+    });
 
     const enrichedConversations = await Promise.all(
       conversations.map(async (conv) => {
@@ -122,7 +125,7 @@ export const advancedMessagingService = {
             .from('profiles')
             .select('full_name, avatar_url')
             .eq('id', otherUserId)
-            .single();
+            .maybeSingle();
 
           if (profile) {
             return {
@@ -137,9 +140,7 @@ export const advancedMessagingService = {
       })
     );
 
-    return enrichedConversations.sort((a, b) =>
-      new Date(b.last_message_at).getTime() - new Date(a.last_message_at).getTime()
-    );
+    return enrichedConversations;
   },
 
   async getConversationMembers(conversationId: string): Promise<ConversationMember[]> {
