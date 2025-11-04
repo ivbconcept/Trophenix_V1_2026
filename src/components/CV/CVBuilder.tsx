@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { User, Trophy, Award, Briefcase, GraduationCap, MapPin, Mail, Download, Edit2, Save, X, CheckCircle, MoreVertical } from 'lucide-react';
+import { User, Trophy, Award, Briefcase, GraduationCap, MapPin, Mail, Download, Edit2, Save, X, CheckCircle, MoreVertical, Pencil } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase } from '../../lib/supabase';
 import CVForm from './CVForm';
@@ -402,9 +402,17 @@ export default function CVBuilder() {
             </div>
 
             <section className="mb-8">
-              <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2 group">
                 <User className="w-5 h-5 text-blue-600" />
                 Situation actuelle
+                {!isEditing && (
+                  <button
+                    onClick={() => setIsEditing(true)}
+                    className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity p-1.5 hover:bg-slate-100 rounded"
+                  >
+                    <Pencil className="w-4 h-4 text-slate-400 hover:text-slate-600" />
+                  </button>
+                )}
               </h3>
               {isEditing ? (
                 <textarea
@@ -422,9 +430,17 @@ export default function CVBuilder() {
             </section>
 
             <section className="mb-8">
-              <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2 group">
                 <Trophy className="w-5 h-5 text-blue-600" />
                 Palmarès sportif
+                {!isEditing && (
+                  <button
+                    onClick={() => setIsEditing(true)}
+                    className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity p-1.5 hover:bg-slate-100 rounded"
+                  >
+                    <Pencil className="w-4 h-4 text-slate-400 hover:text-slate-600" />
+                  </button>
+                )}
               </h3>
               {isEditing ? (
                 <textarea
@@ -442,7 +458,17 @@ export default function CVBuilder() {
             </section>
 
             <section className="mb-8">
-              <h3 className="text-lg font-bold text-slate-900 mb-4">Expérience professionnelle</h3>
+              <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2 group">
+                Expérience professionnelle
+                {!isEditing && (
+                  <button
+                    onClick={() => setIsEditing(true)}
+                    className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity p-1.5 hover:bg-slate-100 rounded"
+                  >
+                    <Pencil className="w-4 h-4 text-slate-400 hover:text-slate-600" />
+                  </button>
+                )}
+              </h3>
               {isEditing ? (
                 <textarea
                   value={displayProfile.professional_history || ''}
@@ -470,7 +496,17 @@ export default function CVBuilder() {
             </section>
 
             <section className="mb-8">
-              <h3 className="text-lg font-bold text-slate-900 mb-4">Formation</h3>
+              <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2 group">
+                Formation
+                {!isEditing && (
+                  <button
+                    onClick={() => setIsEditing(true)}
+                    className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity p-1.5 hover:bg-slate-100 rounded"
+                  >
+                    <Pencil className="w-4 h-4 text-slate-400 hover:text-slate-600" />
+                  </button>
+                )}
+              </h3>
               {isEditing ? (
                 <textarea
                   value={displayProfile.degrees || ''}
