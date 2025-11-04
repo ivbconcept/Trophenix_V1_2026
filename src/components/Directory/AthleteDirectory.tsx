@@ -117,36 +117,36 @@ export default function AthleteDirectory() {
     <div className="min-h-screen bg-slate-50 dark:bg-black">
       <div className="max-w-[1400px] mx-auto px-6 py-8">
         <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-0 bg-white dark:bg-zinc-900 rounded-full p-1 shadow-md">
             <button
               onClick={() => setActiveTab('sportifs')}
-              className={`px-8 py-3 rounded-xl font-semibold text-base transition-all ${
+              className={`px-6 py-2.5 rounded-full font-semibold text-sm transition-all ${
                 activeTab === 'sportifs'
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : 'bg-white dark:bg-zinc-900 text-slate-700 dark:text-zinc-300'
+                  ? 'bg-blue-600 text-white shadow-md'
+                  : 'bg-transparent text-slate-700 dark:text-zinc-300 hover:bg-slate-50 dark:hover:bg-zinc-800'
               }`}
             >
               Sportifs
             </button>
             <button
               onClick={() => setActiveTab('experts')}
-              className={`px-8 py-3 rounded-xl font-semibold text-base transition-all ${
+              className={`px-6 py-2.5 rounded-full font-semibold text-sm transition-all ${
                 activeTab === 'experts'
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : 'bg-white dark:bg-zinc-900 text-slate-700 dark:text-zinc-300'
+                  ? 'bg-blue-600 text-white shadow-md'
+                  : 'bg-transparent text-slate-700 dark:text-zinc-300 hover:bg-slate-50 dark:hover:bg-zinc-800'
               }`}
             >
               Experts
             </button>
 
-            <div className="relative ml-4">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 h-5 w-5" />
+            <div className="relative ml-2">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 h-4 w-4" />
               <input
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Rechercher un athlète..."
-                className="pl-12 pr-6 py-3 bg-white dark:bg-zinc-900 border-0 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 w-96 shadow-sm"
+                className="pl-10 pr-4 py-2.5 bg-transparent border-0 rounded-full text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none w-80"
               />
             </div>
           </div>
