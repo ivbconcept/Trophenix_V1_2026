@@ -1046,7 +1046,7 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4 text-center">Notre Innovation</h3>
               <p className="text-slate-600 leading-relaxed text-center">
-                ELEA, notre assistante IA agentique qui évolue à long terme aux côtés de chaque sportif identifiant automatiquement les opportunités personnalisées et bien plus.
+                ELEA, notre assistante IA agentique qui évolue au côté du sportif identifiant automatiquement les opportunités personnalisées et bien plus.
               </p>
             </div>
           </div>
