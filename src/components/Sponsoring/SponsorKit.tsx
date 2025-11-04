@@ -1,11 +1,19 @@
 import { useState, useEffect, useRef } from 'react';
-import { FileText, Download, Edit2, Save, Plus, Image, BarChart, Users, MoreVertical, Upload } from 'lucide-react';
+import { FileText, Download, Edit2, Save, Plus, Image, BarChart, Users, MoreVertical, Upload, Trash2, File } from 'lucide-react';
+
+interface UploadedFile {
+  id: string;
+  name: string;
+  size: string;
+  uploadDate: string;
+}
 
 export function SponsorKit() {
   const [isEditing, setIsEditing] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
   const [kitData, setKitData] = useState({
     title: 'Mon Kit Sponsor',
     description: '',
@@ -51,8 +59,22 @@ export function SponsorKit() {
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      console.log('File uploaded:', file);
+      const newFile: UploadedFile = {
+        id: Date.now().toString(),
+        name: file.name,
+        size: `${(file.size / 1024).toFixed(2)} KB`,
+        uploadDate: new Date().toLocaleDateString('fr-FR')
+      };
+      setUploadedFiles([...uploadedFiles, newFile]);
     }
+  };
+
+  const handleDeleteFile = (fileId: string) => {
+    setUploadedFiles(uploadedFiles.filter(file => file.id !== fileId));
+  };
+
+  const handleDownloadFile = (fileName: string) => {
+    console.log('Download file:', fileName);
   };
 
   return (
@@ -275,6 +297,77 @@ export function SponsorKit() {
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <div className="px-8 py-6 border-b border-slate-200">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h4 className="text-xl font-bold text-slate-900">Ressources</h4>
+                  <p className="text-sm text-slate-600 mt-1">Documents téléchargés</p>
+                </div>
+                <button
+                  onClick={handleUploadPDF}
+                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all font-medium text-sm"
+                >
+                  <Plus className="w-4 h-4" />
+                  Ajouter un document
+                </button>
+              </div>
+            </div>
+
+            <div className="p-8">
+              {uploadedFiles.length === 0 ? (
+                <div className="text-center py-12">
+                  <FileText className="w-16 h-16 text-slate-300 mx-auto mb-4" />
+                  <p className="text-slate-500 text-lg font-medium mb-2">
+                    Aucun document téléchargé
+                  </p>
+                  <p className="text-slate-400 text-sm">
+                    Ajoutez des documents PDF à votre kit sponsor
+                  </p>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {uploadedFiles.map((file) => (
+                    <div
+                      key={file.id}
+                      className="flex items-center justify-between p-4 bg-slate-50 hover:bg-slate-100 rounded-lg border border-slate-200 transition-colors"
+                    >
+                      <div className="flex items-center gap-4 flex-1">
+                        <div className="flex-shrink-0">
+                          <File className="w-10 h-10 text-red-600" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-slate-900 font-medium truncate">{file.name}</p>
+                          <div className="flex items-center gap-3 mt-1">
+                            <span className="text-sm text-slate-500">{file.size}</span>
+                            <span className="text-slate-300">•</span>
+                            <span className="text-sm text-slate-500">Ajouté le {file.uploadDate}</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 ml-4">
+                        <button
+                          onClick={() => handleDownloadFile(file.name)}
+                          className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                          title="Télécharger"
+                        >
+                          <Download className="w-5 h-5" />
+                        </button>
+                        <button
+                          onClick={() => handleDeleteFile(file.id)}
+                          className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                          title="Supprimer"
+                        >
+                          <Trash2 className="w-5 h-5" />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
