@@ -13,6 +13,7 @@ import { AthleteDetail } from './components/Athletes/AthleteDetail';
 import { AthleteDashboard } from './components/Dashboard/AthleteDashboard';
 import { CompanyDashboard } from './components/Dashboard/CompanyDashboard';
 import { AgentElea } from './components/AI/AgentElea';
+import { EleaPage } from './components/AI/EleaPage';
 import JobsList from './components/Jobs/JobsList';
 import ManageJobOffers from './components/Jobs/ManageJobOffers';
 import ViewApplications from './components/Jobs/ViewApplications';
@@ -50,6 +51,7 @@ type View =
   | 'athletes-directory'
   | 'companies-directory'
   | 'messages'
+  | 'elea'
   | 'notifications'
   | 'profile'
   | 'settings'
@@ -250,6 +252,8 @@ function AppContent() {
         {view === 'companies-directory' && <CompanyDirectory />}
 
         {view === 'messages' && <EnhancedMessagingPage />}
+
+        {view === 'elea' && <EleaPage />}
 
         {view === 'notifications' && (
           <div className="p-8">
