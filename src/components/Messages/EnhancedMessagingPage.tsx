@@ -203,7 +203,7 @@ export function EnhancedMessagingPage() {
     if (conv.type === 'group' || conv.type === 'channel') {
       return conv.name || 'Sans nom';
     }
-    return 'Conversation directe';
+    return conv.name || 'Conversation directe';
   };
 
   const filterConversations = () => {
@@ -231,6 +231,9 @@ export function EnhancedMessagingPage() {
   };
 
   const filteredConversations = filterConversations();
+
+  console.log('Conversations:', conversations);
+  console.log('Filtered conversations:', filteredConversations);
 
   return (
     <div className="h-screen flex bg-white dark:bg-black">
