@@ -4,12 +4,12 @@ import { Briefcase, FileText, MessagesSquare, Star, TrendingUp, Award, Heart, Ch
 import { useState, useEffect } from 'react';
 import { ProfileDropdown } from '../Layout/ProfileDropdown';
 import { NotificationsDropdown } from '../Layout/NotificationsDropdown';
-const arenaImage = 'https://images.pexels.com/photos/1080884/pexels-photo-1080884.jpeg?auto=compress&cs=tinysrgb&w=1200';
-const laImage = 'https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&w=1200';
-const financeImage = 'https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&w=1200';
-const rugbyImage = 'https://images.pexels.com/photos/159699/sport-trophies-cup-award-159699.jpeg?auto=compress&cs=tinysrgb&w=1200';
-const accorLogo = 'https://upload.wikimedia.org/wikipedia/commons/3/38/Logo_Accor.svg';
-const nikeLogo = 'https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg';
+import arenaImage from '../../assets/images/venti-views-cHRDevKFDBw-new.jpg';
+import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
+import financeImage from '../../assets/images/cycling-road-unsplash.jpg';
+import rugbyImage from '../../assets/images/stadium-rugby-unsplash.jpg';
+import accorLogo from '../../assets/images/1196px-Accor_Logo.png';
+import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
 
 interface AthleteDashboardProps {
   onNavigate: (view: string) => void;
