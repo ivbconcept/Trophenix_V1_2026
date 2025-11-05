@@ -53,7 +53,7 @@ export function MySponsoringRequests() {
           offer: {
             id: '1',
             company_name: 'Nike France',
-            company_logo: 'https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg',
+            company_logo: 'https://images.pexels.com/photos/2526878/pexels-photo-2526878.jpeg',
             title: 'Partenariat Athlète Running',
             description: 'Nike recherche des athlètes passionnés de course à pied pour représenter la marque lors d\'événements sportifs.',
             location: 'Paris, France',
@@ -199,7 +199,7 @@ function KanbanColumn({ title, count, requests, config, expandedRequestId, onReq
             <div className="p-6">
               <div className="flex items-start gap-4 mb-4">
                 <div className="w-20 h-20 bg-gray-100 rounded-2xl flex items-center justify-center flex-shrink-0 overflow-hidden">
-                  <img src="https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg" alt="Nike France" className="w-full h-full object-cover" />
+                  <img src="https://images.pexels.com/photos/2526878/pexels-photo-2526878.jpeg" alt="Nike France" className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-base font-semibold text-gray-900 mb-2">
@@ -207,7 +207,7 @@ function KanbanColumn({ title, count, requests, config, expandedRequestId, onReq
                   </h3>
                   <div className="flex items-center gap-2 mb-1">
                     <div className="w-7 h-7 rounded-full flex-shrink-0 overflow-hidden">
-                      <img src="https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg" alt="Nike France" className="w-full h-full object-cover" />
+                      <img src="https://images.pexels.com/photos/2526878/pexels-photo-2526878.jpeg" alt="Nike France" className="w-full h-full object-cover" />
                     </div>
                     <p className="text-xs text-gray-500">
                       Nike France
