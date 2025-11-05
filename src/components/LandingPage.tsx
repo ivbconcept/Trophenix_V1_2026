@@ -58,16 +58,10 @@ const SPORTS = [
   'Rafting', 'Canyoning', 'Plongée sous-marine', 'Apnée', 'Nage en eau libre',
   'Sauvetage côtier', 'Dragon boat', 'Aviron de mer', 'Autre'
 ];
-import augustPhlieger from '../assets/images/gerson-repreza-tNQ2tmQiC6g-unsplash.jpg';
-import davideAracri from '../assets/images/launde-morel-jcc_mL07QpA-unsplash.jpg';
-import jacekDylag from '../assets/images/mos-sukjaroenkraisri-vO2XxMeYmnY-unsplash.jpg';
-import jadonJohnson from '../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
-import matthieuPetiard from '../assets/images/venti-views-cHRDevKFDBw-unsplash.jpg';
-import gersonRepreza from '../assets/images/gerson-repreza-tNQ2tmQiC6g-unsplash copy.jpg';
-import gersonReprezaTwo from '../assets/images/gerson-repreza-tNQ2tmQiC6g-unsplash copy copy.jpg';
-import franceTravailLogo from '../assets/images/1196px-Accor_Logo.png';
-import wexecutiveLogo from '../assets/images/logo_nike-removebg-preview.png';
-import diversidaysLogo from '../assets/images/1196px-Accor_Logo.png';
+const franceTravailLogo = 'https://upload.wikimedia.org/wikipedia/commons/3/38/Logo_Accor.svg';
+const wexecutiveLogo = 'https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg';
+const diversidaysLogo = 'https://upload.wikimedia.org/wikipedia/commons/3/38/Logo_Accor.svg';
+const gersonReprezaTwo = 'https://images.pexels.com/photos/1374064/pexels-photo-1374064.jpeg?auto=compress&cs=tinysrgb&w=800';
 
 const SupportersCarousel = () => {
   const [offset, setOffset] = useState(0);
@@ -143,7 +137,7 @@ const SupportersCarousel = () => {
       name: 'Plateforme Trophenix',
       sport: 'Innovation',
       achievement: 'Votre carrière sportive optimisée',
-      image: gersonReprezaTwo,
+      image: 'https://images.pexels.com/photos/1374064/pexels-photo-1374064.jpeg?auto=compress&cs=tinysrgb&w=800',
       gradient: 'from-slate-900/90'
     }
   ];
