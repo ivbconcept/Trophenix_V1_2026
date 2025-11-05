@@ -75,7 +75,7 @@ export function SponsoringOffers() {
           id: '3',
           company_id: '9b78d93c-7fc2-413b-b7d6-7e1040862ab9',
           company_name: 'Red Bull',
-          company_logo: 'https://images.pexels.com/photos/163431/box-sport-men-training-163431.jpeg',
+          company_logo: 'https://images.pexels.com/photos/848618/pexels-photo-848618.jpeg',
           company_sector: 'Boissons énergétiques',
           title: 'Sponsoring Sports Extrêmes',
           description: 'Red Bull cherche des athlètes de sports extrêmes pour rejoindre sa famille d\'athlètes sponsorisés. Package complet incluant équipement et support logistique.',
@@ -84,7 +84,7 @@ export function SponsoringOffers() {
           duration: '24 mois',
           sport_category: 'Sports Extrêmes',
           status: 'active',
-          image_url: 'https://images.pexels.com/photos/163431/box-sport-men-training-163431.jpeg',
+          image_url: 'https://images.pexels.com/photos/848618/pexels-photo-848618.jpeg',
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         },
