@@ -486,8 +486,8 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                   <div className="relative rounded-3xl overflow-hidden shadow-lg flex-1 group">
                     <img
-                      src="https://images.pexels.com/photos/3760856/pexels-photo-3760856.jpeg"
-                      alt="All or Nothing"
+                      src="https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                      alt="Surfeuse"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
