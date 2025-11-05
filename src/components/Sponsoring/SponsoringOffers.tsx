@@ -126,7 +126,7 @@ export function SponsoringOffers() {
           id: '6',
           company_id: '9b78d93c-7fc2-413b-b7d6-7e1040862ab9',
           company_name: 'La Française des Jeux',
-          company_logo: 'https://images.pexels.com/photos/100582/pexels-photo-100582.jpeg',
+          company_logo: 'https://images.pexels.com/photos/236692/pexels-photo-236692.jpeg',
           company_sector: 'Jeux et Paris',
           title: 'Ambassadeur Cyclisme',
           description: 'FDJ recherche des cyclistes professionnels pour représenter l\'équipe lors des grandes courses. Package premium avec salaire et bonus de performance.',
@@ -135,7 +135,7 @@ export function SponsoringOffers() {
           duration: '24 mois',
           sport_category: 'Cyclisme',
           status: 'active',
-          image_url: 'https://images.pexels.com/photos/100582/pexels-photo-100582.jpeg',
+          image_url: 'https://images.pexels.com/photos/236692/pexels-photo-236692.jpeg',
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         }
