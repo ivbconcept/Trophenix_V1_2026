@@ -437,8 +437,8 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
               <div className="relative rounded-3xl overflow-hidden shadow-lg h-[500px] group cursor-pointer">
                 <img
-                  src="https://images.pexels.com/photos/3867227/pexels-photo-3867227.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="Los Angeles 2028"
+                  src="https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  alt="The Last Dance"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
@@ -446,10 +446,10 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                 <div className="absolute bottom-8 left-8 right-[450px]">
                   <h2 className="text-2xl font-bold text-white mb-4 leading-tight">
-                    Los Angeles 2028 : La ville des anges accueille le monde
+                    LA 2028 : le backstage français
                   </h2>
                   <p className="text-white/90 text-lg leading-relaxed mb-6 max-w-[80%]">
-                    Découvrez comment Los Angeles se transforme pour accueillir les Jeux Olympiques 2028 dans un cadre exceptionnel...
+                    Plongez dans les coulisses de la préparation des athlètes français pour les Jeux Olympiques de Los Angeles 2028...
                   </p>
                   <button className="flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-xl text-slate-900 dark:text-slate-900 font-semibold hover:bg-white transition-all">
                     <FileText className="w-4 h-4" />
@@ -460,8 +460,8 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 <div className="absolute top-6 right-6 w-[400px] h-[calc(100%-48px)] flex flex-col gap-6">
                   <div className="relative rounded-3xl overflow-hidden shadow-lg flex-1 group">
                     <img
-                      src="https://images.pexels.com/photos/390051/surfer-wave-sunset-the-indian-ocean-390051.jpeg?auto=compress&cs=tinysrgb&w=800"
-                      alt="Red Bull Surfing Documentary"
+                      src="https://images.pexels.com/photos/163403/box-sport-men-training-163403.jpeg"
+                      alt="Formula 1: Drive to Survive"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
@@ -469,7 +469,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     <div className="absolute bottom-11 left-4 flex gap-2">
                       <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-lg text-white text-xs font-medium hover:bg-white/20 transition-all border border-white/20">
                         <FileText className="w-3 h-3" />
-                        Red Bull Media
+                        Insport
                       </button>
                       <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-lg text-white text-xs font-medium hover:bg-white/20 transition-all border border-white/20">
                         <Play className="w-3 h-3" />
@@ -479,15 +479,15 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                     <div className="absolute bottom-4 left-4 right-4">
                       <h3 className="text-base font-bold text-white mb-0 leading-tight">
-                        Rider les vagues : L'art du surf extrême
+                        Ma boxe : ma raison d'être
                       </h3>
                     </div>
                   </div>
 
                   <div className="relative rounded-3xl overflow-hidden shadow-lg flex-1 group">
                     <img
-                      src="https://images.pexels.com/photos/416779/pexels-photo-416779.jpeg?auto=compress&cs=tinysrgb&w=800"
-                      alt="Extreme Sports Documentary"
+                      src="https://images.pexels.com/photos/3760856/pexels-photo-3760856.jpeg"
+                      alt="All or Nothing"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
@@ -495,7 +495,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                     <div className="absolute bottom-11 left-4 flex gap-2">
                       <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-lg text-white text-xs font-medium hover:bg-white/20 transition-all border border-white/20">
                         <FileText className="w-3 h-3" />
-                        Red Bull Media
+                        Insport
                       </button>
                       <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-lg text-white text-xs font-medium hover:bg-white/20 transition-all border border-white/20">
                         <Play className="w-3 h-3" />
@@ -505,7 +505,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                     <div className="absolute bottom-4 left-4 right-4">
                       <h3 className="text-base font-bold text-white mb-0 leading-tight">
-                        Au sommet : Défier l'impossible
+                        Tout ou rien
                       </h3>
                     </div>
                   </div>
