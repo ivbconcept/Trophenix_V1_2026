@@ -4,12 +4,12 @@ import { Briefcase, FileText, MessagesSquare, Star, TrendingUp, Award, Heart, Ch
 import { useState, useEffect } from 'react';
 import { ProfileDropdown } from '../Layout/ProfileDropdown';
 import { NotificationsDropdown } from '../Layout/NotificationsDropdown';
-const arenaImage = 'https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2';
-const laImage = 'https://images.pexels.com/photos/71104/pexels-photo-71104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2';
-const financeImage = 'https://images.pexels.com/photos/30666138/pexels-photo-30666138.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2';
-const rugbyImage = 'https://images.pexels.com/photos/3531081/pexels-photo-3531081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2';
-const accorLogo = 'https://images.pexels.com/photos/2182981/pexels-photo-2182981.jpeg?auto=compress&cs=tinysrgb&w=400';
-const nikeLogo = 'https://images.pexels.com/photos/6094047/pexels-photo-6094047.jpeg?auto=compress&cs=tinysrgb&w=400';
+import arenaImage from '../../assets/images/venti-views-cHRDevKFDBw-new.jpg';
+import laImage from '../../assets/images/jc-gellidon-XmYSlYrupL8-unsplash copy.jpg';
+import financeImage from '../../assets/images/cycling-road-unsplash.jpg';
+import rugbyImage from '../../assets/images/stadium-rugby-unsplash.jpg';
+import accorLogo from '../../assets/images/1196px-Accor_Logo.png';
+import nikeLogo from '../../assets/images/logo_nike-removebg-preview.png';
 
 interface AthleteDashboardProps {
   onNavigate: (view: string) => void;
@@ -229,7 +229,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               <div className="col-span-12 lg:col-span-4 flex flex-col gap-3">
                 <div className="bg-white dark:bg-zinc-950 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
                   <img
-                    src="https://images.pexels.com/photos/5716042/pexels-photo-5716042.jpeg?auto=compress&cs=tinysrgb&w=400"
+                    src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?w=160&h=100&fit=crop"
                     alt="Swimming"
                     className="w-28 h-24 rounded-lg object-cover flex-shrink-0"
                   />
@@ -247,7 +247,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                 <div className="bg-white dark:bg-zinc-950 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
                   <img
-                    src="https://images.pexels.com/photos/31543227/pexels-photo-31543227.jpeg?auto=compress&cs=tinysrgb&w=400"
+                    src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=160&h=100&fit=crop"
                     alt="Football"
                     className="w-28 h-24 rounded-lg object-cover flex-shrink-0"
                   />
@@ -265,7 +265,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                 <div className="bg-white dark:bg-zinc-950 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
                   <img
-                    src="https://images.pexels.com/photos/1271147/pexels-photo-1271147.jpeg?auto=compress&cs=tinysrgb&w=400"
+                    src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=160&h=100&fit=crop"
                     alt="Tennis"
                     className="w-28 h-24 rounded-lg object-cover flex-shrink-0"
                   />
@@ -318,7 +318,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   <div className="bg-white dark:bg-zinc-950 rounded-3xl overflow-hidden shadow-lg h-full">
                     <div className="relative h-[400px]">
                       <img
-                        src="https://images.pexels.com/photos/8941613/pexels-photo-8941613.jpeg?auto=compress&cs=tinysrgb&w=800"
+                        src="https://images.unsplash.com/photo-1608245449230-4ac19066d2d0?w=1200&h=800&fit=crop"
                         alt="Victor Wembanyama Basketball"
                         className="w-full h-full object-cover"
                       />
@@ -394,7 +394,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   <div className="bg-white dark:bg-zinc-950 rounded-3xl overflow-hidden shadow-lg h-full">
                     <div className="relative h-[400px]">
                       <img
-                        src="https://images.pexels.com/photos/34523817/pexels-photo-34523817.jpeg?auto=compress&cs=tinysrgb&w=800"
+                        src="https://images.pexels.com/photos/3621180/pexels-photo-3621180.jpeg?auto=compress&cs=tinysrgb&w=800"
                         alt="Sports Partnership"
                         className="w-full h-full object-cover object-top"
                       />
@@ -437,7 +437,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
               <div className="relative rounded-3xl overflow-hidden shadow-lg h-[500px] group cursor-pointer">
                 <img
-                  src="https://images.pexels.com/photos/8941613/pexels-photo-8941613.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  src="https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&w=1200"
                   alt="The Last Dance"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -460,7 +460,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 <div className="absolute top-6 right-6 w-[400px] h-[calc(100%-48px)] flex flex-col gap-6">
                   <div className="relative rounded-3xl overflow-hidden shadow-lg flex-1 group">
                     <img
-                      src="https://images.pexels.com/photos/3531081/pexels-photo-3531081.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      src="https://images.pexels.com/photos/163403/box-sport-men-training-163403.jpeg"
                       alt="Formula 1: Drive to Survive"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
@@ -486,7 +486,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                   <div className="relative rounded-3xl overflow-hidden shadow-lg flex-1 group">
                     <img
-                      src="https://images.pexels.com/photos/3763864/pexels-photo-3763864.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      src="https://images.pexels.com/photos/3760856/pexels-photo-3760856.jpeg"
                       alt="All or Nothing"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
