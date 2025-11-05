@@ -460,8 +460,8 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 <div className="absolute top-6 right-6 w-[400px] h-[calc(100%-48px)] flex flex-col gap-6">
                   <div className="relative rounded-3xl overflow-hidden shadow-lg flex-1 group">
                     <img
-                      src="https://images.pexels.com/photos/163403/box-sport-men-training-163403.jpeg"
-                      alt="Formula 1: Drive to Survive"
+                      src="https://images.pexels.com/photos/1756955/pexels-photo-1756955.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                      alt="Boxeur en couleur"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
@@ -486,7 +486,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                   <div className="relative rounded-3xl overflow-hidden shadow-lg flex-1 group">
                     <img
-                      src="https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                      src="https://images.pexels.com/photos/390051/surfer-wave-sunset-the-indian-ocean-390051.jpeg?auto=compress&cs=tinysrgb&w=1200"
                       alt="Surfeuse"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
