@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Search, MapPin, Filter, GraduationCap, Target, Building2 } from 'lucide-react';
 
 type TabType = 'sportifs' | 'experts';
-type SportFilterType = 'top' | 'football' | 'basketball' | 'tennis';
+type SportFilterType = 'top' | 'expert' | 'football' | 'basketball' | 'tennis';
 type StatusType = 'En Blessure' | 'En activité' | 'En reconversion' | 'En Réflexion';
 
 interface MockAthlete {
@@ -133,6 +133,16 @@ export default function AthleteDirectory() {
               }`}
             >
               Sportif
+            </button>
+            <button
+              onClick={() => setSportFilter('expert')}
+              className={`px-6 py-1.5 rounded-xl font-semibold text-base transition-all ${
+                sportFilter === 'expert'
+                  ? 'bg-white dark:bg-black text-slate-900 dark:text-white shadow-md'
+                  : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
+              }`}
+            >
+              Expert
             </button>
             <button
               onClick={() => setSportFilter('football')}
