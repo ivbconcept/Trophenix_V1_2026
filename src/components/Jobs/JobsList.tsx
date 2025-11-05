@@ -50,7 +50,7 @@ export default function JobsList() {
           id: '2',
           company_id: '9b78d93c-7fc2-413b-b7d6-7e1040862ab9',
           company_name: 'INSEP',
-          company_logo: 'https://images.pexels.com/photos/163403/box-sport-men-training-163403.jpeg',
+          company_logo: 'https://images.pexels.com/photos/4162449/pexels-photo-4162449.jpeg',
           company_sector: 'Formation Sportive',
           title: 'Préparateur Physique',
           description: 'Rejoignez notre centre sportif de haut niveau. Accompagnez des athlètes professionnels dans leur préparation physique et optimisez leurs performances.',
@@ -62,7 +62,7 @@ export default function JobsList() {
           experience_level: 'Mid',
           job_sector: 'Sport',
           status: 'published',
-          image_url: 'https://images.pexels.com/photos/163403/box-sport-men-training-163403.jpeg',
+          image_url: 'https://images.pexels.com/photos/4162449/pexels-photo-4162449.jpeg',
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         },
