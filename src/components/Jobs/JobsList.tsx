@@ -90,7 +90,7 @@ export default function JobsList() {
           id: '4',
           company_id: '9b78d93c-7fc2-413b-b7d6-7e1040862ab9',
           company_name: 'Centre Médico-Sportif',
-          company_logo: 'https://images.pexels.com/photos/3760856/pexels-photo-3760856.jpeg',
+          company_logo: 'https://images.pexels.com/photos/5793953/pexels-photo-5793953.jpeg',
           company_sector: 'Santé Sportive',
           title: 'Kinésithérapeute Sportif',
           description: 'Centre de rééducation sportive recherche un kinésithérapeute spécialisé. Accompagnez des athlètes professionnels dans leur récupération et prévention des blessures.',
@@ -102,7 +102,7 @@ export default function JobsList() {
           experience_level: 'Mid',
           job_sector: 'Sport',
           status: 'published',
-          image_url: 'https://images.pexels.com/photos/3760856/pexels-photo-3760856.jpeg',
+          image_url: 'https://images.pexels.com/photos/5793953/pexels-photo-5793953.jpeg',
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         },
@@ -130,7 +130,7 @@ export default function JobsList() {
           id: '6',
           company_id: '9b78d93c-7fc2-413b-b7d6-7e1040862ab9',
           company_name: 'Nice Sport Complex',
-          company_logo: 'https://images.pexels.com/photos/260447/pexels-photo-260447.jpeg',
+          company_logo: 'https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg',
           company_sector: 'Infrastructure Sportive',
           title: 'Directeur de Centre Sportif',
           description: 'Management d\'un complexe sportif moderne. Développez les activités, gérez les équipes et créez des partenariats stratégiques pour notre centre d\'excellence.',
@@ -142,7 +142,7 @@ export default function JobsList() {
           experience_level: 'Senior',
           job_sector: 'Sport',
           status: 'published',
-          image_url: 'https://images.pexels.com/photos/260447/pexels-photo-260447.jpeg',
+          image_url: 'https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg',
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         }
