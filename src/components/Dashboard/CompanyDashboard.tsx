@@ -86,7 +86,7 @@ export function CompanyDashboard({ onNavigate }: CompanyDashboardProps) {
           <h2 className="text-2xl font-bold text-slate-900 mb-6">Actualités Sport & Carrière</h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <NewsCard
-              image="https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=800"
+              image="https://images.pexels.com/photos/2182981/pexels-photo-2182981.jpeg?auto=compress&cs=tinysrgb&w=800"
               title="Réussir sa reconversion : 5 clés pour les athlètes de haut niveau"
               description="Découvrez les étapes essentielles pour préparer votre transition vers le monde professionnel après une carrière sportive..."
               category="Carrière"
@@ -94,7 +94,7 @@ export function CompanyDashboard({ onNavigate }: CompanyDashboardProps) {
               isLive={false}
             />
             <NewsCard
-              image="https://images.pexels.com/photos/936094/pexels-photo-936094.jpeg?auto=compress&cs=tinysrgb&w=800"
+              image="https://images.pexels.com/photos/6094047/pexels-photo-6094047.jpeg?auto=compress&cs=tinysrgb&w=800"
               title="Gestion de carrière : Les nouvelles opportunités pour les sportifs"
               description="Le marché du travail s'ouvre aux profils sportifs. Explorez les secteurs qui recrutent des athlètes pour leurs compétences..."
               category="Business"
@@ -102,7 +102,7 @@ export function CompanyDashboard({ onNavigate }: CompanyDashboardProps) {
               isLive={true}
             />
             <NewsCard
-              image="https://images.pexels.com/photos/358042/pexels-photo-358042.jpeg?auto=compress&cs=tinysrgb&w=800"
+              image="https://images.pexels.com/photos/71104/pexels-photo-71104.jpeg?auto=compress&cs=tinysrgb&w=800"
               title="Formation & Développement : Préparez votre avenir dès maintenant"
               description="Les programmes de formation dédiés aux athlètes en transition. Comment acquérir de nouvelles compétences..."
               category="Sport"
