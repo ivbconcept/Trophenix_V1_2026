@@ -437,7 +437,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
               <div className="relative rounded-3xl overflow-hidden shadow-lg h-[500px] group cursor-pointer">
                 <img
-                  src="https://images.pexels.com/photos/3869859/pexels-photo-3869859.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&fit=crop"
                   alt="Los Angeles Skyline at Sunset"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
