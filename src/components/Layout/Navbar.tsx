@@ -38,6 +38,8 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
       setActiveSection('employability');
     } else if (['sponsoring-offers', 'my-sponsoring-requests', 'sponsor-kit', 'presentation-letter', 'my-projects'].includes(currentView)) {
       setActiveSection('sponsoring');
+    } else if (currentView === 'competitions') {
+      setActiveSection('competitions');
     }
   }, [currentView]);
 
@@ -51,6 +53,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
           { id: 'employability', label: 'Emploi', icon: Award, hasSubmenu: true },
           { id: 'sponsoring', label: 'Sponsoring', icon: HandshakeIcon, hasSubmenu: true },
           { id: 'group', label: 'Annuaire', icon: UsersRound },
+          { id: 'competitions', label: 'Compétitions', icon: Trophy },
         ];
       case 'company':
         return [

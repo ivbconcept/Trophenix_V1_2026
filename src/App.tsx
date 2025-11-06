@@ -36,6 +36,7 @@ import { MySponsoringRequests } from './components/Sponsoring/MySponsoringReques
 import { SponsorKit } from './components/Sponsoring/SponsorKit';
 import { PresentationLetter } from './components/Sponsoring/PresentationLetter';
 import { MyProjects } from './components/Sponsoring/MyProjects';
+import { CompetitionsListPage } from './components/Competitions/CompetitionsListPage';
 
 type View =
   | 'landing'
@@ -70,7 +71,8 @@ type View =
   | 'my-sponsoring-requests'
   | 'sponsor-kit'
   | 'presentation-letter'
-  | 'my-projects';
+  | 'my-projects'
+  | 'competitions';
 
 function AppContent() {
   const { user, profile, loading, isAdmin, refreshProfile, signIn } = useAuth();
@@ -266,6 +268,8 @@ function AppContent() {
         {view === 'presentation-letter' && <PresentationLetter />}
 
         {view === 'my-projects' && <MyProjects />}
+
+        {view === 'competitions' && <CompetitionsListPage />}
 
         {view === 'manage-offers' && <ManageJobOffers />}
 
