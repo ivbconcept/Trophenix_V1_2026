@@ -51,7 +51,7 @@ const mockInvitations: CompetitionInvitation[] = [
     category: 'Marathon Elite',
     participants_expected: 3000,
     prize_pool: '100 000 €',
-    image: 'https://images.pexels.com/photos/2402777/pexels-photo-2402777.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://images.pexels.com/photos/2402810/pexels-photo-2402810.jpeg?auto=compress&cs=tinysrgb&w=800',
     invitation_message: 'Suite à vos excellentes performances, nous vous invitons à participer à notre marathon élite avec les meilleurs coureurs européens.',
     invited_at: '2025-11-02T14:30:00',
   },
