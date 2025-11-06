@@ -394,7 +394,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   <div className="bg-white dark:bg-zinc-950 rounded-3xl overflow-hidden shadow-lg h-full">
                     <div className="relative h-[400px]">
                       <img
-                        src="https://images.pexels.com/photos/3621180/pexels-photo-3621180.jpeg?auto=compress&cs=tinysrgb&w=800"
+                        src="https://images.pexels.com/photos/4761352/pexels-photo-4761352.jpeg?auto=compress&cs=tinysrgb&w=800"
                         alt="Sports Partnership"
                         className="w-full h-full object-cover object-top"
                       />
