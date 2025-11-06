@@ -486,7 +486,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
 
                   <div className="relative rounded-3xl overflow-hidden shadow-lg flex-1 group">
                     <img
-                      src="https://images.pexels.com/photos/390051/surfer-wave-sunset-the-indian-ocean-390051.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                      src="https://images.pexels.com/photos/29288968/pexels-photo-29288968.jpeg?auto=compress&cs=tinysrgb&w=1200"
                       alt="Surfeuse"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
