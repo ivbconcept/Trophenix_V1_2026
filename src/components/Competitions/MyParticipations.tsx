@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Trophy, Calendar, MapPin, Medal, Users, Target, Clock, CheckCircle2, Timer, Award } from 'lucide-react';
+import { useState } from 'react';
+import { Trophy, Calendar, MapPin, Medal, Users, Target, Clock, CheckCircle2, Timer, Award, ChevronDown, ChevronUp } from 'lucide-react';
 
 type ParticipationStatus = 'upcoming' | 'ongoing' | 'completed';
 
@@ -130,12 +130,7 @@ const mockParticipations: CompetitionParticipation[] = [
 ];
 
 export function MyParticipations() {
-  const [selectedStatus, setSelectedStatus] = useState<ParticipationStatus | 'all'>('all');
   const [expandedId, setExpandedId] = useState<string | null>(null);
-
-  const filteredParticipations = selectedStatus === 'all'
-    ? mockParticipations
-    : mockParticipations.filter(p => p.status === selectedStatus);
 
   const getStatusConfig = (status: ParticipationStatus) => {
     switch (status) {
@@ -143,7 +138,7 @@ export function MyParticipations() {
         return {
           label: 'À venir',
           color: 'text-blue-600',
-          bgColor: 'bg-blue-50',
+          bgColor: 'bg-blue-100',
           borderColor: 'border-blue-200',
           icon: Calendar,
         };
@@ -151,293 +146,260 @@ export function MyParticipations() {
         return {
           label: 'En cours',
           color: 'text-orange-600',
-          bgColor: 'bg-orange-50',
+          bgColor: 'bg-orange-100',
           borderColor: 'border-orange-200',
           icon: Timer,
         };
       case 'completed':
         return {
           label: 'Terminée',
-          color: 'text-slate-600',
-          bgColor: 'bg-slate-50',
-          borderColor: 'border-slate-200',
+          color: 'text-green-600',
+          bgColor: 'bg-green-100',
+          borderColor: 'border-green-200',
           icon: CheckCircle2,
         };
     }
   };
 
-  const stats = {
-    upcoming: mockParticipations.filter(p => p.status === 'upcoming').length,
-    ongoing: mockParticipations.filter(p => p.status === 'ongoing').length,
-    completed: mockParticipations.filter(p => p.status === 'completed').length,
-    medals: mockParticipations.filter(p => p.myRank && p.myRank <= 3).length,
+  return (
+    <div className="flex flex-col h-screen">
+      <div className="bg-white sticky top-0 z-10">
+        <div className="max-w-7xl mx-auto px-4 py-6">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Mes Participations</h1>
+          <p className="text-gray-600">Suivez vos compétitions passées, en cours et à venir</p>
+        </div>
+      </div>
+
+      <div className="flex-1 overflow-hidden">
+        <div className="h-full overflow-x-auto">
+          <div className="min-w-max h-full p-6">
+            <div className="flex gap-4 h-full">
+              <KanbanColumn
+                title="À venir"
+                count={mockParticipations.filter(p => p.status === 'upcoming').length}
+                participations={mockParticipations.filter(p => p.status === 'upcoming')}
+                config={getStatusConfig('upcoming')}
+                expandedId={expandedId}
+                onParticipationClick={(id) => setExpandedId(expandedId === id ? null : id)}
+              />
+              <KanbanColumn
+                title="En cours"
+                count={mockParticipations.filter(p => p.status === 'ongoing').length}
+                participations={mockParticipations.filter(p => p.status === 'ongoing')}
+                config={getStatusConfig('ongoing')}
+                expandedId={expandedId}
+                onParticipationClick={(id) => setExpandedId(expandedId === id ? null : id)}
+              />
+              <KanbanColumn
+                title="Terminées"
+                count={mockParticipations.filter(p => p.status === 'completed').length}
+                participations={mockParticipations.filter(p => p.status === 'completed')}
+                config={getStatusConfig('completed')}
+                expandedId={expandedId}
+                onParticipationClick={(id) => setExpandedId(expandedId === id ? null : id)}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+interface KanbanColumnProps {
+  title: string;
+  count: number;
+  participations: CompetitionParticipation[];
+  config: {
+    icon: any;
+    label: string;
+    color: string;
+    bgColor: string;
+    borderColor: string;
   };
+  expandedId: string | null;
+  onParticipationClick: (id: string) => void;
+}
+
+function KanbanColumn({ title, count, participations, config, expandedId, onParticipationClick }: KanbanColumnProps) {
+  const StatusIcon = config.icon;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-zinc-950 dark:via-black dark:to-zinc-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="mb-8">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center shadow-lg">
-              <Medal className="w-7 h-7 text-white" />
-            </div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
-              Mes Participations
-            </h1>
-          </div>
-          <p className="text-lg text-slate-600 dark:text-zinc-400">
-            Toutes vos compétitions passées, en cours et à venir
-          </p>
+    <div className="flex flex-col w-80 bg-gray-50 rounded-xl">
+      <div className="p-4 border-b border-gray-200 bg-white rounded-t-xl">
+        <div className="flex items-center justify-between">
+          <h3 className="font-semibold text-gray-900">{title}</h3>
+          <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${config.bgColor} ${config.color}`}>
+            {count}
+          </span>
         </div>
+      </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <div className="bg-white dark:bg-zinc-900 rounded-xl p-6 border border-blue-200 dark:border-blue-900 shadow-sm">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-blue-600 dark:text-blue-400 mb-1">À venir</p>
-                <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">{stats.upcoming}</p>
-              </div>
-              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
-                <Calendar className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-              </div>
+      <div className="flex-1 overflow-y-auto p-4 space-y-3">
+        {participations.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-12">
+            <div className={`w-16 h-16 rounded-full ${config.bgColor} flex items-center justify-center mb-3`}>
+              <StatusIcon className={`h-8 w-8 ${config.color}`} />
             </div>
+            <p className="text-sm font-medium text-gray-900 mb-1">Aucune participation</p>
+            <p className="text-xs text-gray-500">Les participations apparaîtront ici</p>
           </div>
-
-          <div className="bg-white dark:bg-zinc-900 rounded-xl p-6 border border-orange-200 dark:border-orange-900 shadow-sm">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-orange-600 dark:text-orange-400 mb-1">En cours</p>
-                <p className="text-3xl font-bold text-orange-600 dark:text-orange-400">{stats.ongoing}</p>
-              </div>
-              <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center">
-                <Timer className="w-6 h-6 text-orange-600 dark:text-orange-400" />
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white dark:bg-zinc-900 rounded-xl p-6 border border-slate-200 dark:border-zinc-800 shadow-sm">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-slate-600 dark:text-zinc-400 mb-1">Terminées</p>
-                <p className="text-3xl font-bold text-slate-900 dark:text-white">{stats.completed}</p>
-              </div>
-              <div className="w-12 h-12 bg-slate-100 dark:bg-zinc-800 rounded-lg flex items-center justify-center">
-                <CheckCircle2 className="w-6 h-6 text-slate-600 dark:text-zinc-400" />
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-gradient-to-br from-amber-500 to-yellow-500 rounded-xl p-6 shadow-lg">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-white/90 mb-1">Médailles</p>
-                <p className="text-3xl font-bold text-white">{stats.medals}</p>
-              </div>
-              <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-                <Award className="w-6 h-6 text-white" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mb-6 flex flex-wrap gap-2">
-          <button
-            onClick={() => setSelectedStatus('all')}
-            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-              selectedStatus === 'all'
-                ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900'
-                : 'bg-white dark:bg-zinc-900 text-slate-700 dark:text-zinc-300 border border-slate-300 dark:border-zinc-700 hover:bg-slate-50 dark:hover:bg-zinc-800'
-            }`}
-          >
-            Toutes
-          </button>
-          <button
-            onClick={() => setSelectedStatus('upcoming')}
-            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-              selectedStatus === 'upcoming'
-                ? 'bg-blue-500 text-white'
-                : 'bg-white dark:bg-zinc-900 text-slate-700 dark:text-zinc-300 border border-slate-300 dark:border-zinc-700 hover:bg-slate-50 dark:hover:bg-zinc-800'
-            }`}
-          >
-            À venir
-          </button>
-          <button
-            onClick={() => setSelectedStatus('ongoing')}
-            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-              selectedStatus === 'ongoing'
-                ? 'bg-orange-500 text-white'
-                : 'bg-white dark:bg-zinc-900 text-slate-700 dark:text-zinc-300 border border-slate-300 dark:border-zinc-700 hover:bg-slate-50 dark:hover:bg-zinc-800'
-            }`}
-          >
-            En cours
-          </button>
-          <button
-            onClick={() => setSelectedStatus('completed')}
-            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-              selectedStatus === 'completed'
-                ? 'bg-slate-700 text-white'
-                : 'bg-white dark:bg-zinc-900 text-slate-700 dark:text-zinc-300 border border-slate-300 dark:border-zinc-700 hover:bg-slate-50 dark:hover:bg-zinc-800'
-            }`}
-          >
-            Terminées
-          </button>
-        </div>
-
-        <div className="space-y-4">
-          {filteredParticipations.map((participation) => {
-            const statusConfig = getStatusConfig(participation.status);
-            const StatusIcon = statusConfig.icon;
+        ) : (
+          participations.map((participation) => {
             const isExpanded = expandedId === participation.id;
 
             return (
               <div
                 key={participation.id}
-                className={`bg-white dark:bg-zinc-900 rounded-xl shadow-md overflow-hidden border-2 ${statusConfig.borderColor} dark:border-opacity-50 hover:shadow-lg transition-all`}
+                className={`bg-white rounded-2xl shadow-sm transition-all cursor-pointer overflow-hidden ${
+                  isExpanded ? 'shadow-xl' : 'hover:shadow-lg'
+                }`}
+                onClick={() => onParticipationClick(participation.id)}
               >
-                <div className="flex flex-col lg:flex-row">
-                  <div className="lg:w-80 h-56 lg:h-auto relative">
+                <div className="relative">
+                  <div className="h-32 overflow-hidden">
                     <img
                       src={participation.image}
                       alt={participation.competitionTitle}
                       className="w-full h-full object-cover"
                     />
-                    {participation.myRank && participation.myRank <= 3 && (
-                      <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-full flex items-center justify-center shadow-lg">
-                        <div className="text-center">
-                          <Award className="w-6 h-6 text-white mx-auto mb-0.5" />
-                          <p className="text-xs font-bold text-white">#{participation.myRank}</p>
-                        </div>
+                  </div>
+                  {participation.myRank && participation.myRank <= 3 && (
+                    <div className="absolute top-2 right-2 w-12 h-12 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-full flex items-center justify-center shadow-lg">
+                      <div className="text-center">
+                        <Award className="w-5 h-5 text-white mx-auto" />
+                        <p className="text-[8px] font-bold text-white">#{participation.myRank}</p>
                       </div>
-                    )}
+                    </div>
+                  )}
+                  <div className={`absolute bottom-2 right-2 ${config.bgColor} rounded-full px-3 py-1.5 flex items-center gap-1.5`}>
+                    <StatusIcon className={`w-3.5 h-3.5 ${config.color}`} />
+                    <span className={`text-xs font-medium ${config.color}`}>{config.label}</span>
+                  </div>
+                </div>
+
+                <div className="p-4">
+                  <div className="flex items-start gap-2 mb-3">
+                    <Trophy className="w-4 h-4 text-orange-500 flex-shrink-0 mt-0.5" />
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-base font-semibold text-gray-900 mb-1 line-clamp-2">
+                        {participation.competitionTitle}
+                      </h3>
+                      <p className="text-xs text-gray-500">
+                        {participation.sport} • {participation.category}
+                      </p>
+                    </div>
                   </div>
 
-                  <div className="flex-1 p-6">
-                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-                      <div className="flex-1">
-                        <div className="flex items-start gap-3 mb-3">
-                          <Trophy className="w-6 h-6 text-orange-500 flex-shrink-0 mt-1" />
-                          <div>
-                            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">
-                              {participation.competitionTitle}
-                            </h3>
-                            <p className="text-sm text-slate-600 dark:text-zinc-400">
-                              {participation.sport} • {participation.category}
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-                          <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-zinc-400">
-                            <MapPin className="w-4 h-4" />
-                            {participation.location}
-                          </div>
-                          <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-zinc-400">
-                            <Calendar className="w-4 h-4" />
-                            {new Date(participation.startDate).toLocaleDateString('fr-FR', {
-                              day: 'numeric',
-                              month: 'long',
-                              year: 'numeric'
-                            })}
-                          </div>
-                          <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-zinc-400">
-                            <Users className="w-4 h-4" />
-                            {participation.participants} participants
-                          </div>
-                          <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-zinc-400">
-                            <Target className="w-4 h-4" />
-                            {participation.organizer}
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className={`flex items-center gap-2 px-4 py-2 rounded-lg ${statusConfig.bgColor} ${statusConfig.borderColor} border mt-4 lg:mt-0`}>
-                        <StatusIcon className={`w-5 h-5 ${statusConfig.color}`} />
-                        <span className={`font-semibold ${statusConfig.color}`}>
-                          {statusConfig.label}
-                        </span>
-                      </div>
+                  <div className="space-y-2 mb-3 text-xs text-gray-600">
+                    <div className="flex items-center gap-1.5">
+                      <MapPin className="w-3.5 h-3.5 text-gray-400" />
+                      <span className="font-medium">{participation.location}</span>
                     </div>
+                    <div className="flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5 text-gray-400" />
+                      <span>
+                        {new Date(participation.startDate).toLocaleDateString('fr-FR', {
+                          day: 'numeric',
+                          month: 'short',
+                          year: 'numeric'
+                        })}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <Users className="w-3.5 h-3.5 text-gray-400" />
+                      <span>{participation.participants} participants</span>
+                    </div>
+                  </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pb-4 border-b border-slate-200 dark:border-zinc-800">
-                      <div>
-                        <p className="text-xs text-slate-500 dark:text-zinc-500 mb-1">Numéro d'inscription</p>
-                        <p className="text-sm font-mono font-medium text-slate-900 dark:text-white">
-                          {participation.registrationNumber}
-                        </p>
-                      </div>
-                      {participation.myRank && (
-                        <div>
-                          <p className="text-xs text-slate-500 dark:text-zinc-500 mb-1">Mon classement</p>
-                          <p className="text-sm font-bold text-orange-600 dark:text-orange-400">
-                            {participation.myRank}ème place
-                          </p>
-                        </div>
-                      )}
+                  {participation.myRank && (
+                    <div className="mb-3 bg-orange-50 border border-orange-200 rounded-lg p-2.5">
+                      <p className="text-orange-800 text-xs font-semibold flex items-center gap-1.5">
+                        <Medal className="w-3.5 h-3.5" />
+                        Classement: {participation.myRank}ème place
+                      </p>
                       {participation.myScore && (
-                        <div>
-                          <p className="text-xs text-slate-500 dark:text-zinc-500 mb-1">Mon temps/score</p>
-                          <p className="text-sm font-semibold text-slate-900 dark:text-white">
-                            {participation.myScore}
-                          </p>
-                        </div>
+                        <p className="text-orange-700 text-xs mt-1">
+                          Score: {participation.myScore}
+                        </p>
                       )}
                     </div>
+                  )}
 
-                    {participation.nextEvent && (
-                      <div className="mt-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
-                        <div className="flex items-start gap-3">
-                          <Clock className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
-                          <div className="flex-1">
-                            <p className="font-semibold text-blue-900 dark:text-blue-300 mb-1">
-                              Prochain événement
-                            </p>
-                            <p className="text-sm text-blue-800 dark:text-blue-400">
-                              {participation.nextEvent}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    )}
+                  {participation.nextEvent && !isExpanded && (
+                    <div className="mb-3 bg-blue-50 border border-blue-200 rounded-lg p-2.5">
+                      <p className="text-blue-800 text-xs font-semibold flex items-center gap-1.5">
+                        <Clock className="w-3.5 h-3.5" />
+                        Prochain événement
+                      </p>
+                      <p className="text-blue-700 text-xs mt-1 line-clamp-2">
+                        {participation.nextEvent}
+                      </p>
+                    </div>
+                  )}
 
-                    {isExpanded && participation.schedule && (
-                      <div className="mt-4 bg-slate-50 dark:bg-zinc-800 rounded-lg p-4">
-                        <p className="font-semibold text-slate-900 dark:text-white mb-3">Programme</p>
-                        <div className="space-y-2">
-                          {participation.schedule.map((item, index) => (
-                            <div key={index} className="flex items-center gap-2 text-sm text-slate-600 dark:text-zinc-400">
-                              <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
-                              {item}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    <button
-                      onClick={() => setExpandedId(isExpanded ? null : participation.id)}
-                      className="mt-4 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
-                    >
-                      {isExpanded ? 'Voir moins' : 'Voir plus de détails'}
+                  <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+                    <div className="text-xs">
+                      <p className="text-gray-500 mb-0.5">N° inscription</p>
+                      <p className="font-mono font-medium text-gray-900 text-[10px]">
+                        {participation.registrationNumber}
+                      </p>
+                    </div>
+                    <button className="text-blue-600 hover:text-blue-700">
+                      {isExpanded ? (
+                        <ChevronUp className="w-4 h-4" />
+                      ) : (
+                        <ChevronDown className="w-4 h-4" />
+                      )}
                     </button>
                   </div>
+
+                  {isExpanded && (
+                    <div className="mt-4 pt-4 border-t border-gray-200 space-y-3">
+                      <div>
+                        <h4 className="font-semibold text-gray-900 text-sm mb-2">Organisateur</h4>
+                        <div className="flex items-center gap-2">
+                          <Target className="w-4 h-4 text-gray-400" />
+                          <p className="text-xs text-gray-700">{participation.organizer}</p>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h4 className="font-semibold text-gray-900 text-sm mb-2">Dotation</h4>
+                        <p className="text-xs text-gray-700">{participation.prizePool}</p>
+                      </div>
+
+                      {participation.schedule && (
+                        <div>
+                          <h4 className="font-semibold text-gray-900 text-sm mb-2">Programme</h4>
+                          <div className="space-y-1.5">
+                            {participation.schedule.map((item, index) => (
+                              <div key={index} className="flex items-center gap-2 text-xs text-gray-600">
+                                <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
+                                {item}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {participation.nextEvent && (
+                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                          <p className="text-blue-800 text-xs font-semibold flex items-center gap-1.5 mb-1">
+                            <Clock className="w-3.5 h-3.5" />
+                            Prochain événement
+                          </p>
+                          <p className="text-blue-700 text-xs">
+                            {participation.nextEvent}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             );
-          })}
-        </div>
-
-        {filteredParticipations.length === 0 && (
-          <div className="text-center py-16 bg-white dark:bg-zinc-900 rounded-xl shadow-md border border-slate-200 dark:border-zinc-800">
-            <div className="text-slate-400 dark:text-zinc-600 mb-4">
-              <Medal className="w-16 h-16 mx-auto" />
-            </div>
-            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
-              Aucune participation trouvée
-            </h3>
-            <p className="text-slate-600 dark:text-zinc-400">
-              Essayez de modifier vos filtres
-            </p>
-          </div>
+          })
         )}
       </div>
     </div>
