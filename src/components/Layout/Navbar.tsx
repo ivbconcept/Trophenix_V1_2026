@@ -1,4 +1,4 @@
-import { Bell, LogOut, Trophy, Search, Mail, LayoutDashboard, Award, Handshake as HandshakeIcon, UsersRound, Settings, BookOpen, Briefcase, FileText, GraduationCap, TrendingUp, Users, DollarSign, Image as ImageIcon, MessageSquare, Bot, HelpCircle, Sparkles } from 'lucide-react';
+import { Bell, LogOut, Trophy, Search, Mail, LayoutDashboard, Award, Handshake as HandshakeIcon, UsersRound, Settings, BookOpen, Briefcase, FileText, GraduationCap, TrendingUp, Users, DollarSign, Image as ImageIcon, MessageSquare, Bot, HelpCircle, Sparkles, Calendar, ListChecks } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { ReactNode, useState, useEffect } from 'react';
 import { ProfileDropdown } from './ProfileDropdown';
@@ -38,7 +38,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
       setActiveSection('employability');
     } else if (['sponsoring-offers', 'my-sponsoring-requests', 'sponsor-kit', 'presentation-letter', 'my-projects'].includes(currentView)) {
       setActiveSection('sponsoring');
-    } else if (currentView === 'competitions') {
+    } else if (['competitions', 'my-competitions', 'competition-applications'].includes(currentView)) {
       setActiveSection('competitions');
     }
   }, [currentView]);
@@ -53,7 +53,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
           { id: 'employability', label: 'Emploi', icon: Award, hasSubmenu: true },
           { id: 'sponsoring', label: 'Sponsoring', icon: HandshakeIcon, hasSubmenu: true },
           { id: 'group', label: 'Annuaire', icon: UsersRound },
-          { id: 'competitions', label: 'Compétitions', icon: Trophy },
+          { id: 'competitions', label: 'Compétitions', icon: Trophy, hasSubmenu: true },
         ];
       case 'company':
         return [
@@ -100,6 +100,14 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
       ];
     }
 
+    if (section === 'competitions') {
+      return [
+        { id: 'competitions', label: 'Toutes les compétitions', icon: Trophy },
+        { id: 'my-competitions', label: 'Mes participations', icon: Calendar },
+        { id: 'competition-applications', label: 'Mes candidatures', icon: ListChecks },
+      ];
+    }
+
     return [];
   };
 
@@ -112,8 +120,6 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
       onNavigate('athletes-directory');
     } else if (sectionId === 'athletes') {
       onNavigate('athletes-directory');
-    } else if (sectionId === 'competitions') {
-      onNavigate('competitions');
     } else {
       const subItems = getSubMenuItems(sectionId);
       if (subItems.length > 0) {

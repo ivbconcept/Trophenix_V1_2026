@@ -72,7 +72,9 @@ type View =
   | 'sponsor-kit'
   | 'presentation-letter'
   | 'my-projects'
-  | 'competitions';
+  | 'competitions'
+  | 'my-competitions'
+  | 'competition-applications';
 
 function AppContent() {
   const { user, profile, loading, isAdmin, refreshProfile, signIn } = useAuth();
@@ -270,6 +272,24 @@ function AppContent() {
         {view === 'my-projects' && <MyProjects />}
 
         {view === 'competitions' && <CompetitionsListPage />}
+
+        {view === 'my-competitions' && (
+          <div className="p-8">
+            <div className="max-w-7xl mx-auto">
+              <h1 className="text-3xl font-bold text-slate-900 mb-4">Mes Participations</h1>
+              <p className="text-slate-600">Cette fonctionnalité sera bientôt disponible</p>
+            </div>
+          </div>
+        )}
+
+        {view === 'competition-applications' && (
+          <div className="p-8">
+            <div className="max-w-7xl mx-auto">
+              <h1 className="text-3xl font-bold text-slate-900 mb-4">Mes Candidatures</h1>
+              <p className="text-slate-600">Cette fonctionnalité sera bientôt disponible</p>
+            </div>
+          </div>
+        )}
 
         {view === 'manage-offers' && <ManageJobOffers />}
 
