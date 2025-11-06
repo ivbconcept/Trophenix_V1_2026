@@ -282,7 +282,7 @@ export function CompetitionsListPage() {
                 </div>
 
                 {/* Progress Bar */}
-                <div className="mb-4">
+                <div>
                   <div className="flex justify-between text-xs text-slate-600 dark:text-zinc-400 mb-1">
                     <span>Places restantes</span>
                     <span>{competition.maxParticipants - competition.participants} / {competition.maxParticipants}</span>
@@ -294,11 +294,6 @@ export function CompetitionsListPage() {
                     ></div>
                   </div>
                 </div>
-
-                {/* Action Button */}
-                <button className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold py-3 rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50">
-                  Voir les détails
-                </button>
               </div>
             </div>
           ))}
