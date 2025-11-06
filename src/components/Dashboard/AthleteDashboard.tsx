@@ -460,7 +460,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 <div className="absolute top-6 right-6 w-[400px] h-[calc(100%-48px)] flex flex-col gap-6">
                   <div className="relative rounded-3xl overflow-hidden shadow-lg flex-1 group">
                     <img
-                      src="https://images.pexels.com/photos/4761663/pexels-photo-4761663.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                      src="https://images.pexels.com/photos/7045709/pexels-photo-7045709.jpeg?auto=compress&cs=tinysrgb&w=1200"
                       alt="Boxe entraînement"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
