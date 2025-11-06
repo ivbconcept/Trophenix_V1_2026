@@ -37,6 +37,7 @@ import { SponsorKit } from './components/Sponsoring/SponsorKit';
 import { PresentationLetter } from './components/Sponsoring/PresentationLetter';
 import { MyProjects } from './components/Sponsoring/MyProjects';
 import { CompetitionsListPage } from './components/Competitions/CompetitionsListPage';
+import { MyCompetitionApplications } from './components/Competitions/MyCompetitionApplications';
 
 type View =
   | 'landing'
@@ -282,14 +283,7 @@ function AppContent() {
           </div>
         )}
 
-        {view === 'competition-applications' && (
-          <div className="p-8">
-            <div className="max-w-7xl mx-auto">
-              <h1 className="text-3xl font-bold text-slate-900 mb-4">Mes Candidatures</h1>
-              <p className="text-slate-600">Cette fonctionnalité sera bientôt disponible</p>
-            </div>
-          </div>
-        )}
+        {view === 'competition-applications' && <MyCompetitionApplications />}
 
         {view === 'manage-offers' && <ManageJobOffers />}
 
