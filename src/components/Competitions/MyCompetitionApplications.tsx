@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Trophy, Calendar, MapPin, Clock, CheckCircle2, XCircle, AlertCircle, Eye } from 'lucide-react';
+import { Trophy, Calendar, MapPin, Clock, CheckCircle2, XCircle, AlertCircle, Eye, FileText } from 'lucide-react';
 
 type ApplicationStatus = 'pending' | 'accepted' | 'rejected' | 'under_review';
 
@@ -155,19 +155,93 @@ export function MyCompetitionApplications() {
     },
   };
 
+  const stats = {
+    total: mockApplications.length,
+    pending: mockApplications.filter(a => a.status === 'pending').length,
+    under_review: mockApplications.filter(a => a.status === 'under_review').length,
+    accepted: mockApplications.filter(a => a.status === 'accepted').length,
+    rejected: mockApplications.filter(a => a.status === 'rejected').length,
+  };
+
   return (
     <div className="flex flex-col h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-zinc-950 dark:via-black dark:to-zinc-950">
-      <div className="bg-white dark:bg-zinc-900 sticky top-0 z-10 border-b border-slate-200 dark:border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg">
-              <Trophy className="w-6 h-6 text-white" />
+      <div className="bg-white dark:bg-zinc-900 border-b border-slate-200 dark:border-zinc-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="mb-6">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg">
+                <FileText className="w-7 h-7 text-white" />
+              </div>
+              <h1 className="text-4xl font-bold bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
+                Mes Candidatures
+              </h1>
             </div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
-              Mes Candidatures
-            </h1>
+            <p className="text-lg text-slate-600 dark:text-zinc-400">
+              Suivez l'état de vos candidatures aux compétitions
+            </p>
           </div>
-          <p className="text-slate-600 dark:text-zinc-400">Suivez l'état de vos candidatures aux compétitions</p>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+            <div className="bg-slate-50 dark:bg-zinc-800 rounded-lg p-4 border border-slate-200 dark:border-zinc-700">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-xs text-slate-600 dark:text-zinc-400 mb-1">Total</p>
+                  <p className="text-2xl font-bold text-slate-900 dark:text-white">{stats.total}</p>
+                </div>
+                <div className="w-10 h-10 bg-slate-200 dark:bg-zinc-700 rounded-lg flex items-center justify-center">
+                  <FileText className="w-5 h-5 text-slate-600 dark:text-zinc-400" />
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-4 border border-amber-200 dark:border-amber-800">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-xs text-amber-700 dark:text-amber-400 mb-1">En attente</p>
+                  <p className="text-2xl font-bold text-amber-600 dark:text-amber-400">{stats.pending}</p>
+                </div>
+                <div className="w-10 h-10 bg-amber-100 dark:bg-amber-900/30 rounded-lg flex items-center justify-center">
+                  <Clock className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-xs text-blue-700 dark:text-blue-400 mb-1">En examen</p>
+                  <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">{stats.under_review}</p>
+                </div>
+                <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
+                  <AlertCircle className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-4 border border-emerald-200 dark:border-emerald-800">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-xs text-emerald-700 dark:text-emerald-400 mb-1">Acceptées</p>
+                  <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">{stats.accepted}</p>
+                </div>
+                <div className="w-10 h-10 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg flex items-center justify-center">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-4 border border-red-200 dark:border-red-800">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-xs text-red-700 dark:text-red-400 mb-1">Refusées</p>
+                  <p className="text-2xl font-bold text-red-600 dark:text-red-400">{stats.rejected}</p>
+                </div>
+                <div className="w-10 h-10 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center">
+                  <XCircle className="w-5 h-5 text-red-600 dark:text-red-400" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
