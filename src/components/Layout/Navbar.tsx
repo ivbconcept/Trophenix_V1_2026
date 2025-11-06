@@ -104,8 +104,8 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
       return [
         { id: 'competitions', label: 'Toutes les compétitions', icon: Trophy },
         { id: 'competition-applications', label: 'Mes candidatures', icon: ListChecks },
-        { id: 'my-competitions', label: 'Mes participations', icon: Award },
         { id: 'competition-invitations', label: 'Mes invitations', icon: Mail },
+        { id: 'my-competitions', label: 'Mes participations', icon: Award },
         { id: 'competition-agenda', label: 'Agenda', icon: Calendar },
       ];
     }
