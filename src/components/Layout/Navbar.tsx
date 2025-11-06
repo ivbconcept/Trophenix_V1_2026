@@ -112,6 +112,8 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
       onNavigate('athletes-directory');
     } else if (sectionId === 'athletes') {
       onNavigate('athletes-directory');
+    } else if (sectionId === 'competitions') {
+      onNavigate('competitions');
     } else {
       const subItems = getSubMenuItems(sectionId);
       if (subItems.length > 0) {
