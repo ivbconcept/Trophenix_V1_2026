@@ -38,7 +38,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
       setActiveSection('employability');
     } else if (['sponsoring-offers', 'my-sponsoring-requests', 'sponsor-kit', 'presentation-letter', 'my-projects'].includes(currentView)) {
       setActiveSection('sponsoring');
-    } else if (['competitions', 'my-competitions', 'competition-applications', 'competition-agenda'].includes(currentView)) {
+    } else if (['competitions', 'my-competitions', 'competition-applications', 'competition-agenda', 'competition-invitations'].includes(currentView)) {
       setActiveSection('competitions');
     }
   }, [currentView]);
@@ -105,6 +105,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
         { id: 'competitions', label: 'Toutes les compétitions', icon: Trophy },
         { id: 'competition-applications', label: 'Mes candidatures', icon: ListChecks },
         { id: 'my-competitions', label: 'Mes participations', icon: Award },
+        { id: 'competition-invitations', label: 'Mes invitations', icon: Mail },
         { id: 'competition-agenda', label: 'Agenda', icon: Calendar },
       ];
     }

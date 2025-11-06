@@ -40,6 +40,7 @@ import { CompetitionsListPage } from './components/Competitions/CompetitionsList
 import { MyCompetitionApplications } from './components/Competitions/MyCompetitionApplications';
 import { MyParticipations } from './components/Competitions/MyParticipations';
 import { CompetitionAgenda } from './components/Competitions/CompetitionAgenda';
+import { MyInvitations } from './components/Competitions/MyInvitations';
 
 type View =
   | 'landing'
@@ -78,7 +79,8 @@ type View =
   | 'competitions'
   | 'my-competitions'
   | 'competition-applications'
-  | 'competition-agenda';
+  | 'competition-agenda'
+  | 'competition-invitations';
 
 function AppContent() {
   const { user, profile, loading, isAdmin, refreshProfile, signIn } = useAuth();
@@ -282,6 +284,8 @@ function AppContent() {
         {view === 'my-competitions' && <MyParticipations />}
 
         {view === 'competition-agenda' && <CompetitionAgenda />}
+
+        {view === 'competition-invitations' && <MyInvitations />}
 
         {view === 'manage-offers' && <ManageJobOffers />}
 
