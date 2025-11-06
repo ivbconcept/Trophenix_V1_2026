@@ -68,7 +68,7 @@ const mockInvitations: CompetitionInvitation[] = [
     category: 'Course sur route - Pro',
     participants_expected: 150,
     prize_pool: '180 000 €',
-    image: 'https://images.pexels.com/photos/6316071/pexels-photo-6316071.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://images.pexels.com/photos/2449452/pexels-photo-2449452.jpeg?auto=compress&cs=tinysrgb&w=800',
     invitation_message: 'Votre participation serait un honneur pour notre événement. Nous avons préparé un parcours exceptionnel.',
     invited_at: '2025-10-28T09:15:00',
     responded_at: '2025-10-29T11:00:00',
