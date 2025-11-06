@@ -165,7 +165,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
                     title={showSecondarySidebar ? section.label : undefined}
                     className={`w-full flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-medium transition-all relative group ${
                       isActive
-                        ? 'bg-slate-600/30 dark:bg-slate-700/40 text-slate-900 dark:text-white shadow-md'
+                        ? 'bg-blue-500/20 dark:bg-blue-600/30 text-slate-900 dark:text-white shadow-md'
                         : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
                     } ${showSecondarySidebar ? 'justify-center' : ''}`}
                   >
@@ -196,7 +196,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
                 onClick={() => onNavigate('messages')}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                   currentView === 'messages'
-                    ? 'bg-slate-600/30 dark:bg-slate-700/40 text-slate-900 dark:text-white shadow-md'
+                    ? 'bg-blue-500/20 dark:bg-blue-600/30 text-slate-900 dark:text-white shadow-md'
                     : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
@@ -207,7 +207,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
                 onClick={() => onNavigate('elea')}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                   currentView === 'elea'
-                    ? 'bg-slate-600/30 dark:bg-slate-700/40 text-slate-900 dark:text-white shadow-md'
+                    ? 'bg-blue-500/20 dark:bg-blue-600/30 text-slate-900 dark:text-white shadow-md'
                     : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
@@ -219,7 +219,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
                 onClick={() => onNavigate('help')}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                   currentView === 'help'
-                    ? 'bg-slate-600/30 dark:bg-slate-700/40 text-slate-900 dark:text-white shadow-md'
+                    ? 'bg-blue-500/20 dark:bg-blue-600/30 text-slate-900 dark:text-white shadow-md'
                     : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
@@ -230,7 +230,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
                 onClick={() => onNavigate('settings')}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                   currentView === 'settings'
-                    ? 'bg-slate-600/30 dark:bg-slate-700/40 text-slate-900 dark:text-white shadow-md'
+                    ? 'bg-blue-500/20 dark:bg-blue-600/30 text-slate-900 dark:text-white shadow-md'
                     : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
@@ -246,7 +246,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
                 title="Messagerie"
                 className={`w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                   currentView === 'messages'
-                    ? 'bg-slate-600/30 dark:bg-slate-700/40 text-slate-900 dark:text-white shadow-md'
+                    ? 'bg-blue-500/20 dark:bg-blue-600/30 text-slate-900 dark:text-white shadow-md'
                     : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
@@ -257,7 +257,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
                 title="Elea"
                 className={`w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                   currentView === 'elea'
-                    ? 'bg-slate-600/30 dark:bg-slate-700/40 text-slate-900 dark:text-white shadow-md'
+                    ? 'bg-blue-500/20 dark:bg-blue-600/30 text-slate-900 dark:text-white shadow-md'
                     : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
@@ -269,7 +269,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
                 title="Aide"
                 className={`w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                   currentView === 'help'
-                    ? 'bg-slate-600/30 dark:bg-slate-700/40 text-slate-900 dark:text-white shadow-md'
+                    ? 'bg-blue-500/20 dark:bg-blue-600/30 text-slate-900 dark:text-white shadow-md'
                     : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
@@ -280,7 +280,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
                 title="Paramètres"
                 className={`w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                   currentView === 'settings'
-                    ? 'bg-slate-600/30 dark:bg-slate-700/40 text-slate-900 dark:text-white shadow-md'
+                    ? 'bg-blue-500/20 dark:bg-blue-600/30 text-slate-900 dark:text-white shadow-md'
                     : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
@@ -314,7 +314,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
                     onClick={() => onNavigate(item.id)}
                     className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-sm font-medium transition-all group ${
                       isActive
-                        ? 'bg-slate-600/30 dark:bg-slate-700/40 text-slate-900 dark:text-white shadow-md'
+                        ? 'bg-blue-500/20 dark:bg-blue-600/30 text-slate-900 dark:text-white shadow-md'
                         : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-100 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
                     }`}
                   >
