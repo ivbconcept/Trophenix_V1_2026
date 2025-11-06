@@ -103,8 +103,8 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
     if (section === 'competitions') {
       return [
         { id: 'competitions', label: 'Toutes les compétitions', icon: Trophy },
-        { id: 'my-competitions', label: 'Mes participations', icon: Calendar },
         { id: 'competition-applications', label: 'Mes candidatures', icon: ListChecks },
+        { id: 'my-competitions', label: 'Mes participations', icon: Calendar },
       ];
     }
 
