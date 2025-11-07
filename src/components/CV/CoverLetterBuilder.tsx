@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FileText, Save, Plus, Trash2, Edit2, Download, Check, Upload, X } from 'lucide-react';
+import { FileText, Save, Plus, Trash2, Edit2, Download, Check, Upload, X, Menu } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { supabase } from '../../lib/supabase';
 
@@ -36,6 +36,7 @@ export default function CoverLetterBuilder() {
   const [uploadedFiles, setUploadedFiles] = useState<CoverLetterFile[]>([]);
   const [uploading, setUploading] = useState(false);
   const [uploadMessage, setUploadMessage] = useState('');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -142,6 +143,7 @@ export default function CoverLetterBuilder() {
     setEditedTitle(letter.title);
     setEditedContent(letter.content);
     setIsEditing(false);
+    setIsSidebarOpen(false);
   };
 
   const loadUploadedFiles = async () => {
@@ -284,9 +286,18 @@ export default function CoverLetterBuilder() {
 
       <section className="sticky top-0 px-8 py-8 bg-white border-b border-slate-200 z-40">
         <div className="flex items-center justify-between">
-          <div>
-            <h3 className="text-2xl font-bold text-slate-900 mb-3">Lettre de Motivation</h3>
-            <p className="text-slate-600 text-lg">Créez et personnalisez vos lettres de motivation</p>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+              className="lg:hidden p-2 hover:bg-slate-100 rounded-lg transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isSidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+            <div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-3">Lettre de Motivation</h3>
+              <p className="text-slate-600 text-lg hidden md:block">Créez et personnalisez vos lettres de motivation</p>
+            </div>
           </div>
           <div className="flex items-center gap-3">
             <button
@@ -296,15 +307,22 @@ export default function CoverLetterBuilder() {
               <div className="w-8 h-8 bg-slate-900 hover:bg-slate-800 rounded-full flex items-center justify-center transition-colors">
                 <Plus className="w-5 h-5 text-white" />
               </div>
-              Nouvelle lettre
+              <span className="hidden sm:inline">Nouvelle lettre</span>
             </button>
           </div>
         </div>
       </section>
 
-      <div className="flex-1 overflow-hidden">
+      <div className="flex-1 overflow-hidden relative">
         <div className="grid grid-cols-12 h-full">
-          <div className="col-span-4 border-r border-slate-200 bg-white overflow-y-auto">
+          <div className={`
+            col-span-12 lg:col-span-4
+            lg:relative fixed inset-y-0 left-0 z-50
+            border-r border-slate-200 bg-white overflow-y-auto
+            transition-transform duration-300 ease-in-out
+            ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+            w-full lg:w-auto
+          `}>
             <div className="p-6">
               <div className="flex gap-2 mb-4">
                 <button
@@ -450,7 +468,14 @@ export default function CoverLetterBuilder() {
             </div>
           </div>
 
-          <div className="col-span-8 overflow-y-auto bg-slate-50">
+          {isSidebarOpen && (
+            <div
+              className="lg:hidden fixed inset-0 bg-black/50 z-40"
+              onClick={() => setIsSidebarOpen(false)}
+            />
+          )}
+
+          <div className="col-span-12 lg:col-span-8 overflow-y-auto bg-slate-50">
             <div className="max-w-4xl mx-auto p-8">
               {activeTab === 'uploaded' ? (
                 <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8 text-center">
