@@ -286,18 +286,9 @@ export default function CoverLetterBuilder() {
 
       <section className="sticky top-0 px-8 py-8 bg-white border-b border-slate-200 z-40">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-              className="lg:hidden p-2 hover:bg-slate-100 rounded-lg transition-colors"
-              aria-label="Toggle menu"
-            >
-              {isSidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-            <div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">Lettre de Motivation</h3>
-              <p className="text-slate-600 text-lg hidden md:block">Créez et personnalisez vos lettres de motivation</p>
-            </div>
+          <div>
+            <h3 className="text-2xl font-bold text-slate-900 mb-3">Lettre de Motivation</h3>
+            <p className="text-slate-600 text-lg hidden md:block">Créez et personnalisez vos lettres de motivation</p>
           </div>
           <div className="flex items-center gap-3">
             <button
@@ -477,6 +468,15 @@ export default function CoverLetterBuilder() {
 
           <div className="col-span-12 lg:col-span-8 overflow-y-auto bg-slate-50">
             <div className="max-w-4xl mx-auto p-8">
+              <button
+                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                className="lg:hidden mb-4 p-3 bg-white hover:bg-slate-50 rounded-xl border border-slate-200 transition-colors flex items-center gap-2 shadow-sm"
+                aria-label="Toggle menu"
+              >
+                <Menu className="w-5 h-5" />
+                <span className="font-medium">Voir les lettres</span>
+              </button>
+
               {activeTab === 'uploaded' ? (
                 <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8 text-center">
                   <FileText className="w-16 h-16 text-slate-300 mx-auto mb-4" />
