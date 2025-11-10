@@ -110,7 +110,7 @@ export function CompetitionsListPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-zinc-950 dark:via-black dark:to-zinc-950">
       {/* Fixed Header Section */}
-      <div className="sticky top-0 z-50 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-zinc-950 dark:via-black dark:to-zinc-950 border-b border-slate-200 dark:border-zinc-800">
+      <div className="sticky top-0 z-50 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-zinc-950 dark:via-black dark:to-zinc-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           {/* Header */}
           <div className="mb-4">
