@@ -796,9 +796,6 @@ export function LandingPage({ onSignUp, onSignIn, onNavigateToInvestors, onDemoL
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
                 Un seul espace pour gérer <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">votre carrière sportive</span>
               </h1>
-              <p className="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed">
-                Trophenix regroupe les outils et l'écosystème sportif dans un seul espace pour optimiser votre réussite.
-              </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   onClick={onSignUp}
