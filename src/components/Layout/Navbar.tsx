@@ -191,7 +191,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
 
         <div className={`p-4 border-t border-slate-200/50 dark:border-zinc-800 ${showSecondarySidebar ? 'px-2' : 'px-4'} md:px-2`}>
           {!showSecondarySidebar && (
-            <div className="mb-4 space-y-2 lg:hidden">
+            <div className="mb-4 space-y-2">
               <button
                 onClick={() => onNavigate('messages')}
                 title="Messagerie"
@@ -244,7 +244,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
             </div>
           )}
           {showSecondarySidebar && (
-            <div className="mb-2 space-y-2">
+            <div className="mb-2 space-y-2 hidden md:block">
               <button
                 onClick={() => onNavigate('messages')}
                 title="Messagerie"
@@ -296,7 +296,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
       </aside>
 
       {showSecondarySidebar && (
-        <aside className="w-64 bg-white/80 dark:bg-zinc-950/95 backdrop-blur-xl border-r border-slate-200/50 dark:border-zinc-800 flex-col animate-in slide-in-from-left duration-300 hidden lg:flex">
+        <aside className="w-64 bg-white/80 dark:bg-zinc-950/95 backdrop-blur-xl border-r border-slate-200/50 dark:border-zinc-800 flex flex-col animate-in slide-in-from-left duration-300 hidden md:flex">
           <div className="p-6 border-b border-slate-200/50 dark:border-zinc-800">
             <div className="flex items-center gap-2 mb-2">
               <div className="h-1 w-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></div>
