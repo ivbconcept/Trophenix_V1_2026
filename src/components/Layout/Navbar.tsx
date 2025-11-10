@@ -339,7 +339,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
       </aside>
 
       {showSecondarySidebar && (
-        <aside className="w-64 bg-white/80 dark:bg-zinc-950/95 backdrop-blur-xl border-r border-slate-200/50 dark:border-zinc-800 flex flex-col animate-in slide-in-from-left duration-300 lg:flex md:hidden">
+        <aside className="w-64 bg-white/80 dark:bg-zinc-950/95 backdrop-blur-xl border-r border-slate-200/50 dark:border-zinc-800 flex-col animate-in slide-in-from-left duration-300 hidden lg:flex">
           <div className="p-6 border-b border-slate-200/50 dark:border-zinc-800">
             <div className="flex items-center gap-2 mb-2">
               <div className="h-1 w-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></div>
