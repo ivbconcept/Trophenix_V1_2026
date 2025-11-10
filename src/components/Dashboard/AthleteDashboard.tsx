@@ -188,7 +188,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               </div>
 
               <div className="grid grid-cols-12 gap-6">
-              <div className="col-span-12 lg:col-span-8">
+              <div className="col-span-12 md:col-span-12 lg:col-span-8">
                 <div className="bg-white dark:bg-zinc-950 rounded-3xl overflow-hidden shadow-lg">
                   <div className="relative h-[400px]">
                     <img
@@ -226,7 +226,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                 </div>
               </div>
 
-              <div className="col-span-12 lg:col-span-4 flex flex-col gap-3">
+              <div className="col-span-12 md:col-span-12 lg:col-span-4 flex flex-col gap-3">
                 <div className="bg-white dark:bg-zinc-950 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex gap-4 p-4 items-center">
                   <img
                     src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?w=160&h=100&fit=crop"
@@ -314,7 +314,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
               </div>
 
               <div className="grid grid-cols-12 gap-6">
-                <div className="col-span-12 lg:col-span-4">
+                <div className="col-span-12 md:col-span-6 lg:col-span-4">
                   <div className="bg-white dark:bg-zinc-950 rounded-3xl overflow-hidden shadow-lg h-full">
                     <div className="relative h-[400px]">
                       <img
@@ -352,7 +352,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   </div>
                 </div>
 
-                <div className="col-span-12 lg:col-span-4">
+                <div className="col-span-12 md:col-span-6 lg:col-span-4">
                   <div className="bg-white dark:bg-zinc-950 rounded-3xl overflow-hidden shadow-lg h-full">
                     <div className="relative h-[400px]">
                       <img
@@ -390,7 +390,7 @@ export function AthleteDashboard({ onNavigate }: AthleteDashboardProps) {
                   </div>
                 </div>
 
-                <div className="col-span-12 lg:col-span-4">
+                <div className="col-span-12 md:col-span-12 lg:col-span-4">
                   <div className="bg-white dark:bg-zinc-950 rounded-3xl overflow-hidden shadow-lg h-full">
                     <div className="relative h-[400px]">
                       <img
