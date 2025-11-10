@@ -18,8 +18,8 @@
  * @module components/AI/AgentElea
  */
 
-import { useEffect, useRef } from 'react';
-import { MessageCircle, X, Send } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { MessageCircle, X, Send, Paperclip, Mic } from 'lucide-react';
 import { useEleaAgent } from '../../hooks/useEleaAgent';
 import { isFeatureEnabled } from '../../config/features';
 import type { AgentContext } from '../../types/agent';
@@ -62,6 +62,9 @@ export function AgentElea({ context = { page: 'dashboard', step: 0 }, position =
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [isRecording, setIsRecording] = useState(false);
 
   // Scroll automatique vers le bas quand de nouveaux messages arrivent
   useEffect(() => {
@@ -95,7 +98,26 @@ export function AgentElea({ context = { page: 'dashboard', step: 0 }, position =
     if (message?.trim()) {
       sendMessage(message);
       e.currentTarget.reset();
+      setSelectedFile(null);
     }
+  };
+
+  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setSelectedFile(file);
+    }
+  };
+
+  const handleRemoveFile = () => {
+    setSelectedFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
+  const toggleRecording = () => {
+    setIsRecording(!isRecording);
   };
 
   return (
@@ -105,7 +127,7 @@ export function AgentElea({ context = { page: 'dashboard', step: 0 }, position =
         <div className="mb-4 w-96 bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200 animate-in slide-in-from-bottom-8 duration-300">
           {/* En-tête */}
           <div className="bg-gradient-to-r from-teal-500 to-teal-600 p-4 text-white">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between mb-3">
               <div className="flex items-center space-x-3">
                 {/* Avatar de l'agent */}
                 <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur flex items-center justify-center animate-pulse">
@@ -124,6 +146,21 @@ export function AgentElea({ context = { page: 'dashboard', step: 0 }, position =
                 <X className="w-5 h-5" />
               </button>
             </div>
+
+            {/* Demandes rapides */}
+            {messages.length === 0 && (
+              <div className="flex gap-2 overflow-x-auto pb-1">
+                {suggestions.slice(0, 4).map((suggestion) => (
+                  <button
+                    key={suggestion.id}
+                    onClick={() => sendSuggestion(suggestion)}
+                    className="flex-shrink-0 text-xs px-3 py-1.5 rounded-full bg-white/20 hover:bg-white/30 transition-colors border border-white/30 whitespace-nowrap"
+                  >
+                    {suggestion.text}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Zone des Messages */}
@@ -180,29 +217,53 @@ export function AgentElea({ context = { page: 'dashboard', step: 0 }, position =
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Suggestions */}
-          {suggestions.length > 0 && !isLoading && (
-            <div className="px-4 py-3 border-t border-slate-200 bg-white">
-              <p className="text-xs text-slate-500 mb-2 font-medium">
-                Suggestions :
-              </p>
-              <div className="space-y-2">
-                {suggestions.map((suggestion) => (
-                  <button
-                    key={suggestion.id}
-                    onClick={() => sendSuggestion(suggestion)}
-                    className="w-full text-left text-sm px-3 py-2 rounded-lg bg-slate-50 hover:bg-slate-100 transition-colors text-slate-700 border border-slate-200 hover:border-teal-300"
-                  >
-                    💡 {suggestion.text}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
 
           {/* Zone de Saisie */}
           <div className="p-4 border-t border-slate-200 bg-white">
-            <form onSubmit={handleSubmit} className="flex space-x-2">
+            {selectedFile && (
+              <div className="mb-3 flex items-center gap-2 p-2 bg-teal-50 rounded-lg border border-teal-200">
+                <Paperclip className="w-4 h-4 text-teal-600" />
+                <span className="text-xs text-teal-800 flex-1 truncate">
+                  {selectedFile.name}
+                </span>
+                <button
+                  type="button"
+                  onClick={handleRemoveFile}
+                  className="p-1 hover:bg-teal-100 rounded transition-colors"
+                >
+                  <X className="w-3 h-3 text-teal-600" />
+                </button>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="flex items-center space-x-2">
+              <input
+                ref={fileInputRef}
+                type="file"
+                onChange={handleFileSelect}
+                className="hidden"
+                accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png"
+              />
+              <button
+                type="button"
+                onClick={() => fileInputRef.current?.click()}
+                className="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-600"
+                title="Ajouter un fichier"
+              >
+                <Paperclip className="w-5 h-5" />
+              </button>
+              <button
+                type="button"
+                onClick={toggleRecording}
+                className={`p-2 rounded-full transition-colors ${
+                  isRecording
+                    ? 'bg-red-500 hover:bg-red-600 text-white'
+                    : 'hover:bg-slate-100 text-slate-600'
+                }`}
+                title={isRecording ? 'Arrêter l\'enregistrement' : 'Enregistrer un message vocal'}
+              >
+                <Mic className="w-5 h-5" />
+              </button>
               <input
                 ref={inputRef}
                 type="text"
