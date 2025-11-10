@@ -216,7 +216,7 @@ export function SponsoringOffers() {
               <p className="text-gray-600">Essayez de modifier vos filtres de recherche</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
               {offers.map((offer) => (
                 <div
                   key={offer.id}
