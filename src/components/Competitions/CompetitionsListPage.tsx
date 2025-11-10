@@ -208,12 +208,6 @@ export function CompetitionsListPage() {
           </div>
         )}
 
-        {/* Results Count */}
-        <div className="mb-6">
-          <p className="text-sm text-slate-600 dark:text-zinc-400">
-            {filteredCompetitions.length} compétition{filteredCompetitions.length > 1 ? 's' : ''} trouvée{filteredCompetitions.length > 1 ? 's' : ''}
-          </p>
-        </div>
 
         {/* Competitions Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
