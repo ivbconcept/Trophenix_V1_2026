@@ -191,101 +191,58 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
 
         <div className={`p-4 border-t border-slate-200/50 dark:border-zinc-800 ${showSecondarySidebar ? 'px-2' : 'px-4'} md:px-2`}>
           {!showSecondarySidebar && (
-            <div className="mb-4 space-y-2 md:hidden">
+            <div className="mb-4 space-y-2 lg:hidden">
               <button
                 onClick={() => onNavigate('messages')}
-                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                title="Messagerie"
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all md:justify-center ${
                   currentView === 'messages'
                     ? 'bg-blue-500/10 dark:bg-blue-500/15 text-slate-900 dark:text-white shadow-sm'
                     : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 <MessageSquare className="h-5 w-5" />
-                <span>Messagerie</span>
+                <span className="md:hidden">Messagerie</span>
               </button>
               <button
                 onClick={() => onNavigate('elea')}
-                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                title="Elea"
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all md:justify-center ${
                   currentView === 'elea'
                     ? 'bg-blue-500/10 dark:bg-blue-500/15 text-slate-900 dark:text-white shadow-sm'
                     : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 <Sparkles className="h-5 w-5" />
-                <span>Elea</span>
+                <span className="md:hidden">Elea</span>
               </button>
               <div className="border-t border-slate-200/50 dark:border-zinc-700 my-2"></div>
               <button
                 onClick={() => onNavigate('help')}
-                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                title="Aide"
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all md:justify-center ${
                   currentView === 'help'
                     ? 'bg-blue-500/10 dark:bg-blue-500/15 text-slate-900 dark:text-white shadow-sm'
                     : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 <HelpCircle className="h-5 w-5" />
-                <span>Aide</span>
+                <span className="md:hidden">Aide</span>
               </button>
               <button
                 onClick={() => onNavigate('settings')}
-                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                title="Paramètres"
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all md:justify-center ${
                   currentView === 'settings'
                     ? 'bg-blue-500/10 dark:bg-blue-500/15 text-slate-900 dark:text-white shadow-sm'
                     : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 <Settings className="h-5 w-5" />
-                <span>Paramètres</span>
+                <span className="md:hidden">Paramètres</span>
               </button>
             </div>
           )}
-          <div className="mb-2 space-y-2 hidden md:block">
-            <button
-              onClick={() => onNavigate('messages')}
-              title="Messagerie"
-              className={`w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
-                currentView === 'messages'
-                  ? 'bg-blue-500/10 dark:bg-blue-500/15 text-slate-900 dark:text-white shadow-sm'
-                  : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              <MessageSquare className="h-5 w-5" />
-            </button>
-            <button
-              onClick={() => onNavigate('elea')}
-              title="Elea"
-              className={`w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
-                currentView === 'elea'
-                  ? 'bg-blue-500/10 dark:bg-blue-500/15 text-slate-900 dark:text-white shadow-sm'
-                  : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              <Sparkles className="h-5 w-5" />
-            </button>
-            <div className="border-t border-slate-200/50 dark:border-zinc-700 my-2"></div>
-            <button
-              onClick={() => onNavigate('help')}
-              title="Aide"
-              className={`w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
-                currentView === 'help'
-                  ? 'bg-blue-500/10 dark:bg-blue-500/15 text-slate-900 dark:text-white shadow-sm'
-                  : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              <HelpCircle className="h-5 w-5" />
-            </button>
-            <button
-              onClick={() => onNavigate('settings')}
-              title="Paramètres"
-              className={`w-full flex items-center justify-center px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
-                currentView === 'settings'
-                  ? 'bg-blue-500/10 dark:bg-blue-500/15 text-slate-900 dark:text-white shadow-sm'
-                  : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-200/70 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              <Settings className="h-5 w-5" />
-            </button>
-          </div>
           {showSecondarySidebar && (
             <div className="mb-2 space-y-2">
               <button
