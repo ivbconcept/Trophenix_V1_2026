@@ -585,7 +585,7 @@ function InfoCard({ title, author, category, time, image, description }: InfoCar
       </div>
       <div className="p-6">
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+          <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg">
             <span className="text-white text-base font-semibold">{author.charAt(0)}</span>
           </div>
           <div className="flex-1">
