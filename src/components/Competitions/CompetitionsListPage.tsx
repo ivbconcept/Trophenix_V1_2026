@@ -112,12 +112,9 @@ export function CompetitionsListPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent mb-3">
+          <h1 className="text-3xl font-bold text-slate-700 dark:text-slate-300 mb-3">
             Compétitions Disponibles
           </h1>
-          <p className="text-lg text-slate-600 dark:text-zinc-400">
-            Découvrez et participez aux compétitions sportives de haut niveau
-          </p>
         </div>
 
         {/* Search and Filters */}
