@@ -62,6 +62,7 @@ type View =
   | 'create-offer'
   | 'received-applications'
   | 'athletes-directory'
+  | 'experts-directory'
   | 'companies-directory'
   | 'messages'
   | 'elea'
@@ -294,6 +295,8 @@ function AppContent() {
         {view === 'received-applications' && <ViewApplications />}
 
         {view === 'athletes-directory' && <AthleteDirectory />}
+
+        {view === 'experts-directory' && <AthleteDirectory />}
 
         {view === 'companies-directory' && <CompanyDirectory />}
 

@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { Search, MapPin, Filter, GraduationCap, Target, Building2 } from 'lucide-react';
 
-type TabType = 'sportifs' | 'experts';
-type SportFilterType = 'top' | 'expert' | 'football' | 'basketball' | 'tennis';
 type StatusType = 'En Blessure' | 'En activité' | 'En reconversion' | 'En Réflexion';
 
 interface MockAthlete {
@@ -102,8 +100,6 @@ const statusConfig: Record<StatusType, { color: string; dotColor: string }> = {
 
 export default function AthleteDirectory() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [activeTab, setActiveTab] = useState<TabType>('sportifs');
-  const [sportFilter, setSportFilter] = useState<SportFilterType>('top');
   const [showFilters, setShowFilters] = useState(false);
 
   const filteredAthletes = mockAthletes.filter((athlete) => {
@@ -123,39 +119,6 @@ export default function AthleteDirectory() {
 
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-4 flex-1">
-              <div className="inline-flex items-center gap-0 bg-slate-100 dark:bg-zinc-800 rounded-2xl p-1 shadow-sm">
-            <button
-              onClick={() => setSportFilter('top')}
-              className={`px-6 py-1.5 rounded-xl font-semibold text-base transition-all ${
-                sportFilter === 'top'
-                  ? 'bg-white dark:bg-black text-slate-900 dark:text-white shadow-md'
-                  : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
-              }`}
-            >
-              Sportif
-            </button>
-            <button
-              onClick={() => setSportFilter('expert')}
-              className={`px-6 py-1.5 rounded-xl font-semibold text-base transition-all ${
-                sportFilter === 'expert'
-                  ? 'bg-white dark:bg-black text-slate-900 dark:text-white shadow-md'
-                  : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
-              }`}
-            >
-              Expert
-            </button>
-            <button
-              onClick={() => setSportFilter('football')}
-              className={`px-6 py-1.5 rounded-xl font-semibold text-base transition-all ${
-                sportFilter === 'football'
-                  ? 'bg-white dark:bg-black text-slate-900 dark:text-white shadow-md'
-                  : 'bg-transparent text-slate-500 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-zinc-300'
-              }`}
-            >
-              Entreprise
-            </button>
-              </div>
-
               <div className="relative flex-1 max-w-lg">
                 <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-slate-400 dark:text-zinc-500" size={20} />
                 <input

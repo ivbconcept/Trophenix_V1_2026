@@ -32,7 +32,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
       setActiveSection('dashboard');
     } else if (['job-offers', 'my-applications', 'cv-builder', 'cover-letter-builder'].includes(currentView)) {
       setActiveSection('employability');
-    } else if (currentView === 'athletes-directory') {
+    } else if (['athletes-directory', 'experts-directory', 'companies-directory'].includes(currentView)) {
       setActiveSection('group');
     } else if (currentView === 'manage-offers' || currentView === 'received-applications') {
       setActiveSection('employability');
@@ -52,7 +52,7 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
           { id: 'dashboard', label: 'Accueil', icon: LayoutDashboard },
           { id: 'employability', label: 'Emploi', icon: Award, hasSubmenu: true },
           { id: 'sponsoring', label: 'Sponsoring', icon: HandshakeIcon, hasSubmenu: true },
-          { id: 'group', label: 'Annuaire', icon: UsersRound },
+          { id: 'group', label: 'Annuaire', icon: UsersRound, hasSubmenu: true },
           { id: 'competitions', label: 'Compétitions', icon: Trophy, hasSubmenu: true },
         ];
       case 'company':
@@ -110,6 +110,14 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
       ];
     }
 
+    if (section === 'group') {
+      return [
+        { id: 'athletes-directory', label: 'Sportifs', icon: Trophy },
+        { id: 'experts-directory', label: 'Experts', icon: Users },
+        { id: 'companies-directory', label: 'Entreprises', icon: Briefcase },
+      ];
+    }
+
     return [];
   };
 
@@ -118,8 +126,6 @@ export function Navbar({ currentView, onNavigate, onLogout, children }: NavbarPr
 
     if (sectionId === 'dashboard') {
       onNavigate(profile?.user_type === 'athlete' ? 'athlete-dashboard' : 'company-dashboard');
-    } else if (sectionId === 'group') {
-      onNavigate('athletes-directory');
     } else if (sectionId === 'athletes') {
       onNavigate('athletes-directory');
     } else {
