@@ -109,16 +109,18 @@ export function CompetitionsListPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-zinc-950 dark:via-black dark:to-zinc-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-slate-700 dark:text-slate-300 mb-3">
-            Compétitions Disponibles
-          </h1>
-        </div>
+      {/* Fixed Header Section */}
+      <div className="sticky top-0 z-50 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-zinc-950 dark:via-black dark:to-zinc-950 border-b border-slate-200 dark:border-zinc-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          {/* Header */}
+          <div className="mb-4">
+            <h1 className="text-3xl font-bold text-slate-700 dark:text-slate-300 mb-3">
+              Compétitions Disponibles
+            </h1>
+          </div>
 
-        {/* Search and Filters */}
-        <div className="mb-6 flex flex-col sm:flex-row gap-4">
+          {/* Search and Filters */}
+          <div className="mb-4 flex flex-col sm:flex-row gap-4">
           <div className="flex-1 relative">
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
             <input
@@ -141,9 +143,9 @@ export function CompetitionsListPage() {
           </button>
         </div>
 
-        {/* Filters Panel */}
-        {showFilters && (
-          <div className="mb-6 bg-white dark:bg-zinc-900 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-zinc-800">
+          {/* Filters Panel */}
+          {showFilters && (
+            <div className="mb-4 bg-white dark:bg-zinc-900 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-zinc-800">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Filtres</h3>
               <button
@@ -205,10 +207,13 @@ export function CompetitionsListPage() {
                 </button>
               </div>
             )}
-          </div>
-        )}
+            </div>
+          )}
+        </div>
+      </div>
 
-
+      {/* Scrollable Content Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Competitions Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
           {filteredCompetitions.map((competition) => (
