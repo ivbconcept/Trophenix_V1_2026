@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Bot, Send, Trash2, Plus, MessageCircle, Sparkles, Archive, Search, Settings, Smile } from 'lucide-react';
+import { Bot, Send, Trash2, Plus, MessageCircle, Sparkles, Archive, Search, Settings, Smile, Paperclip, Mic, X } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { EleaService } from '../../services/eleaService';
 import type { EleaConversation, EleaMessage } from '../../types/database';
@@ -25,8 +25,11 @@ export function EleaPage() {
   const [suggestions, setSuggestions] = useState<Array<{ id: string; text: string }>>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [isRecording, setIsRecording] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const context: AgentContext = {
     page: 'elea_chat',
@@ -202,6 +205,24 @@ export function EleaPage() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setSelectedFile(file);
+    }
+  };
+
+  const handleRemoveFile = () => {
+    setSelectedFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
+  const toggleRecording = () => {
+    setIsRecording(!isRecording);
   };
 
   const handleArchiveConversation = async (conversationId: string) => {
@@ -404,7 +425,7 @@ export function EleaPage() {
         {activeConversation ? (
           <>
             <div className="bg-white dark:bg-zinc-950 border-b border-slate-200 dark:border-zinc-800 px-6 py-4">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center">
                     <Bot className="h-6 w-6 text-white" />
@@ -415,6 +436,21 @@ export function EleaPage() {
                   </div>
                 </div>
               </div>
+
+              {messages.length === 0 && (
+                <div className="flex gap-2 overflow-x-auto pb-2">
+                  {suggestions.slice(0, 4).map((suggestion) => (
+                    <button
+                      key={suggestion.id}
+                      onClick={() => handleSuggestionClick(suggestion)}
+                      className="flex-shrink-0 text-sm px-4 py-2 rounded-full bg-slate-100 dark:bg-zinc-900 hover:bg-slate-200 dark:hover:bg-zinc-800 transition-colors text-slate-700 dark:text-zinc-300 border border-slate-200 dark:border-zinc-800 hover:border-blue-300 dark:hover:border-blue-700 whitespace-nowrap"
+                      disabled={isLoading}
+                    >
+                      {suggestion.text}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-slate-50 dark:bg-black">
@@ -468,44 +504,51 @@ export function EleaPage() {
               <div ref={messagesEndRef} />
             </div>
 
-            {suggestions.length > 0 && messages.length <= 1 && (
-              <div className="px-6 py-3 bg-white dark:bg-zinc-950 border-t border-slate-200 dark:border-zinc-800">
-                <div className="flex items-center gap-2 mb-3">
-                  <Sparkles className="h-4 w-4 text-blue-500" />
-                  <p className="text-sm font-medium text-slate-700 dark:text-zinc-300">
-                    Suggestions
-                  </p>
-                </div>
-                <div className="grid grid-cols-2 gap-2">
-                  {suggestions.map((suggestion) => (
-                    <button
-                      key={suggestion.id}
-                      onClick={() => handleSuggestionClick(suggestion)}
-                      className="text-left text-sm px-4 py-3 rounded-xl bg-slate-50 dark:bg-zinc-900 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors text-slate-700 dark:text-zinc-300 border border-slate-200 dark:border-zinc-800 hover:border-blue-300 dark:hover:border-blue-700"
-                      disabled={isLoading}
-                    >
-                      {suggestion.text}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
 
             <div className="p-4 bg-white dark:bg-zinc-950 border-t border-slate-200 dark:border-zinc-800">
+              {selectedFile && (
+                <div className="mb-3 flex items-center gap-2 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                  <Paperclip className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                  <span className="text-sm text-blue-800 dark:text-blue-300 flex-1 truncate">
+                    {selectedFile.name}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={handleRemoveFile}
+                    className="p-1 hover:bg-blue-100 dark:hover:bg-blue-900/40 rounded transition-colors"
+                  >
+                    <X className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                  </button>
+                </div>
+              )}
+
               <form onSubmit={handleSendMessage} className="flex items-end gap-3">
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  onChange={handleFileSelect}
+                  className="hidden"
+                  accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png"
+                />
                 <button
                   type="button"
+                  onClick={() => fileInputRef.current?.click()}
                   className="p-2.5 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-lg transition-colors text-slate-600 dark:text-zinc-400"
                   title="Ajouter un fichier"
                 >
-                  <Plus className="w-5 h-5" />
+                  <Paperclip className="w-5 h-5" />
                 </button>
                 <button
                   type="button"
-                  className="p-2.5 hover:bg-slate-100 dark:hover:bg-zinc-900 rounded-lg transition-colors text-slate-600 dark:text-zinc-400"
-                  title="Emoji"
+                  onClick={toggleRecording}
+                  className={`p-2.5 rounded-lg transition-colors ${
+                    isRecording
+                      ? 'bg-red-500 hover:bg-red-600 text-white'
+                      : 'hover:bg-slate-100 dark:hover:bg-zinc-900 text-slate-600 dark:text-zinc-400'
+                  }`}
+                  title={isRecording ? 'Arrêter l\'enregistrement' : 'Enregistrer un message vocal'}
                 >
-                  <Smile className="w-5 h-5" />
+                  <Mic className="w-5 h-5" />
                 </button>
                 <textarea
                   ref={textareaRef}
@@ -525,7 +568,7 @@ export function EleaPage() {
                 <button
                   type="submit"
                   disabled={isLoading || !inputMessage.trim()}
-                  className="p-2.5 bg-slate-100 dark:bg-zinc-900 hover:bg-slate-200 dark:hover:bg-zinc-800 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-slate-600 dark:text-zinc-400"
+                  className="p-2.5 bg-blue-500 hover:bg-blue-600 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-white"
                   title="Envoyer"
                 >
                   <Send className="w-5 h-5" />
