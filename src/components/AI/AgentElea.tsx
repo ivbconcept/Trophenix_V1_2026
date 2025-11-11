@@ -147,20 +147,33 @@ export function AgentElea({ context = { page: 'dashboard', step: 0 }, position =
               </button>
             </div>
 
-            {/* Demandes rapides */}
-            {suggestions.length > 0 && (
-              <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
-                {suggestions.slice(0, 4).map((suggestion) => (
-                  <button
-                    key={suggestion.id}
-                    onClick={() => sendSuggestion(suggestion)}
-                    className="flex-shrink-0 text-xs px-3 py-1.5 rounded-full bg-white/20 hover:bg-white/30 transition-colors border border-white/30 whitespace-nowrap"
-                  >
-                    {suggestion.text}
-                  </button>
-                ))}
-              </div>
-            )}
+            {/* Raccourcis rapides */}
+            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+              <button
+                onClick={() => sendMessage(profile?.user_type === 'athlete' ? 'Comment optimiser mon profil ?' : 'Comment créer une offre d\'emploi ?')}
+                className="flex-shrink-0 text-xs px-3 py-1.5 rounded-full bg-white/20 hover:bg-white/30 transition-colors border border-white/30 whitespace-nowrap"
+              >
+                {profile?.user_type === 'athlete' ? 'Optimiser mon profil' : 'Créer une offre'}
+              </button>
+              <button
+                onClick={() => sendMessage(profile?.user_type === 'athlete' ? 'Voir les offres d\'emploi disponibles' : 'Voir les candidatures reçues')}
+                className="flex-shrink-0 text-xs px-3 py-1.5 rounded-full bg-white/20 hover:bg-white/30 transition-colors border border-white/30 whitespace-nowrap"
+              >
+                {profile?.user_type === 'athlete' ? 'Voir les offres' : 'Candidatures reçues'}
+              </button>
+              <button
+                onClick={() => sendMessage(profile?.user_type === 'athlete' ? 'Comment postuler à une offre ?' : 'Comment trouver des talents ?')}
+                className="flex-shrink-0 text-xs px-3 py-1.5 rounded-full bg-white/20 hover:bg-white/30 transition-colors border border-white/30 whitespace-nowrap"
+              >
+                {profile?.user_type === 'athlete' ? 'Postuler' : 'Trouver des talents'}
+              </button>
+              <button
+                onClick={() => sendMessage(profile?.user_type === 'athlete' ? 'Gérer mes candidatures' : 'Optimiser mon profil entreprise')}
+                className="flex-shrink-0 text-xs px-3 py-1.5 rounded-full bg-white/20 hover:bg-white/30 transition-colors border border-white/30 whitespace-nowrap"
+              >
+                {profile?.user_type === 'athlete' ? 'Mes candidatures' : 'Mon profil'}
+              </button>
+            </div>
           </div>
 
           {/* Zone des Messages */}
