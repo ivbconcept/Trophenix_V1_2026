@@ -21,6 +21,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { MessageCircle, X, Send, Paperclip, Mic } from 'lucide-react';
 import { useEleaAgent } from '../../hooks/useEleaAgent';
+import { useAuth } from '../../contexts/AuthContext';
 import { isFeatureEnabled } from '../../config/features';
 import type { AgentContext } from '../../types/agent';
 
@@ -50,6 +51,7 @@ interface AgentEleaProps {
  * ```
  */
 export function AgentElea({ context = { page: 'dashboard', step: 0 }, position = 'bottom-right' }: AgentEleaProps) {
+  const { profile } = useAuth();
   const {
     messages,
     suggestions,
