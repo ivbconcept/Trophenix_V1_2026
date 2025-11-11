@@ -148,7 +148,7 @@ export function AgentElea({ context = { page: 'dashboard', step: 0 }, position =
             </div>
 
             {/* Demandes rapides */}
-            {messages.length === 0 && (
+            {messages.length <= 1 && suggestions.length > 0 && (
               <div className="flex gap-2 overflow-x-auto pb-1">
                 {suggestions.slice(0, 4).map((suggestion) => (
                   <button
